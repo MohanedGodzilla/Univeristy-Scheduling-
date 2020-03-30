@@ -1,0 +1,4 @@
+
+*.lock
+university_scheduler/obj/Debug/
+*.exe
