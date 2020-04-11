@@ -117,19 +117,176 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="coursesView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="coursesView.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="coursesView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>665, 520</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="coursesView.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="coursesView.Text" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="&gt;&gt;coursesView.Name" xml:space="preserve">
+    <value>coursesView</value>
+  </data>
+  <data name="&gt;&gt;coursesView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;coursesView.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;coursesView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="programsView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="programsView.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="programsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>665, 520</value>
+  </data>
+  <data name="programsView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="programsView.Text" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="&gt;&gt;programsView.Name" xml:space="preserve">
+    <value>programsView</value>
+  </data>
+  <data name="&gt;&gt;programsView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;programsView.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;programsView.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="classroomsView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="classroomsView.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="classroomsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>665, 520</value>
+  </data>
+  <data name="classroomsView.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="classroomsView.Text" xml:space="preserve">
+    <value>Classrooms</value>
+  </data>
+  <data name="&gt;&gt;classroomsView.Name" xml:space="preserve">
+    <value>classroomsView</value>
+  </data>
+  <data name="&gt;&gt;classroomsView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;classroomsView.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;classroomsView.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="resourcesView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="resourcesView.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="resourcesView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>665, 520</value>
+  </data>
+  <data name="resourcesView.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="resourcesView.Text" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="&gt;&gt;resourcesView.Name" xml:space="preserve">
+    <value>resourcesView</value>
+  </data>
+  <data name="&gt;&gt;resourcesView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resourcesView.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;resourcesView.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 546</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 546</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="etInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 101</value>
+    <value>72, 86</value>
   </data>
   <data name="etInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>87, 20</value>
   </data>
   <data name="etInput.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>29</value>
   </data>
   <data name="&gt;&gt;etInput.Name" xml:space="preserve">
     <value>etInput</value>
@@ -144,13 +301,13 @@
     <value>0</value>
   </data>
   <data name="stInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 62</value>
+    <value>74, 41</value>
   </data>
   <data name="stInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>85, 20</value>
   </data>
   <data name="stInput.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>28</value>
   </data>
   <data name="&gt;&gt;stInput.Name" xml:space="preserve">
     <value>stInput</value>
@@ -167,18 +324,17 @@
   <data name="etLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="etLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="etLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 107</value>
+    <value>16, 86</value>
   </data>
   <data name="etLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
   </data>
   <data name="etLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>27</value>
   </data>
   <data name="etLabel.Text" xml:space="preserve">
     <value>end time:</value>
@@ -202,13 +358,13 @@
     <value>NoControl</value>
   </data>
   <data name="stLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 62</value>
+    <value>16, 41</value>
   </data>
   <data name="stLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
   <data name="stLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+    <value>26</value>
   </data>
   <data name="stLabel.Text" xml:space="preserve">
     <value>start time:</value>
@@ -238,10 +394,10 @@
     <value>0, 454</value>
   </data>
   <data name="generateBTN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 92</value>
+    <value>219, 92</value>
   </data>
   <data name="generateBTN.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>25</value>
   </data>
   <data name="generateBTN.Text" xml:space="preserve">
     <value>Generate Table</value>
@@ -262,13 +418,13 @@
     <value>Fill</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>670, 3</value>
+    <value>682, 3</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 546</value>
+    <value>219, 546</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel2.Name" xml:space="preserve">
     <value>panel2</value>
@@ -280,319 +436,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel2.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
-    <value>Inset</value>
-  </data>
-  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="addCourseBTN.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="addCourseBTN.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="addCourseBTN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="addCourseBTN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 488</value>
-  </data>
-  <data name="addCourseBTN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 53</value>
-  </data>
-  <data name="addCourseBTN.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="addCourseBTN.Text" xml:space="preserve">
-    <value>Add Course</value>
-  </data>
-  <data name="&gt;&gt;addCourseBTN.Name" xml:space="preserve">
-    <value>addCourseBTN</value>
-  </data>
-  <data name="&gt;&gt;addCourseBTN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addCourseBTN.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;addCourseBTN.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="addClassroomBTN.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="addClassroomBTN.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="addClassroomBTN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="addClassroomBTN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 488</value>
-  </data>
-  <data name="addClassroomBTN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 53</value>
-  </data>
-  <data name="addClassroomBTN.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="addClassroomBTN.Text" xml:space="preserve">
-    <value>Add Classroom</value>
-  </data>
-  <data name="&gt;&gt;addClassroomBTN.Name" xml:space="preserve">
-    <value>addClassroomBTN</value>
-  </data>
-  <data name="&gt;&gt;addClassroomBTN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addClassroomBTN.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;addClassroomBTN.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="addProgramBTN.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="addProgramBTN.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="addProgramBTN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="addProgramBTN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 488</value>
-  </data>
-  <data name="addProgramBTN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 53</value>
-  </data>
-  <data name="addProgramBTN.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="addProgramBTN.Text" xml:space="preserve">
-    <value>Add Program</value>
-  </data>
-  <data name="&gt;&gt;addProgramBTN.Name" xml:space="preserve">
-    <value>addProgramBTN</value>
-  </data>
-  <data name="&gt;&gt;addProgramBTN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addProgramBTN.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;addProgramBTN.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="addResourceBTN.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="addResourceBTN.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="addResourceBTN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="addResourceBTN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>497, 488</value>
-  </data>
-  <data name="addResourceBTN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 53</value>
-  </data>
-  <data name="addResourceBTN.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="addResourceBTN.Text" xml:space="preserve">
-    <value>Add Resource</value>
-  </data>
-  <data name="&gt;&gt;addResourceBTN.Name" xml:space="preserve">
-    <value>addResourceBTN</value>
-  </data>
-  <data name="&gt;&gt;addResourceBTN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addResourceBTN.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;addResourceBTN.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="coursesLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="coursesLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="coursesLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="coursesLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 2</value>
-  </data>
-  <data name="coursesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 52</value>
-  </data>
-  <data name="coursesLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="coursesLabel.Text" xml:space="preserve">
-    <value>Courses</value>
-  </data>
-  <data name="coursesLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;coursesLabel.Name" xml:space="preserve">
-    <value>coursesLabel</value>
-  </data>
-  <data name="&gt;&gt;coursesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;coursesLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;coursesLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="classroomsLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="classroomsLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="classroomsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="classroomsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 2</value>
-  </data>
-  <data name="classroomsLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 52</value>
-  </data>
-  <data name="classroomsLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="classroomsLabel.Text" xml:space="preserve">
-    <value>Classrooms</value>
-  </data>
-  <data name="classroomsLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;classroomsLabel.Name" xml:space="preserve">
-    <value>classroomsLabel</value>
-  </data>
-  <data name="&gt;&gt;classroomsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;classroomsLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;classroomsLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="programsLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="programsLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="programsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="programsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 2</value>
-  </data>
-  <data name="programsLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 52</value>
-  </data>
-  <data name="programsLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="programsLabel.Text" xml:space="preserve">
-    <value>Programs</value>
-  </data>
-  <data name="programsLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;programsLabel.Name" xml:space="preserve">
-    <value>programsLabel</value>
-  </data>
-  <data name="&gt;&gt;programsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;programsLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;programsLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="resourcesLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="resourcesLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="resourcesLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="resourcesLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>497, 2</value>
-  </data>
-  <data name="resourcesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 52</value>
-  </data>
-  <data name="resourcesLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="resourcesLabel.Text" xml:space="preserve">
-    <value>Resources</value>
-  </data>
-  <data name="resourcesLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;resourcesLabel.Name" xml:space="preserve">
-    <value>resourcesLabel</value>
-  </data>
-  <data name="&gt;&gt;resourcesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;resourcesLabel.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;resourcesLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>661, 546</value>
-  </data>
-  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="addCourseBTN" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="addClassroomBTN" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="addProgramBTN" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="addResourceBTN" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="coursesLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="classroomsLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="programsLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="resourcesLabel" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25" /&gt;&lt;Rows Styles="Percent,9.850746,Percent,79.54546,Percent,10.79545" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -607,7 +451,7 @@
     <value>904, 552</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -622,7 +466,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel2" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel2" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,73.78319,Percent,26.21681" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,75.20184,Percent,24.79815" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -632,6 +476,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>904, 552</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>University Scheduling</value>
