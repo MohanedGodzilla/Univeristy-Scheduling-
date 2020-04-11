@@ -107,15 +107,17 @@
             // 
             // etInput
             // 
-            this.etInput.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.etInput.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             resources.ApplyResources(this.etInput, "etInput");
+            this.etInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.etInput.Name = "etInput";
             // 
             // stInput
             // 
-            this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             resources.ApplyResources(this.stInput, "stInput");
+            this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stInput.Name = "stInput";
+            this.stInput.ValueChanged += new System.EventHandler(this.stInput_ValueChanged);
             // 
             // etLabel
             // 

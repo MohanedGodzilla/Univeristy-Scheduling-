@@ -186,11 +186,14 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="etInput.CustomFormat" xml:space="preserve">
+    <value>hh:mm </value>
+  </data>
   <data name="etInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>89, 86</value>
   </data>
   <data name="etInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 20</value>
+    <value>55, 20</value>
   </data>
   <data name="etInput.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -207,11 +210,14 @@
   <data name="&gt;&gt;etInput.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="stInput.CustomFormat" xml:space="preserve">
+    <value>hh:mm</value>
+  </data>
   <data name="stInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>89, 41</value>
   </data>
   <data name="stInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 20</value>
+    <value>55, 20</value>
   </data>
   <data name="stInput.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -530,9 +536,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>904, 552</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>University Scheduling</value>

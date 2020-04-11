@@ -23,6 +23,8 @@ namespace university_scheduler
         
         private void NoScheduleHome_Load(object sender, EventArgs e)
         {
+            stInput.ShowUpDown = true;
+            etInput.ShowUpDown = true;
 
         }
 
@@ -49,5 +51,11 @@ namespace university_scheduler
             this.resourcesView.Controls.Add(frm);
             frm.Show();
         }
+
+        private void stInput_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

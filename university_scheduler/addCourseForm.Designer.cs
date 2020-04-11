@@ -48,7 +48,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.termCombo = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -68,7 +68,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(516, 488);
+            this.panel1.Size = new System.Drawing.Size(453, 488);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -94,7 +94,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.termCombo, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 7);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -116,6 +116,8 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(187, 314);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.checkBox2.Name = "checkBox2";
@@ -294,12 +296,12 @@
             this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
             this.numericUpDown1.TabIndex = 13;
             // 
-            // comboBox1
+            // termCombo
             // 
-            this.comboBox1.AccessibleName = "";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.termCombo.AccessibleName = "";
+            this.termCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.termCombo.FormattingEnabled = true;
+            this.termCombo.Items.AddRange(new object[] {
             "Level 1 - Semester 1",
             "Level 1 - Semester 2",
             "Level 2 - Semester 1",
@@ -308,12 +310,12 @@
             "Level 3 - Semester 2",
             "Level 4 - Semester 1",
             "Level 4 - Semester 2"});
-            this.comboBox1.Location = new System.Drawing.Point(187, 238);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(219, 21);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Tag = "";
+            this.termCombo.Location = new System.Drawing.Point(187, 238);
+            this.termCombo.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.termCombo.Name = "termCombo";
+            this.termCombo.Size = new System.Drawing.Size(219, 21);
+            this.termCombo.TabIndex = 5;
+            this.termCombo.Tag = "";
             // 
             // checkBox1
             // 
@@ -355,12 +357,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 488);
+            this.ClientSize = new System.Drawing.Size(453, 488);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "addCourseForm";
             this.Text = "Add Course ";
+            this.Load += new System.EventHandler(this.addCourseForm_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -395,7 +399,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox termCombo;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
     }

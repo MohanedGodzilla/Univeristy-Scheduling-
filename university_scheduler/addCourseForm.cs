@@ -46,5 +46,10 @@ namespace university_scheduler
         {
 
         }
+
+        private void addCourseForm_Load(object sender, EventArgs e)
+        {
+            termCombo.SelectedIndex = 0;
+        }
     }
 }
