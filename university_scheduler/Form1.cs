@@ -16,6 +16,9 @@ namespace university_scheduler
         {
             InitializeComponent();
             courses_view();
+            programs_view();
+            classrooms_view();
+            resourses_view();
         }
         
         private void NoScheduleHome_Load(object sender, EventArgs e)
@@ -28,6 +31,23 @@ namespace university_scheduler
             this.coursesView.Controls.Add(frm);
             frm.Show();
         }
-
+        private void programs_view()
+        {
+            viewProgramForm frm = new viewProgramForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.programsView.Controls.Add(frm);
+            frm.Show();
+        }
+        private void classrooms_view()
+        {
+            viewClassroomForm frm = new viewClassroomForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.classroomsView.Controls.Add(frm);
+            frm.Show();
+        }
+        private void resourses_view()
+        {
+            viewResourcesForm frm = new viewResourcesForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.resourcesView.Controls.Add(frm);
+            frm.Show();
+        }
     }
 }
