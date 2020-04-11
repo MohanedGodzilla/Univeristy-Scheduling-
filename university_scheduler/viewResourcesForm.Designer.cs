@@ -50,9 +50,11 @@
             // Button1
             // 
             this.Button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Button1.Location = new System.Drawing.Point(3, 3);
+            this.Button1.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
+            this.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Button1.Location = new System.Drawing.Point(3, 11);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(171, 45);
+            this.Button1.Size = new System.Drawing.Size(171, 37);
             this.Button1.TabIndex = 0;
             this.Button1.Text = "New";
             this.Button1.UseVisualStyleBackColor = true;
@@ -93,9 +95,11 @@
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button3.Location = new System.Drawing.Point(3, 105);
+            this.button3.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(3, 113);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 45);
+            this.button3.Size = new System.Drawing.Size(171, 37);
             this.button3.TabIndex = 2;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = true;
@@ -103,9 +107,11 @@
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button2.Location = new System.Drawing.Point(3, 54);
+            this.button2.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 62);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 45);
+            this.button2.Size = new System.Drawing.Size(171, 37);
             this.button2.TabIndex = 1;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
