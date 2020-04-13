@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.Button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -46,18 +47,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(611, 444);
             this.panel1.TabIndex = 1;
-            // 
-            // Button1
-            // 
-            this.Button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Button1.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
-            this.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Button1.Location = new System.Drawing.Point(3, 11);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(171, 37);
-            this.Button1.TabIndex = 0;
-            this.Button1.Text = "New";
-            this.Button1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -78,26 +67,41 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.button4, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.button3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.Button1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button4.Image = global::university_scheduler.Properties.Resources.icons8_add_list_20;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(3, 260);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(171, 37);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Add";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             // 
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button3.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(3, 113);
+            this.button3.Location = new System.Drawing.Point(3, 95);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(171, 37);
             this.button3.TabIndex = 2;
@@ -109,12 +113,24 @@
             this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button2.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 62);
+            this.button2.Location = new System.Drawing.Point(3, 50);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(171, 37);
             this.button2.TabIndex = 1;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Button1
+            // 
+            this.Button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Button1.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
+            this.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Button1.Location = new System.Drawing.Point(3, 5);
+            this.Button1.Name = "Button1";
+            this.Button1.Size = new System.Drawing.Size(171, 37);
+            this.Button1.TabIndex = 0;
+            this.Button1.Text = "New";
+            this.Button1.UseVisualStyleBackColor = true;
             // 
             // viewClassroomForm
             // 
@@ -140,5 +156,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
     }
 }

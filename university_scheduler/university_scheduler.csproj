@@ -150,6 +150,7 @@
     <None Include="Resources\icons8-delete-bin-20.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-add-list-20.png" />
     <Content Include="timeTableDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
