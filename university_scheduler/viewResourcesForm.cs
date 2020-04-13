@@ -16,5 +16,11 @@ namespace university_scheduler
         {
             InitializeComponent();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            addResourceForm addCoursePopup = new addResourceForm();
+            DialogResult dialogResult = addCoursePopup.ShowDialog();
+        }
     }
 }
