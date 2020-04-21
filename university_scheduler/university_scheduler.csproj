@@ -150,15 +150,6 @@
     <None Include="Resources\icons8-delete-bin-20.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="timeTableDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="timeTableDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>timeTableDB.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>

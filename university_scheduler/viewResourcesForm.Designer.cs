@@ -34,13 +34,17 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.resourceData = new System.Windows.Forms.DataGridView();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceData)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.resourceData);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -116,6 +120,16 @@
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // resourceData
+            // 
+            this.resourceData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resourceData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resourceData.Location = new System.Drawing.Point(0, 0);
+            this.resourceData.Name = "resourceData";
+            this.resourceData.ReadOnly = true;
+            this.resourceData.Size = new System.Drawing.Size(611, 444);
+            this.resourceData.TabIndex = 0;
+            // 
             // viewResourcesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,8 +140,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "viewResourcesForm";
             this.Text = "viewResourcesForm";
+            this.Load += new System.EventHandler(this.viewResourcesForm_Load);
+            this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.resourceData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,5 +157,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView resourceData;
     }
 }
