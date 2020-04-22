@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Button1 = new System.Windows.Forms.Button();
+            this.resourceData = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.resourceData = new System.Windows.Forms.DataGridView();
+            this.Button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.resourceData)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -51,17 +51,17 @@
             this.panel1.Size = new System.Drawing.Size(611, 444);
             this.panel1.TabIndex = 1;
             // 
-            // Button1
+            // resourceData
             // 
-            this.Button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Button1.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
-            this.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Button1.Location = new System.Drawing.Point(3, 11);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(171, 37);
-            this.Button1.TabIndex = 0;
-            this.Button1.Text = "New";
-            this.Button1.UseVisualStyleBackColor = true;
+            this.resourceData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resourceData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resourceData.Location = new System.Drawing.Point(0, 0);
+            this.resourceData.Name = "resourceData";
+            this.resourceData.ReadOnly = true;
+            this.resourceData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.resourceData.Size = new System.Drawing.Size(611, 444);
+            this.resourceData.TabIndex = 0;
+            this.resourceData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resourceData_CellDoubleClick);
             // 
             // tableLayoutPanel1
             // 
@@ -120,15 +120,18 @@
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // resourceData
+            // Button1
             // 
-            this.resourceData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.resourceData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resourceData.Location = new System.Drawing.Point(0, 0);
-            this.resourceData.Name = "resourceData";
-            this.resourceData.ReadOnly = true;
-            this.resourceData.Size = new System.Drawing.Size(611, 444);
-            this.resourceData.TabIndex = 0;
+            this.Button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Button1.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
+            this.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Button1.Location = new System.Drawing.Point(3, 11);
+            this.Button1.Name = "Button1";
+            this.Button1.Size = new System.Drawing.Size(171, 37);
+            this.Button1.TabIndex = 0;
+            this.Button1.Text = "New";
+            this.Button1.UseVisualStyleBackColor = true;
+            this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // viewResourcesForm
             // 
@@ -142,9 +145,9 @@
             this.Text = "viewResourcesForm";
             this.Load += new System.EventHandler(this.viewResourcesForm_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.resourceData)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.resourceData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,6 +160,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView resourceData;
+        public System.Windows.Forms.DataGridView resourceData;
     }
 }

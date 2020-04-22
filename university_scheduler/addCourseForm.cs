@@ -42,11 +42,6 @@ namespace university_scheduler
 
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addCourseForm_Load(object sender, EventArgs e)
         {
             termCombo.SelectedIndex = 0;
