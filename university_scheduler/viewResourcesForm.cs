@@ -14,7 +14,7 @@ namespace university_scheduler
     public partial class viewResourcesForm : Form
     {
 
-        public string conString = "Data Source = localhost; Initial Catalog = course_scheduler; Integrated Security = True";
+        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
         public viewResourcesForm()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace university_scheduler
         
         private void viewResourcesForm_Load(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection("conString"))
+            using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM resource", cn))
@@ -39,7 +39,7 @@ namespace university_scheduler
 
         public void loaddata()// this function is called when the user is inserted a new tuple in the database from addResourceForm  
         {
-            using (SqlConnection cn = new SqlConnection("conString"))
+            using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM resource", cn))
