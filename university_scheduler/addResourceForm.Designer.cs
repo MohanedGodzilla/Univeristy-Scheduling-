@@ -33,8 +33,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.resourceName = new System.Windows.Forms.TextBox();
             this.resourceCount = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addResourceBTN = new System.Windows.Forms.Button();
+            this.cancelResourceBTN = new System.Windows.Forms.Button();
             this.resourceCompo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.resourceCount)).BeginInit();
             this.SuspendLayout();
@@ -86,30 +86,31 @@
             this.resourceCount.Size = new System.Drawing.Size(42, 22);
             this.resourceCount.TabIndex = 4;
             // 
-            // button2
+            // addResourceBTN
             // 
-            this.button2.BackColor = System.Drawing.Color.LimeGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(96, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 32);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.addResourceBTN.BackColor = System.Drawing.Color.LimeGreen;
+            this.addResourceBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.addResourceBTN.ForeColor = System.Drawing.Color.White;
+            this.addResourceBTN.Location = new System.Drawing.Point(96, 190);
+            this.addResourceBTN.Name = "addResourceBTN";
+            this.addResourceBTN.Size = new System.Drawing.Size(90, 32);
+            this.addResourceBTN.TabIndex = 6;
+            this.addResourceBTN.Text = "Add";
+            this.addResourceBTN.UseVisualStyleBackColor = false;
+            this.addResourceBTN.Click += new System.EventHandler(this.addResourceBTN_Click);
             // 
-            // button1
+            // cancelResourceBTN
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(206, 190);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 32);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
+            this.cancelResourceBTN.BackColor = System.Drawing.Color.Red;
+            this.cancelResourceBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.cancelResourceBTN.ForeColor = System.Drawing.SystemColors.Control;
+            this.cancelResourceBTN.Location = new System.Drawing.Point(206, 190);
+            this.cancelResourceBTN.Name = "cancelResourceBTN";
+            this.cancelResourceBTN.Size = new System.Drawing.Size(91, 32);
+            this.cancelResourceBTN.TabIndex = 5;
+            this.cancelResourceBTN.Text = "Cancel";
+            this.cancelResourceBTN.UseVisualStyleBackColor = false;
+            this.cancelResourceBTN.Click += new System.EventHandler(this.cancelResourceBTN_Click);
             // 
             // resourceCompo
             // 
@@ -131,8 +132,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 234);
             this.Controls.Add(this.resourceCompo);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addResourceBTN);
+            this.Controls.Add(this.cancelResourceBTN);
             this.Controls.Add(this.resourceCount);
             this.Controls.Add(this.resourceName);
             this.Controls.Add(this.label3);
@@ -140,6 +141,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "addResourceForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addResourceForm";
             this.Load += new System.EventHandler(this.addResourceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resourceCount)).EndInit();
@@ -155,8 +157,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox resourceName;
         private System.Windows.Forms.NumericUpDown resourceCount;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addResourceBTN;
+        private System.Windows.Forms.Button cancelResourceBTN;
         private System.Windows.Forms.ComboBox resourceCompo;
     }
 }

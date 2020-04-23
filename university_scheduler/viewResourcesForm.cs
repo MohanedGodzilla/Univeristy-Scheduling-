@@ -13,7 +13,7 @@ namespace university_scheduler
 {
     public partial class viewResourcesForm : Form
     {
-
+        
         public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
         public viewResourcesForm()
         {
@@ -53,14 +53,41 @@ namespace university_scheduler
                 }
             } 
         }
+        
+        private void resourceData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            addResourceForm resDataPassed = new addResourceForm(resourceData.SelectedRows[0].Cells[1].Value.ToString());
+            resDataPassed.Show();
+        }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void newResourceBTN_Click(object sender, EventArgs e)
         {
             addResourceForm addCoursePopup = new addResourceForm();
             DialogResult dialogResult = addCoursePopup.ShowDialog();
         }
 
-        private void resourceData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void deleteResourceBTN_Click(object sender, EventArgs e)
+        {
+            string selected_id = resourceData.SelectedRows[0].Cells[0].Value.ToString();
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "delete from resource where id = " + selected_id ;
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                //--the following three lines is used to update the dataGridView and refresh it --//
+                this.loaddata();
+                this.resourceData.Update();
+                this.resourceData.Refresh();
+                //---//
+                MessageBox.Show("Resource is deleted successfully..!");
+
+            }
+        }
+
+
+        private void editResourceBTN_Click(object sender, EventArgs e)
         {
             addResourceForm resDataPassed = new addResourceForm(resourceData.SelectedRows[0].Cells[1].Value.ToString());
             resDataPassed.Show();

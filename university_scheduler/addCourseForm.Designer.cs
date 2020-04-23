@@ -386,6 +386,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "addCourseForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Course ";
             this.Load += new System.EventHandler(this.addCourseForm_Load);
             this.panel1.ResumeLayout(false);
