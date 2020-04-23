@@ -36,6 +36,7 @@
             this.addResourceBTN = new System.Windows.Forms.Button();
             this.cancelResourceBTN = new System.Windows.Forms.Button();
             this.resourceCompo = new System.Windows.Forms.ComboBox();
+            this.saveResourceBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resourceCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             this.addResourceBTN.BackColor = System.Drawing.Color.LimeGreen;
             this.addResourceBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.addResourceBTN.ForeColor = System.Drawing.Color.White;
-            this.addResourceBTN.Location = new System.Drawing.Point(96, 190);
+            this.addResourceBTN.Location = new System.Drawing.Point(122, 190);
             this.addResourceBTN.Name = "addResourceBTN";
             this.addResourceBTN.Size = new System.Drawing.Size(90, 32);
             this.addResourceBTN.TabIndex = 6;
@@ -104,7 +105,7 @@
             this.cancelResourceBTN.BackColor = System.Drawing.Color.Red;
             this.cancelResourceBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.cancelResourceBTN.ForeColor = System.Drawing.SystemColors.Control;
-            this.cancelResourceBTN.Location = new System.Drawing.Point(206, 190);
+            this.cancelResourceBTN.Location = new System.Drawing.Point(218, 190);
             this.cancelResourceBTN.Name = "cancelResourceBTN";
             this.cancelResourceBTN.Size = new System.Drawing.Size(91, 32);
             this.cancelResourceBTN.TabIndex = 5;
@@ -126,11 +127,25 @@
             this.resourceCompo.Size = new System.Drawing.Size(153, 24);
             this.resourceCompo.TabIndex = 7;
             // 
+            // saveResourceBTN
+            // 
+            this.saveResourceBTN.BackColor = System.Drawing.Color.LimeGreen;
+            this.saveResourceBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.saveResourceBTN.ForeColor = System.Drawing.Color.White;
+            this.saveResourceBTN.Location = new System.Drawing.Point(24, 190);
+            this.saveResourceBTN.Name = "saveResourceBTN";
+            this.saveResourceBTN.Size = new System.Drawing.Size(90, 32);
+            this.saveResourceBTN.TabIndex = 8;
+            this.saveResourceBTN.Text = "Save";
+            this.saveResourceBTN.UseVisualStyleBackColor = false;
+            this.saveResourceBTN.Click += new System.EventHandler(this.saveResourceBTN_Click);
+            // 
             // addResourceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 234);
+            this.Controls.Add(this.saveResourceBTN);
             this.Controls.Add(this.resourceCompo);
             this.Controls.Add(this.addResourceBTN);
             this.Controls.Add(this.cancelResourceBTN);
@@ -160,5 +175,6 @@
         private System.Windows.Forms.Button addResourceBTN;
         private System.Windows.Forms.Button cancelResourceBTN;
         private System.Windows.Forms.ComboBox resourceCompo;
+        private System.Windows.Forms.Button saveResourceBTN;
     }
 }

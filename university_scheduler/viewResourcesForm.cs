@@ -90,7 +90,10 @@ namespace university_scheduler
         private void editResourceBTN_Click(object sender, EventArgs e)
         {
             addResourceForm resDataPassed = new addResourceForm(resourceData.SelectedRows[0].Cells[1].Value.ToString());
+            /*resourceData.EndEdit();
+            editResourceBTN.Focus();*/
             resDataPassed.Show();
+            
         }
     }
 }

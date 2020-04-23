@@ -25,13 +25,13 @@ namespace university_scheduler
         public addResourceForm(string name) // constructor to get resourceName from (dataset)=>resourceData
         {
             InitializeComponent();
+            addResourceBTN.Hide();
             resourceName.Text = name;
         }
 
         private void addResourceForm_Load(object sender, EventArgs e)
         {
             resourceCompo.SelectedIndex = 0; // to show the first index as the default value
-            //resourceName.Text;
         }
         
 
@@ -57,6 +57,26 @@ namespace university_scheduler
         private void cancelResourceBTN_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void saveResourceBTN_Click(object sender, EventArgs e)
+        {
+            string selected_id = resForm.resourceData.SelectedRows[0].Cells[0].Value.ToString();
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "UPDATE resource SET name = '" + resourceName.Text.ToString() + "' WHERE id = " + selected_id;
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                //--the following three lines is used to update the dataGridView and refresh it --//
+                resForm.loaddata();
+                resForm.resourceData.Update();
+                resForm.resourceData.Refresh();
+                //---//
+                MessageBox.Show("updateing resource successfully..!");
+
+            }
         }
     }
 }
