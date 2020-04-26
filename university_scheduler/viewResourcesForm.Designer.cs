@@ -34,6 +34,7 @@
             this.resourceData = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.saveResourceBTN = new System.Windows.Forms.Button();
             this.deleteResourceBTN = new System.Windows.Forms.Button();
             this.editResourceBTN = new System.Windows.Forms.Button();
             this.newResourceBTN = new System.Windows.Forms.Button();
@@ -100,26 +101,41 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.saveResourceBTN, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.deleteResourceBTN, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.editResourceBTN, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.newResourceBTN, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // saveResourceBTN
+            // 
+            this.saveResourceBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.saveResourceBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
+            this.saveResourceBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.saveResourceBTN.Location = new System.Drawing.Point(3, 184);
+            this.saveResourceBTN.Name = "saveResourceBTN";
+            this.saveResourceBTN.Size = new System.Drawing.Size(171, 37);
+            this.saveResourceBTN.TabIndex = 3;
+            this.saveResourceBTN.Text = "Save";
+            this.saveResourceBTN.UseVisualStyleBackColor = true;
+            this.saveResourceBTN.Visible = false;
             // 
             // deleteResourceBTN
             // 
             this.deleteResourceBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteResourceBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteResourceBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteResourceBTN.Location = new System.Drawing.Point(3, 113);
+            this.deleteResourceBTN.Location = new System.Drawing.Point(3, 128);
             this.deleteResourceBTN.Name = "deleteResourceBTN";
             this.deleteResourceBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteResourceBTN.TabIndex = 2;
@@ -132,7 +148,7 @@
             this.editResourceBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editResourceBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editResourceBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editResourceBTN.Location = new System.Drawing.Point(3, 62);
+            this.editResourceBTN.Location = new System.Drawing.Point(3, 72);
             this.editResourceBTN.Name = "editResourceBTN";
             this.editResourceBTN.Size = new System.Drawing.Size(171, 37);
             this.editResourceBTN.TabIndex = 1;
@@ -145,7 +161,7 @@
             this.newResourceBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newResourceBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newResourceBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newResourceBTN.Location = new System.Drawing.Point(3, 11);
+            this.newResourceBTN.Location = new System.Drawing.Point(3, 16);
             this.newResourceBTN.Name = "newResourceBTN";
             this.newResourceBTN.Size = new System.Drawing.Size(171, 37);
             this.newResourceBTN.TabIndex = 0;
@@ -158,7 +174,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "viewResourcesForm";
@@ -178,8 +193,9 @@
         private System.Windows.Forms.Button newResourceBTN;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button deleteResourceBTN;
         private System.Windows.Forms.Button editResourceBTN;
         public System.Windows.Forms.DataGridView resourceData;
+        public System.Windows.Forms.Button saveResourceBTN;
+        public System.Windows.Forms.Button deleteResourceBTN;
     }
 }

@@ -52,6 +52,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.selectResource = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
@@ -96,6 +97,7 @@
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.termCombo, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.selectResource, 1, 10);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
@@ -376,6 +378,18 @@
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // selectResource
+            // 
+            this.selectResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectResource.Location = new System.Drawing.Point(187, 390);
+            this.selectResource.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.selectResource.Name = "selectResource";
+            this.selectResource.Size = new System.Drawing.Size(86, 23);
+            this.selectResource.TabIndex = 19;
+            this.selectResource.Text = "-- select -- ";
+            this.selectResource.UseVisualStyleBackColor = true;
+            this.selectResource.Click += new System.EventHandler(this.selectResource_Click);
+            // 
             // addCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,5 +440,6 @@
         private System.Windows.Forms.ComboBox termCombo;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button selectResource;
     }
 }

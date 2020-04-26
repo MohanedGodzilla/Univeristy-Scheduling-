@@ -46,5 +46,15 @@ namespace university_scheduler
         {
             termCombo.SelectedIndex = 0;
         }
+        
+
+        private void selectResource_Click(object sender, EventArgs e)
+        {
+            viewResourcesForm resForm = new viewResourcesForm();
+            resForm.saveResourceBTN.Visible = true;
+            resForm.deleteResourceBTN.Visible = false;
+            resForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            DialogResult dialogresult = resForm.ShowDialog();
+        }
     }
 }
