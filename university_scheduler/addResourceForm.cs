@@ -20,12 +20,15 @@ namespace university_scheduler
         public addResourceForm()
         {
             InitializeComponent();
+            addResourceBTN.Show();
+            saveResourceBTN.Hide();
         }
 
         public addResourceForm(string name) // constructor to get resourceName from (dataset)=>resourceData
         {
             InitializeComponent();
             addResourceBTN.Hide();
+            saveResourceBTN.Show();
             resourceName.Text = name;
         }
 
