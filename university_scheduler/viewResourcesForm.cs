@@ -95,5 +95,15 @@ namespace university_scheduler
             resDataPassed.Show();
             
         }
+
+        private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void saveResourceBTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

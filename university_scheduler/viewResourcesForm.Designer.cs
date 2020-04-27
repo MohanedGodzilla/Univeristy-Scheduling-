@@ -80,6 +80,7 @@
             this.resourceData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.resourceData.Size = new System.Drawing.Size(611, 444);
             this.resourceData.TabIndex = 0;
+            this.resourceData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resourceData_CellContentClick);
             this.resourceData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resourceData_CellDoubleClick);
             // 
             // tableLayoutPanel1
@@ -129,6 +130,7 @@
             this.saveResourceBTN.Text = "Save";
             this.saveResourceBTN.UseVisualStyleBackColor = true;
             this.saveResourceBTN.Visible = false;
+            this.saveResourceBTN.Click += new System.EventHandler(this.saveResourceBTN_Click);
             // 
             // deleteResourceBTN
             // 
