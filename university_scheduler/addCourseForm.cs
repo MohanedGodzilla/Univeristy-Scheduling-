@@ -50,6 +50,7 @@ namespace university_scheduler
 
         private void selectResource_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("hopa");
             viewResourcesForm resForm = new viewResourcesForm();
             resForm.saveResourceBTN.Visible = true;
             resForm.deleteResourceBTN.Visible = false;
