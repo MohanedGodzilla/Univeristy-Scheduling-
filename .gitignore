@@ -2,3 +2,4 @@
 *.lock
 university_scheduler/obj/Debug/
 *.exe
+.vs/university_scheduler/v16/Server/sqlite3/storage.ide
