@@ -81,10 +81,5 @@ namespace university_scheduler
 
             }
         }
-
-        private void resourceName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
