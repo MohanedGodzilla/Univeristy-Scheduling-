@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.classData = new System.Windows.Forms.DataGridView();
             this.newClassRoomBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.saveClassRoomBTN = new System.Windows.Forms.Button();
             this.deleteClassRoomBTN = new System.Windows.Forms.Button();
             this.editClassRoomBTN = new System.Windows.Forms.Button();
-            this.saveClassRoomBTN = new System.Windows.Forms.Button();
-            this.classData = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.classData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.classData)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -53,7 +53,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(611, 444);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // classData
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.classData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.classData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.classData.DefaultCellStyle = dataGridViewCellStyle6;
+            this.classData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.classData.Location = new System.Drawing.Point(0, 0);
+            this.classData.Name = "classData";
+            this.classData.ReadOnly = true;
+            this.classData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.classData.Size = new System.Drawing.Size(611, 444);
+            this.classData.TabIndex = 1;
+            this.classData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classData_CellDoubleClick);
             // 
             // newClassRoomBTN
             // 
@@ -102,6 +129,19 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
+            // saveClassRoomBTN
+            // 
+            this.saveClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.saveClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
+            this.saveClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.saveClassRoomBTN.Location = new System.Drawing.Point(3, 156);
+            this.saveClassRoomBTN.Name = "saveClassRoomBTN";
+            this.saveClassRoomBTN.Size = new System.Drawing.Size(171, 37);
+            this.saveClassRoomBTN.TabIndex = 5;
+            this.saveClassRoomBTN.Text = "Save";
+            this.saveClassRoomBTN.UseVisualStyleBackColor = true;
+            this.saveClassRoomBTN.Visible = false;
+            // 
             // deleteClassRoomBTN
             // 
             this.deleteClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -128,48 +168,6 @@
             this.editClassRoomBTN.UseVisualStyleBackColor = true;
             this.editClassRoomBTN.Click += new System.EventHandler(this.editClassRoomBTN_Click);
             // 
-            // saveClassRoomBTN
-            // 
-            this.saveClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
-            this.saveClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveClassRoomBTN.Location = new System.Drawing.Point(3, 156);
-            this.saveClassRoomBTN.Name = "saveClassRoomBTN";
-            this.saveClassRoomBTN.Size = new System.Drawing.Size(171, 37);
-            this.saveClassRoomBTN.TabIndex = 5;
-            this.saveClassRoomBTN.Text = "Save";
-            this.saveClassRoomBTN.UseVisualStyleBackColor = true;
-            this.saveClassRoomBTN.Visible = false;
-            this.saveClassRoomBTN.Click += new System.EventHandler(this.saveClassRoomBTN_Click);
-            // 
-            // classData
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.classData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.classData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.classData.DefaultCellStyle = dataGridViewCellStyle2;
-            this.classData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.classData.Location = new System.Drawing.Point(0, 0);
-            this.classData.Name = "classData";
-            this.classData.ReadOnly = true;
-            this.classData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.classData.Size = new System.Drawing.Size(611, 444);
-            this.classData.TabIndex = 1;
-            this.classData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classData_CellContentClick);
-            // 
             // viewClassroomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,9 +180,9 @@
             this.Text = "viewClassroomForm";
             this.Load += new System.EventHandler(this.viewClassroomForm_Load_1);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.classData)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.classData)).EndInit();
             this.ResumeLayout(false);
 
         }

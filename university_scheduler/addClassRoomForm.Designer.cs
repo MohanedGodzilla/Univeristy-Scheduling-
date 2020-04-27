@@ -88,7 +88,6 @@
             this.examCounter.Name = "examCounter";
             this.examCounter.Size = new System.Drawing.Size(42, 22);
             this.examCounter.TabIndex = 13;
-            this.examCounter.ValueChanged += new System.EventHandler(this.resourceCount_ValueChanged);
             // 
             // label3
             // 
@@ -119,7 +118,6 @@
             this.label1.Size = new System.Drawing.Size(122, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Class Room Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lecCounter
             // 
@@ -129,7 +127,6 @@
             this.lecCounter.Name = "lecCounter";
             this.lecCounter.Size = new System.Drawing.Size(42, 22);
             this.lecCounter.TabIndex = 18;
-            this.lecCounter.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // className
             // 
@@ -137,7 +134,6 @@
             this.className.Name = "className";
             this.className.Size = new System.Drawing.Size(191, 20);
             this.className.TabIndex = 19;
-            this.className.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // addClassRoomForm
             // 
@@ -154,6 +150,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "addClassRoomForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addClassRoomForm";
             this.Load += new System.EventHandler(this.addClassRoomForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.examCounter)).EndInit();

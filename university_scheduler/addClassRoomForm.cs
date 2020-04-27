@@ -13,7 +13,7 @@ namespace university_scheduler
 {
     public partial class addClassRoomForm : Form
     {
-        public string conString = "Data Source=DESKTOP-BU9HHCG;Initial Catalog=course_schedual_sqlserver;Integrated Security=True";
+        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
 
         viewClassroomForm classForm = (viewClassroomForm)Application.OpenForms["viewClassroomForm"];// it's an object that is used in function addClassRoomBTN_Click() to reopen the form when adding a new tuple in the database 
         public addClassRoomForm()
@@ -29,15 +29,6 @@ namespace university_scheduler
             addClassBTN.Hide();
             saveClassBTN.Show();
             className.Text = name;
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void addClassRoomForm_Load(object sender, EventArgs e)
@@ -91,15 +82,6 @@ namespace university_scheduler
         {
             this.Close();
         }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void resourceCount_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

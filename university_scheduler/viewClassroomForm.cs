@@ -13,7 +13,7 @@ namespace university_scheduler
 {
     public partial class viewClassroomForm : Form
     {
-        public string conString = "Data Source=DESKTOP-BU9HHCG;Initial Catalog=course_schedual_sqlserver;Integrated Security=True";
+        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
         public viewClassroomForm()
         {
             InitializeComponent();
@@ -52,11 +52,6 @@ namespace university_scheduler
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void newClassRoomBTN_Click(object sender, EventArgs e)
         {
             addClassRoomForm addClassRoomPopup = new addClassRoomForm();
@@ -89,16 +84,10 @@ namespace university_scheduler
             }
         }
 
-        private void saveClassRoomBTN_Click(object sender, EventArgs e)
+        private void classData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            addClassRoomForm classRoomDataPassed = new addClassRoomForm(classData.SelectedRows[0].Cells[2].Value.ToString());
+            classRoomDataPassed.Show();
         }
-
-        private void classData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        
     }
 }
