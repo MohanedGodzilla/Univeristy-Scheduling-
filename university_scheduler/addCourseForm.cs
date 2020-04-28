@@ -50,11 +50,7 @@ namespace university_scheduler
 
         private void selectResource_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("hopa");
-            viewResourcesForm resForm = new viewResourcesForm();
-            resForm.saveResourceBTN.Visible = true;
-            resForm.deleteResourceBTN.Visible = false;
-            resForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            selectResourceForm resForm = new selectResourceForm();
             DialogResult dialogresult = resForm.ShowDialog();
         }
     }
