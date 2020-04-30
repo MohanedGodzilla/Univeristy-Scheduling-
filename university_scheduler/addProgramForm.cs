@@ -21,5 +21,15 @@ namespace university_scheduler
         {
             label1.Text = "btates";
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addProgramBTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
