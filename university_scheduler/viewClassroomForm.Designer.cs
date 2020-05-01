@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.classData = new System.Windows.Forms.DataGridView();
             this.newClassRoomBTN = new System.Windows.Forms.Button();
@@ -56,23 +56,23 @@
             // 
             // classData
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.classData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.classData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.classData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.classData.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.classData.DefaultCellStyle = dataGridViewCellStyle4;
             this.classData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.classData.Location = new System.Drawing.Point(0, 0);
             this.classData.Name = "classData";
@@ -87,7 +87,7 @@
             this.newClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newClassRoomBTN.Location = new System.Drawing.Point(3, 11);
+            this.newClassRoomBTN.Location = new System.Drawing.Point(3, 16);
             this.newClassRoomBTN.Name = "newClassRoomBTN";
             this.newClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.newClassRoomBTN.TabIndex = 0;
@@ -121,20 +121,21 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // saveClassRoomBTN
             // 
-            this.saveClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.saveClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.saveClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
             this.saveClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveClassRoomBTN.Location = new System.Drawing.Point(3, 156);
+            this.saveClassRoomBTN.Location = new System.Drawing.Point(3, 184);
             this.saveClassRoomBTN.Name = "saveClassRoomBTN";
             this.saveClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.saveClassRoomBTN.TabIndex = 5;
@@ -147,7 +148,7 @@
             this.deleteClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteClassRoomBTN.Location = new System.Drawing.Point(3, 113);
+            this.deleteClassRoomBTN.Location = new System.Drawing.Point(3, 128);
             this.deleteClassRoomBTN.Name = "deleteClassRoomBTN";
             this.deleteClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteClassRoomBTN.TabIndex = 2;
@@ -160,7 +161,7 @@
             this.editClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editClassRoomBTN.Location = new System.Drawing.Point(3, 62);
+            this.editClassRoomBTN.Location = new System.Drawing.Point(3, 72);
             this.editClassRoomBTN.Name = "editClassRoomBTN";
             this.editClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.editClassRoomBTN.TabIndex = 1;

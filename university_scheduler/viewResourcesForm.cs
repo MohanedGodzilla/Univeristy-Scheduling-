@@ -14,7 +14,8 @@ namespace university_scheduler
     public partial class viewResourcesForm : Form
     {
         
-        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
+        public string conString = "Data Source=DESKTOP-I363CUS\\MSSQLSERVER01;Initial Catalog=course_scheduler;Integrated Security=True";
+        
         public viewResourcesForm()
         {
             InitializeComponent();
@@ -97,6 +98,11 @@ namespace university_scheduler
         }
 
         private void saveResourceBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
