@@ -390,6 +390,8 @@
             this.saveProgramBTN.TabIndex = 43;
             this.saveProgramBTN.Text = "Save";
             this.saveProgramBTN.UseVisualStyleBackColor = false;
+            this.saveProgramBTN.Visible = false;
+            this.saveProgramBTN.Click += new System.EventHandler(this.saveProgramBTN_Click);
             // 
             // addProgramBTN
             // 
@@ -403,6 +405,7 @@
             this.addProgramBTN.TabIndex = 42;
             this.addProgramBTN.Text = "Add";
             this.addProgramBTN.UseVisualStyleBackColor = false;
+            this.addProgramBTN.Visible = false;
             this.addProgramBTN.Click += new System.EventHandler(this.addProgramBTN_Click);
             // 
             // cancelProgramBTN
@@ -417,6 +420,7 @@
             this.cancelProgramBTN.TabIndex = 41;
             this.cancelProgramBTN.Text = "Cancel";
             this.cancelProgramBTN.UseVisualStyleBackColor = false;
+            this.cancelProgramBTN.Click += new System.EventHandler(this.cancelProgramBTN_Click);
             // 
             // addProgramForm
             // 
@@ -448,6 +452,7 @@
             this.Controls.Add(this.programName);
             this.Controls.Add(this.label1);
             this.Name = "addProgramForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "addProgramForm";
             ((System.ComponentModel.ISupportInitialize)(this.y1t1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y1t2)).EndInit();

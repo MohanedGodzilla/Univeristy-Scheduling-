@@ -13,7 +13,7 @@ namespace university_scheduler
 {
     public partial class addClassRoomForm : Form
     {
-        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
+        public string conString = env.db_con_str;
 
         viewClassroomForm classForm = (viewClassroomForm)Application.OpenForms["viewClassroomForm"];// it's an object that is used in function addClassRoomBTN_Click() to reopen the form when adding a new tuple in the database 
         public addClassRoomForm()
