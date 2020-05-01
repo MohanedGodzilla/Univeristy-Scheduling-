@@ -13,7 +13,7 @@ namespace university_scheduler
 {
     public partial class viewClassroomForm : Form
     {
-        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
+        public string conString = env.db_con_str;
         public viewClassroomForm()
         {
             InitializeComponent();
