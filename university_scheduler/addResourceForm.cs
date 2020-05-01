@@ -13,7 +13,7 @@ namespace university_scheduler
 {
     public partial class addResourceForm : Form
     {
-        public string conString = "Data Source = localhost; Initial Catalog = course_scheduler; Integrated Security = True";
+        public string conString = env.db_con_str;
 
         viewResourcesForm resForm = (viewResourcesForm)Application.OpenForms["viewResourcesForm"];// it's an object that is used in function addResourceBTN_Click() to reopen the form when adding a new tuple in the database
 
@@ -53,7 +53,7 @@ namespace university_scheduler
                 resForm.resourceData.Refresh();
                 //---//
                 MessageBox.Show("Adding resource successfully..!");
-
+                this.Close();
             }
         }
 
