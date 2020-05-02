@@ -24,12 +24,20 @@ namespace university_scheduler
             saveResourceBTN.Hide();
         }
 
-        public addResourceForm(string name) // constructor to get resourceName from (dataset)=>resourceData
+        public addResourceForm(int Id) // constructor to get resourceName from (dataset)=>resourceData
         {
             InitializeComponent();
             addResourceBTN.Hide();
             saveResourceBTN.Show();
-            resourceName.Text = name;
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "SELECT name FROM resource WHERE id = " + Id + " ; ";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                resourceName.Text = (string)cmd.ExecuteScalar();
+            }
         }
 
         private void addResourceForm_Load(object sender, EventArgs e)
@@ -77,14 +85,16 @@ namespace university_scheduler
                 resForm.resourceData.Update();
                 resForm.resourceData.Refresh();
                 //---//
+                this.Close();
                 MessageBox.Show("updateing resource successfully..!");
-
             }
         }
 
-        private void resourceName_TextChanged(object sender, EventArgs e)
+        //the following function to listen on the enter click 
+        private void resourceName_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+                saveResourceBTN.PerformClick();
         }
     }
 }

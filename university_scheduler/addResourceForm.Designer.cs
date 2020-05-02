@@ -77,7 +77,7 @@
             this.resourceName.Name = "resourceName";
             this.resourceName.Size = new System.Drawing.Size(153, 22);
             this.resourceName.TabIndex = 3;
-            this.resourceName.TextChanged += new System.EventHandler(this.resourceName_TextChanged);
+            this.resourceName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.resourceName_KeyDown);
             // 
             // resourceCount
             // 
