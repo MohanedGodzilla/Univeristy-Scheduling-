@@ -15,13 +15,14 @@ namespace university_scheduler
     {
 
         public string conString = env.db_con_str;
+
         public viewResourcesForm()
         {
             InitializeComponent();
         }
-        
-        private void viewResourcesForm_Load(object sender, EventArgs e)
-        {
+
+        //The following function for bring data from database
+        public void connShowResource() {
             using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
@@ -37,35 +38,25 @@ namespace university_scheduler
             }
         }
 
-        public void loaddata()// this function is called when the user is inserted a new tuple in the database from addResourceForm  
+        private void viewResourcesForm_Load(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(conString))
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM resource", cn))
-                {
-                    DataTable dt = new DataTable();
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
-                    this.resourceData.DataSource = dt;
-                }
-            } 
-        }
-        
-        private void resourceData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            addResourceForm resDataPassed = new addResourceForm(resourceData.SelectedRows[0].Cells[1].Value.ToString());
-            resDataPassed.Show();
+            connShowResource();
         }
 
+        // this function is called when the user inserted a new tuple in the database from addResourceForm  
+        public void loaddata()
+        {
+            connShowResource();
+        }
+
+        //The following function for add a new Resource 
         private void newResourceBTN_Click(object sender, EventArgs e)
         {
-            addResourceForm addCoursePopup = new addResourceForm();
-            DialogResult dialogResult = addCoursePopup.ShowDialog();
+            addResourceForm addResourcePopup = new addResourceForm();
+            DialogResult dialogResult = addResourcePopup.ShowDialog();
         }
 
+        //The following function for delete resource 
         private void deleteResourceBTN_Click(object sender, EventArgs e)
         {
             string selected_id = resourceData.SelectedRows[0].Cells[0].Value.ToString();
@@ -86,19 +77,22 @@ namespace university_scheduler
             }
         }
 
+        //The following function for Edit the resources 
+
+        public void passData_AddResourceForm() {
+            addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value);
+            resDataPassed.ShowDialog(this);
+        }
 
         private void editResourceBTN_Click(object sender, EventArgs e)
         {
-            addResourceForm resDataPassed = new addResourceForm(resourceData.SelectedRows[0].Cells[1].Value.ToString());
-            /*resourceData.EndEdit();
-            editResourceBTN.Focus();*/
-            resDataPassed.Show();
+            passData_AddResourceForm();
             
         }
 
-        private void saveResourceBTN_Click(object sender, EventArgs e)
+        private void resourceData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            passData_AddResourceForm();
         }
 
         private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
