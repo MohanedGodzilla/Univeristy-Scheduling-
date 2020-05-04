@@ -94,5 +94,10 @@ namespace university_scheduler
         {
             passData_AddResourceForm();
         }
+
+        private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

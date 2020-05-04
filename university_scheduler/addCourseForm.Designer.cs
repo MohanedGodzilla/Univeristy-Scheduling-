@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.saveBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.isActive = new System.Windows.Forms.CheckBox();
+            this.labHours = new System.Windows.Forms.NumericUpDown();
+            this.practiceHours = new System.Windows.Forms.NumericUpDown();
+            this.lecHours = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,42 +46,57 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.courseName = new System.Windows.Forms.TextBox();
+            this.courseCode = new System.Windows.Forms.TextBox();
+            this.creditHours = new System.Windows.Forms.NumericUpDown();
             this.termCombo = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.isRequired = new System.Windows.Forms.CheckBox();
             this.selectResource = new System.Windows.Forms.Button();
+            this.addCourseBTN = new System.Windows.Forms.Button();
+            this.cancelBTN = new System.Windows.Forms.Button();
+            this.selectProgramBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labHours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practiceHours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lecHours)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creditHours)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.saveBTN);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.addCourseBTN);
+            this.panel1.Controls.Add(this.cancelBTN);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(453, 488);
             this.panel1.TabIndex = 0;
             // 
+            // saveBTN
+            // 
+            this.saveBTN.BackColor = System.Drawing.Color.LimeGreen;
+            this.saveBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.saveBTN.ForeColor = System.Drawing.Color.White;
+            this.saveBTN.Location = new System.Drawing.Point(85, 448);
+            this.saveBTN.Name = "saveBTN";
+            this.saveBTN.Size = new System.Drawing.Size(90, 32);
+            this.saveBTN.TabIndex = 5;
+            this.saveBTN.Text = "Save";
+            this.saveBTN.UseVisualStyleBackColor = false;
+            this.saveBTN.Click += new System.EventHandler(this.saveBTN_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.42072F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.57928F));
-            this.tableLayoutPanel1.Controls.Add(this.checkBox2, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown4, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown3, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown2, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.isActive, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.labHours, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.practiceHours, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lecHours, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
@@ -92,12 +108,13 @@
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericUpDown1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.courseName, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.courseCode, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.creditHours, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.termCombo, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.isRequired, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.selectResource, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.selectProgramBTN, 1, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
@@ -115,49 +132,49 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 424);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // checkBox2
+            // isActive
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(187, 314);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(64, 20);
-            this.checkBox2.TabIndex = 18;
-            this.checkBox2.Text = "Active";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.isActive.AutoSize = true;
+            this.isActive.Checked = true;
+            this.isActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isActive.Location = new System.Drawing.Point(187, 314);
+            this.isActive.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.isActive.Name = "isActive";
+            this.isActive.Size = new System.Drawing.Size(64, 20);
+            this.isActive.TabIndex = 18;
+            this.isActive.Text = "Active";
+            this.isActive.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown4
+            // labHours
             // 
-            this.numericUpDown4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.numericUpDown4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown4.Location = new System.Drawing.Point(187, 200);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(51, 22);
-            this.numericUpDown4.TabIndex = 16;
+            this.labHours.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.labHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labHours.Location = new System.Drawing.Point(187, 200);
+            this.labHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.labHours.Name = "labHours";
+            this.labHours.Size = new System.Drawing.Size(51, 22);
+            this.labHours.TabIndex = 16;
             // 
-            // numericUpDown3
+            // practiceHours
             // 
-            this.numericUpDown3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(187, 162);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(51, 22);
-            this.numericUpDown3.TabIndex = 15;
+            this.practiceHours.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.practiceHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.practiceHours.Location = new System.Drawing.Point(187, 162);
+            this.practiceHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.practiceHours.Name = "practiceHours";
+            this.practiceHours.Size = new System.Drawing.Size(51, 22);
+            this.practiceHours.TabIndex = 15;
             // 
-            // numericUpDown2
+            // lecHours
             // 
-            this.numericUpDown2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(187, 124);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(51, 22);
-            this.numericUpDown2.TabIndex = 14;
+            this.lecHours.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.lecHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lecHours.Location = new System.Drawing.Point(187, 124);
+            this.lecHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.lecHours.Name = "lecHours";
+            this.lecHours.Size = new System.Drawing.Size(51, 22);
+            this.lecHours.TabIndex = 14;
             // 
             // label1
             // 
@@ -291,33 +308,35 @@
             this.label11.Text = "Course Resourse";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // courseName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(187, 10);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 22);
-            this.textBox1.TabIndex = 11;
+            this.courseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.courseName.Location = new System.Drawing.Point(187, 10);
+            this.courseName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.courseName.Name = "courseName";
+            this.courseName.Size = new System.Drawing.Size(219, 22);
+            this.courseName.TabIndex = 11;
+            this.courseName.TextChanged += new System.EventHandler(this.courseName_TextChanged);
             // 
-            // textBox2
+            // courseCode
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(187, 48);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(219, 22);
-            this.textBox2.TabIndex = 12;
+            this.courseCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.courseCode.Location = new System.Drawing.Point(187, 48);
+            this.courseCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.courseCode.Name = "courseCode";
+            this.courseCode.Size = new System.Drawing.Size(219, 22);
+            this.courseCode.TabIndex = 12;
+            this.courseCode.TextChanged += new System.EventHandler(this.courseCode_TextChanged);
             // 
-            // numericUpDown1
+            // creditHours
             // 
-            this.numericUpDown1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(187, 86);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 22);
-            this.numericUpDown1.TabIndex = 13;
+            this.creditHours.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.creditHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creditHours.Location = new System.Drawing.Point(187, 86);
+            this.creditHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.creditHours.Name = "creditHours";
+            this.creditHours.Size = new System.Drawing.Size(51, 22);
+            this.creditHours.TabIndex = 13;
             // 
             // termCombo
             // 
@@ -341,42 +360,17 @@
             this.termCombo.TabIndex = 5;
             this.termCombo.Tag = "";
             // 
-            // checkBox1
+            // isRequired
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(187, 276);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 20);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Required ";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LimeGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(203, 448);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(318, 448);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
+            this.isRequired.AutoSize = true;
+            this.isRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isRequired.Location = new System.Drawing.Point(187, 276);
+            this.isRequired.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.isRequired.Name = "isRequired";
+            this.isRequired.Size = new System.Drawing.Size(86, 20);
+            this.isRequired.TabIndex = 17;
+            this.isRequired.Text = "Required ";
+            this.isRequired.UseVisualStyleBackColor = true;
             // 
             // selectResource
             // 
@@ -389,6 +383,44 @@
             this.selectResource.Text = "-- select -- ";
             this.selectResource.UseVisualStyleBackColor = true;
             this.selectResource.Click += new System.EventHandler(this.selectResource_Click);
+            // 
+            // addCourseBTN
+            // 
+            this.addCourseBTN.BackColor = System.Drawing.Color.LimeGreen;
+            this.addCourseBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.addCourseBTN.ForeColor = System.Drawing.Color.White;
+            this.addCourseBTN.Location = new System.Drawing.Point(203, 448);
+            this.addCourseBTN.Name = "addCourseBTN";
+            this.addCourseBTN.Size = new System.Drawing.Size(90, 32);
+            this.addCourseBTN.TabIndex = 3;
+            this.addCourseBTN.Text = "Add";
+            this.addCourseBTN.UseVisualStyleBackColor = false;
+            this.addCourseBTN.Click += new System.EventHandler(this.addCourseBTN_Click);
+            // 
+            // cancelBTN
+            // 
+            this.cancelBTN.BackColor = System.Drawing.Color.Red;
+            this.cancelBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.cancelBTN.ForeColor = System.Drawing.SystemColors.Control;
+            this.cancelBTN.Location = new System.Drawing.Point(318, 448);
+            this.cancelBTN.Name = "cancelBTN";
+            this.cancelBTN.Size = new System.Drawing.Size(91, 32);
+            this.cancelBTN.TabIndex = 2;
+            this.cancelBTN.Text = "Cancel";
+            this.cancelBTN.UseVisualStyleBackColor = false;
+            this.cancelBTN.Click += new System.EventHandler(this.cancelBTN_Click);
+            // 
+            // selectProgramBTN
+            // 
+            this.selectProgramBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectProgramBTN.Location = new System.Drawing.Point(187, 352);
+            this.selectProgramBTN.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.selectProgramBTN.Name = "selectProgramBTN";
+            this.selectProgramBTN.Size = new System.Drawing.Size(86, 23);
+            this.selectProgramBTN.TabIndex = 19;
+            this.selectProgramBTN.Text = "-- select --";
+            this.selectProgramBTN.UseVisualStyleBackColor = true;
+            this.selectProgramBTN.Click += new System.EventHandler(this.selectProgramBTN_Click);
             // 
             // addCourseForm
             // 
@@ -406,10 +438,10 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labHours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practiceHours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lecHours)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.creditHours)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,8 +449,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addCourseBTN;
+        private System.Windows.Forms.Button cancelBTN;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -431,15 +463,17 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown labHours;
+        private System.Windows.Forms.NumericUpDown practiceHours;
+        private System.Windows.Forms.NumericUpDown lecHours;
+        private System.Windows.Forms.TextBox courseName;
+        private System.Windows.Forms.TextBox courseCode;
+        private System.Windows.Forms.NumericUpDown creditHours;
         private System.Windows.Forms.ComboBox termCombo;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox isActive;
+        private System.Windows.Forms.CheckBox isRequired;
         private System.Windows.Forms.Button selectResource;
+        private System.Windows.Forms.Button saveBTN;
+        private System.Windows.Forms.Button selectProgramBTN;
     }
 }
