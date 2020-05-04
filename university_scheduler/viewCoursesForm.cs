@@ -13,11 +13,12 @@ namespace university_scheduler
 {
     public partial class viewCoursesForm : Form
     {
-        public string conString = "Data Source=localhost;Initial Catalog=course_scheduler;Integrated Security=True";
+        public string conString = env.db_con_str;
 
         public viewCoursesForm()
         {
             InitializeComponent();
+            this.loaddata();
         }
 
         private void viewCoursesForm_Load(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace university_scheduler
 
         private void courseData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            addResourceForm resDataPassed = new addResourceForm(courseData.SelectedRows[0].Cells[1].Value.ToString());
+            addCourseForm resDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value);
             resDataPassed.Show();
         }
 
@@ -64,17 +65,21 @@ namespace university_scheduler
         {
             addCourseForm addCoursePopup = new addCourseForm();
             DialogResult dialogResult = addCoursePopup.ShowDialog();
+            this.loaddata();
+            courseData.Update();
+            courseData.Refresh();
         }
         private void editCourseBTN_Click(object sender, EventArgs e)
         {
-            addResourceForm courseDataPassed = new addResourceForm(courseData.SelectedRows[0].Cells[1].Value.ToString());
-            /*courseData.EndEdit();
-            editCourseBTN.Focus();*/
-            courseDataPassed.Show();
+            addCourseForm courseDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value);
+            courseDataPassed.ShowDialog(this);
+            this.loaddata();
+            courseData.Update();
+            courseData.Refresh();
         }
         private void deleteCourseBTN_Click(object sender, EventArgs e)
         {
-            string selected_id = courseData.SelectedRows[0].Cells[0].Value.ToString();
+            int selected_id = (int)courseData.SelectedRows[0].Cells[0].Value;
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
@@ -87,7 +92,7 @@ namespace university_scheduler
                 this.courseData.Update();
                 this.courseData.Refresh();
                 //---//
-                MessageBox.Show("Resource is deleted successfully..!");
+                MessageBox.Show("Course is deleted successfully..!");
 
             }
         }

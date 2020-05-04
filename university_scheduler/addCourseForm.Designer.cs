@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.saveBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.isActive = new System.Windows.Forms.CheckBox();
             this.labHours = new System.Windows.Forms.NumericUpDown();
@@ -52,8 +53,8 @@
             this.isRequired = new System.Windows.Forms.CheckBox();
             this.selectResource = new System.Windows.Forms.Button();
             this.addCourseBTN = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.saveBTN = new System.Windows.Forms.Button();
+            this.cancelBTN = new System.Windows.Forms.Button();
+            this.selectProgramBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labHours)).BeginInit();
@@ -67,12 +68,25 @@
             this.panel1.Controls.Add(this.saveBTN);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.addCourseBTN);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.cancelBTN);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(453, 488);
             this.panel1.TabIndex = 0;
+            // 
+            // saveBTN
+            // 
+            this.saveBTN.BackColor = System.Drawing.Color.LimeGreen;
+            this.saveBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.saveBTN.ForeColor = System.Drawing.Color.White;
+            this.saveBTN.Location = new System.Drawing.Point(85, 448);
+            this.saveBTN.Name = "saveBTN";
+            this.saveBTN.Size = new System.Drawing.Size(90, 32);
+            this.saveBTN.TabIndex = 5;
+            this.saveBTN.Text = "Save";
+            this.saveBTN.UseVisualStyleBackColor = false;
+            this.saveBTN.Click += new System.EventHandler(this.saveBTN_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -100,6 +114,7 @@
             this.tableLayoutPanel1.Controls.Add(this.termCombo, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.isRequired, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.selectResource, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.selectProgramBTN, 1, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
@@ -380,32 +395,32 @@
             this.addCourseBTN.TabIndex = 3;
             this.addCourseBTN.Text = "Add";
             this.addCourseBTN.UseVisualStyleBackColor = false;
-            this.addCourseBTN.Click += new System.EventHandler(this.addCourseBTN_Load);
+            this.addCourseBTN.Click += new System.EventHandler(this.addCourseBTN_Click);
             // 
-            // button1
+            // cancelBTN
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(318, 448);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
+            this.cancelBTN.BackColor = System.Drawing.Color.Red;
+            this.cancelBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.cancelBTN.ForeColor = System.Drawing.SystemColors.Control;
+            this.cancelBTN.Location = new System.Drawing.Point(318, 448);
+            this.cancelBTN.Name = "cancelBTN";
+            this.cancelBTN.Size = new System.Drawing.Size(91, 32);
+            this.cancelBTN.TabIndex = 2;
+            this.cancelBTN.Text = "Cancel";
+            this.cancelBTN.UseVisualStyleBackColor = false;
+            this.cancelBTN.Click += new System.EventHandler(this.cancelBTN_Click);
             // 
-            // saveBTN
+            // selectProgramBTN
             // 
-            this.saveBTN.BackColor = System.Drawing.Color.LimeGreen;
-            this.saveBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.saveBTN.ForeColor = System.Drawing.Color.White;
-            this.saveBTN.Location = new System.Drawing.Point(85, 448);
-            this.saveBTN.Name = "saveBTN";
-            this.saveBTN.Size = new System.Drawing.Size(90, 32);
-            this.saveBTN.TabIndex = 5;
-            this.saveBTN.Text = "Save";
-            this.saveBTN.UseVisualStyleBackColor = false;
-            this.saveBTN.Click += new System.EventHandler(this.saveBTN_Click);
+            this.selectProgramBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectProgramBTN.Location = new System.Drawing.Point(187, 352);
+            this.selectProgramBTN.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.selectProgramBTN.Name = "selectProgramBTN";
+            this.selectProgramBTN.Size = new System.Drawing.Size(86, 23);
+            this.selectProgramBTN.TabIndex = 19;
+            this.selectProgramBTN.Text = "-- select --";
+            this.selectProgramBTN.UseVisualStyleBackColor = true;
+            this.selectProgramBTN.Click += new System.EventHandler(this.selectProgramBTN_Click);
             // 
             // addCourseForm
             // 
@@ -435,7 +450,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button addCourseBTN;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancelBTN;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -459,5 +474,6 @@
         private System.Windows.Forms.CheckBox isRequired;
         private System.Windows.Forms.Button selectResource;
         private System.Windows.Forms.Button saveBTN;
+        private System.Windows.Forms.Button selectProgramBTN;
     }
 }

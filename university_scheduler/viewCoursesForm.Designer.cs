@@ -30,7 +30,6 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.saveCourseBTN = new System.Windows.Forms.Button();
             this.deleteCourseBTN = new System.Windows.Forms.Button();
             this.editCourseBTN = new System.Windows.Forms.Button();
             this.newCourseBTN = new System.Windows.Forms.Button();
@@ -62,7 +61,6 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.saveCourseBTN, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.deleteCourseBTN, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.editCourseBTN, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.newCourseBTN, 0, 0);
@@ -78,19 +76,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
-            // 
-            // saveCourseBTN
-            // 
-            this.saveCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.saveCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
-            this.saveCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveCourseBTN.Location = new System.Drawing.Point(3, 184);
-            this.saveCourseBTN.Name = "saveCourseBTN";
-            this.saveCourseBTN.Size = new System.Drawing.Size(171, 37);
-            this.saveCourseBTN.TabIndex = 3;
-            this.saveCourseBTN.Text = "Save";
-            this.saveCourseBTN.UseVisualStyleBackColor = true;
-            this.saveCourseBTN.Click += new System.EventHandler(this.button4_Click);
             // 
             // deleteCourseBTN
             // 
@@ -144,10 +129,14 @@
             // 
             // courseData
             // 
-            this.courseData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.courseData.AllowUserToAddRows = false;
+            this.courseData.AllowUserToDeleteRows = false;
+            this.courseData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.courseData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.courseData.Location = new System.Drawing.Point(0, 0);
             this.courseData.Name = "courseData";
+            this.courseData.ReadOnly = true;
+            this.courseData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.courseData.Size = new System.Drawing.Size(611, 444);
             this.courseData.TabIndex = 0;
             this.courseData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellContentClick);
@@ -179,6 +168,5 @@
         private System.Windows.Forms.Button newCourseBTN;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView courseData;
-        private System.Windows.Forms.Button saveCourseBTN;
     }
 }
