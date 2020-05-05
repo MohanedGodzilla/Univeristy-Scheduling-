@@ -52,9 +52,9 @@
             this.termCombo = new System.Windows.Forms.ComboBox();
             this.isRequired = new System.Windows.Forms.CheckBox();
             this.selectResource = new System.Windows.Forms.Button();
+            this.selectProgramBTN = new System.Windows.Forms.Button();
             this.addCourseBTN = new System.Windows.Forms.Button();
             this.cancelBTN = new System.Windows.Forms.Button();
-            this.selectProgramBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labHours)).BeginInit();
@@ -129,7 +129,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 424);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(447, 424);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // isActive
@@ -138,7 +138,7 @@
             this.isActive.Checked = true;
             this.isActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isActive.Location = new System.Drawing.Point(187, 314);
+            this.isActive.Location = new System.Drawing.Point(170, 314);
             this.isActive.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.isActive.Name = "isActive";
             this.isActive.Size = new System.Drawing.Size(64, 20);
@@ -150,7 +150,7 @@
             // 
             this.labHours.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.labHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labHours.Location = new System.Drawing.Point(187, 200);
+            this.labHours.Location = new System.Drawing.Point(170, 200);
             this.labHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.labHours.Name = "labHours";
             this.labHours.Size = new System.Drawing.Size(51, 22);
@@ -160,7 +160,7 @@
             // 
             this.practiceHours.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.practiceHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.practiceHours.Location = new System.Drawing.Point(187, 162);
+            this.practiceHours.Location = new System.Drawing.Point(170, 162);
             this.practiceHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.practiceHours.Name = "practiceHours";
             this.practiceHours.Size = new System.Drawing.Size(51, 22);
@@ -170,7 +170,7 @@
             // 
             this.lecHours.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.lecHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lecHours.Location = new System.Drawing.Point(187, 124);
+            this.lecHours.Location = new System.Drawing.Point(170, 124);
             this.lecHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.lecHours.Name = "lecHours";
             this.lecHours.Size = new System.Drawing.Size(51, 22);
@@ -183,7 +183,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 38);
+            this.label1.Size = new System.Drawing.Size(161, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Course Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -195,7 +195,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 38);
+            this.label2.Size = new System.Drawing.Size(161, 38);
             this.label2.TabIndex = 1;
             this.label2.Text = "Course Code";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,7 +207,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 38);
+            this.label3.Size = new System.Drawing.Size(161, 38);
             this.label3.TabIndex = 2;
             this.label3.Text = "Credit Hours";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -219,7 +219,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 114);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(178, 38);
+            this.label4.Size = new System.Drawing.Size(161, 38);
             this.label4.TabIndex = 3;
             this.label4.Text = "Lecture Hours";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -231,7 +231,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 152);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(178, 38);
+            this.label5.Size = new System.Drawing.Size(161, 38);
             this.label5.TabIndex = 4;
             this.label5.Text = "Practice Hours";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -243,7 +243,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 190);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(178, 38);
+            this.label6.Size = new System.Drawing.Size(161, 38);
             this.label6.TabIndex = 5;
             this.label6.Text = "Lab Hours";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -255,7 +255,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 228);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(178, 38);
+            this.label7.Size = new System.Drawing.Size(161, 38);
             this.label7.TabIndex = 6;
             this.label7.Text = "Term";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -267,7 +267,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 266);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(178, 38);
+            this.label8.Size = new System.Drawing.Size(161, 38);
             this.label8.TabIndex = 7;
             this.label8.Text = "University Requirement";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -279,7 +279,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 304);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(178, 38);
+            this.label9.Size = new System.Drawing.Size(161, 38);
             this.label9.TabIndex = 8;
             this.label9.Text = "Course Activation";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -291,7 +291,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(3, 342);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(178, 38);
+            this.label10.Size = new System.Drawing.Size(161, 38);
             this.label10.TabIndex = 9;
             this.label10.Text = "Course Programs ";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -303,7 +303,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 380);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(178, 44);
+            this.label11.Size = new System.Drawing.Size(161, 44);
             this.label11.TabIndex = 10;
             this.label11.Text = "Course Resourse";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -311,7 +311,7 @@
             // courseName
             // 
             this.courseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.courseName.Location = new System.Drawing.Point(187, 10);
+            this.courseName.Location = new System.Drawing.Point(170, 10);
             this.courseName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.courseName.Name = "courseName";
             this.courseName.Size = new System.Drawing.Size(219, 22);
@@ -321,7 +321,7 @@
             // courseCode
             // 
             this.courseCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.courseCode.Location = new System.Drawing.Point(187, 48);
+            this.courseCode.Location = new System.Drawing.Point(170, 48);
             this.courseCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.courseCode.Name = "courseCode";
             this.courseCode.Size = new System.Drawing.Size(219, 22);
@@ -332,7 +332,7 @@
             // 
             this.creditHours.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.creditHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creditHours.Location = new System.Drawing.Point(187, 86);
+            this.creditHours.Location = new System.Drawing.Point(170, 86);
             this.creditHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.creditHours.Name = "creditHours";
             this.creditHours.Size = new System.Drawing.Size(51, 22);
@@ -353,7 +353,7 @@
             "Level 3 - Semester 2",
             "Level 4 - Semester 1",
             "Level 4 - Semester 2"});
-            this.termCombo.Location = new System.Drawing.Point(187, 238);
+            this.termCombo.Location = new System.Drawing.Point(170, 238);
             this.termCombo.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.termCombo.Name = "termCombo";
             this.termCombo.Size = new System.Drawing.Size(219, 24);
@@ -364,7 +364,7 @@
             // 
             this.isRequired.AutoSize = true;
             this.isRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isRequired.Location = new System.Drawing.Point(187, 276);
+            this.isRequired.Location = new System.Drawing.Point(170, 276);
             this.isRequired.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.isRequired.Name = "isRequired";
             this.isRequired.Size = new System.Drawing.Size(86, 20);
@@ -375,7 +375,7 @@
             // selectResource
             // 
             this.selectResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectResource.Location = new System.Drawing.Point(187, 390);
+            this.selectResource.Location = new System.Drawing.Point(170, 390);
             this.selectResource.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectResource.Name = "selectResource";
             this.selectResource.Size = new System.Drawing.Size(86, 23);
@@ -383,6 +383,18 @@
             this.selectResource.Text = "-- select -- ";
             this.selectResource.UseVisualStyleBackColor = true;
             this.selectResource.Click += new System.EventHandler(this.selectResource_Click);
+            // 
+            // selectProgramBTN
+            // 
+            this.selectProgramBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectProgramBTN.Location = new System.Drawing.Point(170, 352);
+            this.selectProgramBTN.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.selectProgramBTN.Name = "selectProgramBTN";
+            this.selectProgramBTN.Size = new System.Drawing.Size(86, 23);
+            this.selectProgramBTN.TabIndex = 19;
+            this.selectProgramBTN.Text = "-- select --";
+            this.selectProgramBTN.UseVisualStyleBackColor = true;
+            this.selectProgramBTN.Click += new System.EventHandler(this.selectProgramBTN_Click);
             // 
             // addCourseBTN
             // 
@@ -409,18 +421,6 @@
             this.cancelBTN.Text = "Cancel";
             this.cancelBTN.UseVisualStyleBackColor = false;
             this.cancelBTN.Click += new System.EventHandler(this.cancelBTN_Click);
-            // 
-            // selectProgramBTN
-            // 
-            this.selectProgramBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectProgramBTN.Location = new System.Drawing.Point(187, 352);
-            this.selectProgramBTN.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.selectProgramBTN.Name = "selectProgramBTN";
-            this.selectProgramBTN.Size = new System.Drawing.Size(86, 23);
-            this.selectProgramBTN.TabIndex = 19;
-            this.selectProgramBTN.Text = "-- select --";
-            this.selectProgramBTN.UseVisualStyleBackColor = true;
-            this.selectProgramBTN.Click += new System.EventHandler(this.selectProgramBTN_Click);
             // 
             // addCourseForm
             // 
