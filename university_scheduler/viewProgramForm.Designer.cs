@@ -48,10 +48,9 @@
             this.newProgramBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newProgramBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newProgramBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newProgramBTN.Location = new System.Drawing.Point(4, 13);
-            this.newProgramBTN.Margin = new System.Windows.Forms.Padding(4);
+            this.newProgramBTN.Location = new System.Drawing.Point(3, 11);
             this.newProgramBTN.Name = "newProgramBTN";
-            this.newProgramBTN.Size = new System.Drawing.Size(229, 46);
+            this.newProgramBTN.Size = new System.Drawing.Size(171, 37);
             this.newProgramBTN.TabIndex = 0;
             this.newProgramBTN.Text = "New";
             this.newProgramBTN.UseVisualStyleBackColor = true;
@@ -66,11 +65,10 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 554);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -81,15 +79,14 @@
             this.tableLayoutPanel2.Controls.Add(this.editProgramBTN, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.newProgramBTN, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(826, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 356F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(237, 546);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // deleteProgramBTN
@@ -97,10 +94,9 @@
             this.deleteProgramBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteProgramBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteProgramBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteProgramBTN.Location = new System.Drawing.Point(4, 139);
-            this.deleteProgramBTN.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteProgramBTN.Location = new System.Drawing.Point(3, 113);
             this.deleteProgramBTN.Name = "deleteProgramBTN";
-            this.deleteProgramBTN.Size = new System.Drawing.Size(229, 46);
+            this.deleteProgramBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteProgramBTN.TabIndex = 2;
             this.deleteProgramBTN.Text = "Delete";
             this.deleteProgramBTN.UseVisualStyleBackColor = true;
@@ -111,10 +107,9 @@
             this.editProgramBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editProgramBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editProgramBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editProgramBTN.Location = new System.Drawing.Point(4, 76);
-            this.editProgramBTN.Margin = new System.Windows.Forms.Padding(4);
+            this.editProgramBTN.Location = new System.Drawing.Point(3, 62);
             this.editProgramBTN.Name = "editProgramBTN";
-            this.editProgramBTN.Size = new System.Drawing.Size(229, 46);
+            this.editProgramBTN.Size = new System.Drawing.Size(171, 37);
             this.editProgramBTN.TabIndex = 1;
             this.editProgramBTN.Text = "Edit";
             this.editProgramBTN.UseVisualStyleBackColor = true;
@@ -125,14 +120,15 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Desktop;
             this.panel1.Controls.Add(this.programData);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(814, 546);
+            this.panel1.Size = new System.Drawing.Size(611, 444);
             this.panel1.TabIndex = 1;
             // 
             // programData
             // 
+            this.programData.AllowUserToAddRows = false;
+            this.programData.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -152,23 +148,21 @@
             this.programData.DefaultCellStyle = dataGridViewCellStyle2;
             this.programData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.programData.Location = new System.Drawing.Point(0, 0);
-            this.programData.Margin = new System.Windows.Forms.Padding(4);
             this.programData.Name = "programData";
             this.programData.ReadOnly = true;
             this.programData.RowHeadersWidth = 51;
             this.programData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.programData.Size = new System.Drawing.Size(814, 546);
+            this.programData.Size = new System.Drawing.Size(611, 444);
             this.programData.TabIndex = 2;
             // 
             // viewProgramForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "viewProgramForm";
             this.Text = "viewProgramForm";
             this.Load += new System.EventHandler(this.viewProgramForm_Load);

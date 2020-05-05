@@ -59,6 +59,7 @@ namespace university_scheduler
         //The following function for delete resource 
         private void deleteResourceBTN_Click(object sender, EventArgs e)
         {
+            if (!canUpdate()) return;
             string selected_id = resourceData.SelectedRows[0].Cells[0].Value.ToString();
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
@@ -80,6 +81,7 @@ namespace university_scheduler
         //The following function for Edit the resources 
 
         public void passData_AddResourceForm() {
+            if (!canUpdate()) return;
             addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value);
             resDataPassed.ShowDialog(this);
         }
@@ -95,9 +97,11 @@ namespace university_scheduler
             passData_AddResourceForm();
         }
 
-        private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        bool canUpdate()
         {
-
+            return (resourceData.SelectedRows != null &&
+                resourceData.SelectedRows.Count > 0 &&
+                resourceData.SelectedRows[0].Cells[0].Value != null);
         }
     }
 }

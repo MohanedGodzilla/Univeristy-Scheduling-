@@ -14,6 +14,9 @@ namespace university_scheduler
     public partial class selectResourceForm : Form
     {
         public string conString = env.db_con_str;
+        public List<int> checkedResource;
+        private int selected_id;
+        addCourseForm addCourse = new addCourseForm();
         public selectResourceForm()
         {
             InitializeComponent();
@@ -21,7 +24,6 @@ namespace university_scheduler
 
         private void selectResourceForm_Load(object sender, EventArgs e)
         {
-            
             using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
@@ -35,7 +37,6 @@ namespace university_scheduler
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         checkedListBox1.Items.Add(dt.Rows[i]["name"].ToString());
-
                     }
                 }
             }
@@ -43,7 +44,24 @@ namespace university_scheduler
 
         private void saveResourceBTN_Click(object sender, EventArgs e)
         {
-
+            int i = 0;
+            this.checkedResource = new List<int>();
+            foreach (String s in checkedListBox1.CheckedItems) {
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    cn.Open();
+                    if (cn.State == System.Data.ConnectionState.Open)
+                    {
+                        string query = "SELECT id FROM resource WHERE name = '" + s + "' ; ";
+                        SqlCommand cmd = new SqlCommand(query, cn);
+                        cmd.ExecuteNonQuery();
+                        this.selected_id = (int)cmd.ExecuteScalar();
+                    }
+                }
+                this.checkedResource.Insert(i, this.selected_id);
+                i++;
+            }
+            this.Close();
         }
     }
 }
