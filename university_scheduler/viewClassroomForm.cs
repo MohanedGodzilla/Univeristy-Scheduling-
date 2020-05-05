@@ -60,7 +60,7 @@ namespace university_scheduler
 
         private void editClassRoomBTN_Click(object sender, EventArgs e)
         {
-            addClassRoomForm classRoomDataPassed = new addClassRoomForm(classData.SelectedRows[0].Cells[2].Value.ToString());
+            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[1].Value, classData.SelectedRows[0].Cells[2].Value.ToString(), (int)classData.SelectedRows[0].Cells[3].Value);
             classRoomDataPassed.Show();
         }
 
@@ -86,8 +86,13 @@ namespace university_scheduler
 
         private void classData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            addClassRoomForm classRoomDataPassed = new addClassRoomForm(classData.SelectedRows[0].Cells[2].Value.ToString());
+            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[1].Value, classData.SelectedRows[0].Cells[2].Value.ToString(), (int)classData.SelectedRows[0].Cells[3].Value);
             classRoomDataPassed.Show();
+        }
+
+        private void classData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

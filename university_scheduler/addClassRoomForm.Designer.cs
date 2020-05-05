@@ -85,6 +85,11 @@
             this.examCounter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.examCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.examCounter.Location = new System.Drawing.Point(144, 110);
+            this.examCounter.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.examCounter.Name = "examCounter";
             this.examCounter.Size = new System.Drawing.Size(42, 22);
             this.examCounter.TabIndex = 13;
@@ -124,9 +129,15 @@
             this.lecCounter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.lecCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lecCounter.Location = new System.Drawing.Point(144, 66);
+            this.lecCounter.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.lecCounter.Name = "lecCounter";
             this.lecCounter.Size = new System.Drawing.Size(42, 22);
             this.lecCounter.TabIndex = 18;
+            this.lecCounter.ValueChanged += new System.EventHandler(this.lecCounter_ValueChanged);
             // 
             // className
             // 
@@ -134,6 +145,7 @@
             this.className.Name = "className";
             this.className.Size = new System.Drawing.Size(191, 20);
             this.className.TabIndex = 19;
+            this.className.TextChanged += new System.EventHandler(this.className_TextChanged);
             // 
             // addClassRoomForm
             // 
@@ -149,6 +161,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "addClassRoomForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addClassRoomForm";

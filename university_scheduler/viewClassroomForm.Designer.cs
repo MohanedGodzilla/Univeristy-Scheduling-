@@ -82,6 +82,7 @@
             this.classData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.classData.Size = new System.Drawing.Size(611, 444);
             this.classData.TabIndex = 1;
+            this.classData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classData_CellContentClick);
             this.classData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classData_CellDoubleClick);
             // 
             // newClassRoomBTN

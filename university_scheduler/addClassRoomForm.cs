@@ -23,12 +23,14 @@ namespace university_scheduler
             saveClassBTN.Hide();
         }
 
-        public addClassRoomForm(string name) // constructor to get resourceName from (dataset)=>resourceData
+        public addClassRoomForm(int lecCap, string name, int examCap) // constructor to get resourceName from (dataset)=>resourceData
         {
             InitializeComponent();
             addClassBTN.Hide();
             saveClassBTN.Show();
             className.Text = name;
+            this.lecCounter.Value = lecCap;
+            this.examCounter.Value = examCap;
         }
 
         private void addClassRoomForm_Load(object sender, EventArgs e)
@@ -82,6 +84,15 @@ namespace university_scheduler
         {
             this.Close();
         }
-        
+
+        private void className_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lecCounter_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

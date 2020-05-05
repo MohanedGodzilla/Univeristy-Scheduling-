@@ -103,5 +103,10 @@ namespace university_scheduler
                 resourceData.SelectedRows.Count > 0 &&
                 resourceData.SelectedRows[0].Cells[0].Value != null);
         }
+
+        private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
