@@ -44,7 +44,7 @@ namespace university_scheduler
             }
             cn.Close();
         }
-
+        
         public void loadResource(SqlConnection cn)
         {
             string query = "SELECT name FROM resource WHERE id = " + resource_id + " ; ";
@@ -84,8 +84,7 @@ namespace university_scheduler
             this.Close();
         }
 
-        private void saveResourceBTN_Click(object sender, EventArgs e)
-        {
+        private void saveResourceBTN_Click(object sender, EventArgs e){
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
