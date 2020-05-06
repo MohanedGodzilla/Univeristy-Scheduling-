@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.saveResourceBTN = new System.Windows.Forms.Button();
+            this.saveProgramBTN = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
-            // saveResourceBTN
+            // saveProgramBTN
             // 
-            this.saveResourceBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
-            this.saveResourceBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveResourceBTN.Location = new System.Drawing.Point(161, 244);
-            this.saveResourceBTN.Name = "saveResourceBTN";
-            this.saveResourceBTN.Size = new System.Drawing.Size(135, 36);
-            this.saveResourceBTN.TabIndex = 9;
-            this.saveResourceBTN.Text = "Save";
-            this.saveResourceBTN.UseVisualStyleBackColor = true;
+            this.saveProgramBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
+            this.saveProgramBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.saveProgramBTN.Location = new System.Drawing.Point(161, 244);
+            this.saveProgramBTN.Name = "saveProgramBTN";
+            this.saveProgramBTN.Size = new System.Drawing.Size(135, 36);
+            this.saveProgramBTN.TabIndex = 9;
+            this.saveProgramBTN.Text = "Save";
+            this.saveProgramBTN.UseVisualStyleBackColor = true;
+            this.saveProgramBTN.Click += new System.EventHandler(this.saveProgramBTN_Click);
             // 
             // checkedListBox1
             // 
@@ -57,7 +58,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 299);
-            this.Controls.Add(this.saveResourceBTN);
+            this.Controls.Add(this.saveProgramBTN);
             this.Controls.Add(this.checkedListBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -71,7 +72,7 @@
 
         #endregion
 
-        public System.Windows.Forms.Button saveResourceBTN;
+        public System.Windows.Forms.Button saveProgramBTN;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
