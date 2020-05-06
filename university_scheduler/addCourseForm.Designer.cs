@@ -307,6 +307,7 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "Course Resourse";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // courseName
             // 

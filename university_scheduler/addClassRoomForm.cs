@@ -14,6 +14,7 @@ namespace university_scheduler
     public partial class addClassRoomForm : Form
     {
         public string conString = env.db_con_str;
+        public List<int> selectedResourceList;
 
         viewClassroomForm classForm = (viewClassroomForm)Application.OpenForms["viewClassroomForm"];// it's an object that is used in function addClassRoomBTN_Click() to reopen the form when adding a new tuple in the database 
         public addClassRoomForm()
@@ -38,6 +39,22 @@ namespace university_scheduler
             
         }
 
+        private void addResourceForCourse(int id)
+        {
+            for (int i = 0; i < this.selectedResourceList.Count; i++)
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "insert into classroom_has_resource (classroom_id,resource_id) values(" + id + " , " + this.selectedResourceList[i] + " )";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    //---//
+                }
+                cn.Close();
+            }
+        }
         private void saveClassBTN_Click(object sender, EventArgs e)
         {
             string selected_id = classForm.classData.SelectedRows[0].Cells[0].Value.ToString();
@@ -93,6 +110,18 @@ namespace university_scheduler
         private void lecCounter_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectResource_Click(object sender, EventArgs e)
+        {
+            selectResourceForm resForm = new selectResourceForm();
+            DialogResult dialogresult = resForm.ShowDialog();
+            this.selectedResourceList = resForm.checkedResource;
         }
     }
 }

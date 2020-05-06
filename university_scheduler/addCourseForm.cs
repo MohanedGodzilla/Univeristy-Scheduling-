@@ -164,5 +164,10 @@ namespace university_scheduler
             //this function to show data in Edit form
 
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
