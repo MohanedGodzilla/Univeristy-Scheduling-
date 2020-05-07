@@ -36,9 +36,10 @@
             // 
             this.saveProgramBTN.Image = global::university_scheduler.Properties.Resources.icons8_save_20;
             this.saveProgramBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveProgramBTN.Location = new System.Drawing.Point(161, 244);
+            this.saveProgramBTN.Location = new System.Drawing.Point(215, 300);
+            this.saveProgramBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveProgramBTN.Name = "saveProgramBTN";
-            this.saveProgramBTN.Size = new System.Drawing.Size(135, 36);
+            this.saveProgramBTN.Size = new System.Drawing.Size(180, 44);
             this.saveProgramBTN.TabIndex = 9;
             this.saveProgramBTN.Text = "Save";
             this.saveProgramBTN.UseVisualStyleBackColor = true;
@@ -48,19 +49,21 @@
             // 
             this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 12);
+            this.checkedListBox1.Location = new System.Drawing.Point(16, 15);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(284, 213);
+            this.checkedListBox1.Size = new System.Drawing.Size(377, 244);
             this.checkedListBox1.TabIndex = 8;
             // 
             // selectProgramForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 299);
+            this.ClientSize = new System.Drawing.Size(421, 368);
             this.Controls.Add(this.saveProgramBTN);
             this.Controls.Add(this.checkedListBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "selectProgramForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

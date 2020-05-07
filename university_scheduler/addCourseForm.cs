@@ -26,6 +26,7 @@ namespace university_scheduler
         public List<int> editedProgramList;
         public List<int> deletedProgramList;
         public List<int> addedProgramList;
+        bool isEdit = false;
         private int current_id;
 
         public addCourseForm()
@@ -43,6 +44,7 @@ namespace university_scheduler
             show_EditForm(courseId);
             addCourseBTN.Hide();
             saveBTN.Show();
+            isEdit = true;
         }
         
 
@@ -323,7 +325,12 @@ namespace university_scheduler
         }
         private void selectProgramBTN_Click(object sender, EventArgs e)
         {
-            selectProgramForm progForm = new selectProgramForm(this.courseId);
+            selectProgramForm progForm;
+            if (isEdit && selectedProgramList==null) {//is editing
+                progForm = new selectProgramForm(this.courseId);
+            } else {
+                progForm = new selectProgramForm(selectedProgramList);
+            }
             DialogResult dialogresult = progForm.ShowDialog();
             this.selectedProgramList = progForm.checkedPrograms;
         }
