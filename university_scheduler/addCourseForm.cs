@@ -147,17 +147,5 @@ namespace university_scheduler
             DialogResult dialogresult = progForm.ShowDialog();
         }
 
-        private void courseName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void courseCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
     }
 }
