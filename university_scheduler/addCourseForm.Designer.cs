@@ -307,7 +307,7 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "Course Resourse";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            
             // 
             // courseName
             // 
@@ -317,7 +317,7 @@
             this.courseName.Name = "courseName";
             this.courseName.Size = new System.Drawing.Size(219, 22);
             this.courseName.TabIndex = 11;
-            this.courseName.TextChanged += new System.EventHandler(this.courseName_TextChanged);
+           
             // 
             // courseCode
             // 
@@ -327,7 +327,7 @@
             this.courseCode.Name = "courseCode";
             this.courseCode.Size = new System.Drawing.Size(219, 22);
             this.courseCode.TabIndex = 12;
-            this.courseCode.TextChanged += new System.EventHandler(this.courseCode_TextChanged);
+            
             // 
             // creditHours
             // 
