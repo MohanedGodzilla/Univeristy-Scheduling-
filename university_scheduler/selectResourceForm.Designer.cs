@@ -73,6 +73,6 @@
         #endregion
 
         public System.Windows.Forms.Button saveResourceBTN;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }

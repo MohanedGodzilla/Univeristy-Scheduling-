@@ -57,8 +57,11 @@ namespace university_scheduler
 
         private void courseData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            addCourseForm resDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value);
-            resDataPassed.Show();
+            addCourseForm courseDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value);
+            courseDataPassed.ShowDialog(this);
+            this.loaddata();
+            courseData.Update();
+            courseData.Refresh();
         }
 
         private void newCourseBTN_Click(object sender, EventArgs e)
@@ -72,6 +75,7 @@ namespace university_scheduler
         private void editCourseBTN_Click(object sender, EventArgs e)
         {
             addCourseForm courseDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value);
+            courseDataPassed.Text = "Edit Course";
             courseDataPassed.ShowDialog(this);
             this.loaddata();
             courseData.Update();
@@ -117,12 +121,5 @@ namespace university_scheduler
         {
 
         }
-
-        private void courseData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
     }
 }

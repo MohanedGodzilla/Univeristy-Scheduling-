@@ -16,10 +16,12 @@ namespace university_scheduler
         public string conString = env.db_con_str;
         public List<int> checkedResource;
         private int selected_id;
-        addCourseForm addCourse = new addCourseForm();
-        public selectResourceForm()
+        private int courseId;
+        Dictionary<int, int> idIndexMap = new Dictionary<int, int>();
+        public selectResourceForm(int id)
         {
             InitializeComponent();
+            this.courseId = id;
         }
 
         private void selectResourceForm_Load(object sender, EventArgs e)
@@ -36,10 +38,23 @@ namespace university_scheduler
                     }
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
+                        this.idIndexMap[(int)dt.Rows[i]["id"]] = i;
                         checkedListBox1.Items.Add(dt.Rows[i]["name"].ToString());
                     }
                 }
+                string query = "SELECT resource_id FROM course_has_resource WHERE course_id = " + this.courseId;
+                using (SqlCommand cmd = new SqlCommand(query, cn))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = (int)reader.GetValue(0);
+                        checkedListBox1.SetItemChecked(this.idIndexMap[id], true);
+                    }
+                    reader.Close();
+                }
             }
+            
         }
 
         private void saveResourceBTN_Click(object sender, EventArgs e)
