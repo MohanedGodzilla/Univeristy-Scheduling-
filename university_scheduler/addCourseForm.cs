@@ -23,7 +23,6 @@ namespace university_scheduler
         public List<int> addedResourceList;
         public List<int> selectedProgramList;
         public List<int> oldSelectedProgramList ;
-        public List<int> editedProgramList;
         public List<int> deletedProgramList;
         public List<int> addedProgramList;
         bool isEdit = false;
