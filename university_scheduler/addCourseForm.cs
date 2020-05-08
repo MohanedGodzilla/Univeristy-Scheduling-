@@ -143,6 +143,7 @@ namespace university_scheduler
                 if (!newSelected.Contains(oldSelected[i])) {
                     this.deletedResourceList.Add(oldSelected[i]);
                 }
+                
             }
             for (int i = 0; i < newSelected.Count; i++) {
                 if (!oldSelected.Contains(newSelected[i])){
@@ -319,7 +320,7 @@ namespace university_scheduler
         
         private void selectResource_Click(object sender, EventArgs e)
         {
-            selectResourceForm resForm = new selectResourceForm(this.courseId);
+            selectResourceForm resForm = new selectResourceForm(this.courseId, "course");
             DialogResult dialogresult = resForm.ShowDialog();
             this.selectedResourceList = resForm.checkedResource;
         }
@@ -341,6 +342,11 @@ namespace university_scheduler
         }
 
         private void courseCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

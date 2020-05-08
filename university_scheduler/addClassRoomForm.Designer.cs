@@ -139,7 +139,7 @@
             this.lecCounter.Name = "lecCounter";
             this.lecCounter.Size = new System.Drawing.Size(42, 22);
             this.lecCounter.TabIndex = 18;
-            this.lecCounter.ValueChanged += new System.EventHandler(this.lecCounter_ValueChanged);
+           
             // 
             // className
             // 
@@ -147,7 +147,7 @@
             this.className.Name = "className";
             this.className.Size = new System.Drawing.Size(191, 20);
             this.className.TabIndex = 19;
-            this.className.TextChanged += new System.EventHandler(this.className_TextChanged);
+            
             // 
             // selectResource
             // 
@@ -169,7 +169,7 @@
             this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 22;
             this.label4.Text = "ClassRoom Recource\r\n";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            
             // 
             // addClassRoomForm
             // 
@@ -193,7 +193,7 @@
             this.Name = "addClassRoomForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addClassRoomForm";
-            this.Load += new System.EventHandler(this.addClassRoomForm_Load);
+            
             ((System.ComponentModel.ISupportInitialize)(this.examCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecCounter)).EndInit();
             this.ResumeLayout(false);
