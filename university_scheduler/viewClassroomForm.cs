@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace university_scheduler
@@ -17,6 +11,7 @@ namespace university_scheduler
         public viewClassroomForm()
         {
             InitializeComponent();
+            this.loaddata();
         }
 
         private void viewClassroomForm_Load_1(object sender, EventArgs e)
@@ -56,17 +51,24 @@ namespace university_scheduler
         {
             addClassRoomForm addClassRoomPopup = new addClassRoomForm();
             DialogResult dialogResult = addClassRoomPopup.ShowDialog();
+            this.loaddata();
+            classData.Update();
+            classData.Refresh();
         }
 
         private void editClassRoomBTN_Click(object sender, EventArgs e)
         {
-            addClassRoomForm classRoomDataPassed = new addClassRoomForm(classData.SelectedRows[0].Cells[2].Value.ToString());
-            classRoomDataPassed.Show();
+            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value);
+            classRoomDataPassed.Text = "Edit class";
+            classRoomDataPassed.ShowDialog(this);
+            this.loaddata();
+            classData.Update();
+            classData.Refresh();
         }
 
         private void deleteClassRoomBTN_Click(object sender, EventArgs e)
         {
-            string selected_id = classData.SelectedRows[0].Cells[0].Value.ToString();
+            int selected_id = (int)classData.SelectedRows[0].Cells[0].Value;
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
@@ -86,8 +88,11 @@ namespace university_scheduler
 
         private void classData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            addClassRoomForm classRoomDataPassed = new addClassRoomForm(classData.SelectedRows[0].Cells[2].Value.ToString());
-            classRoomDataPassed.Show();
+            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value);
+            classRoomDataPassed.ShowDialog(this);
+            classData.Update();
+            classData.Refresh();
         }
+
     }
 }

@@ -121,5 +121,10 @@ namespace university_scheduler
         {
 
         }
+
+        private void courseData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

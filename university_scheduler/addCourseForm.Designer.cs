@@ -131,6 +131,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(447, 424);
             this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // isActive
             // 
@@ -316,7 +317,6 @@
             this.courseName.Name = "courseName";
             this.courseName.Size = new System.Drawing.Size(219, 22);
             this.courseName.TabIndex = 11;
-            this.courseName.TextChanged += new System.EventHandler(this.courseName_TextChanged);
             // 
             // courseCode
             // 
@@ -326,7 +326,6 @@
             this.courseCode.Name = "courseCode";
             this.courseCode.Size = new System.Drawing.Size(219, 22);
             this.courseCode.TabIndex = 12;
-            this.courseCode.TextChanged += new System.EventHandler(this.courseCode_TextChanged);
             // 
             // creditHours
             // 

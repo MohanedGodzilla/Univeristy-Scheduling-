@@ -139,6 +139,7 @@
             this.courseData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.courseData.Size = new System.Drawing.Size(611, 444);
             this.courseData.TabIndex = 0;
+            this.courseData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellContentClick);
             this.courseData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellDoubleClick);
             // 
             // viewCoursesForm
