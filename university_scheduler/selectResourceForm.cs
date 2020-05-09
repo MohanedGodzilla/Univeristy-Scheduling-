@@ -17,7 +17,6 @@ namespace university_scheduler
         public List<int> checkedResource;
         private int selected_id;
         private int courseId;
-        addCourseForm addCourse = new addCourseForm();
         Dictionary<int, int> idIndexMap = new Dictionary<int, int>();
         public selectResourceForm(int id)
         {
