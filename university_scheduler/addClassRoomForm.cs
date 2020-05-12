@@ -229,7 +229,29 @@ namespace university_scheduler
 
         private void addClassRoomForm_Load(object sender, EventArgs e)
         {
+            if (!checkBox1.Checked)
+            {
+                selectResource.Enabled = false;
+            }
+            checkBox1.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
+        }
+
+        void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                selectResource.Enabled = true;
+            }
+            else
+            {
+                selectResource.Enabled = false;
+            }
+        }
+        private void label5_Click(object sender, EventArgs e)
+        {
 
         }
+
+       
     }
 }

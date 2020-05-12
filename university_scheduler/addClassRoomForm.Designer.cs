@@ -39,6 +39,8 @@
             this.className = new System.Windows.Forms.TextBox();
             this.selectResource = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.examCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecCounter)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +152,7 @@
             // selectResource
             // 
             this.selectResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectResource.Location = new System.Drawing.Point(187, 157);
+            this.selectResource.Location = new System.Drawing.Point(187, 184);
             this.selectResource.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectResource.Name = "selectResource";
             this.selectResource.Size = new System.Drawing.Size(86, 23);
@@ -163,18 +165,42 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 157);
+            this.label4.Location = new System.Drawing.Point(12, 191);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 16);
             this.label4.TabIndex = 22;
             this.label4.Text = "ClassRoom Recource\r\n";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 154);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "isLab\r\n";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(187, 154);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(26, 17);
+            this.checkBox1.TabIndex = 24;
+            this.checkBox1.Text = "\r\n";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // addClassRoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 306);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.selectResource);
             this.Controls.Add(this.className);
@@ -213,5 +239,7 @@
         private System.Windows.Forms.TextBox className;
         private System.Windows.Forms.Button selectResource;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
