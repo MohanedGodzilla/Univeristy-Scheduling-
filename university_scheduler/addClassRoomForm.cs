@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace university_scheduler
@@ -144,7 +138,17 @@ namespace university_scheduler
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                string query = "insert into class(name, lecture_capacity, exam_capacity) values( '" + className.Text.ToString() + "' ,'" + lecCounter.Value + "' ,'" + examCounter.Value + "' )";
+                int valCheck;
+                if (isLab.Checked)
+                {
+                    valCheck = 1;
+                }
+                else
+                {
+                    valCheck = 0;
+                }
+
+                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values( '" + className.Text.ToString() + "' ,'" + lecCounter.Value + "' ,'" + examCounter.Value + "','" + valCheck + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 this.current_id = getTheMaxId();
@@ -174,7 +178,7 @@ namespace university_scheduler
                 MessageBox.Show("updateing class successfully..!");
                 this.Close();
             }
-            
+
         }
 
         private void show_EditForm(int classId)
@@ -191,6 +195,15 @@ namespace university_scheduler
                         lecCounter.Value = (int)reader.GetValue(1);
                         className.Text = reader.GetValue(2).ToString();
                         examCounter.Value = (int)reader.GetValue(3);
+                        int val = (int)reader.GetValue(4);
+                        if (val == 1)
+                        {
+                            isLab.Checked = true;
+                        }
+                        else
+                        {
+                            isLab.Checked = false;
+                        }
                     }
                     reader.Close();
                 }
@@ -204,9 +217,38 @@ namespace university_scheduler
 
         private void selectResource_Click(object sender, EventArgs e)
         {
-            selectResourceForm resForm = new selectResourceForm(this.classId, "class");
+            selectResourceForm resForm;
+            if (isEdit && selectedResourceList == null)
+            {//is editing
+                resForm = new selectResourceForm(this.classId, "class");
+            }
+            else
+            {
+                resForm = new selectResourceForm(selectedResourceList, "class");
+            }
             DialogResult dialogresult = resForm.ShowDialog();
             this.selectedResourceList = resForm.checkedResource;
+        }
+
+        private void addClassRoomForm_Load(object sender, EventArgs e)
+        {
+            if (!isLab.Checked)
+            {
+                selectResource.Enabled = false;
+            }
+            isLab.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
+        }
+
+        void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isLab.Checked)
+            {
+                selectResource.Enabled = true;
+            }
+            else
+            {
+                selectResource.Enabled = false;
+            }
         }
     }
 }
