@@ -204,9 +204,32 @@ namespace university_scheduler
 
         private void selectResource_Click(object sender, EventArgs e)
         {
+            /*
             selectResourceForm resForm = new selectResourceForm(this.classId, "class");
             DialogResult dialogresult = resForm.ShowDialog();
             this.selectedResourceList = resForm.checkedResource;
+            */
+            selectResourceForm resForm;
+            if (isEdit && selectedResourceList == null)
+            {//is editing
+                resForm = new selectResourceForm(this.classId, "class");
+            }
+            else
+            {
+                resForm = new selectResourceForm(selectedResourceList, "class");
+            }
+            DialogResult dialogresult = resForm.ShowDialog();
+            this.selectedResourceList = resForm.checkedResource;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addClassRoomForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

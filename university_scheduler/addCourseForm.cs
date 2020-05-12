@@ -320,7 +320,19 @@ namespace university_scheduler
         
         private void selectResource_Click(object sender, EventArgs e)
         {
-            selectResourceForm resForm = new selectResourceForm(this.courseId, "course");
+            /*selectResourceForm resForm = new selectResourceForm(this.courseId, "course");
+            DialogResult dialogresult = resForm.ShowDialog();
+            this.selectedResourceList = resForm.checkedResource;*/
+
+            selectResourceForm resForm;
+            if (isEdit && selectedResourceList == null)
+            {//is editing
+                resForm = new selectResourceForm(this.courseId, "course");
+            }
+            else
+            {
+                resForm = new selectResourceForm(selectedResourceList, "course");
+            }
             DialogResult dialogresult = resForm.ShowDialog();
             this.selectedResourceList = resForm.checkedResource;
         }
