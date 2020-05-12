@@ -40,7 +40,7 @@
             this.selectResource = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.isLab = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.examCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecCounter)).BeginInit();
             this.SuspendLayout();
@@ -124,9 +124,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 16);
+            this.label1.Size = new System.Drawing.Size(113, 16);
             this.label1.TabIndex = 9;
-            this.label1.Text = "ClassRoom Name";
+            this.label1.Text = "Classroom Name";
             // 
             // lecCounter
             // 
@@ -167,10 +167,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 191);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 16);
+            this.label4.Size = new System.Drawing.Size(135, 16);
             this.label4.TabIndex = 22;
-            this.label4.Text = "ClassRoom Recource\r\n";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Text = "Classroom Recource\r\n";
             // 
             // label5
             // 
@@ -181,25 +180,24 @@
             this.label5.Size = new System.Drawing.Size(41, 16);
             this.label5.TabIndex = 23;
             this.label5.Text = "isLab\r\n";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // checkBox1
+            // isLab
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(187, 154);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(26, 17);
-            this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "\r\n";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.isLab.AutoSize = true;
+            this.isLab.Location = new System.Drawing.Point(187, 154);
+            this.isLab.Name = "isLab";
+            this.isLab.Size = new System.Drawing.Size(26, 17);
+            this.isLab.TabIndex = 24;
+            this.isLab.Text = "\r\n";
+            this.isLab.UseVisualStyleBackColor = true;
+            this.isLab.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // addClassRoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 306);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.isLab);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.selectResource);
@@ -217,7 +215,7 @@
             this.MinimizeBox = false;
             this.Name = "addClassRoomForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "addClassRoomForm";
+            this.Text = "addClassroomForm";
             this.Load += new System.EventHandler(this.addClassRoomForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.examCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecCounter)).EndInit();
@@ -240,6 +238,6 @@
         private System.Windows.Forms.Button selectResource;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox isLab;
     }
 }

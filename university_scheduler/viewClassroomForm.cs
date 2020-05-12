@@ -59,7 +59,7 @@ namespace university_scheduler
         private void editClassRoomBTN_Click(object sender, EventArgs e)
         {
             addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value);
-            classRoomDataPassed.Text = "Edit class";
+            classRoomDataPassed.Text = "Edit Classroom";
             classRoomDataPassed.ShowDialog(this);
             this.loaddata();
             classData.Update();

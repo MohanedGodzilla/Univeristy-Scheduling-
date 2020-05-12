@@ -10,7 +10,6 @@ namespace university_scheduler
     {
         public string conString = env.db_con_str;
         public List<int> checkedPrograms;
-        private int selected_id;
         private int courseId;
         Dictionary<int, int> idIndexMap = new Dictionary<int, int>();
         Dictionary<int, int> indexIdMap = new Dictionary<int, int>();
