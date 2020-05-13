@@ -18,7 +18,7 @@ namespace university_scheduler.Model
 
         public string conString = env.db_con_str;
         List<Reservation> reservationData = new List<Reservation>();
-        //List<Classroom> classroomData = new List<Classroom>();
+        List<Classroom> classroomData = new List<Classroom>();
         List<Course> courseData = new List<Course>();
 
         public void insertReserv(int dummyCourseId, int dummyclassId,double dummyFrom, double dummyTo, int dummyDay, bool dummyIsPractice) {
@@ -52,7 +52,7 @@ namespace university_scheduler.Model
             }
         }
 
-        /*public List<Classroom> getClassroom(int dummyClassID)
+        public List<Classroom> getClassroom(int dummyClassID)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
@@ -60,13 +60,14 @@ namespace university_scheduler.Model
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read()){
-                    this.classroomData.Add(new Classroom { id = (int)reader.GetValue(0), lec_capacity = (int)reader.GetValue(1), name = (string)reader.GetValue(2), exam_capacity = (int)reader.GetValue(3)});
+                while (reader.Read())
+                {
+                    this.classroomData.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
                 }
 
                 return classroomData;
             }
-        }*/
+        }
 
         public List<Course> getCourse(int dummyCourseID)
         {

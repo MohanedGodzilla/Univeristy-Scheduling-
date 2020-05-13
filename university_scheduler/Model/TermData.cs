@@ -17,7 +17,7 @@ namespace university_scheduler.Model
         public int max_time { get; set; }
         public string conString = env.db_con_str;
         List<TermData> termDataList = new List<TermData>();
-        //List<Program> programData = new List<Program>();
+        List<Program> programData = new List<Program>();
 
         public List<TermData> getAll()
         {
@@ -37,7 +37,7 @@ namespace university_scheduler.Model
             cn.Close();
         }
 
-        /*public List<Program> getPrograms(int dummyProgramID)
+        public List<Program> getPrograms(int dummyProgramID)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
@@ -45,12 +45,13 @@ namespace university_scheduler.Model
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read()){
-                    this.programData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1)});
+                while (reader.Read())
+                {
+                    this.programData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
                 }
 
                 return programData;
             }
-        }*/
+        }
     }
 }
