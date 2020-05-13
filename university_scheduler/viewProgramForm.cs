@@ -71,5 +71,15 @@ namespace university_scheduler {
                 programData.SelectedRows.Count > 0 &&
                 programData.SelectedRows[0].Cells[0].Value != null);
         }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void programData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

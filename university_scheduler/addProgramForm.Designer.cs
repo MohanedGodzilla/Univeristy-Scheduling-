@@ -192,7 +192,7 @@
             // y1t1
             // 
             this.y1t1.Location = new System.Drawing.Point(91, 113);
-            this.y1t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y1t1.Margin = new System.Windows.Forms.Padding(2);
             this.y1t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -215,7 +215,7 @@
             // y1t2
             // 
             this.y1t2.Location = new System.Drawing.Point(91, 129);
-            this.y1t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y1t2.Margin = new System.Windows.Forms.Padding(2);
             this.y1t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -238,7 +238,7 @@
             // y2t1
             // 
             this.y2t1.Location = new System.Drawing.Point(91, 147);
-            this.y2t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y2t1.Margin = new System.Windows.Forms.Padding(2);
             this.y2t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -261,7 +261,7 @@
             // y3t2
             // 
             this.y3t2.Location = new System.Drawing.Point(91, 197);
-            this.y3t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y3t2.Margin = new System.Windows.Forms.Padding(2);
             this.y3t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -284,7 +284,7 @@
             // y3t1
             // 
             this.y3t1.Location = new System.Drawing.Point(91, 180);
-            this.y3t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y3t1.Margin = new System.Windows.Forms.Padding(2);
             this.y3t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -307,7 +307,7 @@
             // y2t2
             // 
             this.y2t2.Location = new System.Drawing.Point(91, 163);
-            this.y2t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y2t2.Margin = new System.Windows.Forms.Padding(2);
             this.y2t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -330,7 +330,7 @@
             // y4t2
             // 
             this.y4t2.Location = new System.Drawing.Point(91, 230);
-            this.y4t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y4t2.Margin = new System.Windows.Forms.Padding(2);
             this.y4t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -353,7 +353,7 @@
             // y4t1
             // 
             this.y4t1.Location = new System.Drawing.Point(91, 213);
-            this.y4t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y4t1.Margin = new System.Windows.Forms.Padding(2);
             this.y4t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -443,10 +443,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.programName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "addProgramForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "addProgramForm";
+            this.Load += new System.EventHandler(this.addProgramForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.y1t1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y1t2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y2t1)).EndInit();
