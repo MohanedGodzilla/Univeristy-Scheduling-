@@ -1,0 +1,35 @@
+diff a/university_scheduler/addCourseForm.cs b/university_scheduler/addCourseForm.cs	(rejected hunks)
+@@ -1,28 +1,22 @@
+ ﻿using System;
+ using System.Collections.Generic;
+-using System.ComponentModel;
+-using System.Data;
+ using System.Data.SqlClient;
+-using System.Drawing;
+-using System.Linq;
+-using System.Text;
+-using System.Threading.Tasks;
+ using System.Windows.Forms;
+ 
+ namespace university_scheduler
+ {
+     public partial class addCourseForm : Form
+     {
+-        
+-        public string conString =env.db_con_str ;
++
++        public string conString = env.db_con_str;
+         public int courseId;
+-        public List<int> selectedResourceList ;
+-        public List<int> oldSelectedResourceList ;
++        public List<int> selectedResourceList;
++        public List<int> oldSelectedResourceList;
+         public List<int> editedResourceList;
+         public List<int> deletedResourceList;
+         public List<int> addedResourceList;
+         public List<int> selectedProgramList;
+-        public List<int> oldSelectedProgramList ;
++        public List<int> oldSelectedProgramList;
+         public List<int> editedProgramList;
+         public List<int> deletedProgramList;
+         public List<int> addedProgramList;
