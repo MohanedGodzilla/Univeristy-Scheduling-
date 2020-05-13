@@ -14,12 +14,27 @@ namespace university_scheduler.Model
         public int day { get; set; }
         public double from { get; set; }
         public double to { get; set; }
-        public bool isParctice { get; set; }
+        public bool isPractice { get; set; }
 
         public string conString = env.db_con_str;
         List<Reservation> reservationData = new List<Reservation>();
         //List<Classroom> classroomData = new List<Classroom>();
         List<Course> courseData = new List<Course>();
+
+        public void insertReserv(int dummyCourseId, int dummyclassId,double dummyFrom, double dummyTo, int dummyDay, bool dummyIsPractice) {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            int val = 0;
+            if (dummyIsPractice == true){
+                val = 1;
+            }
+            if (cn.State == System.Data.ConnectionState.Open){
+                string query = "insert into reservation(course_id,class_id,from,to,day,is_practice) values('" + dummyCourseId + " , " + dummyclassId + " , " + dummyFrom + " , " + dummyTo + " , " + dummyDay + " , " + val + " ) ";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+            }
+            cn.Close();
+        }
 
         public List<Reservation> getAll() {
             SqlConnection cn = new SqlConnection(conString);
@@ -30,7 +45,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1) , day = (int)reader.GetValue(4) , from = (double)reader.GetValue(2) , to = (double)reader.GetValue(3) , isParctice = (bool)reader.GetValue(2) });
+                    this.reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1) , day = (int)reader.GetValue(4) , from = (double)reader.GetValue(2) , to = (double)reader.GetValue(3) , isPractice = (bool)reader.GetValue(2) });
                 }
 
                 return reservationData;
