@@ -92,9 +92,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Classroom.cs" />
     <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\Program.cs" />
+    <Compile Include="Model\ProgramCourses.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\Resource.cs" />
+    <Compile Include="Model\Slot.cs" />
+    <Compile Include="Model\TermData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="selectProgramForm.cs">
