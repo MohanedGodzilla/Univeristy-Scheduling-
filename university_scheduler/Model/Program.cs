@@ -48,5 +48,24 @@ namespace university_scheduler.Model
                 return progData;
             }
         }
+
+        public void insert(string name, List<TermData> termsData)
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "insert into program(name) output INSERTED.ID values( '" + name + "' )";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                int progId = (int)cmd.ExecuteNonQuery();
+
+                classHasResource CHR = new classHasResource();
+                for(int i=0; i< termsData.Count; i++)
+                {
+                    CHR.insert(termsData[i].term, termsData[i].limit, progId);
+                }
+            }
+            cn.Close();
+        }
     }
 }
