@@ -20,6 +20,20 @@ namespace university_scheduler.Model
             return "ID: " + id + "   Name: " + name;
         }
 
+
+        public void insertResource(string dummyName) {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "insert into resource(name) values('" + dummyName + "')";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                //---//
+            }
+            cn.Close();
+        }
+
         public List<Resource> getAll() {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
