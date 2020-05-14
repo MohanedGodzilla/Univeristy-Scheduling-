@@ -73,10 +73,14 @@ namespace university_scheduler.Data
                     else term = 7;
                 }
 
-                if (labHours > 0) {
-                    int courseId = course.getCurrentCourseId() +1; // you can remove +1 if you move the if statment after calling of insert function
-                    Resource res = resource.getAll(courseNamedID.Substring(0,3))[0];
+                if (labHours > 0)
+                {
+                    int courseId = course.getCurrentCourseId() + 1; // you can remove +1 if you move the if statment after calling of insert function
+                    Resource res = resource.getAll(courseNamedID.Substring(0, 3))[0];
                     CourseRes.insertResource(courseId, res.id);
+                }
+                else {
+
                 }
                 course.insertCourse(name, courseNamedID, creditHours,lectureHours, practiceHours, labHours, term, true);
             }
