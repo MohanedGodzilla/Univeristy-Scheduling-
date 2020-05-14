@@ -257,25 +257,33 @@ namespace university_scheduler
 
         private void saveBTN_Click(object sender, EventArgs e)
         {
-            int selected_id = courseId;
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            try
             {
-                int val = 0;
-                if (isActive.Checked == true){
-                    val = 1;
+                int selected_id = courseId;
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    int val = 0;
+                    if (isActive.Checked == true)
+                    {
+                        val = 1;
+                    }
+                    string query = "UPDATE course SET name = '" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  '" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    if (selectResource.Enabled == true)
+                    {
+                        editResourceForCourse(selected_id);
+                    }
+                    editProgramForCourse(selected_id);
+                    //---//
+                    MessageBox.Show("updateing course successfully...!");
+                    this.Close();
                 }
-                string query = "UPDATE course SET name = '"+courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  '" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                if (selectResource.Enabled == true){
-                    editResourceForCourse(selected_id);
-                }
-                editProgramForCourse(selected_id);
-                //---//
-                MessageBox.Show("updateing course successfully...!");
-                this.Close();
+            }catch(SqlException se)
+            {        
+                MessageBox.Show("course code must be unique!");
             }
         }
 
