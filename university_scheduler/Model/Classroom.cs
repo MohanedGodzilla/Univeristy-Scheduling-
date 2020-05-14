@@ -72,5 +72,25 @@ namespace university_scheduler.Model
             }
         }
 
+        public void insert(string name, int lecCap, int examCap, int isLab)
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) output INSERTED.ID values( '" + name + "' ,'" + lecCap + "' ,'" + examCap + "','" + isLab + "' )";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                int insertedId = (int)cmd.ExecuteNonQuery();
+
+                for (int i = 0; i < this.classResourses.Count; i++)
+                {
+                    query = "insert into class_has_resource (class_id,resource_id) values(" + insertedId + " , " + this.classResourses[i] + " )";
+                    cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            cn.Close();
+        }
+
     }
 }

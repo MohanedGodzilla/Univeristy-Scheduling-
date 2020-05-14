@@ -10,7 +10,7 @@ namespace university_scheduler.Model
     {
         public int id { get; set; }
         public int term { get; set; }
-        public int limit { get; set; }
+        public List<int> limit { get; set; }
         public double max_time { get; set; }
         public int max_days { get; set; }
 
