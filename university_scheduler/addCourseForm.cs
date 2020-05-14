@@ -26,6 +26,7 @@ namespace university_scheduler
         public List<int> editedProgramList;
         public List<int> deletedProgramList;
         public List<int> addedProgramList;
+        bool isEdit = false;
         private int current_id;
 
         public addCourseForm()
@@ -35,7 +36,7 @@ namespace university_scheduler
             addCourseBTN.Show();
             saveBTN.Hide();
         }
-        
+
         public addCourseForm(int courseId)
         {
             InitializeComponent();
@@ -43,8 +44,9 @@ namespace university_scheduler
             show_EditForm(courseId);
             addCourseBTN.Hide();
             saveBTN.Show();
+            isEdit = true;
         }
-        
+
 
         private void addCourseForm_Load(object sender, EventArgs e)
         {
@@ -67,8 +69,10 @@ namespace university_scheduler
             }
         }
 
-        private void addResourceForCourse(int id) {
-            for (int i = 0; i < this.selectedResourceList.Count; i++){
+        private void addResourceForCourse(int id)
+        {
+            for (int i = 0; i < this.selectedResourceList.Count; i++)
+            {
                 SqlConnection cn = new SqlConnection(conString);
                 cn.Open();
                 if (cn.State == System.Data.ConnectionState.Open)
@@ -83,22 +87,27 @@ namespace university_scheduler
         }
         private void addProgramForCourse(int id)
         {
-            for (int i = 0; i < this.selectedProgramList.Count; i++)
+            if(selectedProgramList != null)
             {
-                SqlConnection cn = new SqlConnection(conString);
-                cn.Open();
-                if (cn.State == System.Data.ConnectionState.Open)
+                for (int i = 0; i < this.selectedProgramList.Count; i++)
                 {
-                    string query = "insert into program_has_course(course_id,program_id) values(" + id + " , " + this.selectedProgramList[i] + " )";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.ExecuteNonQuery();
-                    //---//
+                    SqlConnection cn = new SqlConnection(conString);
+                    cn.Open();
+                    if (cn.State == System.Data.ConnectionState.Open)
+                    {
+                        string query = "insert into program_has_course(course_id,program_id) values(" + id + " , " + this.selectedProgramList[i] + " )";
+                        SqlCommand cmd = new SqlCommand(query, cn);
+                        cmd.ExecuteNonQuery();
+                        //---//
+                    }
+                    cn.Close();
                 }
-                cn.Close();
             }
+           
         }
 
-        private void bringIdsOfCourseHasResource(int courseId) {
+        private void bringIdsOfCourseHasResource(int courseId)
+        {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             string query = "SELECT resource_id FROM course_has_resource WHERE course_id = " + courseId;
@@ -136,17 +145,27 @@ namespace university_scheduler
             }
         }
 
-        private void compareListsRes(List<int> oldSelected, List<int> newSelected){
-            for (int i = 0; i < oldSelected.Count; i++){
-                if (!newSelected.Contains(oldSelected[i])) {
+        private void compareListsRes(List<int> oldSelected, List<int> newSelected)
+        {
+            for (int i = 0; i < oldSelected.Count; i++)
+            {
+                if (!newSelected.Contains(oldSelected[i]))
+                {
                     this.deletedResourceList.Add(oldSelected[i]);
                 }
+
             }
-            for (int i = 0; i < newSelected.Count; i++) {
-                if (!oldSelected.Contains(newSelected[i])){
-                   this.addedResourceList.Add(newSelected[i]);
+            if(newSelected != null)
+            {
+                for (int i = 0; i < newSelected.Count; i++)
+                {
+                    if (!oldSelected.Contains(newSelected[i]))
+                    {
+                        this.addedResourceList.Add(newSelected[i]);
+                    }
                 }
             }
+            
         }
         private void compareListsProg(List<int> oldSelected, List<int> newSelected)
         {
@@ -157,6 +176,8 @@ namespace university_scheduler
                     this.deletedProgramList.Add(oldSelected[i]);
                 }
             }
+            if(newSelected != null)
+
             for (int i = 0; i < newSelected.Count; i++)
             {
                 if (!oldSelected.Contains(newSelected[i]))
@@ -166,7 +187,8 @@ namespace university_scheduler
             }
         }
 
-        private void editResourceForCourse(int id) {
+        private void editResourceForCourse(int id)
+        {
             try
             {
                 this.deletedResourceList = new List<int>();
@@ -191,7 +213,8 @@ namespace university_scheduler
                     }
                 }
                 cn.Close();
-            }catch(Exception e) { }
+            }
+            catch (Exception e) { }
         }
         private void editProgramForCourse(int id)
         {
@@ -219,10 +242,12 @@ namespace university_scheduler
                     }
                 }
                 cn.Close();
-            }catch(Exception e) { }
+            }
+            catch (Exception e) { }
         }
 
-        private int getTheMaxId() {
+        private int getTheMaxId()
+        {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             string query = "SELECT MAX(id) from course";
@@ -237,16 +262,18 @@ namespace university_scheduler
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                int val=0;
-                if(isActive.Checked == true){
+                int val = 0;
+                if (isActive.Checked == true)
+                {
                     val = 1;
                 }
 
-                string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" +"'" +courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , '" + courseCode.Text + "' , '" + val+"' )";
+                string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , '" + courseCode.Text + "' , '" + val + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 this.current_id = getTheMaxId();
-                if (selectResource.Enabled == true) {
+                if (selectResource.Enabled == true)
+                {
                     addResourceForCourse(this.current_id);
                 }
                 addProgramForCourse(this.current_id);
@@ -288,7 +315,7 @@ namespace university_scheduler
         }
 
         private void show_EditForm(int courseId)
-        { 
+        {
             //this function to show data in Edit form
             using (SqlConnection cn = new SqlConnection(conString))
             {
@@ -318,20 +345,41 @@ namespace university_scheduler
             }
         }
 
-        private void cancelBTN_Click(object sender, EventArgs e){
+        private void cancelBTN_Click(object sender, EventArgs e)
+        {
             this.Close();
 
         }
-        
+
         private void selectResource_Click(object sender, EventArgs e)
         {
-            selectResourceForm resForm = new selectResourceForm(this.courseId);
+            /*selectResourceForm resForm = new selectResourceForm(this.courseId, "course");
+            DialogResult dialogresult = resForm.ShowDialog();
+            this.selectedResourceList = resForm.checkedResource;*/
+
+            selectResourceForm resForm;
+            if (isEdit && selectedResourceList == null)
+            {//is editing
+                resForm = new selectResourceForm(this.courseId, "course");
+            }
+            else
+            {
+                resForm = new selectResourceForm(selectedResourceList, "course");
+            }
             DialogResult dialogresult = resForm.ShowDialog();
             this.selectedResourceList = resForm.checkedResource;
         }
         private void selectProgramBTN_Click(object sender, EventArgs e)
         {
-            selectProgramForm progForm = new selectProgramForm(this.courseId);
+            selectProgramForm progForm;
+            if (isEdit && selectedProgramList == null)
+            {//is editing
+                progForm = new selectProgramForm(this.courseId);
+            }
+            else
+            {
+                progForm = new selectProgramForm(selectedProgramList);
+            }
             DialogResult dialogresult = progForm.ShowDialog();
             this.selectedProgramList = progForm.checkedPrograms;
         }
@@ -342,6 +390,16 @@ namespace university_scheduler
         }
 
         private void courseCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

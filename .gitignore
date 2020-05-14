@@ -4,3 +4,8 @@ university_scheduler/obj/Debug/
 *.exe
 .vs/university_scheduler/v16/Server/sqlite3/storage.ide
 university_scheduler/env.cs
+university_scheduler/bin/Debug/university_scheduler.exe.config
+university_scheduler/bin/Debug/university_scheduler.pdb
+course_scheduler_log.ldf
+.vs/university_scheduler/v16/.suo
+*.pdb

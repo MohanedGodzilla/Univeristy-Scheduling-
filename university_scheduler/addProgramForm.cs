@@ -136,5 +136,10 @@ namespace university_scheduler {
         private void cancelProgramBTN_Click(object sender, EventArgs e) {
             this.Close();
         }
+
+        private void addProgramForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
