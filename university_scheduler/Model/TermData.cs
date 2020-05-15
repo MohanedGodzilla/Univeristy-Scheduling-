@@ -53,5 +53,17 @@ namespace university_scheduler.Model
                 return programData;
             }
         }
+        public void insert(int term, int limit, int progId)
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "insert into term_program_limit(term, limit, program_id) values( '" + term + "' ,'" + limit + "' ,'" + progId + "' )";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+            }
+            cn.Close();
+        }
     }
 }

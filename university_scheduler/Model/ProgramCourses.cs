@@ -46,6 +46,20 @@ namespace university_scheduler.Model
                 }
                 return progCourseData;
             }
+       }
+
+        public void insertProgram(int dummyCourseId, int dummyProgramId)
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "insert into program_has_course(course_id,program_id) values('" + dummyCourseId + "' , '" + dummyProgramId + "')";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                //---//
+            }
+            cn.Close();
         }
     }
 }
