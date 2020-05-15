@@ -48,19 +48,16 @@ namespace university_scheduler.Model
                 return resourceList;
             }
         }
-
-        public void insert(int term, int limit, int progId)
+        public void insertResource(int dummyClassId, int dummyResourceId)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    string query = "insert into term_program_limit(term, limit, program_id) values( '" + term + "' ,'" + limit + "' ,'" + progId + "' )";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.ExecuteNonQuery();
-                }
+                string query = "insert into class_has_resource(class_id,resource_id) values('" + dummyClassId + "' , '" + dummyResourceId + "')";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                //---//
             }
             cn.Close();
         }

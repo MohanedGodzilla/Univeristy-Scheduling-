@@ -56,40 +56,29 @@ namespace university_scheduler.Model
             }
         }
 
-        public List<Resource> getResource(int dummyResourceID)
-        {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            string query = "SELECT * FROM class r WHERE r.id = " + dummyResourceID;
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    this.classResourses.Add(new Resource { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
-                }
-                return classResourses;
-            }
-        }
-
         public void insert(string name, int lecCap, int examCap, int isLab)
         {
+           
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) output INSERTED.ID values( '" + name + "' ,'" + lecCap + "' ,'" + examCap + "','" + isLab + "' )";
+                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values( '" + name + "' ,'" + lecCap + "' ,'" + examCap + "','" + isLab + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
-                int insertedId = (int)cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
-                for (int i = 0; i < this.classResourses.Count; i++)
-                {
-                    query = "insert into class_has_resource (class_id,resource_id) values(" + insertedId + " , " + this.classResourses[i] + " )";
-                    cmd = new SqlCommand(query, cn);
-                    cmd.ExecuteNonQuery();
-                }
             }
             cn.Close();
+        }
+
+        public int getCurrentClassId()
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            string query = "SELECT MAX(id) from class";
+            SqlCommand cmd = new SqlCommand(query, cn);
+           // cmd.ExecuteNonQuery();
+            return (int)cmd.ExecuteScalar();
         }
 
     }

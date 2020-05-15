@@ -43,7 +43,7 @@ namespace university_scheduler
             using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM course", cn))
+                using (SqlCommand cmd = new SqlCommand("SELECT id,name,course_named_id as 'code',lecture_hours as 'lec hours',practice_hours as 'sec hours',lab_hours as 'lab hours' FROM course", cn))
                 {
                     DataTable dt = new DataTable();
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))

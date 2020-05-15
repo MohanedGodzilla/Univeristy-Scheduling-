@@ -10,7 +10,7 @@ namespace university_scheduler.Model
     class courseHasResource
     {
         public string conString = env.db_con_str;
-        public void insertResource(int dummyCourseId,int dummyResourceId)
+        public void insertResource(int dummyCourseId, int dummyResourceId)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();

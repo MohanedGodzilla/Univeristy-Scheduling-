@@ -24,20 +24,23 @@ namespace university_scheduler.Model
         List<Resource> resourceData = new List<Resource>();
 
         public void insertCourse(string dummyName, string codeNI, int crH, double lecH, double pracH, double labH, int dummyTerm, bool dummyActive) {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            try
             {
-                int val = 0;
-                if (dummyActive == true)
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
                 {
-                    val = 1;
-                }
+                    int val = 0;
+                    if (dummyActive == true)
+                    {
+                        val = 1;
+                    }
 
-                string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + dummyName + "' , '" + crH + "' , '" + lecH + "' , '" + pracH + "' , '" + labH + "' , '" + dummyTerm + "' , '" + codeNI + "' , '" + val + "' )";
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-            }
+                    string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + dummyName + "' , '" + crH + "' , '" + lecH + "' , '" + pracH + "' , '" + labH + "' , '" + dummyTerm + "' , '" + codeNI + "' , '" + val + "' )";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                }
+            }catch(Exception e) { }
         }
 
         public List<Course> getAll()
@@ -80,11 +83,13 @@ namespace university_scheduler.Model
             cn.Open();
             string query = "SELECT MAX(id) from course";
             SqlCommand cmd = new SqlCommand(query, cn);
-            cmd.ExecuteNonQuery();
+
+            //return (int)cmd.ExecuteScalar();
+            //return (int)cmd.ExecuteNonQuery();
             return (int)cmd.ExecuteScalar();
         }
 
-        public List<Resource> getResource(int dummyResourceID)
+        /*public List<Resource> getResource(int dummyResourceID)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
@@ -99,6 +104,6 @@ namespace university_scheduler.Model
 
                 return resourceData;
             }
-        }
+        }*/
     }
 }

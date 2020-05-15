@@ -49,23 +49,27 @@ namespace university_scheduler.Model
             }
         }
 
-        public void insert(string name, List<TermData> termsData)
+        public void insert(string name)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                string query = "insert into program(name) output INSERTED.ID values( '" + name + "' )";
+                string query = "insert into program(name) values( '" + name + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
-                int progId = (int)cmd.ExecuteNonQuery();
-
-                classHasResource CHR = new classHasResource();
-                for(int i=0; i< termsData.Count; i++)
-                {
-                    CHR.insert(termsData[i].term, termsData[i].limit, progId);
-                }
+                cmd.ExecuteNonQuery();
             }
             cn.Close();
+        }
+
+        public int getCurrentProgramId()
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            string query = "SELECT MAX(id) from program";
+            SqlCommand cmd = new SqlCommand(query, cn);
+            cmd.ExecuteNonQuery();
+            return (int)cmd.ExecuteScalar();
         }
     }
 }
