@@ -98,13 +98,14 @@
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\courseHasResource.cs" />
     <Compile Include="Model\Program.cs" />
-    <Compile Include="Model\ProgramCourses.cs" />
+    <Compile Include="Model\ProgramCourse.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\Slot.cs" />
     <Compile Include="Model\TermData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler.cs" />
     <Compile Include="selectProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>

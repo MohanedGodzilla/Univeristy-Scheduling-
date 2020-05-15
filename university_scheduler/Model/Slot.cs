@@ -14,7 +14,7 @@ namespace university_scheduler.Model
         public int hours { get; set; }
         public int term { get; set; }
         public int isLab { get; set; }
-        public int isReq { get; set; }
+        public bool isReq { get; set; }
         public int studentCount { get; set; }
 
         List<Resource> termresoursessData = new List<Resource>();

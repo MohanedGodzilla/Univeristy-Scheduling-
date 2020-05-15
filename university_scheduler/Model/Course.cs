@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace university_scheduler.Model
 {
-    class Course
-    {
+    class Course {
         public int id { get; set; }
         public string name { get; set; }
         public int creditHours { get; set; }
@@ -19,6 +18,8 @@ namespace university_scheduler.Model
         public string courseNamedId { get; set; }
         public bool isActive { get; set; }
         public bool isReq { get; set; }
+
+        public List<Program> programs { get; set; }
         
 
         public void insertCourse(string dummyName, string codeNI, int crH, double lecH, double pracH, double labH, int dummyTerm, bool dummyActive) {
@@ -52,7 +53,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8) });
+                    courseData.Add(setCourse(reader));
                 }
 
                 return courseData;
@@ -70,16 +71,41 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8) });
+                    courseData.Add(setCourse(reader));
                 }
 
                 return courseData;
             }
         }
 
+
+        static Course setCourse(SqlDataReader reader) {
+            return new Course {
+                id = (int)reader.GetValue(0),
+                name = reader.GetValue(1).ToString(),
+                creditHours = (int)reader.GetValue(2),
+                lectureHours = (double)reader.GetValue(3),
+                practiceHours = (double)reader.GetValue(4),
+                labHours = (double)reader.GetValue(5),
+                term = (int)reader.GetValue(6),
+                courseNamedId = (string)reader.GetValue(7).ToString(),
+                isActive = (bool)(reader.GetValue(8).ToString() == "1"),
+                programs = getCoursePrograms((int)reader.GetValue(0)),
+            };
+        }
+
+        private static List<Program> getCoursePrograms(int courseID) {
+            List<Program> programs = new List<Program>();
+            List<ProgramCourse> programCourses = ProgramCourse.getCoursePrograms(courseID);
+            foreach (ProgramCourse programCourse in programCourses) {
+               programs.Add(Program.getProgramById(programCourse.programId));
+            }
+            return programs;
+        }
+
         public int getCurrentCourseId()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT MAX(id) from course";
             SqlCommand cmd = new SqlCommand(query, cn);

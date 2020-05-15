@@ -10,7 +10,6 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int programNums = 32;
         public int courseNums = 500;
 
         public void generateResource()
@@ -108,12 +107,11 @@ namespace university_scheduler.Data
                     CourseRes.insertResource(courseId, res.id);
                 }
 
-                ProgramCourses pc = new ProgramCourses();
-                List<Model.Program> programs = program.getAll();
+                ProgramCourse pc = new ProgramCourse();
+                List<Model.Program> programs = Model.Program.getAll();
                 int programsCount = rnd.Next(1, programs.Count/2);
                 for (int j = rnd.Next(1,programsCount); j <= programsCount; j++)//j select random number from programsCount to insert differnt random programs
                 {
-                   
                     int programId = programs[j].id;
                     pc.insertProgram(courseId, programId);
                 }
@@ -154,7 +152,9 @@ namespace university_scheduler.Data
                 "Physcics and Computer Science" ,
                 "Physics-Chemistry" ,
                 "Applied Biotechnology" ,
-                "Materials and Nanosciences" };
+                "Materials and Nanosciences" ,
+                "NanoTechnology"
+            };
 
             Model.Program program = new Model.Program();
             for (int i = 0; i < progNames.Count; i++)
@@ -212,7 +212,7 @@ namespace university_scheduler.Data
                 int examCap = lectureCap / 2;
                 room.insert(name, lectureCap, examCap, isLab);
                 if (isLab == 1){
-                    List<Resource> resourses = resource.getAll();
+                    List<Resource> resourses = Resource.getAll();
                     int resId = resourses[rnd.Next(0, resourses.Count)].id;
                     int classId = room.getCurrentClassId();
                     chr.insertResource(classId,resId);
