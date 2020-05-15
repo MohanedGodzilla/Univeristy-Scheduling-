@@ -11,13 +11,13 @@ namespace university_scheduler.Model
     {
         public int classId { get; set; }
         public int resourceId { get; set; }
-        public List<classHasResource> resourceList { get; set; }
 
-        public string conString = env.db_con_str;
 
-        public List<classHasResource> getAll()
+
+        public static List<classHasResource> getAll()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<classHasResource> classHasResources = new List<classHasResource>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM class_has_resource";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -25,16 +25,17 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.resourceList.Add(new classHasResource { classId = (int)reader.GetValue(1), resourceId = (int)reader.GetValue(2) });
+                    classHasResources.Add(new classHasResource { classId = (int)reader.GetValue(1), resourceId = (int)reader.GetValue(2) });
                     
                 }
-                return resourceList;
+                return classHasResources;
             }
         }
 
-        public List<classHasResource> getAll(int classId)
+        public static List<classHasResource> getAll(int classId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<classHasResource> classHasResources = new List<classHasResource>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM class_has_resource WHERE class_id = '"+classId+"' ";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -42,15 +43,15 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.resourceList.Add(new classHasResource { classId = (int)reader.GetValue(1), resourceId = (int)reader.GetValue(2) });
+                    classHasResources.Add(new classHasResource { classId = (int)reader.GetValue(1), resourceId = (int)reader.GetValue(2) });
 
                 }
-                return resourceList;
+                return classHasResources;
             }
         }
         public void insertResource(int dummyClassId, int dummyResourceId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {

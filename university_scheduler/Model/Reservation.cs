@@ -16,13 +16,11 @@ namespace university_scheduler.Model
         public double to { get; set; }
         public bool isPractice { get; set; }
 
-        public string conString = env.db_con_str;
-        List<Reservation> reservationData = new List<Reservation>();
         List<Classroom> classroomData = new List<Classroom>();
         List<Course> courseData = new List<Course>();
 
         public void insertReserv(int dummyCourseId, int dummyclassId,double dummyFrom, double dummyTo, int dummyDay, bool dummyIsPractice) {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             int val = 0;
             if (dummyIsPractice == true){
@@ -36,8 +34,9 @@ namespace university_scheduler.Model
             cn.Close();
         }
 
-        public List<Reservation> getAll() {
-            SqlConnection cn = new SqlConnection(conString);
+        public static List<Reservation> getAll() {
+            List<Reservation> reservationData = new List<Reservation>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM reservation ";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -45,7 +44,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1) , day = (int)reader.GetValue(4) , from = (double)reader.GetValue(2) , to = (double)reader.GetValue(3) , isPractice = (bool)reader.GetValue(2) });
+                    reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1) , day = (int)reader.GetValue(4) , from = (double)reader.GetValue(2) , to = (double)reader.GetValue(3) , isPractice = (bool)reader.GetValue(2) });
                 }
 
                 return reservationData;
@@ -54,7 +53,7 @@ namespace university_scheduler.Model
 
         public List<Classroom> getClassroom(int dummyClassID)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM class c WHERE c.id = " + dummyClassID;
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -71,7 +70,7 @@ namespace university_scheduler.Model
 
         public List<Course> getCourse(int dummyCourseID)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM course c WHERE c.id = " + dummyCourseID;
             using (SqlCommand cmd = new SqlCommand(query, cn))

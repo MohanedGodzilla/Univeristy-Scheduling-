@@ -14,19 +14,17 @@ namespace university_scheduler.Model
         public double max_time { get; set; }
         public int max_days { get; set; }
 
-        public string conString = env.db_con_str;
-
         List<Resource> classResourses = new List<Resource>();
 
-        List<Classroom> classData = new List<Classroom>();
 
         Dictionary<int, Dictionary<dynamic, int>> reservations = new Dictionary<int, Dictionary<dynamic, int>>();
 
         Dictionary<int, List<List<dynamic>>> blockedHours = new Dictionary<int, List<List<dynamic>>>();
 
-        public List<Classroom> getAll()
+        public static List<Classroom> getAll()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<Classroom> classrooms = new List<Classroom>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM class";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -34,15 +32,16 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.classData.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
+                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
                 }
-                return classData;
+                return classrooms;
             }
         }
 
-        public List<Classroom> getAll(string dummyName)
+        public static List<Classroom> getAll(string dummyName)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<Classroom> classrooms = new List<Classroom>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM class WHERE name LIKE '% " + dummyName + "%'";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -50,16 +49,16 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.classData.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
+                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
                 }
-                return classData;
+                return classrooms;
             }
         }
 
         public void insert(string name, int lecCap, int examCap, int isLab)
         {
            
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
@@ -73,7 +72,7 @@ namespace university_scheduler.Model
 
         public int getCurrentClassId()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT MAX(id) from class";
             SqlCommand cmd = new SqlCommand(query, cn);

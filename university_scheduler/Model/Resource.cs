@@ -12,8 +12,6 @@ namespace university_scheduler.Model
         public int id { get; set; }
         public string name { get; set; }
 
-        public string conString = env.db_con_str;
-        List<Resource> resourceData = new List<Resource>();
         
 
         public override string ToString(){
@@ -22,7 +20,7 @@ namespace university_scheduler.Model
 
 
         public void insertResource(string dummyName) {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
@@ -34,8 +32,9 @@ namespace university_scheduler.Model
             cn.Close();
         }
 
-        public List<Resource> getAll() {
-            SqlConnection cn = new SqlConnection(conString);
+        public static List<Resource> getAll() {
+            List<Resource> resourceData = new List<Resource>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM resource ";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -43,7 +42,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.resourceData.Add(new Resource { name = reader.GetValue(1).ToString(), id = (int)reader.GetValue(0) });
+                    resourceData.Add(new Resource { name = reader.GetValue(1).ToString(), id = (int)reader.GetValue(0) });
                 }
 
                 return resourceData;
@@ -53,7 +52,8 @@ namespace university_scheduler.Model
 
         public List<Resource> getAll(string dummyName)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<Resource> resourceData = new List<Resource>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM resource where name LIKE '%" + dummyName + "%'";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -61,7 +61,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.resourceData.Add(new Resource { name = dummyName, id = (int)reader.GetValue(0) });
+                    resourceData.Add(new Resource { name = dummyName, id = (int)reader.GetValue(0) });
                 }
 
                 return resourceData;

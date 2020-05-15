@@ -19,14 +19,12 @@ namespace university_scheduler.Model
         public string courseNamedId { get; set; }
         public bool isActive { get; set; }
         public bool isReq { get; set; }
-        public string conString = env.db_con_str;
-        List<Course> courseData = new List<Course>();
-        List<Resource> resourceData = new List<Resource>();
+        
 
         public void insertCourse(string dummyName, string codeNI, int crH, double lecH, double pracH, double labH, int dummyTerm, bool dummyActive) {
             try
             {
-                SqlConnection cn = new SqlConnection(conString);
+                SqlConnection cn = new SqlConnection(env.db_con_str);
                 cn.Open();
                 if (cn.State == System.Data.ConnectionState.Open)
                 {
@@ -43,9 +41,10 @@ namespace university_scheduler.Model
             }catch(Exception e) { }
         }
 
-        public List<Course> getAll()
+        public static List<Course> getAll()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<Course> courseData = new List<Course>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM course ";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -53,16 +52,17 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8) });
+                    courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8) });
                 }
 
                 return courseData;
             }
         }
 
-        public List<Course> getAll(string dummyName)
+        public static List<Course> getAll(string dummyName)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<Course> courseData = new List<Course>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM course WHERE name LIKE '% " + dummyName + "%'";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -70,7 +70,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8) });
+                    courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8) });
                 }
 
                 return courseData;

@@ -9,10 +9,10 @@ namespace university_scheduler.Model
 {
     class courseHasResource
     {
-        public string conString = env.db_con_str;
+        
         public void insertResource(int dummyCourseId, int dummyResourceId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {

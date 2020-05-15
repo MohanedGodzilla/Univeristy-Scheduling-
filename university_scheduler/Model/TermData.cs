@@ -15,13 +15,13 @@ namespace university_scheduler.Model
         public double section_count { get; set; }
         public int max_days { get; set; }
         public int max_time { get; set; }
-        public string conString = env.db_con_str;
-        List<TermData> termDataList = new List<TermData>();
+
         List<Program> programData = new List<Program>();
 
-        public List<TermData> getAll()
+        public static List<TermData> getAll()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<TermData> termDataList = new List<TermData>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM term_program_limit ";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -29,17 +29,16 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.termDataList.Add(new TermData { id = (int)reader.GetValue(0), term = (int)reader.GetValue(1), limit = (int)reader.GetValue(2)});
+                    termDataList.Add(new TermData { id = (int)reader.GetValue(0), term = (int)reader.GetValue(1), limit = (int)reader.GetValue(2)});
                 }
-
+                cn.Close();
                 return termDataList;
             }
-            cn.Close();
         }
 
         public List<Program> getPrograms(int dummyProgramID)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM program p WHERE p.id = " + dummyProgramID;
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -55,7 +54,7 @@ namespace university_scheduler.Model
         }
         public void insert(int term, int limit, int progId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
