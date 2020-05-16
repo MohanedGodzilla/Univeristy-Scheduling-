@@ -80,6 +80,20 @@ namespace university_scheduler.Model
            // cmd.ExecuteNonQuery();
             return (int)cmd.ExecuteScalar();
         }
-
+        public List<Resource> getClassResources(int classId)
+        {
+            List<Resource> classResources = new List<Resource>();
+            List<int> resourcesIds = classHasResource.getResourcesIdsOfClass(classId);
+            foreach (int resourceId in resourcesIds)
+            {
+                classResources.Add(Resource.getResourceById(resourceId));
+            }
+            return classResources;
+        }
+        
+        public bool isHourBlocked(List<List<dynamic>> hoursToChecke)
+        {
+            return blockedHours.ContainsValue(hoursToChecke);
+        }
     }
 }

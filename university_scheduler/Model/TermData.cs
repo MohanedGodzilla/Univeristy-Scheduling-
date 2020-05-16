@@ -60,7 +60,6 @@ namespace university_scheduler.Model
 
                 return termDataList;
             }
-            cn.Close();
         }
 
         public List<Program> getPrograms(int dummyProgramID)

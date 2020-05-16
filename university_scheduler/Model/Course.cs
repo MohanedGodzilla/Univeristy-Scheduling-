@@ -34,7 +34,6 @@ namespace university_scheduler.Model
                     {
                         val = 1;
                     }
-
                     string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + dummyName + "' , '" + crH + "' , '" + lecH + "' , '" + pracH + "' , '" + labH + "' , '" + dummyTerm + "' , '" + codeNI + "' , '" + val + "' )";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.ExecuteNonQuery();
