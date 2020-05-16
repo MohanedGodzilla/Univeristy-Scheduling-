@@ -24,7 +24,6 @@ namespace university_scheduler.Model {
                 }
                 return progData;
             }
-            cn.Close();
         }
 
         public static List<Program> getAll(string dummyName) {
@@ -39,7 +38,6 @@ namespace university_scheduler.Model {
                 }
                 return progData;
             }
-            cn.Close();
         }
 
         public static Program getProgramById(int programID) {
@@ -78,8 +76,26 @@ namespace university_scheduler.Model {
             string query = "SELECT MAX(id) from program";
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
-            return (int)cmd.ExecuteScalar();
             cn.Close();
+
+            return (int)cmd.ExecuteScalar();
         }
+
+        public List<TermData> getTermData(int progId)
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            string query = "SELECT (id, term, limit, section_count) from term_program_limit where program_id = '" + progId + "'";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    termsData.Add(new TermData { id = (int)reader.GetValue(0), term = (int)reader.GetValue(2), limit = (int)reader.GetValue(3), section_count = (int)reader.GetValue(4) });
+                }
+                return termsData;
+            }
+        }
+
     }
 }
