@@ -16,9 +16,9 @@ namespace university_scheduler.Model
         public int max_days { get; set; }
         public int max_time { get; set; }
         public string conString = env.db_con_str;
-        Dictionary<int, Dictionary<dynamic, int>> schedule;
-        List<TermData> termDataList = new List<TermData>();
-        List<Program> programData = new List<Program>();
+        public Dictionary<int, Dictionary<dynamic, int>> schedule;
+        public List<TermData> termDataList = new List<TermData>();
+        public List<Program> programData = new List<Program>();
 
         public TermData()
         {

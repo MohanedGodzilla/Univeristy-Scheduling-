@@ -83,7 +83,7 @@ namespace university_scheduler.Model {
 
         public List<TermData> getTermData(int progId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT (id, term, limit, section_count) from term_program_limit where program_id = '" + progId + "'";
             using (SqlCommand cmd = new SqlCommand(query, cn))

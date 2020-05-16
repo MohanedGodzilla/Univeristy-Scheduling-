@@ -156,7 +156,7 @@ namespace university_scheduler {
                             reason = REASON_RES;
                             continue;
                         }
-                        if (!matchResources(classRoom.classResourses, slot.resourses)) {
+                        if (!matchResources(classRoom.classResourses, slot.resources)) {
                             reason = REASON_RES;
                             continue;
                         }
@@ -380,7 +380,7 @@ namespace university_scheduler {
 
         Slot copySlot(Slot slot, List<Model.Program> programs) {
             Slot copySlot = Slot(slotID, slot.courseId, slot.creditHours, slot.hours,
-                slot.resourses, programs, slot.term,
+                slot.resources, programs, slot.term,
                 isLab: slot.isLab);
             slotID++;
             return copySlot;
@@ -419,12 +419,12 @@ namespace university_scheduler {
         }
 
         void cleanResDictionary() {
-            for (double i = 0; i < maxDaysO; i++) {
-                for (double j = 0; j < maxTimeO; j++) {
+            for (int i = 0; i < maxDaysO; i++) {
+                for (int j = 0; j < maxTimeO; j++) {
                     foreach (Classroom classaya in classRooms) {
                         if (classaya.reservations[i][j] != null &&
                             !resDictionary.ContainsKey(classaya.reservations[i][j])) {
-                            classaya.reservations[i].remove(j);
+                            classaya.reservations[i].Remove(j);
                         }
                     }
                 }

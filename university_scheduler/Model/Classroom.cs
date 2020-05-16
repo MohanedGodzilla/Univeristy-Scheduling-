@@ -14,12 +14,12 @@ namespace university_scheduler.Model
         public double max_time { get; set; }
         public int max_days { get; set; }
 
-        List<Resource> classResourses = new List<Resource>();
+        public List<Resource> classResourses = new List<Resource>();
 
 
-        Dictionary<int, Dictionary<dynamic, int>> reservations = new Dictionary<int, Dictionary<dynamic, int>>();
+        public Dictionary<int, Dictionary<dynamic, int>> reservations = new Dictionary<int, Dictionary<dynamic, int>>();
 
-        Dictionary<int, List<List<dynamic>>> blockedHours = new Dictionary<int, List<List<dynamic>>>();
+        public Dictionary<int, List<List<dynamic>>> blockedHours = new Dictionary<int, List<List<dynamic>>>();
 
         public static List<Classroom> getAll()
         {
