@@ -11,6 +11,13 @@ namespace university_scheduler {
         private Dictionary<int, KeyValuePair<int, int>> termLimit = new Dictionary<int, KeyValuePair<int, int>>();
         private List<NumericUpDown> limits;
         private int prog_id;
+
+        public List<int> selectedCourseList;
+        public List<int> oldSelectedCourseList;
+        public List<int> deletedCourseList;
+        public List<int> addedCourseList;
+        bool isEdit = false;
+
         viewProgramForm viewProgramForm = (viewProgramForm)Application.OpenForms["viewProgramForm"];
 
         public addProgramForm() {
@@ -24,6 +31,7 @@ namespace university_scheduler {
             this.prog_id = prog_id;
             loadData();
             saveProgramBTN.Visible = true;
+            isEdit = true;
         }
 
         private void initLimits() {
@@ -80,6 +88,7 @@ namespace university_scheduler {
             if (cn.State == System.Data.ConnectionState.Open) {
                 prog_id = insertProgram(cn);
                 insertProgramTerms(cn);
+                addCourseForProgram(prog_id);
                 MessageBox.Show("Added Program successfully!: " + prog_id);
                 viewProgramForm.loadData();
             }
@@ -108,6 +117,7 @@ namespace university_scheduler {
             if (cn.State == System.Data.ConnectionState.Open) {
                 updateProgram(cn);
                 updateTerms(cn);
+                editProgramForCourse(prog_id);
                 MessageBox.Show("Updated Program successfully!: " + prog_id);
                 viewProgramForm.loadData();
             }
@@ -137,9 +147,95 @@ namespace university_scheduler {
             this.Close();
         }
 
-        private void addProgramForm_Load(object sender, EventArgs e)
-        {
+        private void label7_Click(object sender, EventArgs e) {
 
+        }
+
+        private void label6_Click(object sender, EventArgs e) {
+
+        }
+
+        private void addProgramForm_Load(object sender, EventArgs e) {
+
+        }
+
+        private void selectProgramBTN_Click(object sender, EventArgs e) {
+            selectCourseForm courseForm;
+            if (isEdit && selectedCourseList == null) {//is editing
+                courseForm = new selectCourseForm(this.prog_id);
+            } else {
+                courseForm = new selectCourseForm(selectedCourseList);
+            }
+            DialogResult dialogresult = courseForm.ShowDialog();
+            this.selectedCourseList = courseForm.checkedCourses;
+        }
+
+        private void addCourseForProgram(int id) {
+            for (int i = 0; i < this.selectedCourseList.Count; i++) {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open) {
+                    string query = "insert into program_has_course(course_id,program_id) values(" + this.selectedCourseList[i] + " , " + id + " )";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    //---//
+                }
+                cn.Close();
+            }
+        }
+
+        private void editProgramForCourse(int id) {
+            try {
+                this.deletedCourseList = new List<int>();
+                this.addedCourseList = new List<int>();
+                bringIdsOfCourseHasProgram(id);
+                compareListsCourse(this.oldSelectedCourseList, this.selectedCourseList);
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open) {
+                    for (int j = 0; j < deletedCourseList.Count; j++) {
+                        string query = "DELETE FROM program_has_course WHERE course_id = " + deletedCourseList[j] + "AND program_id = " + id;
+                        SqlCommand cmd = new SqlCommand(query, cn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    for (int j = 0; j < addedCourseList.Count; j++) {
+                        string query = "INSERT INTO program_has_course (program_id, course_id ) VALUES( '" + id + "' , '" + addedCourseList[j]  + "')";
+                        SqlCommand cmd = new SqlCommand(query, cn);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                cn.Close();
+            } catch (Exception e) { }
+        }
+
+        private void bringIdsOfCourseHasProgram(int programId) {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            string query = "SELECT course_id FROM program_has_course WHERE program_id = " + programId;
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
+                SqlDataReader reader = cmd.ExecuteReader();
+                int count = 0;
+                this.oldSelectedCourseList = new List<int>();
+                while (reader.Read()) {
+                    int id = (int)reader.GetValue(0);
+                    oldSelectedCourseList.Insert(count, id);
+                    count++;
+                }
+                reader.Close();
+            }
+        }
+
+        private void compareListsCourse(List<int> oldSelected, List<int> newSelected) {
+            for (int i = 0; i < oldSelected.Count; i++) {
+                if (!newSelected.Contains(oldSelected[i])) {
+                    this.deletedCourseList.Add(oldSelected[i]);
+                }
+            }
+            for (int i = 0; i < newSelected.Count; i++) {
+                if (!oldSelected.Contains(newSelected[i])) {
+                    this.addedCourseList.Add(newSelected[i]);
+                }
+            }
         }
     }
 }
