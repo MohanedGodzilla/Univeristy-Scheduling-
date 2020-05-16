@@ -9,7 +9,7 @@ namespace university_scheduler.Model
 {
     class courseHasResource
     {
-        public string conString = env.db_con_str;
+        public static string conString = env.db_con_str;
         public void insertResource(int dummyCourseId, int dummyResourceId)
         {
             SqlConnection cn = new SqlConnection(conString);
@@ -22,6 +22,27 @@ namespace university_scheduler.Model
                 //---//
             }
             cn.Close();
+        }
+
+        public static List<int> getResourcesIdsOfCourse(int courseId) {
+            List<int> resourcesIds = new List<int>();
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "select resource_id from course_has_resource where course_id = " + courseId;
+                using (SqlCommand cmd = new SqlCommand(query, cn))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        resourcesIds.Add((int)reader.GetValue(0));
+                    }
+                }
+                //---//
+            }
+            cn.Close();
+            return resourcesIds;
         }
     }
 }

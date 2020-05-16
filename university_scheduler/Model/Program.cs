@@ -12,13 +12,14 @@ namespace university_scheduler.Model
         public int id { get; set; }
         public string name { get; set; }
 
-        public string conString = env.db_con_str;
+        public static string conString = env.db_con_str;
 
         List<TermData> termsData = new List<TermData>();
 
-        List<Program> progData = new List<Program>();
-        public List<Program> getAll()
+        
+        public static List<Program> getAll()
         {
+            List<Program> progData = new List<Program>();
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             string query = "SELECT * FROM program";
@@ -27,14 +28,16 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.progData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
+                    progData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
                 }
                 return progData;
             }
+            cn.Close();
         }
 
-        public List<Program> getAll(string dummyName)
+        public static List<Program> getAll(string dummyName)
         {
+            List<Program> progData = new List<Program>();
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             string query = "SELECT * FROM program WHERE name LIKE '% " + dummyName + "%'";
@@ -43,10 +46,11 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.progData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
+                    progData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
                 }
                 return progData;
             }
+            cn.Close();
         }
 
         public void insert(string name)
@@ -70,6 +74,7 @@ namespace university_scheduler.Model
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
             return (int)cmd.ExecuteScalar();
+            cn.Close();
         }
     }
 }

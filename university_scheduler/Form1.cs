@@ -27,10 +27,10 @@ namespace university_scheduler
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
             Generator gen = new Generator();
-           /* gen.generateResource();
+            /*gen.generateResource();
             gen.generateProgram();
-            gen.generateCourse();*/
             gen.generateClassroom();
+            gen.generateCourse();*/
         }
 
         private void courses_view() {

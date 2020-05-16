@@ -12,10 +12,7 @@ namespace university_scheduler.Model
         public int id { get; set; }
         public string name { get; set; }
 
-        public string conString = env.db_con_str;
-        List<Resource> resourceData = new List<Resource>();
-        
-
+        public static string conString = env.db_con_str;
         public override string ToString(){
             return "ID: " + id + "   Name: " + name;
         }
@@ -34,7 +31,8 @@ namespace university_scheduler.Model
             cn.Close();
         }
 
-        public List<Resource> getAll() {
+        public static List<Resource> getAll() {
+            List<Resource> resourceData = new List<Resource>();
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             string query = "SELECT * FROM resource ";
@@ -43,16 +41,16 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.resourceData.Add(new Resource { name = reader.GetValue(1).ToString(), id = (int)reader.GetValue(0) });
+                    resourceData.Add(new Resource { name = reader.GetValue(1).ToString(), id = (int)reader.GetValue(0) });
                 }
-
+                cn.Close();
                 return resourceData;
             }
-            cn.Close();
         }
 
-        public List<Resource> getAll(string dummyName)
+        public static List<Resource> getAll(string dummyName)
         {
+            List<Resource> resourceData = new List<Resource>();
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
             string query = "SELECT * FROM resource where name LIKE '%" + dummyName + "%'";
@@ -61,12 +59,26 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.resourceData.Add(new Resource { name = dummyName, id = (int)reader.GetValue(0) });
+                    resourceData.Add(new Resource { name = dummyName, id = (int)reader.GetValue(0) });
                 }
-
+                cn.Close();
                 return resourceData;
             }
-            cn.Close();
+        }
+
+        public static Resource getResourceById(int dummyResourceID){
+            List<Resource> resourceData = new List<Resource>();
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            string query = "SELECT * FROM resource r WHERE r.id = " + dummyResourceID;
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                Resource res = new Resource { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) };
+                cn.Close();
+                return res;
+            }
         }
     }
 }
