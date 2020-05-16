@@ -21,6 +21,25 @@ namespace university_scheduler.Model
         List<Classroom> classroomData = new List<Classroom>();
         List<Course> courseData = new List<Course>();
 
+        public Reservation() {
+            this.courseId = 0;
+            this.classId = 0;
+            this.day = 0;
+            this.from = 0;
+            this.to = 0;
+            this.isPractice = false;
+        }
+
+        public Reservation(int dummyCourseId, int dummyClassId, int dummyDay, double dummyFrom, double dummyTo,bool dummyIsPractice)
+        {
+            this.courseId = dummyCourseId;
+            this.classId = dummyClassId;
+            this.day = dummyDay;
+            this.from = dummyFrom;
+            this.to = dummyTo;
+            this.isPractice = dummyIsPractice;
+        }
+
         public void insertReserv(int dummyCourseId, int dummyclassId,double dummyFrom, double dummyTo, int dummyDay, bool dummyIsPractice) {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
@@ -50,6 +69,7 @@ namespace university_scheduler.Model
 
                 return reservationData;
             }
+            cn.Close();
         }
 
         public List<Classroom> getClassroom(int dummyClassID)
@@ -67,6 +87,7 @@ namespace university_scheduler.Model
 
                 return classroomData;
             }
+            cn.Close();
         }
 
         public List<Course> getCourse(int dummyCourseID)
@@ -83,6 +104,7 @@ namespace university_scheduler.Model
 
                 return courseData;
             }
+            cn.Close();
         }
     }
 }

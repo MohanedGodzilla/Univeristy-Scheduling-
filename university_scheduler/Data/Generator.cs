@@ -10,8 +10,7 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int programNums = 32;
-        public int courseNums = 500;
+        public int courseNums = 1200;
 
         public void generateResource()
         {
@@ -103,19 +102,19 @@ namespace university_scheduler.Data
                 {
                     courseHasResource CourseRes = new courseHasResource();
                     // you can remove +1 if you move the if statment after calling of insert function
-                    Resource res = resource.getAll(courseNamedID.Substring(0, 3))[0];
-                    
+                    Resource res = Resource.getAll(courseNamedID.Substring(0, 3))[0];
                     CourseRes.insertResource(courseId, res.id);
                 }
 
                 ProgramCourses pc = new ProgramCourses();
-                List<Model.Program> programs = program.getAll();
-                int programsCount = rnd.Next(1, programs.Count/2);
+                List<Model.Program> programs = Model.Program.getAll();
+                int count = programs.Count / 2;
+                int programsCount = rnd.Next(1, count);
                 for (int j = rnd.Next(1,programsCount); j <= programsCount; j++)//j select random number from programsCount to insert differnt random programs
                 {
-                   
                     int programId = programs[j].id;
                     pc.insertProgram(courseId, programId);
+
                 }
                 
             }
@@ -212,7 +211,7 @@ namespace university_scheduler.Data
                 int examCap = lectureCap / 2;
                 room.insert(name, lectureCap, examCap, isLab);
                 if (isLab == 1){
-                    List<Resource> resourses = resource.getAll();
+                    List<Resource> resourses = Resource.getAll();
                     int resId = resourses[rnd.Next(0, resourses.Count)].id;
                     int classId = room.getCurrentClassId();
                     chr.insertResource(classId,resId);
