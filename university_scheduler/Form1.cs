@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using university_scheduler.Data;
 
 namespace university_scheduler
 {
@@ -25,7 +26,11 @@ namespace university_scheduler
         {
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
-
+            Generator gen = new Generator();
+            /*gen.generateResource();
+            gen.generateProgram();
+            gen.generateClassroom();
+            gen.generateCourse();*/
         }
 
         private void courses_view() {
