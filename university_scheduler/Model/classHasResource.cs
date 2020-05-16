@@ -13,7 +13,7 @@ namespace university_scheduler.Model
         public int resourceId { get; set; }
         public List<classHasResource> resourceList { get; set; }
 
-        public string conString = env.db_con_str;
+        public static string conString = env.db_con_str;
 
         public List<classHasResource> getAll()
         {
@@ -62,5 +62,26 @@ namespace university_scheduler.Model
             cn.Close();
         }
 
+        public static List<int> getResourcesIdsOfClass(int classId)
+        {
+            List<int> resourcesIds = new List<int>();
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string query = "select resource_id from class_has_resource where class_id = " + classId;
+                using (SqlCommand cmd = new SqlCommand(query, cn))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        resourcesIds.Add((int)reader.GetValue(0));
+                    }
+                }
+                //---//
+            }
+            cn.Close();
+            return resourcesIds;
+        }
     }
 }

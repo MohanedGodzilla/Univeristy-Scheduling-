@@ -26,6 +26,7 @@ namespace university_scheduler
         {
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
+            /*
             Generator gen = new Generator();
             /*gen.generateResource();
             gen.generateProgram();
@@ -61,6 +62,10 @@ namespace university_scheduler
         {
 
         }
-        
+
+        private void coursesView_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

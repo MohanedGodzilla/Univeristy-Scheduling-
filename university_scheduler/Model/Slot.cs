@@ -18,5 +18,7 @@ namespace university_scheduler.Model
         public int studentCount { get; set; }
 
         List<Resource> termresoursessData = new List<Resource>();
+
+        List<Program> termprogramData = new List<Program>();
     }
 }
