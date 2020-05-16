@@ -24,6 +24,7 @@ namespace university_scheduler.Model {
                 }
                 return progData;
             }
+            cn.Close();
         }
 
         public static List<Program> getAll(string dummyName) {
@@ -38,6 +39,7 @@ namespace university_scheduler.Model {
                 }
                 return progData;
             }
+            cn.Close();
         }
 
         public static Program getProgramById(int programID) {
@@ -77,6 +79,7 @@ namespace university_scheduler.Model {
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
             return (int)cmd.ExecuteScalar();
+            cn.Close();
         }
     }
 }

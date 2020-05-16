@@ -10,7 +10,7 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int courseNums = 500;
+        public int courseNums = 1200;
 
         public void generateResource()
         {
@@ -102,18 +102,19 @@ namespace university_scheduler.Data
                 {
                     courseHasResource CourseRes = new courseHasResource();
                     // you can remove +1 if you move the if statment after calling of insert function
-                    Resource res = resource.getAll(courseNamedID.Substring(0, 3))[0];
-                    
+                    Resource res = Resource.getAll(courseNamedID.Substring(0, 3))[0];
                     CourseRes.insertResource(courseId, res.id);
                 }
 
-                ProgramCourse pc = new ProgramCourse();
+                ProgramCourses pc = new ProgramCourses();
                 List<Model.Program> programs = Model.Program.getAll();
-                int programsCount = rnd.Next(1, programs.Count/2);
+                int count = programs.Count / 2;
+                int programsCount = rnd.Next(1, count);
                 for (int j = rnd.Next(1,programsCount); j <= programsCount; j++)//j select random number from programsCount to insert differnt random programs
                 {
                     int programId = programs[j].id;
                     pc.insertProgram(courseId, programId);
+
                 }
                 
             }

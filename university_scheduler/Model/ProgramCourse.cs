@@ -28,6 +28,8 @@ namespace university_scheduler.Model
                 {
                     progCourseData.Add(new ProgramCourse { programId = (int)reader.GetValue(0), courseId = (int)reader.GetValue(1), isOptional = (int)reader.GetValue(2) });
                 }
+
+                cn.Close();
                 return progCourseData;
             }
         }
@@ -45,6 +47,8 @@ namespace university_scheduler.Model
                 {
                     progCourseData.Add(new ProgramCourse { programId = (int)reader.GetValue(0), courseId = (int)reader.GetValue(1), isOptional = (int)reader.GetValue(2) });
                 }
+
+                cn.Close();
                 return progCourseData;
             }
        }

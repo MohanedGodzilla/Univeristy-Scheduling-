@@ -38,6 +38,7 @@ namespace university_scheduler.Model
                     string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + dummyName + "' , '" + crH + "' , '" + lecH + "' , '" + pracH + "' , '" + labH + "' , '" + dummyTerm + "' , '" + codeNI + "' , '" + val + "' )";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.ExecuteNonQuery();
+                    cn.Close();
                 }
             }catch(Exception e) { }
         }
@@ -55,7 +56,7 @@ namespace university_scheduler.Model
                 {
                     courseData.Add(setCourse(reader));
                 }
-
+                cn.Close();
                 return courseData;
             }
         }
@@ -73,9 +74,10 @@ namespace university_scheduler.Model
                 {
                     courseData.Add(setCourse(reader));
                 }
-
+                cn.Close();
                 return courseData;
             }
+            
         }
 
 
@@ -109,27 +111,20 @@ namespace university_scheduler.Model
             cn.Open();
             string query = "SELECT MAX(id) from course";
             SqlCommand cmd = new SqlCommand(query, cn);
-
             //return (int)cmd.ExecuteScalar();
             //return (int)cmd.ExecuteNonQuery();
-            return (int)cmd.ExecuteScalar();
+            int id = (int)cmd.ExecuteScalar();
+            cn.Close();
+            return id;
         }
 
-        /*public List<Resource> getResource(int dummyResourceID)
-        {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            string query = "SELECT * FROM resource r WHERE r.id = " + dummyResourceID;
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    this.resourceData.Add(new Resource { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
-                }
-
-                return resourceData;
+        public List<Resource> getCourseResources(int courseId) {
+            List<Resource> courseResources = new List<Resource>();
+            List<int> resourcesIds = courseHasResource.getResourcesIdsOfCourse(courseId);
+            foreach (int resourceId in resourcesIds) {
+                courseResources.Add(Resource.getResourceById(resourceId));
             }
-        }*/
+            return courseResources;
+        }
     }
 }

@@ -15,10 +15,37 @@ namespace university_scheduler.Model
         public double section_count { get; set; }
         public int max_days { get; set; }
         public int max_time { get; set; }
-
+        public string conString = env.db_con_str;
+        Dictionary<int, Dictionary<dynamic, int>> schedule;
+        List<TermData> termDataList = new List<TermData>();
         List<Program> programData = new List<Program>();
 
-        public static List<TermData> getAll()
+        public TermData()
+        {
+            this.id = 0;
+            this.term = 0;
+            this.limit = 0;
+            this.max_days = 0;
+            this.max_time = 0;
+        }
+
+        public TermData(int id, int term, int limit,int max_days,int max_time) {
+            this.id = id;
+            this.term = term;
+            this.limit = limit;
+            this.max_days = max_days;
+            this.max_time = max_time;
+            this.schedule = new Dictionary<int, Dictionary<dynamic, int>>();
+            for (int i = 0; i < max_days; i++)
+            {
+                for (double j = 0; j < max_time; j++)
+                {
+                    schedule[i] = new Dictionary<dynamic, int>();
+                }
+            }
+        }
+
+        public List<TermData> getAll()
         {
             List<TermData> termDataList = new List<TermData>();
             SqlConnection cn = new SqlConnection(env.db_con_str);

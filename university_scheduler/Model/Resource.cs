@@ -44,13 +44,12 @@ namespace university_scheduler.Model
                 {
                     resourceData.Add(new Resource { name = reader.GetValue(1).ToString(), id = (int)reader.GetValue(0) });
                 }
-
+                cn.Close();
                 return resourceData;
             }
-            cn.Close();
         }
 
-        public List<Resource> getAll(string dummyName)
+        public static List<Resource> getAll(string dummyName)
         {
             List<Resource> resourceData = new List<Resource>();
             SqlConnection cn = new SqlConnection(env.db_con_str);
@@ -63,10 +62,24 @@ namespace university_scheduler.Model
                 {
                     resourceData.Add(new Resource { name = dummyName, id = (int)reader.GetValue(0) });
                 }
-
+                cn.Close();
                 return resourceData;
             }
-            cn.Close();
+        }
+
+        public static Resource getResourceById(int dummyResourceID){
+            List<Resource> resourceData = new List<Resource>();
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            string query = "SELECT * FROM resource r WHERE r.id = " + dummyResourceID;
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                Resource res = new Resource { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) };
+                cn.Close();
+                return res;
+            }
         }
     }
 }
