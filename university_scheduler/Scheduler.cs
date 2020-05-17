@@ -283,22 +283,21 @@ namespace university_scheduler {
             weightDictionary[weight].Add(slot);
         }
 
-        List<Resource> getResByType(Course course, ResType type) {
-            return course.courseRes.Where((Resource r) => r.resType == type).ToList();
-        }
-
         void generateSlots() {
             foreach (Course course in courses) {
+                List<Resource> resources = course.getCourseResources();
+                List<Model.Program> programs = course.getCoursePrograms();
                 if (course.lectureHours != null && course.lectureHours > 0) {
-                    Slot slot = Slot(
+                    Slot slot = new Slot(
                         slotID,
                         course.id,
                         course.creditHours,
                         course.lectureHours,
-                        getResByType(course, ResType.LECTURE),
-                        course.programs,
                         course.term,
-                        isReq: course.isReq);
+                        false,
+                        course.isReq,
+                        resources,
+                        programs);
 
                     double weight = calcWeight(slot);
                     addToWeightMap(slot, weight);
@@ -306,31 +305,32 @@ namespace university_scheduler {
                     slotID++;
                 }
                 if (course.practiceHours != null && course.practiceHours > 0) {
-                    Slot slot = Slot(
+                    Slot slot = new Slot(
                         slotID,
                         course.id,
                         course.creditHours,
                         course.practiceHours,
-                        getResByType(course, ResType.PRACTICE),
-                        course.programs,
                         course.term,
-                        isReq: course.isReq);
+                        false,
+                        course.isReq,
+                        resources,
+                        programs);
 
                     double weight = calcWeight(slot);
                     addToWeightMap(slot, weight);
                     slotID++;
                 }
                 if (course.labHours != null && course.labHours > 0) {
-                    Slot slot = Slot(
-                        slotID,
+                    Slot slot = new Slot(
+                         slotID,
                         course.id,
                         course.creditHours,
                         course.labHours,
-                        getResByType(course, ResType.LAB),
-                        course.programs,
                         course.term,
-                        isLab: true,
-                        isReq: course.isReq);
+                        true,
+                        course.isReq,
+                        resources,
+                        programs);
 
                     double weight = calcWeight(slot);
                     addToWeightMap(slot, weight);
@@ -379,9 +379,16 @@ namespace university_scheduler {
         }
 
         Slot copySlot(Slot slot, List<Model.Program> programs) {
-            Slot copySlot = Slot(slotID, slot.courseId, slot.creditHours, slot.hours,
-                slot.resources, programs, slot.term,
-                isLab: slot.isLab);
+            Slot copySlot = new  Slot(
+                         slotID,
+                        slot.id,
+                        slot.creditHours,
+                        slot.hours,
+                        slot.term,
+                        slot.isLab,
+                        slot.isReq,
+                        slot.resources,
+                        slot.programs);
             slotID++;
             return copySlot;
         }

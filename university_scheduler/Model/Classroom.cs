@@ -10,7 +10,7 @@ namespace university_scheduler.Model
         public string name { get; set; }
         public int lectureCap { get; set; }
         public int examCap { get; set; }
-        public int isLab { get; set; }
+        public bool isLab { get; set; }
         public double max_time { get; set; }
         public int max_days { get; set; }
 

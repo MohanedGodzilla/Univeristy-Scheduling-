@@ -104,7 +104,11 @@ namespace university_scheduler.Model
             return programs;
         }
 
-        public int getCurrentCourseId()
+        public List<Program> getCoursePrograms() {
+            return getCoursePrograms(this.id);
+        }
+
+            public int getCurrentCourseId()
         {
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
@@ -117,9 +121,9 @@ namespace university_scheduler.Model
             return id;
         }
 
-        public List<Resource> getCourseResources(int courseId) {
+        public List<Resource> getCourseResources() {
             List<Resource> courseResources = new List<Resource>();
-            List<int> resourcesIds = courseHasResource.getResourcesIdsOfCourse(courseId);
+            List<int> resourcesIds = courseHasResource.getResourcesIdsOfCourse(this.id);
             foreach (int resourceId in resourcesIds) {
                 courseResources.Add(Resource.getResourceById(resourceId));
             }
