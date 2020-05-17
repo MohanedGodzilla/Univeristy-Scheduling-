@@ -14,7 +14,7 @@ namespace university_scheduler.Model
 
         public static string conString = env.db_con_str;
 
-        List<TermData> termsData = new List<TermData>();
+        TermData termsData;
 
         public static List<Program> getAll()
         {
@@ -75,17 +75,17 @@ namespace university_scheduler.Model
             return (int)cmd.ExecuteScalar();
         }
 
-        public List<TermData> getTermData(int progId)
+        public TermData getTermData(int term)
         {
             SqlConnection cn = new SqlConnection(conString);
             cn.Open();
-            string query = "SELECT (id, term, limit, section_count) from term_program_limit where program_id = '" + progId + "'";
+            string query = "SELECT (id, term, limit, section_count) from term_program_limit where program_id = '" + id + "' and term = '"+term+"'";
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    termsData.Add(new TermData { id = (int)reader.GetValue(0), term = (int)reader.GetValue(2), limit = (int)reader.GetValue(3), section_count = (int)reader.GetValue(4) });
+                    termsData = new TermData { id = (int)reader.GetValue(0), term = (int)reader.GetValue(2), limit = (int)reader.GetValue(3), section_count = (int)reader.GetValue(4) };
                 }
                 return termsData;
             }
