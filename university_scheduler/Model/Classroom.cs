@@ -91,9 +91,24 @@ namespace university_scheduler.Model
             return classResources;
         }
         
-        public bool isHourBlocked(List<List<dynamic>> hoursToChecke)
+        /// if not blocked return -1
+        /// if blocked return the end of the blocked Hours 
+        public double isHourBlocked(int day, double from, double to)
         {
-            return blockedHours.ContainsValue(hoursToChecke);
+            if (this.blockedHours != null && this.blockedHours[day] != null)
+            {
+                for (int i = 0; i < this.blockedHours[day].Count; i++)
+                {
+                    double blockedFrom = this.blockedHours[day][i][0];
+                    double blockedTo = this.blockedHours[day][i][1];
+                    if (from >= blockedFrom && from <= blockedTo || to >= blockedFrom && to <= blockedTo)
+                    {
+                        return blockedTo;
+                    }
+                }
+            }
+            return -1; //not blocked 
         }
+
     }
 }
