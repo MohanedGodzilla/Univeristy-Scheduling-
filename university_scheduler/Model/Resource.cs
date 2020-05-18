@@ -69,7 +69,7 @@ namespace university_scheduler.Model
 
         public static Resource getResourceById(int dummyResourceID){
             List<Resource> resourceData = new List<Resource>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM resource r WHERE r.id = " + dummyResourceID;
             using (SqlCommand cmd = new SqlCommand(query, cn))

@@ -32,8 +32,9 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
+                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = ((int)reader.GetValue(4) == 0 ? false : true)});
                 }
+                cn.Close();
                 return classrooms;
             }
         }
@@ -49,8 +50,9 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (int)reader.GetValue(4) });
+                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = ((int)reader.GetValue(4) == 0 ? false : true) });
                 }
+                cn.Close();
                 return classrooms;
             }
         }
@@ -65,9 +67,8 @@ namespace university_scheduler.Model
                 string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values( '" + name + "' ,'" + lecCap + "' ,'" + examCap + "','" + isLab + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
-
+                cn.Close();
             }
-            cn.Close();
         }
 
         public int getCurrentClassId()
@@ -76,8 +77,10 @@ namespace university_scheduler.Model
             cn.Open();
             string query = "SELECT MAX(id) from class";
             SqlCommand cmd = new SqlCommand(query, cn);
-           // cmd.ExecuteNonQuery();
-            return (int)cmd.ExecuteScalar();
+            // cmd.ExecuteNonQuery();
+            int val = (int)cmd.ExecuteScalar();
+            cn.Close();
+            return val;
         }
         public List<Resource> getClassResources(int classId)
         {

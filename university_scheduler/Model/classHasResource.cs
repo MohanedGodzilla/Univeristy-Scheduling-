@@ -28,6 +28,7 @@ namespace university_scheduler.Model
                     classHasResources.Add(new classHasResource { classId = (int)reader.GetValue(1), resourceId = (int)reader.GetValue(2) });
                     
                 }
+                cn.Close();
                 return classHasResources;
             }
         }
@@ -46,6 +47,7 @@ namespace university_scheduler.Model
                     classHasResources.Add(new classHasResource { classId = (int)reader.GetValue(1), resourceId = (int)reader.GetValue(2) });
 
                 }
+                cn.Close();
                 return classHasResources;
             }
         }
@@ -66,7 +68,7 @@ namespace university_scheduler.Model
         public static List<int> getResourcesIdsOfClass(int classId)
         {
             List<int> resourcesIds = new List<int>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {

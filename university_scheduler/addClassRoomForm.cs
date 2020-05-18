@@ -76,6 +76,7 @@ namespace university_scheduler
                     count++;
                 }
                 reader.Close();
+                cn.Close();
             }
         }
 
@@ -135,7 +136,9 @@ namespace university_scheduler
             string query = "SELECT MAX(id) from class";
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
-            return (int)cmd.ExecuteScalar();
+            int val = (int)cmd.ExecuteScalar();
+            cn.Close();
+            return val;
         }
 
         private void addClassBTN_Click(object sender, EventArgs e)
@@ -162,6 +165,7 @@ namespace university_scheduler
                 {
                     addResourceForClass(this.current_id);
                 }
+                cn.Close();
                 MessageBox.Show("Adding class successfully..!");
                 this.Close();
             }
@@ -182,6 +186,7 @@ namespace university_scheduler
                     editResourceForClass(selected_id);
                 }
                 MessageBox.Show("updateing class successfully..!");
+                cn.Close();
                 this.Close();
             }
 
@@ -212,6 +217,7 @@ namespace university_scheduler
                         }
                     }
                     reader.Close();
+                    cn.Close();
                 }
             }
         }

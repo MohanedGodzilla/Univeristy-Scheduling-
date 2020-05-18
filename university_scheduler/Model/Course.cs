@@ -97,8 +97,8 @@ namespace university_scheduler.Model
 
         private static List<Program> getCoursePrograms(int courseID) {
             List<Program> programs = new List<Program>();
-            List<ProgramCourse> programCourses = ProgramCourse.getCoursePrograms(courseID);
-            foreach (ProgramCourse programCourse in programCourses) {
+            List<ProgramCourses> programCourses = ProgramCourses.getCoursePrograms(courseID);
+            foreach (ProgramCourses programCourse in programCourses) {
                programs.Add(Program.getProgramById(programCourse.programId));
             }
             return programs;

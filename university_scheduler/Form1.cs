@@ -6,6 +6,7 @@ namespace university_scheduler
 {
     public partial class NoScheduleHome : Form
     {
+        Scheduler scheduler;
         public NoScheduleHome()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace university_scheduler
              gen.generateProgram();
              gen.generateCourse();
              gen.generateClassroom();*/
-            Scheduler scheduler = new Scheduler();
+            scheduler = new Scheduler();
 
         }
 
@@ -61,6 +62,10 @@ namespace university_scheduler
         private void coursesView_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void generateBTN_Click(object sender, EventArgs e) {
+           // scheduler.start();
         }
     }
 }

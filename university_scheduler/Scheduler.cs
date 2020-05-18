@@ -39,10 +39,9 @@ namespace university_scheduler {
 
         public Scheduler() {
             seedData();
-            //start();
         }
 
-        void start() {
+        public void start() {
             resDictionary = new Dictionary<int, Reservation>();
             weightResDictionary = new Dictionary<double, List<int>>();
 
@@ -143,8 +142,7 @@ namespace university_scheduler {
                     } else {
                         day = maxDaysO - dayIteration;
                     }
-                    List<Classroom> typeClassRooms =
-                        classRooms.Where((room) => (room.isLab == slot.isLab)).ToList();
+                    List<Classroom> typeClassRooms = classRooms.Where((room) => (room.isLab == slot.isLab)).ToList();
                     foreach (Classroom classRoom in typeClassRooms) {
                         int slotCap = slot.studentCount;
                         if (slotCap > classRoom.lectureCap) {
@@ -441,6 +439,7 @@ namespace university_scheduler {
         void seedData() {
             courses = Course.getAll();
             classRooms = Classroom.getAll();
+            Console.WriteLine("WOOOOW");
         }
     }
 }
