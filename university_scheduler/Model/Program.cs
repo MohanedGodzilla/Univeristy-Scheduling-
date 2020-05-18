@@ -5,57 +5,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace university_scheduler.Model
-{
-    class Program
-    {
+namespace university_scheduler.Model {
+    class Program {
         public int id { get; set; }
         public string name { get; set; }
 
         public static string conString = env.db_con_str;
 
-        TermData termsData;
+        List<TermData> termsData;
 
-        public static List<Program> getAll()
-        {
+
+
+        public static List<Program> getAll() {
             List<Program> progData = new List<Program>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM program";
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
+                while (reader.Read()) {
                     progData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
                 }
+                cn.Close();
+                progData.ForEach((Program prog)=>{ prog.termsData = TermData.getProgramTermData(prog.id); });
                 return progData;
             }
         }
 
-        public static List<Program> getAll(string dummyName)
-        {
+        public static List<Program> getAll(string dummyName) {
             List<Program> progData = new List<Program>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM program WHERE name LIKE '% " + dummyName + "%'";
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
+                while (reader.Read()) {
                     progData.Add(new Program { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) });
                 }
+                cn.Close();
                 return progData;
             }
         }
 
-        public void insert(string name)
-        {
-            SqlConnection cn = new SqlConnection(conString);
+        public static Program getProgramById(int programID) {
+
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
-            {
+            string query = $"SELECT * FROM program WHERE id = {programID}";
+            Program program;
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                program = new Program {
+                    id = (int)reader.GetValue(0),
+                    name = (string)reader.GetValue(1),
+                };
+                program.termsData = TermData.getProgramTermData(program.id);
+                cn.Close();
+            }
+            return program;
+        }
+
+        public void insert(string name) {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open) {
                 string query = "insert into program(name) values( '" + name + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
@@ -63,9 +77,8 @@ namespace university_scheduler.Model
             cn.Close();
         }
 
-        public int getCurrentProgramId()
-        {
-            SqlConnection cn = new SqlConnection(conString);
+        public int getCurrentProgramId() {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT MAX(id) from program";
             SqlCommand cmd = new SqlCommand(query, cn);
@@ -77,18 +90,7 @@ namespace university_scheduler.Model
 
         public TermData getTermData(int term)
         {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            string query = "SELECT (id, term, limit, section_count) from term_program_limit where program_id = '" + id + "' and term = '"+term+"'";
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    termsData = new TermData { id = (int)reader.GetValue(0), term = (int)reader.GetValue(2), limit = (int)reader.GetValue(3), section_count = (int)reader.GetValue(4) };
-                }
-                return termsData;
-            }
+           return termsData.First((TermData tD)=>{ return tD.term == term; });
         }
 
     }

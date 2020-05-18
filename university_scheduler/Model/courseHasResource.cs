@@ -9,10 +9,10 @@ namespace university_scheduler.Model
 {
     class courseHasResource
     {
-        public static string conString = env.db_con_str;
+        
         public void insertResource(int dummyCourseId, int dummyResourceId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
@@ -26,7 +26,7 @@ namespace university_scheduler.Model
 
         public static List<int> getResourcesIdsOfCourse(int courseId) {
             List<int> resourcesIds = new List<int>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {

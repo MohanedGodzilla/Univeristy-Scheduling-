@@ -11,6 +11,8 @@ namespace university_scheduler.Data
     {
         public string conString = env.db_con_str;
         public int courseNums = 1200;
+        public static int max_days=6;
+        public static int max_time=10;
 
         public void generateResource()
         {
@@ -153,7 +155,9 @@ namespace university_scheduler.Data
                 "Physcics and Computer Science" ,
                 "Physics-Chemistry" ,
                 "Applied Biotechnology" ,
-                "Materials and Nanosciences" };
+                "Materials and Nanosciences" ,
+                "NanoTechnology"
+            };
 
             Model.Program program = new Model.Program();
             for (int i = 0; i < progNames.Count; i++)
@@ -166,12 +170,11 @@ namespace university_scheduler.Data
 
         public void generateTermData(int progId)
         {
-            TermData termData = new TermData();
             for (int termInd = 1; termInd <= 8; termInd++)
             {
                 Random rnd = new Random();
                 int limit = rnd.Next(30, 120);
-                termData.insert(termInd, limit, progId);
+                TermData.insert(termInd, limit, progId);
             }
         }
 

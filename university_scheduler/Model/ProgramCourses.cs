@@ -13,12 +13,12 @@ namespace university_scheduler.Model
         public int courseId { get; set; }
         public int isOptional { get; set; }
 
-        public string conString = env.db_con_str;
 
-        List<ProgramCourses> progCourseData = new List<ProgramCourses>();
+        
         public List<ProgramCourses> getAll()
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<ProgramCourses> progCourseData = new List<ProgramCourses>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM program_has_course";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -26,7 +26,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.progCourseData.Add(new ProgramCourses { programId = (int)reader.GetValue(0), courseId = (int)reader.GetValue(1), isOptional = (int)reader.GetValue(2) });
+                    progCourseData.Add(new ProgramCourses { programId = (int)reader.GetValue(1), courseId = (int)reader.GetValue(2), isOptional = (short)reader.GetValue(3) });
                 }
 
                 cn.Close();
@@ -36,7 +36,8 @@ namespace university_scheduler.Model
 
         public List<ProgramCourses> getAll(string dummyName)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            List<ProgramCourses> progCourseData = new List<ProgramCourses>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM program_has_course WHERE name LIKE '% " + dummyName + "%'";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -44,7 +45,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.progCourseData.Add(new ProgramCourses { programId = (int)reader.GetValue(0), courseId = (int)reader.GetValue(1), isOptional = (int)reader.GetValue(2) });
+                    progCourseData.Add(new ProgramCourses { programId = (int)reader.GetValue(1), courseId = (int)reader.GetValue(2), isOptional = (short)reader.GetValue(3) });
                 }
 
                 cn.Close();
@@ -52,9 +53,24 @@ namespace university_scheduler.Model
             }
        }
 
+        public static List<ProgramCourses> getCoursePrograms(int course_id) {
+            List<ProgramCourses> progCourseData = new List<ProgramCourses>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = $"SELECT * FROM program_has_course WHERE course_id = {course_id}";
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read()) {
+                    progCourseData.Add(new ProgramCourses { programId = (int)reader.GetValue(1), courseId = (int)reader.GetValue(2), isOptional = (short)reader.GetValue(3) });
+                }
+                cn.Close();
+                return progCourseData;
+            }
+        }
+
         public void insertProgram(int dummyCourseId, int dummyProgramId)
         {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {

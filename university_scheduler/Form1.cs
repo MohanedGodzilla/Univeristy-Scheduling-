@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using university_scheduler.Data;
 
@@ -13,6 +6,7 @@ namespace university_scheduler
 {
     public partial class NoScheduleHome : Form
     {
+        Scheduler scheduler;
         public NoScheduleHome()
         {
             InitializeComponent();
@@ -28,10 +22,12 @@ namespace university_scheduler
             etInput.ShowUpDown = true;
             /*
             Generator gen = new Generator();
-            /*gen.generateResource();
-            gen.generateProgram();
-            gen.generateClassroom();
-            gen.generateCourse();*/
+            /* gen.generateResource();
+             gen.generateProgram();
+             gen.generateCourse();
+             gen.generateClassroom();*/
+            scheduler = new Scheduler();
+
         }
 
         private void courses_view() {
@@ -66,6 +62,10 @@ namespace university_scheduler
         private void coursesView_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void generateBTN_Click(object sender, EventArgs e) {
+           // scheduler.start();
         }
     }
 }

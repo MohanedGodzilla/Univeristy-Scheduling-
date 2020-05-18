@@ -34,6 +34,7 @@ namespace university_scheduler
                         da.Fill(dt);
                     }
                     this.resourceData.DataSource = dt;
+                    cn.Close();
                 }
             }
         }
@@ -72,6 +73,7 @@ namespace university_scheduler
                 this.loaddata();
                 this.resourceData.Update();
                 this.resourceData.Refresh();
+                cn.Close();
                 //---//
                 MessageBox.Show("Resource is deleted successfully..!");
 

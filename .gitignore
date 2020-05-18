@@ -9,3 +9,4 @@ university_scheduler/bin/Debug/university_scheduler.pdb
 course_scheduler_log.ldf
 .vs/university_scheduler/v16/.suo
 *.pdb
+course_scheduler.mdf

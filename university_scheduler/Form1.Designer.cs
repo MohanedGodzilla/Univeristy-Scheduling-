@@ -137,6 +137,7 @@
             this.generateBTN.ForeColor = System.Drawing.Color.Black;
             this.generateBTN.Name = "generateBTN";
             this.generateBTN.UseVisualStyleBackColor = false;
+            this.generateBTN.Click += new System.EventHandler(this.generateBTN_Click);
             // 
             // NoScheduleHome
             // 

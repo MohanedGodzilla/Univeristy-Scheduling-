@@ -122,6 +122,7 @@ namespace university_scheduler
                     count++;
                 }
                 reader.Close();
+                cn.Close();
             }
         }
         private void bringIdsOfCourseHasProgram(int courseId)
@@ -141,6 +142,7 @@ namespace university_scheduler
                     count++;
                 }
                 reader.Close();
+                cn.Close();
             }
         }
 
@@ -252,7 +254,9 @@ namespace university_scheduler
             string query = "SELECT MAX(id) from course";
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
-            return (int)cmd.ExecuteScalar();
+            int val = (int)cmd.ExecuteScalar();
+            cn.Close();
+            return val;
         }
 
         private void addCourseBTN_Click(object sender, EventArgs e)
@@ -279,6 +283,7 @@ namespace university_scheduler
                 MessageBox.Show("Adding course successfully..!");
                 this.Close();
             }
+            cn.Close();
         }
 
         private void saveBTN_Click(object sender, EventArgs e)
@@ -305,6 +310,7 @@ namespace university_scheduler
                     editProgramForCourse(selected_id);
                     //---//
                     MessageBox.Show("updateing course successfully...!");
+                    cn.Close();
                     this.Close();
                 }
             }catch(SqlException se)
@@ -340,6 +346,7 @@ namespace university_scheduler
                     reader.Close();
 
                 }
+                cn.Close();
 
             }
         }

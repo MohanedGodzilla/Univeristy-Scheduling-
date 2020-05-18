@@ -12,14 +12,15 @@ namespace university_scheduler.Model
         public int id { get; set; }
         public string name { get; set; }
 
-        public static string conString = env.db_con_str;
+        
+
         public override string ToString(){
             return "ID: " + id + "   Name: " + name;
         }
 
 
         public void insertResource(string dummyName) {
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
@@ -33,7 +34,7 @@ namespace university_scheduler.Model
 
         public static List<Resource> getAll() {
             List<Resource> resourceData = new List<Resource>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM resource ";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -51,7 +52,7 @@ namespace university_scheduler.Model
         public static List<Resource> getAll(string dummyName)
         {
             List<Resource> resourceData = new List<Resource>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM resource where name LIKE '%" + dummyName + "%'";
             using (SqlCommand cmd = new SqlCommand(query, cn))
@@ -68,7 +69,7 @@ namespace university_scheduler.Model
 
         public static Resource getResourceById(int dummyResourceID){
             List<Resource> resourceData = new List<Resource>();
-            SqlConnection cn = new SqlConnection(conString);
+            SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT * FROM resource r WHERE r.id = " + dummyResourceID;
             using (SqlCommand cmd = new SqlCommand(query, cn))

@@ -34,6 +34,7 @@ namespace university_scheduler
                         da.Fill(dt);
                     }
                     this.courseData.DataSource = dt;
+                    cn.Close();
                 }
             }
         }
@@ -51,6 +52,7 @@ namespace university_scheduler
                         da.Fill(dt);
                     }
                     this.courseData.DataSource = dt;
+                    cn.Close();
                 }
             }
         }
@@ -97,7 +99,7 @@ namespace university_scheduler
                 this.courseData.Refresh();
                 //---//
                 MessageBox.Show("Course is deleted successfully..!");
-
+                cn.Close();
             }
         }
 
