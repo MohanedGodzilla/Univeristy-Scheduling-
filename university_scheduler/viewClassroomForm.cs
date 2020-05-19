@@ -12,6 +12,10 @@ namespace university_scheduler
         {
             InitializeComponent();
             this.loaddata();
+            classData.Columns[0].Width = 40;
+            classData.Columns[1].Width = 120;
+            classData.Columns[2].Width = 60;
+            classData.Columns[3].Width = 60;
         }
 
         private void viewClassroomForm_Load_1(object sender, EventArgs e)
@@ -19,7 +23,7 @@ namespace university_scheduler
             using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM class", cn))
+                using (SqlCommand cmd = new SqlCommand("SELECT id,name,lecture_capacity as 'lec cap' , exam_capacity as 'exam cap'  FROM class", cn))
                 {
                     DataTable dt = new DataTable();
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -35,7 +39,7 @@ namespace university_scheduler
             using (SqlConnection cn = new SqlConnection(conString))
             {
                 cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM class", cn))
+                using (SqlCommand cmd = new SqlCommand("SELECT id,name,lecture_capacity as 'lec cap' , exam_capacity as 'exam cap' FROM class", cn))
                 {
                     DataTable dt = new DataTable();
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))

@@ -36,6 +36,8 @@ namespace university_scheduler
                     this.resourceData.DataSource = dt;
                     cn.Close();
                 }
+                resourceData.Columns[0].Width = 40;
+                resourceData.Columns[1].Width = 150;
             }
         }
 
