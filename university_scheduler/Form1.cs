@@ -26,7 +26,7 @@ namespace university_scheduler
              gen.generateProgram();
              gen.generateCourse();
              gen.generateClassroom();*/
-            scheduler = new Scheduler();
+            //scheduler = new Scheduler();
 
         }
 
@@ -65,7 +65,7 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-           // scheduler.start();
+            //scheduler.start();
         }
     }
 }

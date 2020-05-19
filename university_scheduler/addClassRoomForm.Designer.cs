@@ -50,7 +50,7 @@
             this.saveClassBTN.BackColor = System.Drawing.Color.LimeGreen;
             this.saveClassBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.saveClassBTN.ForeColor = System.Drawing.Color.White;
-            this.saveClassBTN.Location = new System.Drawing.Point(15, 243);
+            this.saveClassBTN.Location = new System.Drawing.Point(20, 243);
             this.saveClassBTN.Name = "saveClassBTN";
             this.saveClassBTN.Size = new System.Drawing.Size(90, 32);
             this.saveClassBTN.TabIndex = 17;
@@ -63,7 +63,7 @@
             this.addClassBTN.BackColor = System.Drawing.Color.LimeGreen;
             this.addClassBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.addClassBTN.ForeColor = System.Drawing.Color.White;
-            this.addClassBTN.Location = new System.Drawing.Point(139, 243);
+            this.addClassBTN.Location = new System.Drawing.Point(130, 243);
             this.addClassBTN.Name = "addClassBTN";
             this.addClassBTN.Size = new System.Drawing.Size(90, 32);
             this.addClassBTN.TabIndex = 15;
@@ -76,7 +76,7 @@
             this.cancelClassBTN.BackColor = System.Drawing.Color.Red;
             this.cancelClassBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.cancelClassBTN.ForeColor = System.Drawing.SystemColors.Control;
-            this.cancelClassBTN.Location = new System.Drawing.Point(287, 243);
+            this.cancelClassBTN.Location = new System.Drawing.Point(239, 243);
             this.cancelClassBTN.Name = "cancelClassBTN";
             this.cancelClassBTN.Size = new System.Drawing.Size(91, 32);
             this.cancelClassBTN.TabIndex = 14;
@@ -88,7 +88,7 @@
             // 
             this.examCounter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.examCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.examCounter.Location = new System.Drawing.Point(187, 112);
+            this.examCounter.Location = new System.Drawing.Point(155, 110);
             this.examCounter.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -132,7 +132,7 @@
             // 
             this.lecCounter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.lecCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lecCounter.Location = new System.Drawing.Point(187, 62);
+            this.lecCounter.Location = new System.Drawing.Point(155, 66);
             this.lecCounter.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -144,15 +144,15 @@
             // 
             // className
             // 
-            this.className.Location = new System.Drawing.Point(187, 19);
+            this.className.Location = new System.Drawing.Point(155, 22);
             this.className.Name = "className";
-            this.className.Size = new System.Drawing.Size(191, 20);
+            this.className.Size = new System.Drawing.Size(175, 20);
             this.className.TabIndex = 19;
             // 
             // selectResource
             // 
             this.selectResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectResource.Location = new System.Drawing.Point(187, 184);
+            this.selectResource.Location = new System.Drawing.Point(153, 188);
             this.selectResource.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectResource.Name = "selectResource";
             this.selectResource.Size = new System.Drawing.Size(86, 23);
@@ -184,7 +184,7 @@
             // isLab
             // 
             this.isLab.AutoSize = true;
-            this.isLab.Location = new System.Drawing.Point(187, 154);
+            this.isLab.Location = new System.Drawing.Point(155, 155);
             this.isLab.Name = "isLab";
             this.isLab.Size = new System.Drawing.Size(26, 17);
             this.isLab.TabIndex = 24;
@@ -196,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 306);
+            this.ClientSize = new System.Drawing.Size(343, 290);
             this.Controls.Add(this.isLab);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

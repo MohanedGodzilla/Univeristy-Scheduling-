@@ -19,6 +19,11 @@ namespace university_scheduler
         {
             InitializeComponent();
             this.loaddata();
+            courseData.Columns[0].Width = 40;
+            courseData.Columns[1].Width = 110;
+            courseData.Columns[3].Width = 60;
+            courseData.Columns[4].Width = 60;
+            courseData.Columns[5].Width = 60;
         }
 
         private void viewCoursesForm_Load(object sender, EventArgs e)

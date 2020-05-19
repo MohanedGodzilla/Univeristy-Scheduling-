@@ -67,12 +67,12 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 5;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
@@ -82,7 +82,7 @@
             this.deleteCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteCourseBTN.Location = new System.Drawing.Point(3, 128);
+            this.deleteCourseBTN.Location = new System.Drawing.Point(3, 113);
             this.deleteCourseBTN.Name = "deleteCourseBTN";
             this.deleteCourseBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteCourseBTN.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.editCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editCourseBTN.Location = new System.Drawing.Point(3, 72);
+            this.editCourseBTN.Location = new System.Drawing.Point(3, 62);
             this.editCourseBTN.Name = "editCourseBTN";
             this.editCourseBTN.Size = new System.Drawing.Size(171, 37);
             this.editCourseBTN.TabIndex = 1;
@@ -108,7 +108,7 @@
             this.newCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newCourseBTN.Location = new System.Drawing.Point(3, 16);
+            this.newCourseBTN.Location = new System.Drawing.Point(3, 11);
             this.newCourseBTN.Name = "newCourseBTN";
             this.newCourseBTN.Size = new System.Drawing.Size(171, 37);
             this.newCourseBTN.TabIndex = 0;
@@ -131,11 +131,12 @@
             // 
             this.courseData.AllowUserToAddRows = false;
             this.courseData.AllowUserToDeleteRows = false;
-            this.courseData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.courseData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.courseData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.courseData.Location = new System.Drawing.Point(0, 0);
             this.courseData.Name = "courseData";
             this.courseData.ReadOnly = true;
+            this.courseData.RowHeadersWidth = 51;
             this.courseData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.courseData.Size = new System.Drawing.Size(611, 444);
             this.courseData.TabIndex = 0;
