@@ -20,9 +20,9 @@ namespace university_scheduler
         {
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
-            /*
-            Generator gen = new Generator();
-            /* gen.generateResource();
+            
+            /*Generator gen = new Generator();
+             gen.generateResource();
              gen.generateProgram();
              gen.generateCourse();
              gen.generateClassroom();*/
@@ -65,7 +65,7 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-           // scheduler.start();
+           scheduler.start();
         }
     }
 }

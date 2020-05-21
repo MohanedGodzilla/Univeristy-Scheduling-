@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using university_scheduler.Model;
 
@@ -13,7 +14,7 @@ namespace university_scheduler {
         const String REASON_CLASS_TIME = "class_time";
         const String REASON_DAYLIMIT = "day_limit";
         const String REASON_CLASS_BLOCKED_HOURS = "class_blocked_hours";
-
+        private static Semaphore sem = new Semaphore(1, 1);
         //LOGIC VARS
         int slotID = 0;
         List<Course> courses;
@@ -42,6 +43,7 @@ namespace university_scheduler {
         }
 
         public void start() {
+            sem.WaitOne();
             resDictionary = new Dictionary<int, Reservation>();
             weightResDictionary = new Dictionary<double, List<int>>();
 
@@ -55,7 +57,7 @@ namespace university_scheduler {
                 labHours += course.practiceHours;
             });
             Console.WriteLine(programWF + hourWF + actualHourWF);
-            Console.WriteLine("LH:$totalLectureHours\nPH:$practiceHours\nLabH:$labHours\n++++++++");
+            Console.WriteLine($"LH:{totalLectureHours}\nPH:{practiceHours}\nLabH:{labHours}\n++++++++");
 
             List<double> sortedWeights = sortWeights();
             classRooms = sortingClassRooms(classRooms);
@@ -76,7 +78,7 @@ namespace university_scheduler {
                     String reason = conflict["reason"];
 
                     confCount[reason]++;
-                    if (weightResDictionary[sortedWeights[i]] != null) {
+                    if (weightResDictionary.ContainsKey(sortedWeights[i]) && weightResDictionary[sortedWeights[i]] != null) {
                         foreach (int resId in weightResDictionary[sortedWeights[i]]) {
                             resDictionary.Remove(resId);
                         }
@@ -106,7 +108,7 @@ namespace university_scheduler {
                             weightResDictionary[newWeight] = new List<int>();
                             i = 1;
                         }
-                        if (weightResDictionary[sortedWeights[i - 1]] != null) {
+                        if (weightResDictionary.ContainsKey(sortedWeights[i - 1]) && weightResDictionary[sortedWeights[i - 1]] != null) {
                             foreach (int resId in weightResDictionary[sortedWeights[i - 1]]) {
                                 resDictionary.Remove(resId);
                             }
@@ -117,12 +119,11 @@ namespace university_scheduler {
                 }
             }
             cleanResDictionary();
-            Console.WriteLine("Done: ${s.elapsed}\n");
             Console.WriteLine(
-                "NEW COUNT $maxRes\nAfter ${s.elapsed.inSeconds - lastDuration.inSeconds} seconds\nTotals Res:$resInc\n=======");
+                $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
             Console.WriteLine(confCount);
+            sem.Release(1);
         }
-
 
         Dictionary<String, dynamic> reserve(double weight, List<Slot> slots) {
             String reason = "";
@@ -169,7 +170,7 @@ namespace university_scheduler {
                                 continue;
                             }
 
-                            if (classRoom.reservations[day][time] == null ||
+                            if (!classRoom.reservations[day].ContainsKey(time) ||
                                 !resDictionary.ContainsKey(classRoom.reservations[day][time])) {
                                 //if classroom has an empty hour
                                 bool isClassEmpty = true;
@@ -191,7 +192,7 @@ namespace university_scheduler {
                                 for (double k = time + 1; k < time + slot.hours; k++) {
                                     //does it have enough slots for the course hours
 
-                                    if (classRoom.reservations[day][k] != null &&
+                                    if (classRoom.reservations[day].ContainsKey(k) &&
                                         resDictionary.ContainsKey(classRoom.reservations[day][k])) {
                                         isClassEmpty = false;
                                         time = k; // el time aslan hayzeed 1 foooo2
@@ -208,7 +209,7 @@ namespace university_scheduler {
                                     TermData termData = program.getTermData(slot.term);
                                     reason = REASON_PROG_TIME;
                                     for (double k = time; k < time + slot.hours; k++) {
-                                        if (termData.schedule[day][k] != null &&
+                                        if (termData.schedule[day].ContainsKey(k) &&
                                             resDictionary.ContainsKey(termData.schedule[day][k])) {
                                             isProgramsAvailable = false;
                                             time = k; //el time aslan hayzeed 1 foooo2
@@ -285,7 +286,7 @@ namespace university_scheduler {
             foreach (Course course in courses) {
                 List<Resource> resources = course.getCourseResources();
                 List<Model.Program> programs = course.getCoursePrograms();
-                if (course.lectureHours != null && course.lectureHours > 0) {
+                if (course.lectureHours > 0) {
                     Slot slot = new Slot(
                         slotID,
                         course.id,
@@ -302,7 +303,7 @@ namespace university_scheduler {
 
                     slotID++;
                 }
-                if (course.practiceHours != null && course.practiceHours > 0) {
+                if (course.practiceHours > 0) {
                     Slot slot = new Slot(
                         slotID,
                         course.id,
@@ -318,7 +319,7 @@ namespace university_scheduler {
                     addToWeightMap(slot, weight);
                     slotID++;
                 }
-                if (course.labHours != null && course.labHours > 0) {
+                if (course.labHours > 0) {
                     Slot slot = new Slot(
                          slotID,
                         course.id,
@@ -386,7 +387,7 @@ namespace university_scheduler {
                         slot.isLab,
                         slot.isReq,
                         slot.resources,
-                        slot.programs);
+                        programs);
             slotID++;
             return copySlot;
         }
@@ -427,7 +428,7 @@ namespace university_scheduler {
             for (int i = 0; i < maxDaysO; i++) {
                 for (int j = 0; j < maxTimeO; j++) {
                     foreach (Classroom classaya in classRooms) {
-                        if (classaya.reservations[i][j] != null &&
+                        if (classaya.reservations[i].ContainsKey(j) &&
                             !resDictionary.ContainsKey(classaya.reservations[i][j])) {
                             classaya.reservations[i].Remove(j);
                         }

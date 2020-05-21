@@ -10,7 +10,7 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int courseNums = 1200;
+        public int courseNums = 100;
         public static int max_days=6;
         public static int max_time=10;
 
@@ -160,7 +160,7 @@ namespace university_scheduler.Data
             };
 
             Model.Program program = new Model.Program();
-            for (int i = 0; i < progNames.Count; i++)
+            for (int i = 0; i < progNames.Count/3; i++)
             {
                 program.insert(progNames[i]);
                 int progId = program.getCurrentProgramId();
@@ -180,7 +180,7 @@ namespace university_scheduler.Data
 
         public void generateClassroom()
         {
-            //CourseRes.insertResource(courseId, res.id);
+           /* //CourseRes.insertResource(courseId, res.id);
              getRoomWithParams(0,5, 65, 65, 1);
              getRoomWithParams(5,5, 35, 35, 1);
             //CHEM
@@ -198,25 +198,37 @@ namespace university_scheduler.Data
             //LECT MED
              getRoomWithParams(24, 10, 150, 150, 0);
 
-             getRoomWithParams(34, 40, 60, 70, 0);
+             getRoomWithParams(34, 40, 60, 70, 0);*/
+
+            //CourseRes.insertResource(courseId, res.id);
+            getRoomWithParams(0, 5, 35, 35, 1);
+            //CHEM
+            getRoomWithParams(5, 5, 35, 35, 1);
+            //COMP
+            getRoomWithParams(10, 1, 70, 70, 1);
+
+            //LECT BIG
+            getRoomWithParams(11, 1, 500, 500, 0);
+
+            //LECT MED
+            getRoomWithParams(12, 2, 150, 150, 0);
         }
 
         public void  getRoomWithParams(int idFrom, int count, int minCap, int maxCap, int isLab)
         {
             for (int i = idFrom; i < idFrom+count; i++)
             {
-                Classroom room = new Classroom();
                 classHasResource chr = new classHasResource();
                 Resource resource = new Resource();
                 Random rnd = new Random();
                 string name = "room " + i;
                 int lectureCap = rnd.Next(minCap, maxCap);
                 int examCap = lectureCap / 2;
-                room.insert(name, lectureCap, examCap, isLab);
+                Classroom.insert(name, lectureCap, examCap, isLab);
                 if (isLab == 1){
                     List<Resource> resourses = Resource.getAll();
                     int resId = resourses[rnd.Next(0, resourses.Count)].id;
-                    int classId = room.getCurrentClassId();
+                    int classId = Classroom.getCurrentClassId();
                     chr.insertResource(classId,resId);
                 }
                 Console.WriteLine("Class : " + i);
