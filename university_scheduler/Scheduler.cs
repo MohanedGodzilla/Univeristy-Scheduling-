@@ -19,6 +19,7 @@ namespace university_scheduler {
         int slotID = 0;
         List<Course> courses;
         List<Classroom> classRooms;
+        HashSet<int> reservedSlotsIds = new HashSet<int>();
         Dictionary<double, List<Slot>> weightDictionary = new Dictionary<double, List<Slot>>();
         int programWF = 5;
         int hourWF = 2;
@@ -36,7 +37,6 @@ namespace university_scheduler {
             [REASON_CLASS_BLOCKED_HOURS] = 0
         };
         Dictionary<double, List<int>> weightResDictionary = new Dictionary<double, List<int>>(); //Dictionary<weight,list of reservation ids>
-        Dictionary<int, int> resClassDictionary = new Dictionary<int, int>(); //Dictionary<weight,list of reservation ids>
 
         public Scheduler() {
             seedData();
@@ -119,10 +119,30 @@ namespace university_scheduler {
                 }
             }
             cleanResDictionary();
+            printNonReserved();
             Console.WriteLine(
                 $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
             Console.WriteLine(confCount);
             sem.Release(1);
+        }
+
+        void printNonReserved() {
+            int total = 0 ;
+            int reserved = 0;
+            int nonRes = 0;
+            weightDictionary.Keys.ToList().ForEach((double key)=> {
+                weightDictionary[key].ForEach((Slot slot)=>{
+                    total++;
+                    if (!reservedSlotsIds.Contains(slot.id)) {
+                        nonRes++;
+                        Console.WriteLine($"!!!!!!!!!!! slot {slot.id} not reserved !!!!!!!!!!!");
+                    } else {
+                        reserved++;
+                    }
+                });
+            });
+
+            Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
         }
 
         Dictionary<String, dynamic> reserve(double weight, List<Slot> slots) {
@@ -130,6 +150,9 @@ namespace university_scheduler {
             int day;
             List<int> resIDS = new List<int>();
             foreach (Slot slot in slots) {
+                if (slot.id == 4) {
+                    Console.WriteLine("5od hena yalla!");
+                }
                 double maxTime = maxTimeO;
                 bool isSlotRes = false;
 
@@ -225,6 +248,7 @@ namespace university_scheduler {
                                     Reservation reservation = new Reservation(slot.courseId,
                                         classRoom.id, day, time, time + slot.hours, slot.isLab);
                                     resDictionary[resInc] = reservation;
+                                    reservedSlotsIds.Add(slot.id);
 
                                     if (!weightResDictionary.ContainsKey(weight)) {
                                         weightResDictionary[weight] = new List<int>();
@@ -295,7 +319,7 @@ namespace university_scheduler {
                         course.term,
                         false,
                         course.isReq,
-                        resources,
+                        new List<Resource>(),
                         programs);
 
                     double weight = calcWeight(slot);
@@ -312,7 +336,7 @@ namespace university_scheduler {
                         course.term,
                         false,
                         course.isReq,
-                        resources,
+                        new List<Resource>(),
                         programs);
 
                     double weight = calcWeight(slot);
