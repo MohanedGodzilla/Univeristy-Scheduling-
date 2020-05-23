@@ -121,10 +121,17 @@ namespace university_scheduler {
             }
             cleanResDictionary();
             printNonReserved();
+            insertRes();
             Console.WriteLine(
                 $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
             Console.WriteLine(confCount);
             sem.Release(1);
+        }
+
+        void insertRes() {
+            resDictionary.Values.ToList().ForEach((Reservation res)=>{
+                res.insertThis();
+            });
         }
 
         void printNonReserved() {
@@ -151,9 +158,6 @@ namespace university_scheduler {
             int day;
             List<int> resIDS = new List<int>();
             foreach (Slot slot in slots) {
-                if (slot.id == 4) {
-                    Console.WriteLine("5od hena yalla!");
-                }
                 double maxTime = maxTimeO;
                 bool isSlotRes = false;
 
@@ -250,6 +254,7 @@ namespace university_scheduler {
                                 if (isProgramsAvailable && isClassEmpty) {
                                     Reservation reservation = new Reservation(slot.courseId,
                                         classRoom.id, day, time, time + slot.hours, slot.isLab);
+                                    reservation.programs = slot.programs;
                                     resDictionary[resInc] = reservation;
                                     reservedSlotsIds.Add(slot.id);
 
@@ -275,12 +280,12 @@ namespace university_scheduler {
                     }
                     if (isSlotRes) {
                         break;
-                    } else {
-                        if (reason == REASON_CLASS_TIME && day == maxDaysO - 1) {
+                    } /*else {
+                        if (reason == REASON_CLASS_TIME && day == Math.Ceiling((decimal)maxDaysO/2)) {
                             maxTime++;
                             dayIteration = -1;
                         }
-                    }
+                    }*/
                 }
                 if (!isSlotRes) {
                     return new Dictionary<String, dynamic>() {
@@ -314,6 +319,7 @@ namespace university_scheduler {
                 List<Resource> resources = course.getCourseResources();
                 List<Model.Program> programs = course.getCoursePrograms();
                 if (course.lectureHours > 0) {
+
                     Slot slot = new Slot(
                         slotID,
                         course.id,
@@ -407,7 +413,7 @@ namespace university_scheduler {
         Slot copySlot(Slot slot, List<Model.Program> programs) {
             Slot copySlot = new Slot(
                          slotID,
-                        slot.id,
+                        slot.courseId,
                         slot.creditHours,
                         slot.hours,
                         slot.term,
