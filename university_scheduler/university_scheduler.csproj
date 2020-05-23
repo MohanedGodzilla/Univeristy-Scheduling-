@@ -111,6 +111,7 @@
     <Compile Include="Model\Program.cs" />
     <Compile Include="Model\ProgramCourses.cs" />
     <Compile Include="Model\Reservation.cs" />
+    <Compile Include="Model\ReservationHasProgram.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\Slot.cs" />
     <Compile Include="Model\TermData.cs" />

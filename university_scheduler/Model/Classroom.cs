@@ -2,68 +2,65 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace university_scheduler.Model
-{
-    class Classroom
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public int lectureCap { get; set; }
-        public int examCap { get; set; }
-        public bool isLab { get; set; }
-        public double max_time { get; set; }
-        public int max_days { get; set; }
+namespace university_scheduler.Model {
+    class Classroom {
+        public int id;
+        public string name;
+        public int lectureCap;
+        public int examCap;
+        public bool isLab;
 
-        public List<Resource> classResourses = new List<Resource>();
+        public List<Resource> resources = new List<Resource>();
 
 
         public Dictionary<int, Dictionary<dynamic, int>> reservations = new Dictionary<int, Dictionary<dynamic, int>>();
 
         public Dictionary<int, List<List<dynamic>>> blockedHours = new Dictionary<int, List<List<dynamic>>>();
 
-        public static List<Classroom> getAll()
-        {
+        public Classroom(int id, string name, int lecCap, int examCap, bool isLab) {
+            this.id = id;
+            this.name = name;
+            this.lectureCap = lecCap;
+            this.examCap = examCap;
+            this.isLab = isLab;
+            for (int i = 0; i < Data.Generator.max_days; i++) {
+                for (double j = 0; j < Data.Generator.max_time; j++) {
+                    reservations[i] = new Dictionary<dynamic, int>();
+                }
+            }
+        }
+
+        public static List<Classroom> getAll() {
+            return getClassrooms("SELECT * FROM class");
+        }
+
+        public static List<Classroom> getAll(string dummyName) {
+            return getClassrooms("SELECT * FROM class WHERE name LIKE '% " + dummyName + "%'");
+        }
+
+        private static List<Classroom> getClassrooms(string getQuery) {
             List<Classroom> classrooms = new List<Classroom>();
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            string query = "SELECT * FROM class";
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
+            string query = getQuery;
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = ((int)reader.GetValue(4) == 0 ? false : true)});
+                while (reader.Read()) {
+                    classrooms.Add(new Classroom((int)reader.GetValue(0), (string)reader.GetValue(2), (int)reader.GetValue(1), (int)reader.GetValue(3), ((int)reader.GetValue(4) == 0 ? false : true)));
                 }
                 cn.Close();
+                classrooms.ForEach((Classroom room) => {
+                    room.resources = getClassResources(room.id);
+                });
                 return classrooms;
             }
         }
 
-        public static List<Classroom> getAll(string dummyName)
-        {
-            List<Classroom> classrooms = new List<Classroom>();
-            SqlConnection cn = new SqlConnection(env.db_con_str);
-            cn.Open();
-            string query = "SELECT * FROM class WHERE name LIKE '% " + dummyName + "%'";
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    classrooms.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = ((int)reader.GetValue(4) == 0 ? false : true) });
-                }
-                cn.Close();
-                return classrooms;
-            }
-        }
+        public static void insert(string name, int lecCap, int examCap, int isLab) {
 
-        public void insert(string name, int lecCap, int examCap, int isLab)
-        {
-           
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
-            {
+            if (cn.State == System.Data.ConnectionState.Open) {
                 string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values( '" + name + "' ,'" + lecCap + "' ,'" + examCap + "','" + isLab + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
@@ -71,8 +68,7 @@ namespace university_scheduler.Model
             }
         }
 
-        public int getCurrentClassId()
-        {
+        public static int getCurrentClassId() {
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             string query = "SELECT MAX(id) from class";
@@ -82,29 +78,23 @@ namespace university_scheduler.Model
             cn.Close();
             return val;
         }
-        public List<Resource> getClassResources(int classId)
-        {
+        public static List<Resource> getClassResources(int classId) {
             List<Resource> classResources = new List<Resource>();
             List<int> resourcesIds = classHasResource.getResourcesIdsOfClass(classId);
-            foreach (int resourceId in resourcesIds)
-            {
+            foreach (int resourceId in resourcesIds) {
                 classResources.Add(Resource.getResourceById(resourceId));
             }
             return classResources;
         }
-        
+
         /// if not blocked return -1
         /// if blocked return the end of the blocked Hours 
-        public double isHourBlocked(int day, double from, double to)
-        {
-            if (this.blockedHours != null && this.blockedHours[day] != null)
-            {
-                for (int i = 0; i < this.blockedHours[day].Count; i++)
-                {
+        public double isHourBlocked(int day, double from, double to) {
+            if (this.blockedHours != null && this.blockedHours.ContainsKey(day) && this.blockedHours[day] != null) {
+                for (int i = 0; i < this.blockedHours[day].Count; i++) {
                     double blockedFrom = this.blockedHours[day][i][0];
                     double blockedTo = this.blockedHours[day][i][1];
-                    if (from >= blockedFrom && from <= blockedTo || to >= blockedFrom && to <= blockedTo)
-                    {
+                    if (from >= blockedFrom && from <= blockedTo || to >= blockedFrom && to <= blockedTo) {
                         return blockedTo;
                     }
                 }
