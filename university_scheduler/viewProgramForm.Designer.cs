@@ -155,7 +155,7 @@
             this.programData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.programData.Size = new System.Drawing.Size(611, 444);
             this.programData.TabIndex = 2;
-            this.programData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.programData_CellContentClick);
+            this.programData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.programData_CellDoubleClick);
             // 
             // viewProgramForm
             // 

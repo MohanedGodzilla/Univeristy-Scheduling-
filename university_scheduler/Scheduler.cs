@@ -121,14 +121,13 @@ namespace university_scheduler {
             }
             cleanResDictionary();
             printNonReserved();
-            insertRes();
             Console.WriteLine(
                 $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
             Console.WriteLine(confCount);
             sem.Release(1);
         }
 
-        void insertRes() {
+        public void saveReservations() {
             resDictionary.Values.ToList().ForEach((Reservation res)=>{
                 res.insertThis();
             });

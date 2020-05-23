@@ -35,6 +35,10 @@ namespace university_scheduler {
                     }
                     this.programData.DataSource = dt;
                 }
+
+                programData.Columns[0].Width = 40;
+                programData.Columns[1].Width = 340;
+                cn.Close();
             }
         }
 
@@ -77,9 +81,11 @@ namespace university_scheduler {
 
         }
 
-        private void programData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void programData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (!canUpdate()) return;
+            addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value);
+            addProgramForm.Show();
         }
     }
 }

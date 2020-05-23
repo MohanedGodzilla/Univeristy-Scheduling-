@@ -26,7 +26,7 @@ namespace university_scheduler
              gen.generateProgram();
              gen.generateCourse();
              gen.generateClassroom();*/
-            scheduler = new Scheduler();
+            //scheduler = new Scheduler();
 
         }
 
