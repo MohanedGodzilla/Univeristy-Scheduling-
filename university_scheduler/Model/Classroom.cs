@@ -10,7 +10,7 @@ namespace university_scheduler.Model {
         public int examCap;
         public bool isLab;
 
-        public List<Resource> classResourses = new List<Resource>();
+        public List<Resource> resources = new List<Resource>();
 
 
         public Dictionary<int, Dictionary<dynamic, int>> reservations = new Dictionary<int, Dictionary<dynamic, int>>();
@@ -30,33 +30,28 @@ namespace university_scheduler.Model {
             }
         }
 
-
         public static List<Classroom> getAll() {
-            List<Classroom> classrooms = new List<Classroom>();
-            SqlConnection cn = new SqlConnection(env.db_con_str);
-            cn.Open();
-            string query = "SELECT * FROM class";
-            using (SqlCommand cmd = new SqlCommand(query, cn)) {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read()) {
-                    classrooms.Add(new Classroom ( (int)reader.GetValue(0), (string)reader.GetValue(2),(int)reader.GetValue(1), (int)reader.GetValue(3),((int)reader.GetValue(4) == 0 ? false : true) ));
-                }
-                cn.Close();
-                return classrooms;
-            }
+            return getClassrooms("SELECT * FROM class");
         }
 
         public static List<Classroom> getAll(string dummyName) {
+            return getClassrooms("SELECT * FROM class WHERE name LIKE '% " + dummyName + "%'");
+        }
+
+        private static List<Classroom> getClassrooms(string getQuery) {
             List<Classroom> classrooms = new List<Classroom>();
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            string query = "SELECT * FROM class WHERE name LIKE '% " + dummyName + "%'";
+            string query = getQuery;
             using (SqlCommand cmd = new SqlCommand(query, cn)) {
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read()) {
                     classrooms.Add(new Classroom((int)reader.GetValue(0), (string)reader.GetValue(2), (int)reader.GetValue(1), (int)reader.GetValue(3), ((int)reader.GetValue(4) == 0 ? false : true)));
                 }
                 cn.Close();
+                classrooms.ForEach((Classroom room) => {
+                    room.resources = getClassResources(room.id);
+                });
                 return classrooms;
             }
         }
@@ -83,7 +78,7 @@ namespace university_scheduler.Model {
             cn.Close();
             return val;
         }
-        public List<Resource> getClassResources(int classId) {
+        public static List<Resource> getClassResources(int classId) {
             List<Resource> classResources = new List<Resource>();
             List<int> resourcesIds = classHasResource.getResourcesIdsOfClass(classId);
             foreach (int resourceId in resourcesIds) {

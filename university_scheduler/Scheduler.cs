@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using university_scheduler.Model;
 
 namespace university_scheduler {
@@ -127,11 +128,11 @@ namespace university_scheduler {
         }
 
         void printNonReserved() {
-            int total = 0 ;
+            int total = 0;
             int reserved = 0;
             int nonRes = 0;
-            weightDictionary.Keys.ToList().ForEach((double key)=> {
-                weightDictionary[key].ForEach((Slot slot)=>{
+            weightDictionary.Keys.ToList().ForEach((double key) => {
+                weightDictionary[key].ForEach((Slot slot) => {
                     total++;
                     if (!reservedSlotsIds.Contains(slot.id)) {
                         nonRes++;
@@ -166,20 +167,22 @@ namespace university_scheduler {
                     } else {
                         day = maxDaysO - dayIteration;
                     }
-                    List<Classroom> typeClassRooms = classRooms.Where((room) => (room.isLab == slot.isLab)).ToList();
+                    List<Classroom> typeClassRooms =
+                        classRooms.Where((room) => (room.isLab == slot.isLab)).ToList();
+
+
+                    if (slot.isLab && typeClassRooms.Count>0) {
+                        typeClassRooms = typeClassRooms.Where((room) => matchResources(room.resources,slot.resources)).ToList();
+                    }
+
+                    if (slot.isLab && typeClassRooms.Count == 0) {
+                        reason = REASON_RES;
+                        continue;
+                    }
                     foreach (Classroom classRoom in typeClassRooms) {
                         int slotCap = slot.studentCount;
                         if (slotCap > classRoom.lectureCap) {
                             reason = REASON_CAP;
-                            continue;
-                        }
-
-                        if (classRoom.isLab != slot.isLab) {
-                            reason = REASON_RES;
-                            continue;
-                        }
-                        if (!matchResources(classRoom.classResourses, slot.resources)) {
-                            reason = REASON_RES;
                             continue;
                         }
 
@@ -402,7 +405,7 @@ namespace university_scheduler {
         }
 
         Slot copySlot(Slot slot, List<Model.Program> programs) {
-            Slot copySlot = new  Slot(
+            Slot copySlot = new Slot(
                          slotID,
                         slot.id,
                         slot.creditHours,
@@ -430,13 +433,10 @@ namespace university_scheduler {
         }
 
         bool matchResources(List<Resource> classRes, List<Resource> courseRes) {
-            if (courseRes.Count > classRes.Count) {
-                return false;
-            }
             foreach (Resource courseyaRes in courseRes) {
                 bool isMatched = false;
                 foreach (Resource classyaRes in classRes) {
-                    if (classyaRes == courseyaRes) {
+                    if (classyaRes.id == courseyaRes.id) {
                         isMatched = true;
                         break;
                     }
