@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -78,5 +79,54 @@ namespace university_scheduler.Model
             }
         }
 
+        public static List<Reservation> getResByClassId(int classId)
+        {
+            List<Reservation> reservationData = new List<Reservation>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM reservation WHERE class_id = {classId} ", cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1), day = (int)reader.GetValue(4), from = (double)reader.GetValue(2), to = (double)reader.GetValue(3), isPractice = (bool)reader.GetValue(2) });
+                }
+                cn.Close();
+                return reservationData;
+            }
+        }
+
+        public List<Classroom> getClassroom(int dummyClassID)
+        {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = "SELECT * FROM class c WHERE c.id = " + dummyClassID;
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    this.classroomData.Add(new Classroom { id = (int)reader.GetValue(0), lectureCap = (int)reader.GetValue(1), name = (string)reader.GetValue(2), examCap = (int)reader.GetValue(3), isLab = (bool)reader.GetValue(4) });
+                }
+                cn.Close();
+                return classroomData;
+            }
+        }
+
+        public List<Course> getCourse(int dummyCourseID)
+        {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = "SELECT * FROM course c WHERE c.id = " + dummyCourseID;
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read()){
+                    this.courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8)});
+                }
+                cn.Close();
+                return courseData;
+            }
+        }
     }
 }

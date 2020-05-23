@@ -10,6 +10,8 @@ namespace university_scheduler
         public NoScheduleHome()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 5;
             courses_view();
             programs_view();
             classrooms_view();
@@ -65,7 +67,9 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-           scheduler.start();
+            //scheduler.start();
+            HomeScreenWithTable addCoursePopup = new HomeScreenWithTable();
+            DialogResult dialogResult = addCoursePopup.ShowDialog();
         }
     }
 }
