@@ -22,7 +22,7 @@ namespace university_scheduler.Model
         public List<Program> programs { get; set; }
         
 
-        public void insertCourse(string dummyName, string codeNI, int crH, double lecH, double pracH, double labH, int dummyTerm, bool dummyActive) {
+        public static int insertCourse(string dummyName, string codeNI, int crH, double lecH, double pracH, double labH, int dummyTerm, bool dummyActive) {
             try
             {
                 SqlConnection cn = new SqlConnection(env.db_con_str);
@@ -34,12 +34,14 @@ namespace university_scheduler.Model
                     {
                         val = 1;
                     }
-                    string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + dummyName + "' , '" + crH + "' , '" + lecH + "' , '" + pracH + "' , '" + labH + "' , '" + dummyTerm + "' , '" + codeNI + "' , '" + val + "' )";
+                    string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) OUTPUT INSERTED.ID values(" + "'" + dummyName + "' , '" + crH + "' , '" + lecH + "' , '" + pracH + "' , '" + labH + "' , '" + dummyTerm + "' , '" + codeNI + "' , '" + val + "' )";
                     SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.ExecuteNonQuery();
+                    int courseId = (int)cmd.ExecuteScalar();
                     cn.Close();
+                    return courseId;
                 }
             }catch(Exception e) { }
+            return -1;
         }
 
         public static List<Course> getAll()
@@ -106,19 +108,6 @@ namespace university_scheduler.Model
 
         public List<Program> getCoursePrograms() {
             return getCoursePrograms(this.id);
-        }
-
-            public int getCurrentCourseId()
-        {
-            SqlConnection cn = new SqlConnection(env.db_con_str);
-            cn.Open();
-            string query = "SELECT MAX(id) from course";
-            SqlCommand cmd = new SqlCommand(query, cn);
-            //return (int)cmd.ExecuteScalar();
-            //return (int)cmd.ExecuteNonQuery();
-            int id = (int)cmd.ExecuteScalar();
-            cn.Close();
-            return id;
         }
 
         public List<Resource> getCourseResources() {

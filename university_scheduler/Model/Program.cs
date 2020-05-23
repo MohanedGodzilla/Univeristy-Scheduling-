@@ -83,9 +83,9 @@ namespace university_scheduler.Model {
             string query = "SELECT MAX(id) from program";
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
+            int val = (int)cmd.ExecuteScalar();
             cn.Close();
-
-            return (int)cmd.ExecuteScalar();
+            return val;
         }
 
         public TermData getTermData(int term)

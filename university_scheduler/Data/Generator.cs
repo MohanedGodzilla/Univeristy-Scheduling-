@@ -10,9 +10,12 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int courseNums = 1200;
+        public int courseNums = 100;
         public static int max_days=6;
         public static int max_time=10;
+        
+        
+        private int countt = 0;
 
         public void generateResource()
         {
@@ -59,7 +62,6 @@ namespace university_scheduler.Data
             Random rnd = new Random();
             for (int i = 0; i < courseNums; i++)
             {
-                Course course = new Course();
                 int codeNameIndex = rnd.Next(0, 10);
                 int code = rnd.Next(100, 499);
                 String courseNamedID = codeName[codeNameIndex] + code.ToString();
@@ -96,9 +98,9 @@ namespace university_scheduler.Data
                     if ((code % 2) == 0)
                         term = 8;
                     else term = 7;
-                }              
-                course.insertCourse(name, courseNamedID, creditHours, lectureHours, practiceHours, labHours, term, true);
-                int courseId = course.getCurrentCourseId();
+                }
+                int courseId = Course.insertCourse(name, courseNamedID, creditHours, lectureHours, practiceHours, labHours, term, true);
+                if (courseId == -1) continue;
                 Console.WriteLine("course id = "+courseId);
                 if (labHours > 0)
                 {
@@ -160,7 +162,7 @@ namespace university_scheduler.Data
             };
 
             Model.Program program = new Model.Program();
-            for (int i = 0; i < progNames.Count; i++)
+            for (int i = 0; i < progNames.Count/3; i++)
             {
                 program.insert(progNames[i]);
                 int progId = program.getCurrentProgramId();
@@ -180,7 +182,7 @@ namespace university_scheduler.Data
 
         public void generateClassroom()
         {
-            //CourseRes.insertResource(courseId, res.id);
+           /* //CourseRes.insertResource(courseId, res.id);
              getRoomWithParams(0,5, 65, 65, 1);
              getRoomWithParams(5,5, 35, 35, 1);
             //CHEM
@@ -199,25 +201,40 @@ namespace university_scheduler.Data
              getRoomWithParams(24, 10, 150, 150, 0);
 
              getRoomWithParams(34, 40, 60, 70, 0);
+*/
+            //CourseRes.insertResource(courseId, res.id);
+            getRoomWithParams(0, 5, 35, 35, 1);
+            //CHEM
+            getRoomWithParams(5, 5, 35, 35, 1);
+            //COMP
+            getRoomWithParams(10, 1, 70, 70, 1);
+
+            //LECT BIG
+            getRoomWithParams(11, 1, 500, 500, 0);
+
+            //LECT MED
+            getRoomWithParams(12, 2, 150, 150, 0);
         }
 
-        public void  getRoomWithParams(int idFrom, int count, int minCap, int maxCap, int isLab)
-        {
-            for (int i = idFrom; i < idFrom+count; i++)
-            {
-                Classroom room = new Classroom();
+        public void getRoomWithParams(int idFrom, int count, int minCap, int maxCap, int isLab) {
+            for (int i = idFrom; i < idFrom + count; i++) {
                 classHasResource chr = new classHasResource();
-                Resource resource = new Resource();
                 Random rnd = new Random();
-                string name = "room " + i;
+                string name = "room " + (i+1);
                 int lectureCap = rnd.Next(minCap, maxCap);
                 int examCap = lectureCap / 2;
-                room.insert(name, lectureCap, examCap, isLab);
-                if (isLab == 1){
+                Classroom.insert(name, lectureCap, examCap, isLab);
+                if (isLab == 1) {
                     List<Resource> resourses = Resource.getAll();
-                    int resId = resourses[rnd.Next(0, resourses.Count)].id;
-                    int classId = room.getCurrentClassId();
-                    chr.insertResource(classId,resId);
+                    int resId = 1;
+                    if (countt < resourses.Count) {
+                        resId = resourses[countt].id;
+                        countt++;
+                    } else {
+                        countt = 0;
+                    }
+                    int classId = Classroom.getCurrentClassId();
+                    chr.insertResource(classId, resId);
                 }
                 Console.WriteLine("Class : " + i);
             }

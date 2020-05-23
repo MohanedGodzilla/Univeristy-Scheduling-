@@ -10,9 +10,7 @@ namespace university_scheduler.Model
     class Resource
     {
         public int id { get; set; }
-        public string name { get; set; }
-
-        
+        public string name { get; set; }        
 
         public override string ToString(){
             return "ID: " + id + "   Name: " + name;
