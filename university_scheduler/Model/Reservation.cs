@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -64,6 +65,23 @@ namespace university_scheduler.Model
                 while (reader.Read())
                 {
                     reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1) , day = (int)reader.GetValue(4) , from = (double)reader.GetValue(2) , to = (double)reader.GetValue(3) , isPractice = (bool)reader.GetValue(2) });
+                }
+                cn.Close();
+                return reservationData;
+            }
+        }
+
+        public static List<Reservation> getResByClassId(int classId)
+        {
+            List<Reservation> reservationData = new List<Reservation>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM reservation WHERE class_id = {classId} ", cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1), day = (int)reader.GetValue(4), from = (double)reader.GetValue(2), to = (double)reader.GetValue(3), isPractice = (bool)reader.GetValue(2) });
                 }
                 cn.Close();
                 return reservationData;

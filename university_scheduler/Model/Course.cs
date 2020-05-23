@@ -75,8 +75,23 @@ namespace university_scheduler.Model
                 }
                 cn.Close();
                 return courseData;
+            }           
+        }
+
+        public static Course getCourseById(int courseId)
+        {
+            Course courseData = new Course();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = $"SELECT * FROM course WHERE id =  {courseId}";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+               SqlDataReader reader = cmd.ExecuteReader();
+               reader.Read();
+               courseData = setCourse(reader);
+               cn.Close();
+               return courseData;
             }
-            
         }
 
 

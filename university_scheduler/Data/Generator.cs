@@ -203,11 +203,11 @@ namespace university_scheduler.Data
 
         public void  getRoomWithParams(int idFrom, int count, int minCap, int maxCap, int isLab)
         {
+            int countt = 0;
             for (int i = idFrom; i < idFrom+count; i++)
             {
                 Classroom room = new Classroom();
                 classHasResource chr = new classHasResource();
-                Resource resource = new Resource();
                 Random rnd = new Random();
                 string name = "room " + i;
                 int lectureCap = rnd.Next(minCap, maxCap);
@@ -215,7 +215,14 @@ namespace university_scheduler.Data
                 room.insert(name, lectureCap, examCap, isLab);
                 if (isLab == 1){
                     List<Resource> resourses = Resource.getAll();
-                    int resId = resourses[rnd.Next(0, resourses.Count)].id;
+                    int resId=1;
+                    if (countt < resourses.Count)
+                    {
+                        resId = resourses[countt].id;
+                        countt++;
+                    }else{
+                        countt = 0;
+                    }
                     int classId = room.getCurrentClassId();
                     chr.insertResource(classId,resId);
                 }

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using university_scheduler.Model;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace university_scheduler
 {
@@ -25,44 +27,58 @@ namespace university_scheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(env.db_con_str))
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM program", cn))
-                {
-                    DataTable dt = new DataTable();
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
-                    cn.Close();
-                    genExcel(dt);
-                }
+            object misValue = System.Reflection.Missing.Value;
+            // To create workbook
+            Excel.Application classroomsApp = new Excel.Application();
+            //classroomsApp.Visible = true;
+            Excel.Workbook wb = classroomsApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+
+            List<Classroom> classrooms=  Classroom.getAll();
+            foreach (Classroom classroom in classrooms) {
+                List<Reservation> allResOfClass =  Reservation.getResByClassId(classroom.id);
+                genWorksheets(allResOfClass,classroomsApp,wb, classroom);
             }
+            Excel.Sheets sheet1 = wb.Worksheets;
+            sheet1[sheet1.Count].delete();
+            wb.SaveAs(@"D:\classrooms.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            wb.Close(true, misValue, misValue);
+            /*Excel.Workbooks books = classroomsApp.Workbooks;
+            Excel.Workbook book = books.Open(@"D:\classrooms.xls");*/
         }
 
-        void genExcel(DataTable dt){
-            object misValue = System.Reflection.Missing.Value;
-            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-            app.Visible = false;
-            Microsoft.Office.Interop.Excel.Workbook wb = app.Workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
-            Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
+        void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, Classroom classroom)
+        {
+
+            Excel.Worksheet ws = (Excel.Worksheet)classroomsApp.Worksheets.Add();
+         
+            /* Excel.Worksheet ws = new Excel.Worksheet();
+             ws = (Excel.Worksheet)wb.ActiveSheet;*/
 
             //Header
-            for(int i =0; i<dt.Columns.Count; i++){
-                ws.Cells[1, i + 1] = dt.Columns[i].ColumnName;
-            }
+            ws.Cells[1] = "Course Name";
+            ws.Cells[2] = "Course Code";
+            ws.Cells[3] = "Day";
+            ws.Cells[4] = "From";
+            ws.Cells[5] = "To";
 
-            for (int i = 0; i < dt.Rows.Count; i++) {
-                for (int j = 0; j < dt.Columns.Count; j++){
-                    ws.Cells[i+2, j + 1] = dt.Rows[i][j].ToString();
-                }
+            //cells
+            for (int i = 0; i < allResOfClass.Count; i++) {
+               Course course = Course.getCourseById(allResOfClass[i].courseId);
+                ws.Cells[i + 2, 1] = course.name;
+                ws.Cells[i + 2, 2] = course.courseNamedId;
+                ws.Cells[i + 2, 3] = allResOfClass[i].day;
+                ws.Cells[i + 2, 4] = allResOfClass[i].from;
+                ws.Cells[i + 2, 5] = allResOfClass[i].to;
             }
-            ws.Name = "Godz";
+            ws.Name = classroom.name;
+           /* //Open specified Worksheet on Workbook 
+            Excel.Workbooks books = classroomsApp.Workbooks;*/
+          //  Excel.Workbook book = books.Open(@"D:\Programs.xls");
+            //Excel.Worksheet worksheet = (Excel.Worksheet)book.Sheets[ws.Name];
 
-            wb.SaveAs(@"D:\welcome.xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            wb.Close(true, misValue, misValue);
-            app.Quit();
+         //   ws.Activate();
+
+            
         }
     }
 }
