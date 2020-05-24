@@ -22,29 +22,29 @@ namespace university_scheduler
 
         private void HomeScreenWithTable_Load(object sender, EventArgs e)
         {
-            
+            getNamesForViews("class", classroomsExcel);
+            getNamesForViews("program", programsExcel);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            object misValue = System.Reflection.Missing.Value;
-            // To create workbook
-            Excel.Application classroomsApp = new Excel.Application();
-            //classroomsApp.Visible = true;
-            Excel.Workbook wb = classroomsApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
 
-            List<Classroom> classrooms=  Classroom.getAll();
-            foreach (Classroom classroom in classrooms) {
-                List<Reservation> allResOfClass =  Reservation.getResByClassId(classroom.id);
-                genWorksheets(allResOfClass,classroomsApp,wb, classroom);
+        void getNamesForViews(string table, System.Windows.Forms.DataGridView excelView )  {            using (SqlConnection cn = new SqlConnection(env.db_con_str))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand($"select name from {table} ORDER BY name", cn))
+                {
+                    DataTable dt = new DataTable();
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                    excelView.DataSource = dt;
+                    cn.Close();
+                }
+                excelView.Columns[0].Width = 350;
+                //
             }
-            Excel.Sheets sheet1 = wb.Worksheets;
-            sheet1[sheet1.Count].delete();
-            wb.SaveAs(@"D:\classrooms.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            wb.Close(true, misValue, misValue);
-            /*Excel.Workbooks books = classroomsApp.Workbooks;
-            Excel.Workbook book = books.Open(@"D:\classrooms.xls");*/
         }
+
 
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, Classroom classroom)
         {
@@ -79,6 +79,28 @@ namespace university_scheduler
          //   ws.Activate();
 
             
+        }
+
+        void saveClassroomsinExcel()
+        {
+            object misValue = System.Reflection.Missing.Value;
+            // To create workbook
+            Excel.Application classroomsApp = new Excel.Application();
+            //classroomsApp.Visible = true;
+            Excel.Workbook wb = classroomsApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+
+            List<Classroom> classrooms = Classroom.getAll();
+            foreach (Classroom classroom in classrooms)
+            {
+                List<Reservation> allResOfClass = Reservation.getResByClassId(classroom.id);
+                genWorksheets(allResOfClass, classroomsApp, wb, classroom);
+            }
+            Excel.Sheets sheet1 = wb.Worksheets;
+            sheet1[sheet1.Count].delete();
+            wb.SaveAs(@"D:\classrooms.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            wb.Close(true, misValue, misValue);
+            /*Excel.Workbooks books = classroomsApp.Workbooks;
+            Excel.Workbook book = books.Open(@"D:\classrooms.xls");*/
         }
     }
 }
