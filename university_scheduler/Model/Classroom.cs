@@ -102,5 +102,22 @@ namespace university_scheduler.Model {
             return -1; //not blocked 
         }
 
+        public static DataTable search()
+        {
+            //return getClassrooms();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = "SELECT name FROM class";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                DataTable dt = new DataTable();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+                return dt;
+            }
+        }
+
     }
 }

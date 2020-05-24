@@ -15,6 +15,7 @@ namespace university_scheduler
 {
     public partial class HomeScreenWithTable : Form
     {
+        
         public HomeScreenWithTable()
         {
             InitializeComponent();
@@ -27,10 +28,11 @@ namespace university_scheduler
         }
 
 
-        void getNamesForViews(string table, System.Windows.Forms.DataGridView excelView )  {            using (SqlConnection cn = new SqlConnection(env.db_con_str))
+        void getNamesForViews(string table, System.Windows.Forms.DataGridView excelView )  {
+            using (SqlConnection cn = new SqlConnection(env.db_con_str))
             {
                 cn.Open();
-                using (SqlCommand cmd = new SqlCommand($"select name from {table} ORDER BY name", cn))
+                using (SqlCommand cmd = new SqlCommand($"select name from {table} ORDER BY case isnumeric(name) when 1 then convert(int,name)else 999999 end", cn))
                 {
                     DataTable dt = new DataTable();
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -45,62 +47,41 @@ namespace university_scheduler
             }
         }
 
-
-        void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, Classroom classroom)
+        private void classroomsExcel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            Excel.Worksheet ws = (Excel.Worksheet)classroomsApp.Worksheets.Add();
-         
-            /* Excel.Worksheet ws = new Excel.Worksheet();
-             ws = (Excel.Worksheet)wb.ActiveSheet;*/
-
-            //Header
-            ws.Cells[1] = "Course Name";
-            ws.Cells[2] = "Course Code";
-            ws.Cells[3] = "Day";
-            ws.Cells[4] = "From";
-            ws.Cells[5] = "To";
-
-            //cells
-            for (int i = 0; i < allResOfClass.Count; i++) {
-               Course course = Course.getCourseById(allResOfClass[i].courseId);
-                ws.Cells[i + 2, 1] = course.name;
-                ws.Cells[i + 2, 2] = course.courseNamedId;
-                ws.Cells[i + 2, 3] = allResOfClass[i].day;
-                ws.Cells[i + 2, 4] = allResOfClass[i].from;
-                ws.Cells[i + 2, 5] = allResOfClass[i].to;
-            }
-            ws.Name = classroom.name;
-           /* //Open specified Worksheet on Workbook 
-            Excel.Workbooks books = classroomsApp.Workbooks;*/
-          //  Excel.Workbook book = books.Open(@"D:\Programs.xls");
-            //Excel.Worksheet worksheet = (Excel.Worksheet)book.Sheets[ws.Name];
-
-         //   ws.Activate();
-
-            
+            //Open specified Worksheet on Workbook
+            Excel.Application classroomsApp = new Excel.Application();
+            string name = classroomsExcel.SelectedRows[0].Cells[0].Value.ToString();
+            classroomsApp.Visible = true;
+            Excel.Workbooks books = classroomsApp.Workbooks;
+            string path = System.IO.Directory.GetCurrentDirectory();
+            Excel.Workbook book = books.Open(@path + "/classrooms.xls");
+            Excel.Worksheet worksheet = (Excel.Worksheet)book.Sheets[name];
+            worksheet.Activate();
         }
 
-        void saveClassroomsinExcel()
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            object misValue = System.Reflection.Missing.Value;
-            // To create workbook
-            Excel.Application classroomsApp = new Excel.Application();
-            //classroomsApp.Visible = true;
-            Excel.Workbook wb = classroomsApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+            DataTable dtClass = Classroom.search();
+            DataView DV = new DataView(dtClass);
+            DV.RowFilter = string.Format("name LIKE '%{0}%'", searchClass.Text);
+            classroomsExcel.DataSource = DV;
+        }
 
-            List<Classroom> classrooms = Classroom.getAll();
-            foreach (Classroom classroom in classrooms)
-            {
-                List<Reservation> allResOfClass = Reservation.getResByClassId(classroom.id);
-                genWorksheets(allResOfClass, classroomsApp, wb, classroom);
-            }
-            Excel.Sheets sheet1 = wb.Worksheets;
-            sheet1[sheet1.Count].delete();
-            wb.SaveAs(@"D:\classrooms.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            wb.Close(true, misValue, misValue);
-            /*Excel.Workbooks books = classroomsApp.Workbooks;
-            Excel.Workbook book = books.Open(@"D:\classrooms.xls");*/
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dtProgram = Model.Program.search();
+            DataView DV = new DataView(dtProgram);
+            DV.RowFilter = string.Format("name LIKE '%{0}%'", searchProgram.Text);
+            programsExcel.DataSource = DV;
+        }
+
+        private void generateNewBTN_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            NoScheduleHome Popup = new NoScheduleHome();
+            Popup.ShowDialog();
+            this.Close();
         }
     }
 }
