@@ -28,7 +28,7 @@ namespace university_scheduler
              gen.generateProgram();
              gen.generateCourse();
              gen.generateClassroom();*/
-            //scheduler = new Scheduler();
+            scheduler = new Scheduler();
 
         }
 
@@ -67,7 +67,15 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-            //scheduler.start();
+            string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
+            string title = "Old reservations will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK) {
+                return;
+            }
+            scheduler.start();
+            scheduler.saveReservations();
             HomeScreenWithTable addCoursePopup = new HomeScreenWithTable();
             DialogResult dialogResult = addCoursePopup.ShowDialog();
         }

@@ -15,7 +15,6 @@ namespace university_scheduler {
         const String REASON_CLASS_TIME = "class_time";
         const String REASON_DAYLIMIT = "day_limit";
         const String REASON_CLASS_BLOCKED_HOURS = "class_blocked_hours";
-        private static Semaphore sem = new Semaphore(1, 1);
         //LOGIC VARS
         int slotID = 0;
         List<Course> courses;
@@ -44,7 +43,7 @@ namespace university_scheduler {
         }
 
         public void start() {
-            sem.WaitOne();
+            Reservation.deleteAll();
             resDictionary = new Dictionary<int, Reservation>();
             weightResDictionary = new Dictionary<double, List<int>>();
 
@@ -124,7 +123,6 @@ namespace university_scheduler {
             Console.WriteLine(
                 $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
             Console.WriteLine(confCount);
-            sem.Release(1);
         }
 
         public void saveReservations() {
