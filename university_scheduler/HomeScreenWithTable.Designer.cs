@@ -159,7 +159,7 @@
             this.programsExcel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.programsExcel.Size = new System.Drawing.Size(529, 356);
             this.programsExcel.TabIndex = 1;
-            this.programsExcel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classroomsExcel_CellDoubleClick);
+            this.programsExcel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.programsExcel_CellDoubleClick);
             // 
             // generateNewBTN
             // 

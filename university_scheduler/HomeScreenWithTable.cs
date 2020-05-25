@@ -60,6 +60,19 @@ namespace university_scheduler
             worksheet.Activate();
         }
 
+        private void programsExcel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Open specified Worksheet on Workbook
+            Excel.Application programsApp = new Excel.Application();
+            string name = programsExcel.SelectedRows[0].Cells[0].Value.ToString();
+            programsApp.Visible = true;
+            Excel.Workbooks books = programsApp.Workbooks;
+            string path = System.IO.Directory.GetCurrentDirectory();
+            Excel.Workbook book = books.Open(@path + "/programs.xls");
+            Excel.Worksheet worksheet = (Excel.Worksheet)book.Sheets[name];
+            worksheet.Activate();
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             DataTable dtClass = Classroom.search();
@@ -83,5 +96,7 @@ namespace university_scheduler
             Popup.ShowDialog();
             this.Close();
         }
+
+
     }
 }
