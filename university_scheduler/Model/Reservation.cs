@@ -130,5 +130,15 @@ namespace university_scheduler.Model
                 return courseData;
             }
         }
+
+        public static void deleteAll() {
+            string query = "DELETE FROM reservation;DBCC CHECKIDENT (reservation, RESEED, 0);DBCC CHECKIDENT (reservation_has_program, RESEED, 0);";
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
     }
 }
