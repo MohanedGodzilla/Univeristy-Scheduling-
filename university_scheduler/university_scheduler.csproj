@@ -148,6 +148,12 @@
     <Compile Include="viewCoursesForm.Designer.cs">
       <DependentUpon>viewCoursesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="viewLoadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewLoadForm.Designer.cs">
+      <DependentUpon>viewLoadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="viewProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="viewCoursesForm.resx">
       <DependentUpon>viewCoursesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewLoadForm.resx">
+      <DependentUpon>viewLoadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="viewProgramForm.resx">
       <DependentUpon>viewProgramForm.cs</DependentUpon>

@@ -22,12 +22,15 @@ namespace university_scheduler
         {
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
-            
-            /*Generator gen = new Generator();
+
+            /*
+            Generator gen = new Generator();
              gen.generateResource();
              gen.generateProgram();
              gen.generateCourse();
-             gen.generateClassroom();*/
+            gen.generateClassroom();
+            */
+
             scheduler = new Scheduler();
 
         }
@@ -56,6 +59,33 @@ namespace university_scheduler
             frm.Show();
         }
 
+        private void Load_view()
+        {
+            viewLoadForm frm = new viewLoadForm();
+            frm.startBrogress();
+            DialogResult dialogResult = frm.ShowDialog();
+            
+            //frm.button1_Click(sender, e);
+
+            /*
+            viewLoadForm frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.coursesView.Controls.Add(frm);
+            frm.Show();
+
+            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.programsView.Controls.Add(frm);
+            frm.Show();
+
+            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.classroomsView.Controls.Add(frm);
+            frm.Show();
+
+            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.resourcesView.Controls.Add(frm);
+            frm.Show();
+            */
+        }
+
         private void stInput_ValueChanged(object sender, EventArgs e)
         {
 
@@ -67,6 +97,7 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
+            
             string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
             string title = "Old reservations will be deleted";
             MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
@@ -74,10 +105,38 @@ namespace university_scheduler
             if (result != DialogResult.OK) {
                 return;
             }
-            scheduler.start();
-            scheduler.saveReservations();
+
+
+            
+            //EnableTab(false);
+            EnableTab(this.coursesView, false);
+            EnableTab(this.programsView, false);
+            EnableTab(this.classroomsView, false);
+            EnableTab(this.resourcesView, false);
+            this.generateBTN.Enabled = false;
+            Load_view();
+            resLabel.Text = viewLoadForm.res;
+            
+            //scheduler.start();
+            //scheduler.saveReservations();
             HomeScreenWithTable addCoursePopup = new HomeScreenWithTable();
             DialogResult dialogResult = addCoursePopup.ShowDialog();
+            
+        }
+
+        public void EnableTab(TabPage page, bool enable)
+        {
+            //foreach (Control ctl in page.Controls) ctl.Enabled = enable;
+            //page.Enabled = enable;
+            //page.Hide();
+            //tabControl1.
+            page.Controls.Clear();
+            //this.tabControl1.Hide();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
