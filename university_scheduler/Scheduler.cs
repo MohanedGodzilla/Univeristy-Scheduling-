@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using university_scheduler.Data;
 using university_scheduler.Model;
 
 namespace university_scheduler {
@@ -24,8 +21,8 @@ namespace university_scheduler {
         int programWF = 5;
         int hourWF = 2;
         int actualHourWF = 10;
-        int maxDaysO = 6;
-        double maxTimeO = 10;
+        int maxDaysO = Generator.max_days;
+        double maxTimeO = Generator.max_time;
         int resInc = 0;
         Dictionary<int, Reservation> resDictionary;
         Dictionary<String, int> confCount = new Dictionary<String, int>() {
@@ -43,6 +40,13 @@ namespace university_scheduler {
         }
 
         public void start() {
+            String validations = runPreReserveValidations();
+
+            if (validations != "") {
+                Console.WriteLine(validations);
+                return;
+            }
+
             Reservation.deleteAll();
             resDictionary = new Dictionary<int, Reservation>();
             weightResDictionary = new Dictionary<double, List<int>>();
@@ -61,6 +65,7 @@ namespace university_scheduler {
 
             List<double> sortedWeights = sortWeights();
             classRooms = sortingClassRooms(classRooms);
+
             int maxRes = -1;
 
             for (int i = 0; i < sortedWeights.Count; i++) {
@@ -125,8 +130,10 @@ namespace university_scheduler {
             Console.WriteLine(confCount);
         }
 
+
         public void saveReservations() {
-            resDictionary.Values.ToList().ForEach((Reservation res)=>{
+            if (resDictionary == null) return;
+            resDictionary.Values.ToList().ForEach((Reservation res) => {
                 res.insertThis();
             });
         }
@@ -150,6 +157,46 @@ namespace university_scheduler {
             Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
         }
 
+        String runPreReserveValidations() {
+            String validations = "";
+            //softCheckResources();
+            Dictionary<string, double> hoursMap =  softCheckTotalHours();
+            double avH = hoursMap["totalAV"];
+            double hours = hoursMap["total"];
+            if (hours > avH) {
+                validations += $"there is no enough time to place all the course REQ:{hours} FOUND: {avH}";
+            }
+            return validations;
+        }
+
+        List<Resource> softCheckResources() {
+            List<Resource> notFoundRes = new List<Resource>();
+
+            return notFoundRes;
+        }
+
+        Dictionary<string, double> softCheckTotalHours() {
+            double lecHours=0;
+            double labHours=0;
+            double practiceHours = 0;
+            double totalAvHours = maxDaysO * maxTimeO * classRooms.Count;
+            double totalHours = 0;
+            courses.ForEach((Course course)=>{
+                lecHours += course.lectureHours;
+                labHours += course.labHours;
+                practiceHours += course.practiceHours;
+            });
+
+            totalHours = lecHours + practiceHours + labHours;
+            return new Dictionary<string, double>() {
+                ["lec"] = lecHours,
+                ["lab"] = labHours,
+                ["pract"] = practiceHours,
+                ["totalAV"] = totalAvHours,
+                ["total"] = totalHours
+            };
+        }
+
         Dictionary<String, dynamic> reserve(double weight, List<Slot> slots) {
             String reason = "";
             int day;
@@ -157,12 +204,9 @@ namespace university_scheduler {
             foreach (Slot slot in slots) {
                 double maxTime = maxTimeO;
                 bool isSlotRes = false;
-
-                double minExcceed = double.MaxValue;
-                double minExceedTime;
-                int minExcceedDay;
-                Classroom minClassRoom;
-                for (int dayIteration = 0; dayIteration < maxDaysO; dayIteration++) {
+                int dayIteration;
+                RestartLoopLabel:
+                for (dayIteration = 0; dayIteration < maxDaysO; dayIteration++) {
                     if (dayIteration % 2 == 0) {
                         day = dayIteration;
                     } else {
@@ -203,17 +247,6 @@ namespace university_scheduler {
                                 bool isClassEmpty = true;
 
                                 if (time + slot.hours > maxTime) {
-                                    // if (time + slot.hours - maxTime < minExcceed) {
-                                    //   minExcceed = time + slot.hours - maxTime;
-                                    //   minExcceedDay = day;
-                                    //   minClassRoom = classRoom;
-                                    //   minExceedTime = time;
-                                    // }
-                                    // if (day != maxDaysO - 1) {
-                                    //   break;
-                                    // }
-                                    // day = minExcceedDay;
-                                    // time = minExceedTime;
                                     break;
                                 }
                                 for (double k = time + 1; k < time + slot.hours; k++) {
@@ -277,12 +310,7 @@ namespace university_scheduler {
                     }
                     if (isSlotRes) {
                         break;
-                    } /*else {
-                        if (reason == REASON_CLASS_TIME && day == Math.Ceiling((decimal)maxDaysO/2)) {
-                            maxTime++;
-                            dayIteration = -1;
-                        }
-                    }*/
+                    }
                 }
                 if (!isSlotRes) {
                     return new Dictionary<String, dynamic>() {
@@ -294,6 +322,7 @@ namespace university_scheduler {
             return null;
         }
 
+        #region HelperFunctions
         double calcWeight(Slot slot) {
             double weight = 0;
             if (slot.isReq) return 0;
@@ -470,4 +499,5 @@ namespace university_scheduler {
             Console.WriteLine("WOOOOW");
         }
     }
+    #endregion
 }
