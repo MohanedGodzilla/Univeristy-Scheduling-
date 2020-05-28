@@ -12,7 +12,7 @@ namespace university_scheduler.Data
         public string conString = env.db_con_str;
         public int courseNums = 100;
         public static int max_days=6;
-        public static int max_time=7;
+        public static int max_time=8;
         
         
         private int countt = 0;

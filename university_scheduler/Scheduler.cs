@@ -5,6 +5,7 @@ using university_scheduler.Data;
 using university_scheduler.Model;
 
 namespace university_scheduler {
+
     class Scheduler {
         const String REASON_CAP = "cap";
         const String REASON_RES = "res";
@@ -24,6 +25,7 @@ namespace university_scheduler {
         int maxDaysO = Generator.max_days;
         double maxTimeO = Generator.max_time;
         int resInc = 0;
+
         Dictionary<int, Reservation> resDictionary;
         Dictionary<String, int> confCount = new Dictionary<String, int>() {
             [REASON_CAP] = 0,
@@ -34,7 +36,7 @@ namespace university_scheduler {
             [REASON_CLASS_BLOCKED_HOURS] = 0
         };
         Dictionary<double, List<int>> weightResDictionary = new Dictionary<double, List<int>>(); //Dictionary<weight,list of reservation ids>
-
+        Dictionary<int, List<Slot>> courseSplitProgramSlotDictionary = new Dictionary<int, List<Slot>>();//course id, split count
         public Scheduler() {
             seedData();
         }
@@ -93,7 +95,7 @@ namespace university_scheduler {
 
                     if (reason == REASON_CAP) {
                         if (slotWithConflict.programs.Count > 1) {
-                            separatePrograms(slotWithConflict);
+                            separatePrograms(slotWithConflict.courseId);
                         } else {
                             splitProgram(slotWithConflict, sortedWeights[i]);
                         }
@@ -101,7 +103,7 @@ namespace university_scheduler {
                         i -= 1;
                     } else if (reason == REASON_PROG_TIME) {
                         if (slotWithConflict.programs.Count > 1) {
-                            separatePrograms(slotWithConflict);
+                            separatePrograms(slotWithConflict.courseId);
                         }
                         sortedWeights = sortWeights();
                         i -= 1;
@@ -205,7 +207,6 @@ namespace university_scheduler {
                 double maxTime = maxTimeO;
                 bool isSlotRes = false;
                 int dayIteration;
-                RestartLoopLabel:
                 for (dayIteration = 0; dayIteration < maxDaysO; dayIteration++) {
                     if (dayIteration % 2 == 0) {
                         day = dayIteration;
@@ -407,23 +408,18 @@ namespace university_scheduler {
             addToWeightMap(slot2, weight);
         }
 
-        void separatePrograms(Slot slotWithConflict) {
-            List<Model.Program> allProgs = slotWithConflict.programs;
-            allProgs.Sort((Model.Program a, Model.Program b) =>
-                a.getTermData(slotWithConflict.term).limit -
-                b.getTermData(slotWithConflict.term).limit);
+        void separatePrograms(int courseID) {
+            if (courseSplitProgramSlotDictionary.ContainsKey(courseID)) {
+                List<Slot> pSlots = courseSplitProgramSlotDictionary[courseID];
+                List<List<Model.Program>> pList = new List<List<Model.Program>>();
+                pSlots.ForEach((Slot slot)=> {
+                    pList.Add(slot.programs);
+                });
 
-            List<Model.Program> subProg1 = pickAndSkip(allProgs, true);
-            List<Model.Program> subProg2 = pickAndSkip(allProgs, false);
+                List<Model.Program> newSplit = new List<Model.Program>();
 
-            Slot slot1 = copySlot(slotWithConflict, subProg1);
-            Slot slot2 = copySlot(slotWithConflict, subProg2);
-
-            double slot1W = calcWeight(slot1);
-            double slot2W = calcWeight(slot2);
-
-            addToWeightMap(slot1, slot1W);
-            addToWeightMap(slot2, slot2W);
+                
+            }
         }
 
         List<Model.Program> pickAndSkip(List<Model.Program> programs, bool even) {
