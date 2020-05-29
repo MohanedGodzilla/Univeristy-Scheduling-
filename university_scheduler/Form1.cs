@@ -66,12 +66,17 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-            string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
-            string title = "Old reservations will be deleted";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if (result != DialogResult.OK) {
-                return;
+            List<Reservation> reservation = Reservation.getAll();
+            if (reservation.Count > 0)
+            {
+                string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
+                string title = "Old reservations will be deleted";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
             }
             //scheduler.start();
             //scheduler.saveReservations();
@@ -105,7 +110,7 @@ namespace university_scheduler
                 Excel.Workbook book = books.Open(@"D:\classrooms.xls");*/
             }
             catch (Exception e) {
-                MessageBox.Show("this file is already opend");
+                
             }
         }
 
@@ -134,7 +139,7 @@ namespace university_scheduler
             }
             catch (Exception e)
             {
-                MessageBox.Show("this file is already opend");
+               
             }   
         }
 

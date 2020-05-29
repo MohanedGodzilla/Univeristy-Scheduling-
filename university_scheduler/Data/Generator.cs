@@ -204,16 +204,16 @@ namespace university_scheduler.Data
 
                 /////////////// 26 room LECS
                 //LECT BIG
-                getRoomWithParams(22, 2, 700, 800, 0);
-                getRoomWithParams(24, 2, 450, 450, 0);
+                getRoomWithParams(54, 2, 700, 800, 0);
+                getRoomWithParams(56, 2, 450, 450, 0);
                 //LECT MED
-                getRoomWithParams(24, 3, 150, 150, 0);
-                getRoomWithParams(42, 2, 100, 100, 0);
+                getRoomWithParams(58, 3, 150, 150, 0);
+                getRoomWithParams(61, 2, 100, 100, 0);
                 //LECT SMALL
-                getRoomWithParams(27, 8, 70, 70, 0);
-                getRoomWithParams(35, 7, 40, 40, 0);
-                getRoomWithParams(44, 1, 55, 55, 0);
-                getRoomWithParams(45, 1, 23, 23, 0);
+                getRoomWithParams(63, 8, 70, 70, 0);
+                getRoomWithParams(71, 7, 40, 40, 0);
+                getRoomWithParams(78, 1, 55, 55, 0);
+                getRoomWithParams(79, 1, 23, 23, 0);
             }
             else {
                 getRoomWithParams(0, 5, 35, 35, 1);
