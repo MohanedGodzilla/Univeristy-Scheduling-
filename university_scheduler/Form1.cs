@@ -66,6 +66,13 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
+            string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
+            string title = "Old reservations will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK) {
+                return;
+            }
             //scheduler.start();
             //scheduler.saveReservations();
             saveClassroomsinExcel();
@@ -139,8 +146,7 @@ namespace university_scheduler
             //Header
             ws.Cells[1] = "Day";
             ws.Cells[2] = "Course Name";
-            ws.Cells[3] = "Course Code";
-           
+            ws.Cells[3] = "Course Code";          
             ws.Cells[4] = "From";
             ws.Cells[5] = "To";
             if(model == "program")
