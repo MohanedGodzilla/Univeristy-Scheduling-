@@ -35,8 +35,9 @@ namespace university_scheduler {
             [REASON_DAYLIMIT] = 0,
             [REASON_CLASS_BLOCKED_HOURS] = 0
         };
+        Dictionary<int, Dictionary<SessionType,Dictionary<String, int>>> courseConfDictonary = new Dictionary<int, Dictionary<SessionType, Dictionary<String, int>>>();
         Dictionary<double, List<int>> weightResDictionary = new Dictionary<double, List<int>>(); //Dictionary<weight,list of reservation ids>
-        Dictionary<int, List<Slot>> courseSplitProgramSlotDictionary = new Dictionary<int, List<Slot>>();//course id, split count
+        Dictionary<int, Dictionary<SessionType, List<Slot>>> courseSplitProgramSlotDictionary = new Dictionary<int, Dictionary<SessionType, List<Slot>>>();//course id, split count
         public Scheduler() {
             seedData();
         }
@@ -83,7 +84,16 @@ namespace university_scheduler {
                 if (conflict != null) {
                     Slot slotWithConflict = conflict["slot"];
                     String reason = conflict["reason"];
-
+                    if (!courseConfDictonary.ContainsKey(slotWithConflict.courseId)) {
+                        courseConfDictonary[slotWithConflict.courseId] = new Dictionary<SessionType, Dictionary<string, int>>();
+                    }
+                    if (!courseConfDictonary[slotWithConflict.courseId].ContainsKey(slotWithConflict.sessionType)) {
+                        courseConfDictonary[slotWithConflict.courseId][slotWithConflict.sessionType] = new Dictionary<string, int>();
+                    }
+                    if (!courseConfDictonary[slotWithConflict.courseId][slotWithConflict.sessionType].ContainsKey(reason)) {
+                        courseConfDictonary[slotWithConflict.courseId][slotWithConflict.sessionType][reason] = 0;
+                    }
+                    courseConfDictonary[slotWithConflict.courseId][slotWithConflict.sessionType][reason]++;
                     confCount[reason]++;
                     if (weightResDictionary.ContainsKey(sortedWeights[i]) && weightResDictionary[sortedWeights[i]] != null) {
                         foreach (int resId in weightResDictionary[sortedWeights[i]]) {
@@ -95,7 +105,7 @@ namespace university_scheduler {
 
                     if (reason == REASON_CAP) {
                         if (slotWithConflict.programs.Count > 1) {
-                            separatePrograms(slotWithConflict.courseId);
+                            separatePrograms(slotWithConflict);
                         } else {
                             splitProgram(slotWithConflict, sortedWeights[i]);
                         }
@@ -103,7 +113,7 @@ namespace university_scheduler {
                         i -= 1;
                     } else if (reason == REASON_PROG_TIME) {
                         if (slotWithConflict.programs.Count > 1) {
-                            separatePrograms(slotWithConflict.courseId);
+                            separatePrograms(slotWithConflict);
                         }
                         sortedWeights = sortWeights();
                         i -= 1;
@@ -214,14 +224,14 @@ namespace university_scheduler {
                         day = maxDaysO - dayIteration;
                     }
                     List<Classroom> typeClassRooms =
-                        classRooms.Where((room) => (room.isLab == slot.isLab)).ToList();
+                        classRooms.Where((room) => (room.isLab == (slot.sessionType==SessionType.LAB))).ToList();
 
 
-                    if (slot.isLab && typeClassRooms.Count>0) {
+                    if (slot.sessionType == SessionType.LAB && typeClassRooms.Count>0) {
                         typeClassRooms = typeClassRooms.Where((room) => matchResources(room.resources,slot.resources)).ToList();
                     }
 
-                    if (slot.isLab && typeClassRooms.Count == 0) {
+                    if (slot.sessionType == SessionType.LAB && typeClassRooms.Count == 0) {
                         reason = REASON_RES;
                         continue;
                     }
@@ -261,7 +271,6 @@ namespace university_scheduler {
                                     }
                                 }
                                 if (!isClassEmpty) {
-                                    //kona 7ateen break hena
                                     continue;
                                 }
                                 //if isClassEmpty
@@ -284,7 +293,7 @@ namespace university_scheduler {
 
                                 if (isProgramsAvailable && isClassEmpty) {
                                     Reservation reservation = new Reservation(slot.courseId,
-                                        classRoom.id, day, time, time + slot.hours, slot.isLab);
+                                        classRoom.id, day, time, time + slot.hours, slot.sessionType == SessionType.LAB);
                                     reservation.programs = slot.programs;
                                     resDictionary[resInc] = reservation;
                                     reservedSlotsIds.Add(slot.id);
@@ -353,7 +362,7 @@ namespace university_scheduler {
                         course.creditHours,
                         course.lectureHours,
                         course.term,
-                        false,
+                        SessionType.LECTURE,
                         course.isReq,
                         new List<Resource>(),
                         programs);
@@ -370,7 +379,7 @@ namespace university_scheduler {
                         course.creditHours,
                         course.practiceHours,
                         course.term,
-                        false,
+                        SessionType.PRACTICE,
                         course.isReq,
                         new List<Resource>(),
                         programs);
@@ -386,7 +395,7 @@ namespace university_scheduler {
                         course.creditHours,
                         course.labHours,
                         course.term,
-                        true,
+                        SessionType.LAB,
                         course.isReq,
                         resources,
                         programs);
@@ -408,18 +417,52 @@ namespace university_scheduler {
             addToWeightMap(slot2, weight);
         }
 
-        void separatePrograms(int courseID) {
-            if (courseSplitProgramSlotDictionary.ContainsKey(courseID)) {
-                List<Slot> pSlots = courseSplitProgramSlotDictionary[courseID];
-                List<List<Model.Program>> pList = new List<List<Model.Program>>();
-                pSlots.ForEach((Slot slot)=> {
-                    pList.Add(slot.programs);
-                });
-
-                List<Model.Program> newSplit = new List<Model.Program>();
-
-                
+        void separatePrograms(Slot slotData) {
+            int courseID = slotData.courseId;
+            SessionType sessionType = slotData.sessionType;
+            if (!courseSplitProgramSlotDictionary.ContainsKey(courseID)) {
+                courseSplitProgramSlotDictionary[courseID] = new Dictionary<SessionType, List<Slot>>();
             }
+
+            Dictionary<SessionType, List<Slot>> sMap = courseSplitProgramSlotDictionary[courseID];
+
+            if (!sMap.ContainsKey(sessionType)) {
+                sMap[sessionType] = new List<Slot>() {slotData};
+            }
+
+            List<Slot> pSlots = sMap[sessionType];
+            List<Model.Program> pList = new List<Model.Program>();
+            pSlots.ForEach((Slot slot)=> {
+                pList.AddRange(slot.programs);
+            });
+
+            pList.Sort((Model.Program p1,Model.Program p2)=> (p1.getTermData(slotData.term).limit-p2.getTermData(slotData.term).limit));
+
+            int progCount = pList.Count;//7
+            int newSplitCount = pSlots.Count+1;//3
+            courseSplitProgramSlotDictionary[courseID][sessionType] = new List<Slot>();
+            while (progCount != 0) {
+                int count = (int)Math.Ceiling((double)progCount / newSplitCount);
+                progCount -= count;
+                newSplitCount--;
+                List<Model.Program> newSlotPrograms = new List<Model.Program>();
+                List<Model.Program> addedPrograms = new List<Model.Program>();
+                for (int i = 0; i < count; i++) {
+                    int index= i % 2 == 0? i : count - i;
+
+                    newSlotPrograms.Add(pList[index]);
+                    addedPrograms.Add(pList[index]);
+                }
+                for (int i = 0; i < addedPrograms.Count; i++) {
+                    pList.Remove(addedPrograms[i]);
+                }
+
+                Slot slot = copySlot(slotData, newSlotPrograms);
+                courseSplitProgramSlotDictionary[courseID][sessionType].Add(slot);
+                double weight = calcWeight(slot);
+                addToWeightMap(slot, weight);
+            }
+
         }
 
         List<Model.Program> pickAndSkip(List<Model.Program> programs, bool even) {
@@ -439,7 +482,7 @@ namespace university_scheduler {
                         slot.creditHours,
                         slot.hours,
                         slot.term,
-                        slot.isLab,
+                        slot.sessionType,
                         slot.isReq,
                         slot.resources,
                         programs);
