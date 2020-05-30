@@ -30,6 +30,22 @@ namespace university_scheduler.Model {
             }
         }
 
+        public static List<Reservation> getProgramReservations(int programId) {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            List<Reservation> reservations = new List<Reservation>();
+            cn.Open();
+            string query = $"SELECT reservation_id FROM reservation_has_program WHERE program_id =  {programId}";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    reservations.Add(Reservation.getResById((int)reader.GetValue(0)));
+                }
+                cn.Close();
+                return reservations;
+            }
+        }
 
         public static int insert(int reservation_id, int program_id) {
             SqlConnection cn = new SqlConnection(env.db_con_str);
