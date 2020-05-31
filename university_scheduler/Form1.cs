@@ -78,12 +78,12 @@ namespace university_scheduler
                     return;
                 }
             }
-            //scheduler.start();
-            //scheduler.saveReservations();
-            saveClassroomsinExcel();
+            scheduler.start();
+            scheduler.saveReservations();
+            /*saveClassroomsinExcel();
             saveProgramssinExcel();
             HomeScreenWithTable Popup = new HomeScreenWithTable();
-            DialogResult dialogResult = Popup.ShowDialog();
+            DialogResult dialogResult = Popup.ShowDialog();*/
         }
 
         void saveClassroomsinExcel()
