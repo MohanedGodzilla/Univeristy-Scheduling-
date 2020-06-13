@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using university_scheduler.Model;
 using System.Windows.Forms;
 
 namespace university_scheduler
@@ -19,6 +20,15 @@ namespace university_scheduler
         public viewResourcesForm()
         {
             InitializeComponent();
+        }
+
+        public viewResourcesForm(int flag)
+        {
+            InitializeComponent();
+            var control = this.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            this.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
         }
 
         //The following function for bring data from database
@@ -37,7 +47,7 @@ namespace university_scheduler
                     cn.Close();
                 }
                 resourceData.Columns[0].Width = 40;
-                resourceData.Columns[1].Width = 150;
+                resourceData.Columns[1].Width = 500;
             }
         }
 
@@ -111,6 +121,14 @@ namespace university_scheduler
         private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dtClass = Resource.search();
+            DataView DV = new DataView(dtClass);
+            DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
+            resourceData.DataSource = DV;
         }
     }
 }

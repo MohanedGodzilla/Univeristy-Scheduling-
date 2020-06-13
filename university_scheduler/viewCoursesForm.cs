@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using university_scheduler.Model;
 
 namespace university_scheduler
 {
@@ -20,10 +21,25 @@ namespace university_scheduler
             InitializeComponent();
             this.loaddata();
             courseData.Columns[0].Width = 40;
-            courseData.Columns[1].Width = 110;
+            courseData.Columns[1].Width = 180;
             courseData.Columns[3].Width = 60;
             courseData.Columns[4].Width = 60;
             courseData.Columns[5].Width = 60;
+        }
+
+        public viewCoursesForm(int flag)
+        {
+            InitializeComponent();
+            this.loaddata();
+            courseData.Columns[0].Width = 40;
+            courseData.Columns[1].Width = 180;
+            courseData.Columns[3].Width = 60;
+            courseData.Columns[4].Width = 60;
+            courseData.Columns[5].Width = 60;
+            var control = this.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            this.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
         }
 
         private void viewCoursesForm_Load(object sender, EventArgs e)
@@ -132,6 +148,14 @@ namespace university_scheduler
         private void courseData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dtClass = Course.search();
+            DataView DV = new DataView(dtClass);
+            DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
+            courseData.DataSource = DV;
         }
     }
 }

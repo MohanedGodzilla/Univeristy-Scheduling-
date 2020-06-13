@@ -103,16 +103,6 @@ namespace university_scheduler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_police_car_light_20 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-police-car-light-20", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_police_car_light_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-police-car-light-30", resourceCulture);
@@ -133,29 +123,9 @@ namespace university_scheduler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_view_20 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-view-20", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_view_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-view-30", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_view_35 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-view-35", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

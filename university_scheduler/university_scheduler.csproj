@@ -250,28 +250,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\magnifier.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8-police-car-light-20.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-police-car-light-201.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-view-20.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8-contact-us-30.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-view-35.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-view-30.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-police-car-light-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sincerely-media-gPnHi8AmO5k-unsplash.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

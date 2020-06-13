@@ -177,5 +177,12 @@ namespace university_scheduler
             */
             this.Close();
         }
+
+        private void newCourseBTN_Click(object sender, EventArgs e)
+        {
+            addResourceForm addResourcePopup = new addResourceForm();
+            DialogResult dialogResult = addResourcePopup.ShowDialog();
+            checkedListBox1.Update();
+        }
     }
 }

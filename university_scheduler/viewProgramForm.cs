@@ -8,11 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using university_scheduler.Model;
 
 namespace university_scheduler {
     public partial class viewProgramForm : Form {
         public viewProgramForm() {
             InitializeComponent();
+        }
+
+        public viewProgramForm(int flag)
+        {
+            InitializeComponent();
+            var control = this.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            this.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
         }
 
         private void newProgramBTN_Click(object sender, EventArgs e) {
@@ -86,6 +96,14 @@ namespace university_scheduler {
             if (!canUpdate()) return;
             addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value);
             addProgramForm.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dtClass = Model.Program.search(1);
+            DataView DV = new DataView(dtClass);
+            DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
+            programData.DataSource = DV;
         }
     }
 }
