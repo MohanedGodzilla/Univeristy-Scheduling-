@@ -258,6 +258,21 @@
   <ItemGroup>
     <None Include="Resources\icons8-police-car-light-201.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-view-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-contact-us-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-view-35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-view-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-police-car-light-30.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

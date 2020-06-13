@@ -16,7 +16,7 @@ namespace university_scheduler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NoScheduleHome());
+            Application.Run(new HomeScreenWithTable());
         }
     }
 }

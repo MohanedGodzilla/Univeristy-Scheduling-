@@ -162,13 +162,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button deleteCourseBTN;
         private System.Windows.Forms.Button editCourseBTN;
         private System.Windows.Forms.Button newCourseBTN;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView courseData;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

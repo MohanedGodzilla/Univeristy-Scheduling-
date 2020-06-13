@@ -15,6 +15,7 @@ namespace university_scheduler
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 5;
+            comboBox3.SelectedIndex = 0;
             courses_view();
             programs_view();
             classrooms_view();

@@ -97,6 +97,45 @@ namespace university_scheduler
             this.Close();
         }
 
+        private void viewBTN_Click(object sender, EventArgs e)
+        {
+            NoScheduleHome Popup = new NoScheduleHome();
+            //Popup.panel2.Hide();
+            var control = Popup.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            Popup.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = Popup.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
+            viewResourcesForm res = new viewResourcesForm();
+            Popup.Size = new System.Drawing.Size(1000, 600);
+            Popup.Show();
+            
+        }
 
+        /*private void controlSecondColumn() {
+            viewResourcesForm res = new viewResourcesForm();
+            res.tableLayoutPanel2.Hide();
+            var control1 = res.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            res.tableLayoutPanel1.Controls.Remove(control1);
+            TableLayoutColumnStyleCollection styles1 = res.tableLayoutPanel1.ColumnStyles;
+            styles1[1].Width = 0;
+
+            viewProgramForm pro = new viewProgramForm();
+            var control2 = pro.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            pro.tableLayoutPanel1.Controls.Remove(control2);
+            TableLayoutColumnStyleCollection styles2 = pro.tableLayoutPanel1.ColumnStyles;
+            styles2[1].Width = 0;
+
+            viewClassroomForm classroom = new viewClassroomForm();
+            var control3 = classroom.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            classroom.tableLayoutPanel1.Controls.Remove(control3);
+            TableLayoutColumnStyleCollection styles3 = classroom.tableLayoutPanel1.ColumnStyles;
+            styles3[1].Width = 0;
+
+            viewCoursesForm course = new viewCoursesForm();
+            var control4 = course.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            course.tableLayoutPanel1.Controls.Remove(control4);
+            TableLayoutColumnStyleCollection styles4 = course.tableLayoutPanel1.ColumnStyles;
+            styles4[1].Width = 0;
+        }*/
     }
 }
