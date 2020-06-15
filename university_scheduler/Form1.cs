@@ -24,16 +24,17 @@ namespace university_scheduler
             resourses_view(notComeFromHomeScreenWithTable);
         }
 
-        public NoScheduleHome(int flag)
+        //disableBTNS = add,delete,edit buttons 
+        public NoScheduleHome(int existTable_disableBTNs)
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 5;
             comboBox3.SelectedIndex = 0;
-            courses_view(flag);
-            programs_view(flag);
-            classrooms_view(flag);
-            resourses_view(flag);
+            courses_view(existTable_disableBTNs);
+            programs_view(existTable_disableBTNs);
+            classrooms_view(existTable_disableBTNs);
+            resourses_view(existTable_disableBTNs);
         }
 
         private void NoScheduleHome_Load(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace university_scheduler
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
             //Generator.generateALL();
-            //scheduler = new Scheduler();
+            scheduler = new Scheduler();
 
         }
 
@@ -123,8 +124,8 @@ namespace university_scheduler
                     return;
                 }
             }
-            //scheduler.start();
-            //scheduler.saveReservations();
+            scheduler.start();
+            scheduler.saveReservations();
             saveClassroomsinExcel();
             saveProgramssinExcel();
             HomeScreenWithTable Popup = new HomeScreenWithTable();

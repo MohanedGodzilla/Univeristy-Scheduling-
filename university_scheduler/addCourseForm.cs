@@ -36,13 +36,21 @@ namespace university_scheduler
             saveBTN.Hide();
         }
 
-        public addCourseForm(int courseId)
+        public addCourseForm(int courseId, int viewCourse_disableSaveBTN)
         {
             InitializeComponent();
             this.courseId = courseId;
             show_EditForm(courseId);
             addCourseBTN.Hide();
-            saveBTN.Show();
+            if (viewCourse_disableSaveBTN == 0)
+            {
+                saveBTN.Show();
+                
+            }
+            else if (viewCourse_disableSaveBTN == 1)
+            {
+                saveBTN.Hide();
+            }
             isEdit = true;
         }
 

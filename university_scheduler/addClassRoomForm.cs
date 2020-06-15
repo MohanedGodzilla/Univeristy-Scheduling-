@@ -32,14 +32,21 @@ namespace university_scheduler
             addClassBTN.Show();
             saveClassBTN.Hide();
         }
-        public addClassRoomForm(int classId)
+        public addClassRoomForm(int classId, int viewClassroom_disableSaveBTN)
         {
             InitializeComponent();
             this.classId = classId;
             show_EditForm(classId);
             addClassBTN.Hide();
-            saveClassBTN.Show();
-            isEdit = true;
+            if (viewClassroom_disableSaveBTN == 0)
+            {
+                saveClassBTN.Show();
+            }
+            else if (viewClassroom_disableSaveBTN == 1)
+            {
+                saveClassBTN.Hide();
+            }
+            isEdit = true;           
         }
 
         private void addResourceForClass(int id)

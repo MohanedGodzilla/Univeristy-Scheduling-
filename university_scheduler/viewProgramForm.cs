@@ -12,6 +12,9 @@ using university_scheduler.Model;
 
 namespace university_scheduler {
     public partial class viewProgramForm : Form {
+
+        public int viewProgram_disableSaveBTN = 0;
+
         public viewProgramForm() {
             InitializeComponent();
         }
@@ -19,6 +22,7 @@ namespace university_scheduler {
         public viewProgramForm(int flag)
         {
             InitializeComponent();
+            this.viewProgram_disableSaveBTN = flag;
             var control = this.tableLayoutPanel1.GetControlFromPosition(1, 0);
             this.tableLayoutPanel1.Controls.Remove(control);
             TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
@@ -54,8 +58,8 @@ namespace university_scheduler {
 
         private void editProgramBTN_Click(object sender, EventArgs e) {
             if (!canUpdate()) return;
-            addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value);
-            addProgramForm.Show();
+            addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value,0);
+            addProgramForm.ShowDialog();
         }
 
         private void deleteProgramBTN_Click(object sender, EventArgs e) {
@@ -93,9 +97,18 @@ namespace university_scheduler {
 
         private void programData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!canUpdate()) return;
-            addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value);
-            addProgramForm.Show();
+            if (this.viewProgram_disableSaveBTN == 0)
+            {
+                if (!canUpdate()) return;
+                addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value,0);
+                addProgramForm.Show();
+            }
+            else if(this.viewProgram_disableSaveBTN == 1)
+            {
+                if (!canUpdate()) return;
+                addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value,1);
+                addProgramForm.Show();
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

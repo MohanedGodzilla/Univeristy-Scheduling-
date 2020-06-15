@@ -30,13 +30,13 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.deleteCourseBTN = new System.Windows.Forms.Button();
+            this.editCourseBTN = new System.Windows.Forms.Button();
+            this.newCourseBTN = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.courseData = new System.Windows.Forms.DataGridView();
-            this.deleteCourseBTN = new System.Windows.Forms.Button();
-            this.editCourseBTN = new System.Windows.Forms.Button();
-            this.newCourseBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -78,6 +78,45 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
+            // 
+            // deleteCourseBTN
+            // 
+            this.deleteCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.deleteCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
+            this.deleteCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteCourseBTN.Location = new System.Drawing.Point(3, 113);
+            this.deleteCourseBTN.Name = "deleteCourseBTN";
+            this.deleteCourseBTN.Size = new System.Drawing.Size(171, 37);
+            this.deleteCourseBTN.TabIndex = 2;
+            this.deleteCourseBTN.Text = "Delete";
+            this.deleteCourseBTN.UseVisualStyleBackColor = true;
+            this.deleteCourseBTN.Click += new System.EventHandler(this.deleteCourseBTN_Click);
+            // 
+            // editCourseBTN
+            // 
+            this.editCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.editCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
+            this.editCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.editCourseBTN.Location = new System.Drawing.Point(3, 62);
+            this.editCourseBTN.Name = "editCourseBTN";
+            this.editCourseBTN.Size = new System.Drawing.Size(171, 37);
+            this.editCourseBTN.TabIndex = 1;
+            this.editCourseBTN.Text = "Edit";
+            this.editCourseBTN.UseVisualStyleBackColor = true;
+            this.editCourseBTN.Click += new System.EventHandler(this.editCourseBTN_Click);
+            // 
+            // newCourseBTN
+            // 
+            this.newCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.newCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
+            this.newCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newCourseBTN.Location = new System.Drawing.Point(3, 11);
+            this.newCourseBTN.Name = "newCourseBTN";
+            this.newCourseBTN.Size = new System.Drawing.Size(171, 37);
+            this.newCourseBTN.TabIndex = 0;
+            this.newCourseBTN.Text = "New";
+            this.newCourseBTN.UseVisualStyleBackColor = true;
+            this.newCourseBTN.Click += new System.EventHandler(this.newCourseBTN_Click);
             // 
             // panel1
             // 
@@ -126,45 +165,6 @@
             this.courseData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellContentClick);
             this.courseData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellDoubleClick);
             // 
-            // deleteCourseBTN
-            // 
-            this.deleteCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.deleteCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
-            this.deleteCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteCourseBTN.Location = new System.Drawing.Point(3, 113);
-            this.deleteCourseBTN.Name = "deleteCourseBTN";
-            this.deleteCourseBTN.Size = new System.Drawing.Size(171, 37);
-            this.deleteCourseBTN.TabIndex = 2;
-            this.deleteCourseBTN.Text = "Delete";
-            this.deleteCourseBTN.UseVisualStyleBackColor = true;
-            this.deleteCourseBTN.Click += new System.EventHandler(this.deleteCourseBTN_Click);
-            // 
-            // editCourseBTN
-            // 
-            this.editCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.editCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
-            this.editCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editCourseBTN.Location = new System.Drawing.Point(3, 62);
-            this.editCourseBTN.Name = "editCourseBTN";
-            this.editCourseBTN.Size = new System.Drawing.Size(171, 37);
-            this.editCourseBTN.TabIndex = 1;
-            this.editCourseBTN.Text = "Edit";
-            this.editCourseBTN.UseVisualStyleBackColor = true;
-            this.editCourseBTN.Click += new System.EventHandler(this.editCourseBTN_Click);
-            // 
-            // newCourseBTN
-            // 
-            this.newCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.newCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
-            this.newCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newCourseBTN.Location = new System.Drawing.Point(3, 11);
-            this.newCourseBTN.Name = "newCourseBTN";
-            this.newCourseBTN.Size = new System.Drawing.Size(171, 37);
-            this.newCourseBTN.TabIndex = 0;
-            this.newCourseBTN.Text = "New";
-            this.newCourseBTN.UseVisualStyleBackColor = true;
-            this.newCourseBTN.Click += new System.EventHandler(this.newCourseBTN_Click);
-            // 
             // viewCoursesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +175,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "viewCoursesForm";
             this.Text = "viewCoursesForm";
+            this.Load += new System.EventHandler(this.viewCoursesForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

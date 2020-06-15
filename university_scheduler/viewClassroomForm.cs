@@ -9,6 +9,7 @@ namespace university_scheduler
     public partial class viewClassroomForm : Form
     {
         public string conString = env.db_con_str;
+        public int viewClassroom_disableSaveBTN = 0;
         public viewClassroomForm()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace university_scheduler
         public viewClassroomForm(int flag)
         {
             InitializeComponent();
+            this.viewClassroom_disableSaveBTN = flag;
             this.loaddata();
             classData.Columns[0].Width = 40;
             classData.Columns[1].Width = 400;
@@ -77,7 +79,7 @@ namespace university_scheduler
 
         private void editClassRoomBTN_Click(object sender, EventArgs e)
         {
-            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value);
+            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,0);
             classRoomDataPassed.Text = "Edit Classroom";
             classRoomDataPassed.ShowDialog(this);
             this.loaddata();
@@ -107,10 +109,18 @@ namespace university_scheduler
 
         private void classData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value);
-            classRoomDataPassed.ShowDialog(this);
-            classData.Update();
-            classData.Refresh();
+            if (this.viewClassroom_disableSaveBTN == 0)
+            {
+                addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,0);
+                classRoomDataPassed.ShowDialog(this);
+                classData.Update();
+                classData.Refresh();
+            }
+            else if (this.viewClassroom_disableSaveBTN == 1)
+            {
+                addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,1);
+                classRoomDataPassed.ShowDialog(this);
+            }
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)

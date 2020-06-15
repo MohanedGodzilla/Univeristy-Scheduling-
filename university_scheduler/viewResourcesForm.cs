@@ -16,7 +16,7 @@ namespace university_scheduler
     {
 
         public string conString = env.db_con_str;
-
+        public int viewResource_disableSaveBTN = 0;
         public viewResourcesForm()
         {
             InitializeComponent();
@@ -25,6 +25,7 @@ namespace university_scheduler
         public viewResourcesForm(int flag)
         {
             InitializeComponent();
+            this.viewResource_disableSaveBTN = flag;
             var control = this.tableLayoutPanel1.GetControlFromPosition(1, 0);
             this.tableLayoutPanel1.Controls.Remove(control);
             TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
@@ -95,9 +96,16 @@ namespace university_scheduler
         //The following function for Edit the resources 
 
         public void passData_AddResourceForm() {
-            if (!canUpdate()) return;
-            addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value);
-            resDataPassed.ShowDialog(this);
+            if (this.viewResource_disableSaveBTN == 0){
+                if (!canUpdate()) return;
+                addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value,0);
+                resDataPassed.ShowDialog(this);
+            }
+            else if(this.viewResource_disableSaveBTN == 1){
+                if (!canUpdate()) return;
+                addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value, 1);
+                resDataPassed.ShowDialog(this);
+            }
         }
 
         private void editResourceBTN_Click(object sender, EventArgs e)

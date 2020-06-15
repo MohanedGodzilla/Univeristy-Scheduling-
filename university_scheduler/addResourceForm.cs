@@ -24,11 +24,17 @@ namespace university_scheduler
             saveResourceBTN.Hide();
         }
 
-        public addResourceForm(int Id) // constructor to get resourceName from (dataset)=>resourceData
+        public addResourceForm(int Id, int viewResource_disableSaveBTN) // constructor to get resourceName from (dataset)=>resourceData
         {
             InitializeComponent();
             addResourceBTN.Hide();
-            saveResourceBTN.Show();
+            if (viewResource_disableSaveBTN == 0)
+            {
+                saveResourceBTN.Show();
+            }
+            else if (viewResource_disableSaveBTN == 1) {
+                saveResourceBTN.Hide();
+            }
             this.resource_id = Id;
             loadData();
         }

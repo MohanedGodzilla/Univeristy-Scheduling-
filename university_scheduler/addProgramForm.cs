@@ -25,12 +25,20 @@ namespace university_scheduler {
             initLimits();
             addProgramBTN.Visible = true;
         }
-        public addProgramForm(int prog_id) {
+        public addProgramForm(int prog_id, int viewProgram_disableSaveBTN) {
+      
             InitializeComponent();
             initLimits();
             this.prog_id = prog_id;
             loadData();
-            saveProgramBTN.Visible = true;
+            if (viewProgram_disableSaveBTN == 0)
+            {
+                saveProgramBTN.Visible = true;
+            }
+            else if (viewProgram_disableSaveBTN == 1)
+            {
+                saveProgramBTN.Hide();
+            }
             isEdit = true;
         }
 
