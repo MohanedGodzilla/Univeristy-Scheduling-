@@ -164,7 +164,7 @@ namespace university_scheduler
                     valCheck = 0;
                 }
 
-                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values( '" + className.Text.ToString() + "' ,'" + lecCounter.Value + "' ,'" + examCounter.Value + "','" + valCheck + "' )";
+                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values(N'" + className.Text.ToString() + "' ,'" + lecCounter.Value + "' ,'" + examCounter.Value + "','" + valCheck + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 this.current_id = getTheMaxId();
@@ -185,7 +185,7 @@ namespace university_scheduler
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                string query = "UPDATE class SET name = '" + className.Text.ToString() + "', lecture_capacity = '" + lecCounter.Value + "',exam_capacity = '" + examCounter.Value + "' WHERE id = " + selected_id;
+                string query = "UPDATE class SET name = N'" + className.Text.ToString() + "', lecture_capacity = '" + lecCounter.Value + "',exam_capacity = '" + examCounter.Value + "' WHERE id = " + selected_id;
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 if (selectResource.Enabled == true)

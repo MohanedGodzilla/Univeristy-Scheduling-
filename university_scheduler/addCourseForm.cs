@@ -16,6 +16,7 @@ namespace university_scheduler
         
         public string conString =env.db_con_str ;
         public int courseId;
+        viewCoursesForm courseForm = (viewCoursesForm)Application.OpenForms["viewCoursesForm"];// it's an object that is used in function addCourseBTN_Click() to reopen the form when adding a new tuple in the database
         public List<int> selectedResourceList ;
         public List<int> oldSelectedResourceList ;
         public List<int> editedResourceList;
@@ -279,7 +280,7 @@ namespace university_scheduler
                     val = 1;
                 }
 
-                string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "'" + courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , '" + courseCode.Text + "' , '" + val + "' )";
+                string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "N'" + courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , N'" + courseCode.Text + "' , '" + val + "' )";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 this.current_id = getTheMaxId();
@@ -290,6 +291,9 @@ namespace university_scheduler
                 addProgramForCourse(this.current_id);
                 MessageBox.Show("Adding course successfully..!");
                 this.Close();
+                courseForm.loaddata();
+                courseForm.courseData.Update();
+                courseForm.courseData.Refresh();
             }
             cn.Close();
         }
@@ -308,7 +312,7 @@ namespace university_scheduler
                     {
                         val = 1;
                     }
-                    string query = "UPDATE course SET name = '" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  '" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
+                    string query = "UPDATE course SET name = N'" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  N'" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.ExecuteNonQuery();
                     if (selectResource.Enabled == true)
@@ -320,6 +324,9 @@ namespace university_scheduler
                     MessageBox.Show("updateing course successfully...!");
                     cn.Close();
                     this.Close();
+                    courseForm.loaddata();
+                    courseForm.courseData.Update();
+                    courseForm.courseData.Refresh();
                 }
             }catch(SqlException se)
             {        

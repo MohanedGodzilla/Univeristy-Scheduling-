@@ -10,7 +10,6 @@ namespace university_scheduler
     public partial class NoScheduleHome : Form
     {
         Scheduler scheduler;
-        
         public NoScheduleHome()
         {
             InitializeComponent();
@@ -126,8 +125,8 @@ namespace university_scheduler
             }
             scheduler.start();
             scheduler.saveReservations();
-            saveClassroomsinExcel();
-            saveProgramssinExcel();
+            //saveClassroomsinExcel();
+            //saveProgramssinExcel();
             HomeScreenWithTable Popup = new HomeScreenWithTable();
             DialogResult dialogResult = Popup.ShowDialog();
         }

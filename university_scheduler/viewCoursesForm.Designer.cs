@@ -191,9 +191,9 @@
         private System.Windows.Forms.Button editCourseBTN;
         private System.Windows.Forms.Button newCourseBTN;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView courseData;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.DataGridView courseData;
     }
 }

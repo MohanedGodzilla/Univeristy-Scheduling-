@@ -107,7 +107,7 @@ namespace university_scheduler
             Popup.tableLayoutPanel1.Controls.Remove(control);
             TableLayoutColumnStyleCollection styles = Popup.tableLayoutPanel1.ColumnStyles;
             styles[1].Width = 0;
-            Popup.Size = new System.Drawing.Size(600, 600);
+            Popup.Size = new System.Drawing.Size(800, 600);
             Popup.Show();
         }
     }
