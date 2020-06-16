@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreenWithTable));
             this.excelViews = new System.Windows.Forms.TabControl();
             this.classroomsTables = new System.Windows.Forms.TabPage();
             this.searchClass = new System.Windows.Forms.TextBox();
@@ -229,6 +230,7 @@
             this.Controls.Add(this.generateNewBTN);
             this.Controls.Add(this.excelViews);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HomeScreenWithTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

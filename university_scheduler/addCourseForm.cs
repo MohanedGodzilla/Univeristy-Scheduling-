@@ -404,25 +404,5 @@ namespace university_scheduler
             DialogResult dialogresult = progForm.ShowDialog();
             this.selectedProgramList = progForm.checkedPrograms;
         }
-
-        private void courseName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void courseCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

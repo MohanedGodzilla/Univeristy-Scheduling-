@@ -41,7 +41,7 @@ namespace university_scheduler
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
             //Generator.generateALL();
-            //scheduler = new Scheduler();
+            scheduler = new Scheduler();
         }
 
         private void courses_view(int flag) {
@@ -99,35 +99,16 @@ namespace university_scheduler
             }
         }
 
-        private void stInput_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void coursesView_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void generateBTN_Click(object sender, EventArgs e) {
-            List<Reservation> reservation = Reservation.getAll();
-            if (reservation.Count > 0)
-            {
-                string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
-                string title = "Old reservations will be deleted";
-                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                if (result != DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            scheduler.start();
-            scheduler.saveReservations();
+            //scheduler.start();
+            //scheduler.saveReservations();
             //saveClassroomsinExcel();
             //saveProgramssinExcel();
             HomeScreenWithTable Popup = new HomeScreenWithTable();
-            DialogResult dialogResult = Popup.ShowDialog();
+            Popup.MdiParent = this.ParentForm;
+            this.Hide();
+            Popup.ShowDialog();
+            this.Close();
         }
 
         void saveClassroomsinExcel()

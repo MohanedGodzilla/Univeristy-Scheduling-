@@ -113,38 +113,44 @@ namespace university_scheduler
             }
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void courseData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             DataTable dtClass = Course.search();
             DataView DV = new DataView(dtClass);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
             courseData.DataSource = DV;
+        }
+
+        private void deleteAllBTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string message = "By clicking OK, All Courses will be permenantly DELETED\nmake sure from your choice";
+                string title = " All courses will be deleted";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
+                else
+                {
+                    string query = "delete from course";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "DBCC CHECKIDENT (course, RESEED, 0)";
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loaddata();
+                    this.courseData.Update();
+                    this.courseData.Refresh();
+                    cn.Close();
+                    //---//
+                    MessageBox.Show("All Courses are deleted successfully..!");
+                }
+            }
         }
     }
 }

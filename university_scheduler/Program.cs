@@ -18,12 +18,10 @@ namespace university_scheduler
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             List<Reservation> reservationsList = Reservation.getAll();
-            /*if (reservationsList.Count > 0)
-                Application.Run(new HomeScreenWithTable());
-
+            if (reservationsList.Count > 0)
+               Application.Run(new HomeScreenWithTable());
             else
-                Application.Run(new NoScheduleHome());*/
-            Application.Run(new aboutUs());
+                Application.Run(new NoScheduleHome());
         }
     }
 }

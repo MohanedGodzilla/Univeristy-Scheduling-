@@ -74,7 +74,6 @@ namespace university_scheduler
                 string query = "insert into resource(name) values(N'" + resourceName.Text.ToString() + "')";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Adding resource successfully..!");
                 this.Close();
                 //--the following three lines is used to update the dataGridView and refresh it --//
                 resForm.loaddata();

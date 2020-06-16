@@ -52,7 +52,7 @@
             this.resourceName.MaxLength = 30;
             this.resourceName.Name = "resourceName";
             this.resourceName.Size = new System.Drawing.Size(153, 22);
-            this.resourceName.TabIndex = 3;
+            this.resourceName.TabIndex = 0;
             this.resourceName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.resourceName_KeyDown);
             // 
             // addResourceBTN
@@ -63,7 +63,7 @@
             this.addResourceBTN.Location = new System.Drawing.Point(118, 89);
             this.addResourceBTN.Name = "addResourceBTN";
             this.addResourceBTN.Size = new System.Drawing.Size(90, 32);
-            this.addResourceBTN.TabIndex = 6;
+            this.addResourceBTN.TabIndex = 1;
             this.addResourceBTN.Text = "Add";
             this.addResourceBTN.UseVisualStyleBackColor = false;
             this.addResourceBTN.Click += new System.EventHandler(this.addResourceBTN_Click);
@@ -76,7 +76,7 @@
             this.cancelResourceBTN.Location = new System.Drawing.Point(221, 89);
             this.cancelResourceBTN.Name = "cancelResourceBTN";
             this.cancelResourceBTN.Size = new System.Drawing.Size(91, 32);
-            this.cancelResourceBTN.TabIndex = 5;
+            this.cancelResourceBTN.TabIndex = 3;
             this.cancelResourceBTN.Text = "Cancel";
             this.cancelResourceBTN.UseVisualStyleBackColor = false;
             this.cancelResourceBTN.Click += new System.EventHandler(this.cancelResourceBTN_Click);
@@ -89,7 +89,7 @@
             this.saveResourceBTN.Location = new System.Drawing.Point(15, 89);
             this.saveResourceBTN.Name = "saveResourceBTN";
             this.saveResourceBTN.Size = new System.Drawing.Size(90, 32);
-            this.saveResourceBTN.TabIndex = 8;
+            this.saveResourceBTN.TabIndex = 2;
             this.saveResourceBTN.Text = "Save";
             this.saveResourceBTN.UseVisualStyleBackColor = false;
             this.saveResourceBTN.Click += new System.EventHandler(this.saveResourceBTN_Click);

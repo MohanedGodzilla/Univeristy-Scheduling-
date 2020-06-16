@@ -37,19 +37,7 @@ namespace university_scheduler
 
         private void viewClassroomForm_Load_1(object sender, EventArgs e)
         {
-            using (SqlConnection cn = new SqlConnection(conString))
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT id,name,lecture_capacity as 'lec cap' , exam_capacity as 'exam cap'  FROM class", cn))
-                {
-                    DataTable dt = new DataTable();
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
-                    this.classData.DataSource = dt;
-                }
-            }
+            loaddata();
         }
         public void loaddata()// this function is called when the user is inserted a new tuple in the database from addClassRoomForm  
         {
@@ -134,6 +122,38 @@ namespace university_scheduler
             DataView DV = new DataView(dtClass);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
             classData.DataSource = DV;
+        }
+
+        private void deleteAllBTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string message = "By clicking OK, All Classrooms will be permenantly DELETED\nmake sure from your choice";
+                string title = " All classrooms will be deleted";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
+                else
+                {
+                    string query = "delete from class";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "DBCC CHECKIDENT (class, RESEED, 0)";
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loaddata();
+                    this.classData.Update();
+                    this.classData.Refresh();
+                    cn.Close();
+                    //---//
+                    MessageBox.Show("All Classrooms are deleted successfully..!");
+                }
+            }
         }
     }
 }

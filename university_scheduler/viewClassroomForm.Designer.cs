@@ -39,6 +39,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.deleteClassRoomBTN = new System.Windows.Forms.Button();
             this.editClassRoomBTN = new System.Windows.Forms.Button();
+            this.deleteAllBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.classData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -97,12 +98,13 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.classData.DefaultCellStyle = dataGridViewCellStyle2;
+            this.classData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.classData.Location = new System.Drawing.Point(0, 62);
             this.classData.Name = "classData";
             this.classData.ReadOnly = true;
             this.classData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.classData.Size = new System.Drawing.Size(611, 382);
-            this.classData.TabIndex = 1;
+            this.classData.TabIndex = 5;
             this.classData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classData_CellDoubleClick);
             // 
             // newClassRoomBTN
@@ -110,7 +112,7 @@
             this.newClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newClassRoomBTN.Location = new System.Drawing.Point(3, 11);
+            this.newClassRoomBTN.Location = new System.Drawing.Point(3, 26);
             this.newClassRoomBTN.Name = "newClassRoomBTN";
             this.newClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.newClassRoomBTN.TabIndex = 0;
@@ -140,15 +142,16 @@
             this.tableLayoutPanel2.Controls.Add(this.deleteClassRoomBTN, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.editClassRoomBTN, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.newClassRoomBTN, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.deleteAllBTN, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.86F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
@@ -158,7 +161,7 @@
             this.deleteClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteClassRoomBTN.Location = new System.Drawing.Point(3, 113);
+            this.deleteClassRoomBTN.Location = new System.Drawing.Point(3, 158);
             this.deleteClassRoomBTN.Name = "deleteClassRoomBTN";
             this.deleteClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteClassRoomBTN.TabIndex = 2;
@@ -171,13 +174,29 @@
             this.editClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editClassRoomBTN.Location = new System.Drawing.Point(3, 62);
+            this.editClassRoomBTN.Location = new System.Drawing.Point(3, 92);
             this.editClassRoomBTN.Name = "editClassRoomBTN";
             this.editClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.editClassRoomBTN.TabIndex = 1;
             this.editClassRoomBTN.Text = "Edit";
             this.editClassRoomBTN.UseVisualStyleBackColor = true;
             this.editClassRoomBTN.Click += new System.EventHandler(this.editClassRoomBTN_Click);
+            // 
+            // deleteAllBTN
+            // 
+            this.deleteAllBTN.BackColor = System.Drawing.Color.Red;
+            this.deleteAllBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.deleteAllBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAllBTN.ForeColor = System.Drawing.SystemColors.Window;
+            this.deleteAllBTN.Image = global::university_scheduler.Properties.Resources.icons8_deleteAll_20;
+            this.deleteAllBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteAllBTN.Location = new System.Drawing.Point(3, 293);
+            this.deleteAllBTN.Name = "deleteAllBTN";
+            this.deleteAllBTN.Size = new System.Drawing.Size(171, 45);
+            this.deleteAllBTN.TabIndex = 3;
+            this.deleteAllBTN.Text = "Delete All";
+            this.deleteAllBTN.UseVisualStyleBackColor = false;
+            this.deleteAllBTN.Click += new System.EventHandler(this.deleteAllBTN_Click);
             // 
             // viewClassroomForm
             // 
@@ -210,5 +229,6 @@
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button deleteAllBTN;
     }
 }

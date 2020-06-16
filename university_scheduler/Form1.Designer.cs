@@ -59,7 +59,6 @@
             resources.ApplyResources(this.coursesView, "coursesView");
             this.coursesView.Name = "coursesView";
             this.coursesView.UseVisualStyleBackColor = true;
-            this.coursesView.Click += new System.EventHandler(this.coursesView_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -187,7 +186,6 @@
             this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stInput.Name = "stInput";
             this.stInput.Value = new System.DateTime(2020, 5, 20, 8, 0, 0, 0);
-            this.stInput.ValueChanged += new System.EventHandler(this.stInput_ValueChanged);
             // 
             // etLabel
             // 
