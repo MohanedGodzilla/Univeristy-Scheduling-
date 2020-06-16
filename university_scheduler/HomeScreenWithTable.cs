@@ -110,5 +110,11 @@ namespace university_scheduler
             Popup.Size = new System.Drawing.Size(800, 600);
             Popup.Show();
         }
+
+        private void aboutBTN_Click(object sender, EventArgs e)
+        {
+            aboutUs Popup = new aboutUs();
+            Popup.Show();
+        }
     }
 }

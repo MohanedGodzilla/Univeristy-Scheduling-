@@ -41,8 +41,7 @@ namespace university_scheduler
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
             //Generator.generateALL();
-            scheduler = new Scheduler();
-
+            //scheduler = new Scheduler();
         }
 
         private void courses_view(int flag) {
