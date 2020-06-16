@@ -90,11 +90,6 @@ namespace university_scheduler {
                 programData.SelectedRows[0].Cells[0].Value != null);
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void programData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.viewProgram_disableSaveBTN == 0)
@@ -117,6 +112,39 @@ namespace university_scheduler {
             DataView DV = new DataView(dtClass);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
             programData.DataSource = DV;
+        }
+
+        private void deleteAllBTN_Click(object sender, EventArgs e)
+        {
+            if (!canUpdate()) return;
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string message = "By clicking OK, All Programs will be permenantly DELETED\nmake sure from your choice";
+                string title = " All programs will be deleted";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
+                else
+                {
+                    string query = "delete from program";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "DBCC CHECKIDENT (program, RESEED, 0)";
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loadData();
+                    this.programData.Update();
+                    this.programData.Refresh();
+                    cn.Close();
+                    //---//
+                    MessageBox.Show("All Programs are deleted successfully..!");
+                }
+            }
         }
     }
 }

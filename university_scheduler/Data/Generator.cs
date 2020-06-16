@@ -10,7 +10,7 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int courseNums = 200;
+        public int courseNums = 100;
         public int programsRatio = 1; // 1 or 1/3 or Ay ratio
         public int classroomSize = 1; // 1:big data  and  0:small data 
         public static int max_days=6;

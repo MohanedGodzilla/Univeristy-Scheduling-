@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreenWithTable));
             this.excelViews = new System.Windows.Forms.TabControl();
             this.classroomsTables = new System.Windows.Forms.TabPage();
             this.searchClass = new System.Windows.Forms.TextBox();
@@ -67,7 +68,7 @@
             this.classroomsTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classroomsTables.Location = new System.Drawing.Point(4, 25);
             this.classroomsTables.Name = "classroomsTables";
-            this.classroomsTables.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.classroomsTables.Padding = new System.Windows.Forms.Padding(3);
             this.classroomsTables.Size = new System.Drawing.Size(1201, 495);
             this.classroomsTables.TabIndex = 0;
             this.classroomsTables.Text = "Classrooms";
@@ -118,8 +119,8 @@
             this.programsTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.programsTables.Location = new System.Drawing.Point(4, 25);
             this.programsTables.Name = "programsTables";
-            this.programsTables.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.programsTables.Size = new System.Drawing.Size(1201, 492);
+            this.programsTables.Padding = new System.Windows.Forms.Padding(3);
+            this.programsTables.Size = new System.Drawing.Size(1201, 495);
             this.programsTables.TabIndex = 1;
             this.programsTables.Text = "Programs";
             this.programsTables.UseVisualStyleBackColor = true;
@@ -151,8 +152,8 @@
             this.programsExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.programsExcel.ColumnHeadersVisible = false;
             this.programsExcel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.programsExcel.Location = new System.Drawing.Point(3, 47);
-            this.programsExcel.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.programsExcel.Location = new System.Drawing.Point(3, 50);
+            this.programsExcel.Margin = new System.Windows.Forms.Padding(20);
             this.programsExcel.MultiSelect = false;
             this.programsExcel.Name = "programsExcel";
             this.programsExcel.ReadOnly = true;
@@ -179,6 +180,7 @@
             this.aboutBTN.Text = "About us";
             this.aboutBTN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.aboutBTN.UseVisualStyleBackColor = false;
+            this.aboutBTN.Click += new System.EventHandler(this.aboutBTN_Click);
             // 
             // viewBTN
             // 
@@ -228,6 +230,7 @@
             this.Controls.Add(this.generateNewBTN);
             this.Controls.Add(this.excelViews);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HomeScreenWithTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

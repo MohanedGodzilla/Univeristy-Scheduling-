@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aboutUs.Designer.cs">
+      <DependentUpon>aboutUs.cs</DependentUpon>
+    </Compile>
     <Compile Include="addClassRoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <Compile Include="viewResourcesForm.Designer.cs">
       <DependentUpon>viewResourcesForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="aboutUs.resx">
+      <DependentUpon>aboutUs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addClassRoomForm.resx">
       <DependentUpon>addClassRoomForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,6 +272,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sincerely-media-gPnHi8AmO5k-unsplash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\omar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mostafa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muhannad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Assim.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\omar1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-deleteAll-20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -138,5 +138,37 @@ namespace university_scheduler
             DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
             resourceData.DataSource = DV;
         }
+
+        private void deleteAllBTN_Click(object sender, EventArgs e)
+        {
+            if (!canUpdate()) return;
+            SqlConnection cn = new SqlConnection(conString);
+            cn.Open();
+            if (cn.State == System.Data.ConnectionState.Open)
+            {
+                string message = "By clicking OK, All Resources will be permenantly DELETED\nmake sure from your choice";
+                string title = " All resources will be deleted";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
+                else {
+                    string query = "delete from resource";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "DBCC CHECKIDENT (resource, RESEED, 0)";
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loaddata();
+                    this.resourceData.Update();
+                    this.resourceData.Refresh();
+                    cn.Close();
+                    //---//
+                    MessageBox.Show("All Resources are deleted successfully..!");
+                }
+            }
+        }
     }
 }

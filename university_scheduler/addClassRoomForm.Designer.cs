@@ -53,7 +53,7 @@
             this.saveClassBTN.Location = new System.Drawing.Point(20, 243);
             this.saveClassBTN.Name = "saveClassBTN";
             this.saveClassBTN.Size = new System.Drawing.Size(90, 32);
-            this.saveClassBTN.TabIndex = 17;
+            this.saveClassBTN.TabIndex = 7;
             this.saveClassBTN.Text = "Save";
             this.saveClassBTN.UseVisualStyleBackColor = false;
             this.saveClassBTN.Click += new System.EventHandler(this.saveClassBTN_Click);
@@ -66,7 +66,7 @@
             this.addClassBTN.Location = new System.Drawing.Point(130, 243);
             this.addClassBTN.Name = "addClassBTN";
             this.addClassBTN.Size = new System.Drawing.Size(90, 32);
-            this.addClassBTN.TabIndex = 15;
+            this.addClassBTN.TabIndex = 6;
             this.addClassBTN.Text = "Add";
             this.addClassBTN.UseVisualStyleBackColor = false;
             this.addClassBTN.Click += new System.EventHandler(this.addClassBTN_Click);
@@ -79,7 +79,7 @@
             this.cancelClassBTN.Location = new System.Drawing.Point(239, 243);
             this.cancelClassBTN.Name = "cancelClassBTN";
             this.cancelClassBTN.Size = new System.Drawing.Size(91, 32);
-            this.cancelClassBTN.TabIndex = 14;
+            this.cancelClassBTN.TabIndex = 8;
             this.cancelClassBTN.Text = "Cancel";
             this.cancelClassBTN.UseVisualStyleBackColor = false;
             this.cancelClassBTN.Click += new System.EventHandler(this.cancelClassBTN_Click);
@@ -96,7 +96,7 @@
             0});
             this.examCounter.Name = "examCounter";
             this.examCounter.Size = new System.Drawing.Size(42, 22);
-            this.examCounter.TabIndex = 13;
+            this.examCounter.TabIndex = 3;
             // 
             // label3
             // 
@@ -140,7 +140,7 @@
             0});
             this.lecCounter.Name = "lecCounter";
             this.lecCounter.Size = new System.Drawing.Size(42, 22);
-            this.lecCounter.TabIndex = 18;
+            this.lecCounter.TabIndex = 2;
             // 
             // className
             // 
@@ -148,7 +148,7 @@
             this.className.MaxLength = 30;
             this.className.Name = "className";
             this.className.Size = new System.Drawing.Size(175, 20);
-            this.className.TabIndex = 19;
+            this.className.TabIndex = 1;
             // 
             // selectResource
             // 
@@ -157,7 +157,7 @@
             this.selectResource.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectResource.Name = "selectResource";
             this.selectResource.Size = new System.Drawing.Size(86, 23);
-            this.selectResource.TabIndex = 21;
+            this.selectResource.TabIndex = 5;
             this.selectResource.Text = "-- select -- ";
             this.selectResource.UseVisualStyleBackColor = true;
             this.selectResource.Click += new System.EventHandler(this.selectResource_Click);
@@ -188,7 +188,7 @@
             this.isLab.Location = new System.Drawing.Point(155, 155);
             this.isLab.Name = "isLab";
             this.isLab.Size = new System.Drawing.Size(26, 17);
-            this.isLab.TabIndex = 24;
+            this.isLab.TabIndex = 4;
             this.isLab.Text = "\r\n";
             this.isLab.UseVisualStyleBackColor = true;
             this.isLab.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -216,7 +216,7 @@
             this.MinimizeBox = false;
             this.Name = "addClassRoomForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "addClassroomForm";
+            this.Text = "Add Classroom";
             this.Load += new System.EventHandler(this.addClassRoomForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.examCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecCounter)).EndInit();

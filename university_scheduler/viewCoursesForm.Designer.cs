@@ -33,6 +33,7 @@
             this.deleteCourseBTN = new System.Windows.Forms.Button();
             this.editCourseBTN = new System.Windows.Forms.Button();
             this.newCourseBTN = new System.Windows.Forms.Button();
+            this.deleteAllBTN = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -66,25 +66,25 @@
             this.tableLayoutPanel2.Controls.Add(this.deleteCourseBTN, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.editCourseBTN, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.newCourseBTN, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.deleteAllBTN, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.86F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // deleteCourseBTN
             // 
             this.deleteCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteCourseBTN.Location = new System.Drawing.Point(3, 113);
+            this.deleteCourseBTN.Location = new System.Drawing.Point(3, 158);
             this.deleteCourseBTN.Name = "deleteCourseBTN";
             this.deleteCourseBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteCourseBTN.TabIndex = 2;
@@ -97,7 +97,7 @@
             this.editCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editCourseBTN.Location = new System.Drawing.Point(3, 62);
+            this.editCourseBTN.Location = new System.Drawing.Point(3, 92);
             this.editCourseBTN.Name = "editCourseBTN";
             this.editCourseBTN.Size = new System.Drawing.Size(171, 37);
             this.editCourseBTN.TabIndex = 1;
@@ -110,13 +110,29 @@
             this.newCourseBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newCourseBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newCourseBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newCourseBTN.Location = new System.Drawing.Point(3, 11);
+            this.newCourseBTN.Location = new System.Drawing.Point(3, 26);
             this.newCourseBTN.Name = "newCourseBTN";
             this.newCourseBTN.Size = new System.Drawing.Size(171, 37);
             this.newCourseBTN.TabIndex = 0;
             this.newCourseBTN.Text = "New";
             this.newCourseBTN.UseVisualStyleBackColor = true;
             this.newCourseBTN.Click += new System.EventHandler(this.newCourseBTN_Click);
+            // 
+            // deleteAllBTN
+            // 
+            this.deleteAllBTN.BackColor = System.Drawing.Color.Red;
+            this.deleteAllBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.deleteAllBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAllBTN.ForeColor = System.Drawing.SystemColors.Window;
+            this.deleteAllBTN.Image = global::university_scheduler.Properties.Resources.icons8_deleteAll_20;
+            this.deleteAllBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteAllBTN.Location = new System.Drawing.Point(3, 293);
+            this.deleteAllBTN.Name = "deleteAllBTN";
+            this.deleteAllBTN.Size = new System.Drawing.Size(171, 45);
+            this.deleteAllBTN.TabIndex = 3;
+            this.deleteAllBTN.Text = "Delete All";
+            this.deleteAllBTN.UseVisualStyleBackColor = false;
+            this.deleteAllBTN.Click += new System.EventHandler(this.deleteAllBTN_Click);
             // 
             // panel1
             // 
@@ -129,7 +145,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(611, 444);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // textBox1
             // 
@@ -155,14 +170,14 @@
             this.courseData.AllowUserToAddRows = false;
             this.courseData.AllowUserToDeleteRows = false;
             this.courseData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.courseData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.courseData.Location = new System.Drawing.Point(0, 62);
             this.courseData.Name = "courseData";
             this.courseData.ReadOnly = true;
             this.courseData.RowHeadersWidth = 51;
             this.courseData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.courseData.Size = new System.Drawing.Size(611, 382);
-            this.courseData.TabIndex = 0;
-            this.courseData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellContentClick);
+            this.courseData.TabIndex = 5;
             this.courseData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseData_CellDoubleClick);
             // 
             // viewCoursesForm
@@ -195,5 +210,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView courseData;
+        public System.Windows.Forms.Button deleteAllBTN;
     }
 }
