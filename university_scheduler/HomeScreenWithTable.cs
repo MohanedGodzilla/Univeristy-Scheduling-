@@ -75,7 +75,8 @@ namespace university_scheduler
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            DataTable dtClass = Classroom.search();
+            int returnJustName = 2;
+            DataTable dtClass = Classroom.search(returnJustName);
             DataView DV = new DataView(dtClass);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", searchClass.Text);
             classroomsExcel.DataSource = DV;
@@ -83,7 +84,8 @@ namespace university_scheduler
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            DataTable dtProgram = Model.Program.search();
+            int returnJustName = 2;
+            DataTable dtProgram = Model.Program.search(returnJustName);
             DataView DV = new DataView(dtProgram);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", searchProgram.Text);
             programsExcel.DataSource = DV;
@@ -97,6 +99,16 @@ namespace university_scheduler
             this.Close();
         }
 
-
+        private void viewBTN_Click(object sender, EventArgs e)
+        {
+            int comeFromThisForm = 1;
+            NoScheduleHome Popup = new NoScheduleHome(comeFromThisForm);
+            var control = Popup.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            Popup.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = Popup.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
+            Popup.Size = new System.Drawing.Size(800, 600);
+            Popup.Show();
+        }
     }
 }

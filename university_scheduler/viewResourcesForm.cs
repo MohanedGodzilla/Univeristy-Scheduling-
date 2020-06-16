@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using university_scheduler.Model;
 using System.Windows.Forms;
 
 namespace university_scheduler
@@ -15,10 +16,20 @@ namespace university_scheduler
     {
 
         public string conString = env.db_con_str;
-
+        public int viewResource_disableSaveBTN = 0;
         public viewResourcesForm()
         {
             InitializeComponent();
+        }
+
+        public viewResourcesForm(int flag)
+        {
+            InitializeComponent();
+            this.viewResource_disableSaveBTN = flag;
+            var control = this.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            this.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
         }
 
         //The following function for bring data from database
@@ -37,7 +48,7 @@ namespace university_scheduler
                     cn.Close();
                 }
                 resourceData.Columns[0].Width = 40;
-                resourceData.Columns[1].Width = 150;
+                resourceData.Columns[1].Width = 500;
             }
         }
 
@@ -85,9 +96,16 @@ namespace university_scheduler
         //The following function for Edit the resources 
 
         public void passData_AddResourceForm() {
-            if (!canUpdate()) return;
-            addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value);
-            resDataPassed.ShowDialog(this);
+            if (this.viewResource_disableSaveBTN == 0){
+                if (!canUpdate()) return;
+                addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value,0);
+                resDataPassed.ShowDialog(this);
+            }
+            else if(this.viewResource_disableSaveBTN == 1){
+                if (!canUpdate()) return;
+                addResourceForm resDataPassed = new addResourceForm((int)resourceData.SelectedRows[0].Cells[0].Value, 1);
+                resDataPassed.ShowDialog(this);
+            }
         }
 
         private void editResourceBTN_Click(object sender, EventArgs e)
@@ -111,6 +129,14 @@ namespace university_scheduler
         private void resourceData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dtClass = Resource.search();
+            DataView DV = new DataView(dtClass);
+            DV.RowFilter = string.Format("name LIKE '%{0}%'", textBox1.Text);
+            resourceData.DataSource = DV;
         }
     }
 }

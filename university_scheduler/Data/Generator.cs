@@ -10,7 +10,7 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int courseNums = 1200;
+        public int courseNums = 200;
         public int programsRatio = 1; // 1 or 1/3 or Ay ratio
         public int classroomSize = 1; // 1:big data  and  0:small data 
         public static int max_days=6;
@@ -154,9 +154,9 @@ namespace university_scheduler.Data
                 "Geology-Geophysics" ,
                 "Geology-Chemistry" ,
                 "Entomology-Chemistry" ,
-                "Mathematical Statistics and Computer Science" ,
-                "Pure Mathematics and Computer Science" ,
-                "Mathematical Statistics and Pure Mathematics" ,
+                "Math Stat and CS" ,
+                "Pure Mathematics cs" ,
+                "Math Stat and Math" ,
                 "Microbiology-Chemistry" ,
                 "Zoology-Chemistry" ,
                 "Chemistry" ,
@@ -164,7 +164,7 @@ namespace university_scheduler.Data
                 "Computer Science" ,
                 "Mathematics" ,
                 "Physics" ,
-                "Physcics and Computer Science" ,
+                "Physcics and Cs" ,
                 "Physics-Chemistry" ,
                 "Applied Biotechnology" ,
                 "Materials and Nanosciences" ,

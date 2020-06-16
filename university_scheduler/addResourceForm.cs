@@ -24,11 +24,17 @@ namespace university_scheduler
             saveResourceBTN.Hide();
         }
 
-        public addResourceForm(int Id) // constructor to get resourceName from (dataset)=>resourceData
+        public addResourceForm(int Id, int viewResource_disableSaveBTN) // constructor to get resourceName from (dataset)=>resourceData
         {
             InitializeComponent();
             addResourceBTN.Hide();
-            saveResourceBTN.Show();
+            if (viewResource_disableSaveBTN == 0)
+            {
+                saveResourceBTN.Show();
+            }
+            else if (viewResource_disableSaveBTN == 1) {
+                saveResourceBTN.Hide();
+            }
             this.resource_id = Id;
             loadData();
         }
@@ -65,7 +71,7 @@ namespace university_scheduler
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                string query = "insert into resource(name) values('" + resourceName.Text.ToString() + "')";
+                string query = "insert into resource(name) values(N'" + resourceName.Text.ToString() + "')";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Adding resource successfully..!");
@@ -89,7 +95,7 @@ namespace university_scheduler
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
             {
-                string query = "UPDATE resource SET name = '" + resourceName.Text.ToString() + "' WHERE id = " + resource_id;
+                string query = "UPDATE resource SET name = N'" + resourceName.Text.ToString() + "' WHERE id = " + resource_id;
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("updateing resource successfully..!");

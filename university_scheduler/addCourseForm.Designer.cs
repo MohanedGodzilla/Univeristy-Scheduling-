@@ -315,6 +315,7 @@
             this.courseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.courseName.Location = new System.Drawing.Point(170, 10);
             this.courseName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.courseName.MaxLength = 30;
             this.courseName.Name = "courseName";
             this.courseName.Size = new System.Drawing.Size(219, 22);
             this.courseName.TabIndex = 11;
@@ -324,6 +325,7 @@
             this.courseCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.courseCode.Location = new System.Drawing.Point(170, 48);
             this.courseCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.courseCode.MaxLength = 30;
             this.courseCode.Name = "courseCode";
             this.courseCode.Size = new System.Drawing.Size(219, 22);
             this.courseCode.TabIndex = 12;

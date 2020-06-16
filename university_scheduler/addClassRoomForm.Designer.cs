@@ -145,6 +145,7 @@
             // className
             // 
             this.className.Location = new System.Drawing.Point(155, 22);
+            this.className.MaxLength = 30;
             this.className.Name = "className";
             this.className.Size = new System.Drawing.Size(175, 20);
             this.className.TabIndex = 19;
