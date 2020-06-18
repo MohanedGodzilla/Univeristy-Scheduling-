@@ -122,6 +122,7 @@
             // 
             this.deleteAllBTN.BackColor = System.Drawing.Color.Red;
             this.deleteAllBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.deleteAllBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteAllBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteAllBTN.ForeColor = System.Drawing.SystemColors.Window;
             this.deleteAllBTN.Image = global::university_scheduler.Properties.Resources.icons8_deleteAll_20;
