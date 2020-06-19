@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using university_scheduler.Data;
 using university_scheduler.Model;
@@ -99,11 +100,19 @@ namespace university_scheduler
             }
         }
 
+        public void onNewReservation(int reserved, int total) {
+            Console.WriteLine($"RES:{reserved},TOTAL:{total},Progress:{((double)reserved / (double)total)*100}");
+        }
+
         private void generateBTN_Click(object sender, EventArgs e) {
-            //scheduler.start();
-            //scheduler.saveReservations();
-            //saveClassroomsinExcel();
-            //saveProgramssinExcel();
+            scheduler.addOnNewReservation(onNewReservation); 
+            Task t = new Task(() => { scheduler.start(); });
+            t.Start();
+            scheduler.cancel();
+            t.Wait();
+            scheduler.saveReservations();
+            saveClassroomsinExcel();
+            saveProgramssinExcel();
             HomeScreenWithTable Popup = new HomeScreenWithTable();
             Popup.MdiParent = this.ParentForm;
             this.Hide();

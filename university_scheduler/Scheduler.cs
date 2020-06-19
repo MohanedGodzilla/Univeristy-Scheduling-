@@ -7,26 +7,33 @@ using university_scheduler.Model;
 namespace university_scheduler {
 
     class Scheduler {
-        const String REASON_CAP = "cap";
-        const String REASON_RES = "res";
-        const String REASON_PROG_TIME = "prog_time";
-        const String REASON_CLASS_TIME = "class_time";
-        const String REASON_DAYLIMIT = "day_limit";
-        const String REASON_CLASS_BLOCKED_HOURS = "class_blocked_hours";
+        public delegate void OnNewReservation(int reserved, int total);
+        private OnNewReservation onNewReservation;
+        private const String REASON_CAP = "cap";
+        private const String REASON_RES = "res";
+        private const String REASON_PROG_TIME = "prog_time";
+        private const String REASON_CLASS_TIME = "class_time";
+        private const String REASON_DAYLIMIT = "day_limit";
+        private const String REASON_CLASS_BLOCKED_HOURS = "class_blocked_hours";
         //LOGIC VARS
-        int slotID = 0;
-        List<Course> courses;
-        List<Classroom> classRooms;
-        HashSet<int> reservedSlotsIds = new HashSet<int>();
-        Dictionary<double, List<Slot>> weightDictionary = new Dictionary<double, List<Slot>>();
-        int programWF = 5;
-        int hourWF = 2;
-        int actualHourWF = 10;
-        int maxDaysO = Generator.max_days;
-        double maxTimeO = Generator.max_time;
-        int resInc = 0;
+        private int slotID = 0;
+        private List<Course> courses;
+        private List<Classroom> classRooms;
+        private HashSet<int> reservedSlotsIds = new HashSet<int>();
+        private Dictionary<double, List<Slot>> weightDictionary = new Dictionary<double, List<Slot>>();
+        private int programWF = 5;
+        private int hourWF = 2;
+        private int actualHourWF = 10;
+        private int maxDaysO = Generator.max_days;
+        private double maxTimeO = Generator.max_time;
+        private int resInc = 0;
+        private int maxRes = -1;
+        private bool wantsToCancel = false;
+        double maxResProgress = 0;
 
         Dictionary<int, Reservation> resDictionary;
+        Dictionary<int, Reservation> bestResDictionary;
+
         Dictionary<String, int> confCount = new Dictionary<String, int>() {
             [REASON_CAP] = 0,
             [REASON_RES] = 0,
@@ -42,7 +49,16 @@ namespace university_scheduler {
             seedData();
         }
 
-        public void start() {
+        public void addOnNewReservation(OnNewReservation onNewReservation) {
+            this.onNewReservation = onNewReservation;
+        }
+
+        public void cancel() {
+            this.wantsToCancel = true;
+            Console.WriteLine("Stopping Schedular");
+        }
+
+         public void start() {
             String validations = runPreReserveValidations();
 
             if (validations != "") {
@@ -69,9 +85,11 @@ namespace university_scheduler {
             List<double> sortedWeights = sortWeights();
             classRooms = sortingClassRooms(classRooms);
 
-            int maxRes = -1;
 
             for (int i = 0; i < sortedWeights.Count; i++) {
+                if (wantsToCancel) {
+                    return;
+                }
                 Dictionary<String, dynamic> conflict =
                     reserve(sortedWeights[i], weightDictionary[sortedWeights[i]]);
 
@@ -79,7 +97,14 @@ namespace university_scheduler {
                     maxRes = resDictionary.Keys.Count;
                     Console.WriteLine(
                         $"NEW COUNT {maxRes} \nTotals Res:{resInc}\n=======");
-
+                    
+                    Dictionary<String, int> resState = getReservedTotal();
+                    double resProgress = resState["reserved"] / resState["total"];
+                    if (resProgress > maxResProgress) {
+                        maxResProgress = resProgress;
+                        bestResDictionary = new Dictionary<int, Reservation>(resDictionary);
+                    }
+                    onNewReservation(resState["reserved"],resState["total"]);
                 }
                 if (conflict != null) {
                     Slot slotWithConflict = conflict["slot"];
@@ -144,8 +169,15 @@ namespace university_scheduler {
 
 
         public void saveReservations() {
-            if (resDictionary == null) return;
-            resDictionary.Values.ToList().ForEach((Reservation res) => {
+            List<Reservation> reservationsList;
+            if (wantsToCancel) {
+                if (bestResDictionary == null) return;
+                reservationsList = bestResDictionary.Values.ToList();
+            } else {
+                if (resDictionary == null) return;
+                reservationsList = resDictionary.Values.ToList();
+            }
+            reservationsList.ForEach((Reservation res) => {
                 res.insertThis();
             });
         }
@@ -167,6 +199,25 @@ namespace university_scheduler {
             });
 
             Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
+            onNewReservation(reserved, total);
+        }
+
+        Dictionary<String, int> getReservedTotal() {
+            int total = 0;
+            int reserved = 0;
+            weightDictionary.Keys.ToList().ForEach((double key) => {
+                weightDictionary[key].ForEach((Slot slot) => {
+                    total++;
+                    if (reservedSlotsIds.Contains(slot.id)) {
+                        reserved++;
+                    }
+                });
+            });
+
+            return new Dictionary<string, int> { 
+                ["total"]=total,
+                ["reserved"]=reserved
+            };
         }
 
         String runPreReserveValidations() {
