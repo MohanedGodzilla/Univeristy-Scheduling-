@@ -48,7 +48,6 @@
             this.etLabel = new System.Windows.Forms.Label();
             this.stLabel = new System.Windows.Forms.Label();
             this.generateBTN = new System.Windows.Forms.Button();
-            this.resLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -104,7 +103,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.resLabel);
             this.panel2.Controls.Add(this.comboBox3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.comboBox2);
@@ -208,12 +206,6 @@
             this.generateBTN.UseVisualStyleBackColor = false;
             this.generateBTN.Click += new System.EventHandler(this.generateBTN_Click);
             // 
-            // resLabel
-            // 
-            resources.ApplyResources(this.resLabel, "resLabel");
-            this.resLabel.Name = "resLabel";
-            this.resLabel.Click += new System.EventHandler(this.label3_Click);
-            // 
             // NoScheduleHome
             // 
             resources.ApplyResources(this, "$this");
@@ -247,7 +239,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label resLabel;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button generateBTN;

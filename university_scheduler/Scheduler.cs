@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using university_scheduler.Data;
 using university_scheduler.Model;
@@ -50,9 +49,6 @@ namespace university_scheduler {
             seedData();
         }
 
-        public void start(viewLoadForm loadForm, DoWorkEventArgs e) 
-        {
-        }
         public void addOnNewReservation(OnNewReservation onNewReservation) {
             this.onNewReservation = onNewReservation;
         }
@@ -90,18 +86,7 @@ namespace university_scheduler {
             classRooms = sortingClassRooms(classRooms);
 
 
-            int max = 0;
             for (int i = 0; i < sortedWeights.Count; i++) {
-
-                max += weightDictionary[sortedWeights[i]].Count();
-            }
-            
-            //viewLoadForm.SetMin(0);
-            //viewLoadForm.SetMax(max*1000);
-
-            for (int i = 0; i < sortedWeights.Count; i++) {
-
-                Dictionary<String, dynamic> conflict = reserve(sortedWeights[i], weightDictionary[sortedWeights[i]]);
                 if (wantsToCancel) {
                     return;
                 }
@@ -113,8 +98,6 @@ namespace university_scheduler {
                     Console.WriteLine(
                         $"NEW COUNT {maxRes} \nTotals Res:{resInc}\n=======");
                     
-                    //viewLoadForm.SetProgress(maxRes);
-                    //viewLoadForm.SetLableText($"( {maxRes} ) reserved slots / ( {max} ) total slots");
                     Dictionary<String, int> resState = getReservedTotal();
                     double resProgress = resState["reserved"] / resState["total"];
                     if (resProgress > maxResProgress) {
@@ -176,25 +159,12 @@ namespace university_scheduler {
                         }
                     }
                 }
-                updateResData();
-                loadForm.backgroundWorker1.ReportProgress(Convert.ToInt32(reserved * 100 / total));
-                //loadForm.label1.Text = $"total: {total} + reserved: {reserved} + not: {nonRes}";
-                if (loadForm.backgroundWorker1.CancellationPending)
-                {
-                    e.Cancel = true;
-                    loadForm.backgroundWorker1.ReportProgress(0);
-                    return;
-                }
             }
             cleanResDictionary();
             printNonReserved();
             Console.WriteLine(
                 $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
             Console.WriteLine(confCount);
-
-            e.Result = $" total: {total} \n reserved: {reserved} \n not: {nonRes} \n Scheduling has been finished \n 100 %";
-            
-            return;
         }
 
 
@@ -209,25 +179,6 @@ namespace university_scheduler {
             }
             reservationsList.ForEach((Reservation res) => {
                 res.insertThis();
-            });
-        }
-        public void updateResData()
-        {
-            total = 0;
-            nonRes = 0;
-            reserved = 0;
-            weightDictionary.Keys.ToList().ForEach((double key) => {
-                weightDictionary[key].ForEach((Slot slot) => {
-                    total++;
-                    if (!reservedSlotsIds.Contains(slot.id))
-                    {
-                        nonRes++;
-                    }
-                    else
-                    {
-                        reserved++;
-                    }
-                });
             });
         }
 
@@ -246,7 +197,7 @@ namespace university_scheduler {
                     }
                 });
             });
-            updateResData();
+
             Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
             onNewReservation(reserved, total);
         }

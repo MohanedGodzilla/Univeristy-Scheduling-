@@ -100,35 +100,6 @@ namespace university_scheduler
             }
         }
 
-        private void Load_view()
-        {
-            viewLoadForm frm = new viewLoadForm();
-            frm.startBrogress();
-            DialogResult dialogResult = frm.ShowDialog();
-            
-            //frm.button1_Click(sender, e);
-
-            /*
-            viewLoadForm frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            this.coursesView.Controls.Add(frm);
-            frm.Show();
-
-            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            this.programsView.Controls.Add(frm);
-            frm.Show();
-
-            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            this.classroomsView.Controls.Add(frm);
-            frm.Show();
-
-            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            this.resourcesView.Controls.Add(frm);
-            frm.Show();
-            */
-        }
-
-        private void stInput_ValueChanged(object sender, EventArgs e)
-        {
         public void onNewReservation(int reserved, int total) {
             Console.WriteLine($"RES:{reserved},TOTAL:{total},Progress:{((double)reserved / (double)total)*100}");
         }
@@ -187,47 +158,6 @@ namespace university_scheduler
             wb.SaveAs(@path + "/programs.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             wb.Close(true, misValue, misValue);
         }
-
-        private void generateBTN_Click(object sender, EventArgs e) {
-            
-            string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
-            string title = "Old reservations will be deleted";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if (result != DialogResult.OK) {
-                return;
-            }
-
-
-            
-            //EnableTab(false);
-            EnableTab(this.coursesView, false);
-            EnableTab(this.programsView, false);
-            EnableTab(this.classroomsView, false);
-            EnableTab(this.resourcesView, false);
-            this.generateBTN.Enabled = false;
-            Load_view();
-            resLabel.Text = viewLoadForm.res;
-            
-            //scheduler.start();
-            //scheduler.saveReservations();
-            HomeScreenWithTable addCoursePopup = new HomeScreenWithTable();
-            DialogResult dialogResult = addCoursePopup.ShowDialog();
-            
-        }
-
-        public void EnableTab(TabPage page, bool enable)
-        {
-            //foreach (Control ctl in page.Controls) ctl.Enabled = enable;
-            //page.Enabled = enable;
-            //page.Hide();
-            //tabControl1.
-            page.Controls.Clear();
-            //this.tabControl1.Hide();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
 
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, string name, string model) {
 
