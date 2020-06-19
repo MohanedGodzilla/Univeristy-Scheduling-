@@ -68,7 +68,12 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(3), (double)reader.GetValue(4), (double)reader.GetValue(5), (short)reader.GetValue(6) == 0 ? false : true);
+                    bool val = false;
+                    if ((short)reader.GetValue(6) == 1)
+                    {
+                        val = true;
+                    }
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), val);
                     res.id = (int)reader.GetValue(0);
                     res.programs = ReservationHasProgram.getReservationPrograms(res.id);
                     reservationData.Add(res);
@@ -84,12 +89,42 @@ namespace university_scheduler.Model
             List<Reservation> reservationData = new List<Reservation>();
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM reservation WHERE class_id = {classId} ", cn))
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM reservation WHERE class_id = {classId} ORDER BY \"day\",\"from\" ", cn))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    reservationData.Add(new Reservation { courseId = (int)reader.GetValue(0), classId = (int)reader.GetValue(1), day = (int)reader.GetValue(4), from = (double)reader.GetValue(2), to = (double)reader.GetValue(3), isPractice = (bool)reader.GetValue(2) });
+                    bool val = false;
+                    if ((short)reader.GetValue(6) == 1)
+                    {
+                        val = true;
+                    }
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), val);
+                    reservationData.Add(res);
+                }
+                cn.Close();
+                return reservationData;
+            }
+        }
+
+
+        public static Reservation getResById(int resId)
+        {
+            Reservation reservationData = new Reservation();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            using (SqlCommand cmd = new SqlCommand($"SELECT * FROM reservation WHERE id = {resId} ", cn))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    bool val = false;
+                    if ((short)reader.GetValue(6) == 1)
+                    {
+                        val = true;
+                    }
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), val);
+                    reservationData= res;
                 }
                 cn.Close();
                 return reservationData;

@@ -11,11 +11,21 @@ namespace university_scheduler.Data
     {
         public string conString = env.db_con_str;
         public int courseNums = 100;
+        public int programsRatio = 1; // 1 or 1/3 or Ay ratio
+        public int classroomSize = 1; // 1:big data  and  0:small data 
         public static int max_days=6;
         public static int max_time=10;
         
         
         private int countt = 0;
+        
+        public static void generateALL(){
+            Generator gen = new Generator();
+            gen.generateResource();
+            gen.generateProgram();
+            gen.generateCourse();
+            gen.generateClassroom();
+        }
 
         public void generateResource()
         {
@@ -113,7 +123,7 @@ namespace university_scheduler.Data
                 ProgramCourses pc = new ProgramCourses();
                 List<Model.Program> programs = Model.Program.getAll();
                 int count = programs.Count / 2;
-                int programsCount = rnd.Next(1, count);
+                int programsCount = rnd.Next(1, 4);
                 for (int j = rnd.Next(1,programsCount); j <= programsCount; j++)//j select random number from programsCount to insert differnt random programs
                 {
                     int programId = programs[j].id;
@@ -144,9 +154,9 @@ namespace university_scheduler.Data
                 "Geology-Geophysics" ,
                 "Geology-Chemistry" ,
                 "Entomology-Chemistry" ,
-                "Mathematical Statistics and Computer Science" ,
-                "Pure Mathematics and Computer Science" ,
-                "Mathematical Statistics and Pure Mathematics" ,
+                "Math Stat and CS" ,
+                "Pure Mathematics cs" ,
+                "Math Stat and Math" ,
                 "Microbiology-Chemistry" ,
                 "Zoology-Chemistry" ,
                 "Chemistry" ,
@@ -154,7 +164,7 @@ namespace university_scheduler.Data
                 "Computer Science" ,
                 "Mathematics" ,
                 "Physics" ,
-                "Physcics and Computer Science" ,
+                "Physcics and Cs" ,
                 "Physics-Chemistry" ,
                 "Applied Biotechnology" ,
                 "Materials and Nanosciences" ,
@@ -162,7 +172,7 @@ namespace university_scheduler.Data
             };
 
             Model.Program program = new Model.Program();
-            for (int i = 0; i < progNames.Count/3; i++)
+            for (int i = 0; i < progNames.Count * programsRatio; i++)
             {
                 program.insert(progNames[i]);
                 int progId = program.getCurrentProgramId();
@@ -182,38 +192,42 @@ namespace university_scheduler.Data
 
         public void generateClassroom()
         {
-           /* //CourseRes.insertResource(courseId, res.id);
-             getRoomWithParams(0,5, 65, 65, 1);
-             getRoomWithParams(5,5, 35, 35, 1);
-            //CHEM
-             getRoomWithParams(10,5, 65, 65, 1);
-             getRoomWithParams(15,5, 35, 35, 1);
-            //COMP
+            if (classroomSize == 1)
+            {
+                // 54 room LAB
+                getRoomWithParams(0, 25, 70, 70, 1);
+                getRoomWithParams(25, 5, 45, 45, 1);
+                getRoomWithParams(30, 15, 65, 65, 1);
+                getRoomWithParams(45, 4, 45, 45, 1);
+                getRoomWithParams(49, 3, 100, 100, 1);
+                getRoomWithParams(52, 2, 60, 60, 1);
 
-             getRoomWithParams(20,1, 70, 70, 1);
-             getRoomWithParams(21, 1, 35, 35, 1);
+                /////////////// 26 room LECS
+                //LECT BIG
+                getRoomWithParams(54, 2, 700, 800, 0);
+                getRoomWithParams(56, 2, 450, 450, 0);
+                //LECT MED
+                getRoomWithParams(58, 3, 150, 150, 0);
+                getRoomWithParams(61, 2, 100, 100, 0);
+                //LECT SMALL
+                getRoomWithParams(63, 8, 70, 70, 0);
+                getRoomWithParams(71, 7, 40, 40, 0);
+                getRoomWithParams(78, 1, 55, 55, 0);
+                getRoomWithParams(79, 1, 23, 23, 0);
+            }
+            else {
+                getRoomWithParams(0, 5, 35, 35, 1);
+                //CHEM
+                getRoomWithParams(5, 5, 35, 35, 1);
+                //COMP
+                getRoomWithParams(10, 1, 70, 70, 1);
 
-            //LECT BIG
-             getRoomWithParams(22, 1, 1000, 1000, 0);
-             getRoomWithParams(23, 1, 500, 500, 0);
+                //LECT BIG
+                getRoomWithParams(11, 1, 500, 500, 0);
 
-            //LECT MED
-             getRoomWithParams(24, 10, 150, 150, 0);
-
-             getRoomWithParams(34, 40, 60, 70, 0);
-*/
-            //CourseRes.insertResource(courseId, res.id);
-            getRoomWithParams(0, 5, 35, 35, 1);
-            //CHEM
-            getRoomWithParams(5, 5, 35, 35, 1);
-            //COMP
-            getRoomWithParams(10, 1, 70, 70, 1);
-
-            //LECT BIG
-            getRoomWithParams(11, 1, 500, 500, 0);
-
-            //LECT MED
-            getRoomWithParams(12, 2, 150, 150, 0);
+                //LECT MED
+                getRoomWithParams(12, 2, 150, 150, 0);
+            }
         }
 
         public void getRoomWithParams(int idFrom, int count, int minCap, int maxCap, int isLab) {

@@ -25,12 +25,20 @@ namespace university_scheduler {
             initLimits();
             addProgramBTN.Visible = true;
         }
-        public addProgramForm(int prog_id) {
+        public addProgramForm(int prog_id, int viewProgram_disableSaveBTN) {
+      
             InitializeComponent();
             initLimits();
             this.prog_id = prog_id;
             loadData();
-            saveProgramBTN.Visible = true;
+            if (viewProgram_disableSaveBTN == 0)
+            {
+                saveProgramBTN.Visible = true;
+            }
+            else if (viewProgram_disableSaveBTN == 1)
+            {
+                saveProgramBTN.Hide();
+            }
             isEdit = true;
         }
 
@@ -97,7 +105,7 @@ namespace university_scheduler {
         }
 
         int insertProgram(SqlConnection cn) {
-            string query = "insert into program(name) output INSERTED.ID values( '" + programName.Text.ToString() + "' )";
+            string query = "insert into program(name) output INSERTED.ID values(N'" + programName.Text.ToString() + "' )";
             SqlCommand cmd = new SqlCommand(query, cn);
             return (int)cmd.ExecuteScalar();
         }
@@ -127,7 +135,7 @@ namespace university_scheduler {
         }
 
         void updateProgram(SqlConnection cn) {
-            string query = "UPDATE program SET name = '" + programName.Text + "' WHERE id = " + prog_id;
+            string query = "UPDATE program SET name = N'" + programName.Text + "' WHERE id = " + prog_id;
             SqlCommand cmd = new SqlCommand(query, cn);
             cmd.ExecuteNonQuery();
         }
@@ -171,16 +179,24 @@ namespace university_scheduler {
         }
 
         private void addCourseForProgram(int id) {
-            for (int i = 0; i < this.selectedCourseList.Count; i++) {
-                SqlConnection cn = new SqlConnection(conString);
-                cn.Open();
-                if (cn.State == System.Data.ConnectionState.Open) {
-                    string query = "insert into program_has_course(course_id,program_id) values(" + this.selectedCourseList[i] + " , " + id + " )";
-                    SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.ExecuteNonQuery();
-                    //---//
+            try
+            {
+                for (int i = 0; i < this.selectedCourseList.Count; i++)
+                {
+                    SqlConnection cn = new SqlConnection(conString);
+                    cn.Open();
+                    if (cn.State == System.Data.ConnectionState.Open)
+                    {
+                        string query = "insert into program_has_course(course_id,program_id) values(" + this.selectedCourseList[i] + " , " + id + " )";
+                        SqlCommand cmd = new SqlCommand(query, cn);
+                        cmd.ExecuteNonQuery();
+                        //---//
+                    }
+                    cn.Close();
                 }
-                cn.Close();
+            }
+            catch (Exception e) {
+
             }
         }
 

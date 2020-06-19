@@ -77,9 +77,10 @@
             // programName
             // 
             this.programName.Location = new System.Drawing.Point(135, 13);
+            this.programName.MaxLength = 30;
             this.programName.Name = "programName";
             this.programName.Size = new System.Drawing.Size(191, 20);
-            this.programName.TabIndex = 20;
+            this.programName.TabIndex = 0;
             // 
             // label2
             // 
@@ -196,7 +197,7 @@
             // y1t1
             // 
             this.y1t1.Location = new System.Drawing.Point(176, 93);
-            this.y1t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y1t1.Margin = new System.Windows.Forms.Padding(2);
             this.y1t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -209,7 +210,7 @@
             0});
             this.y1t1.Name = "y1t1";
             this.y1t1.Size = new System.Drawing.Size(42, 20);
-            this.y1t1.TabIndex = 33;
+            this.y1t1.TabIndex = 1;
             this.y1t1.Value = new decimal(new int[] {
             120,
             0,
@@ -219,7 +220,7 @@
             // y1t2
             // 
             this.y1t2.Location = new System.Drawing.Point(176, 117);
-            this.y1t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y1t2.Margin = new System.Windows.Forms.Padding(2);
             this.y1t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -232,7 +233,7 @@
             0});
             this.y1t2.Name = "y1t2";
             this.y1t2.Size = new System.Drawing.Size(42, 20);
-            this.y1t2.TabIndex = 34;
+            this.y1t2.TabIndex = 2;
             this.y1t2.Value = new decimal(new int[] {
             120,
             0,
@@ -242,7 +243,7 @@
             // y2t1
             // 
             this.y2t1.Location = new System.Drawing.Point(176, 148);
-            this.y2t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y2t1.Margin = new System.Windows.Forms.Padding(2);
             this.y2t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -255,7 +256,7 @@
             0});
             this.y2t1.Name = "y2t1";
             this.y2t1.Size = new System.Drawing.Size(42, 20);
-            this.y2t1.TabIndex = 35;
+            this.y2t1.TabIndex = 3;
             this.y2t1.Value = new decimal(new int[] {
             120,
             0,
@@ -265,7 +266,7 @@
             // y3t2
             // 
             this.y3t2.Location = new System.Drawing.Point(176, 226);
-            this.y3t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y3t2.Margin = new System.Windows.Forms.Padding(2);
             this.y3t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -278,7 +279,7 @@
             0});
             this.y3t2.Name = "y3t2";
             this.y3t2.Size = new System.Drawing.Size(42, 20);
-            this.y3t2.TabIndex = 38;
+            this.y3t2.TabIndex = 6;
             this.y3t2.Value = new decimal(new int[] {
             120,
             0,
@@ -288,7 +289,7 @@
             // y3t1
             // 
             this.y3t1.Location = new System.Drawing.Point(176, 202);
-            this.y3t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y3t1.Margin = new System.Windows.Forms.Padding(2);
             this.y3t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -301,7 +302,7 @@
             0});
             this.y3t1.Name = "y3t1";
             this.y3t1.Size = new System.Drawing.Size(42, 20);
-            this.y3t1.TabIndex = 37;
+            this.y3t1.TabIndex = 5;
             this.y3t1.Value = new decimal(new int[] {
             120,
             0,
@@ -311,7 +312,7 @@
             // y2t2
             // 
             this.y2t2.Location = new System.Drawing.Point(176, 172);
-            this.y2t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y2t2.Margin = new System.Windows.Forms.Padding(2);
             this.y2t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -324,7 +325,7 @@
             0});
             this.y2t2.Name = "y2t2";
             this.y2t2.Size = new System.Drawing.Size(42, 20);
-            this.y2t2.TabIndex = 36;
+            this.y2t2.TabIndex = 4;
             this.y2t2.Value = new decimal(new int[] {
             120,
             0,
@@ -334,7 +335,7 @@
             // y4t2
             // 
             this.y4t2.Location = new System.Drawing.Point(176, 280);
-            this.y4t2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y4t2.Margin = new System.Windows.Forms.Padding(2);
             this.y4t2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -347,7 +348,7 @@
             0});
             this.y4t2.Name = "y4t2";
             this.y4t2.Size = new System.Drawing.Size(42, 20);
-            this.y4t2.TabIndex = 40;
+            this.y4t2.TabIndex = 8;
             this.y4t2.Value = new decimal(new int[] {
             120,
             0,
@@ -357,7 +358,7 @@
             // y4t1
             // 
             this.y4t1.Location = new System.Drawing.Point(176, 256);
-            this.y4t1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.y4t1.Margin = new System.Windows.Forms.Padding(2);
             this.y4t1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -370,7 +371,7 @@
             0});
             this.y4t1.Name = "y4t1";
             this.y4t1.Size = new System.Drawing.Size(42, 20);
-            this.y4t1.TabIndex = 39;
+            this.y4t1.TabIndex = 7;
             this.y4t1.Value = new decimal(new int[] {
             120,
             0,
@@ -385,7 +386,7 @@
             this.saveProgramBTN.Location = new System.Drawing.Point(23, 372);
             this.saveProgramBTN.Name = "saveProgramBTN";
             this.saveProgramBTN.Size = new System.Drawing.Size(90, 32);
-            this.saveProgramBTN.TabIndex = 43;
+            this.saveProgramBTN.TabIndex = 11;
             this.saveProgramBTN.Text = "Save";
             this.saveProgramBTN.UseVisualStyleBackColor = false;
             this.saveProgramBTN.Visible = false;
@@ -399,7 +400,7 @@
             this.addProgramBTN.Location = new System.Drawing.Point(128, 372);
             this.addProgramBTN.Name = "addProgramBTN";
             this.addProgramBTN.Size = new System.Drawing.Size(90, 32);
-            this.addProgramBTN.TabIndex = 42;
+            this.addProgramBTN.TabIndex = 10;
             this.addProgramBTN.Text = "Add";
             this.addProgramBTN.UseVisualStyleBackColor = false;
             this.addProgramBTN.Visible = false;
@@ -413,7 +414,7 @@
             this.cancelProgramBTN.Location = new System.Drawing.Point(235, 372);
             this.cancelProgramBTN.Name = "cancelProgramBTN";
             this.cancelProgramBTN.Size = new System.Drawing.Size(91, 32);
-            this.cancelProgramBTN.TabIndex = 41;
+            this.cancelProgramBTN.TabIndex = 12;
             this.cancelProgramBTN.Text = "Cancel";
             this.cancelProgramBTN.UseVisualStyleBackColor = false;
             this.cancelProgramBTN.Click += new System.EventHandler(this.cancelProgramBTN_Click);
@@ -425,7 +426,7 @@
             this.selectProgramBTN.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectProgramBTN.Name = "selectProgramBTN";
             this.selectProgramBTN.Size = new System.Drawing.Size(86, 23);
-            this.selectProgramBTN.TabIndex = 44;
+            this.selectProgramBTN.TabIndex = 9;
             this.selectProgramBTN.Text = "-- select --";
             this.selectProgramBTN.UseVisualStyleBackColor = true;
             this.selectProgramBTN.Click += new System.EventHandler(this.selectProgramBTN_Click);
@@ -472,12 +473,12 @@
             this.Controls.Add(this.programName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "addProgramForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "addProgramForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Add Program";
             this.Load += new System.EventHandler(this.addProgramForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.y1t1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y1t2)).EndInit();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -77,6 +78,22 @@ namespace university_scheduler.Model
                 Resource res = new Resource { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1) };
                 cn.Close();
                 return res;
+            }
+        }
+
+        public static DataTable search()
+        {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = "SELECT name FROM resource";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                DataTable dt = new DataTable();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+                return dt;
             }
         }
     }

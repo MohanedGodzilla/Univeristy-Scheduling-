@@ -56,6 +56,11 @@ namespace university_scheduler.Model {
             }
         }
 
+        public static List<Classroom> getClassroomById(int dummyId)
+        {
+            return getClassrooms("SELECT * FROM class WHERE id = " + dummyId);
+        }
+
         public static void insert(string name, int lecCap, int examCap, int isLab) {
 
             SqlConnection cn = new SqlConnection(env.db_con_str);
@@ -100,6 +105,27 @@ namespace university_scheduler.Model {
                 }
             }
             return -1; //not blocked 
+        }
+
+        public static DataTable search(int flag)
+        {
+            //return getClassrooms();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query="";
+            if (flag==1)
+                query = "SELECT id,name,lecture_capacity as 'lec cap' , exam_capacity as 'exam cap' FROM class";
+            else if(flag==2)
+                query = "SELECT name FROM class";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                DataTable dt = new DataTable();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+                return dt;
+            }
         }
 
     }
