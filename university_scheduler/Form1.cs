@@ -80,10 +80,10 @@ namespace university_scheduler
             }
             scheduler.start();
             scheduler.saveReservations();
-            /*saveClassroomsinExcel();
+            saveClassroomsinExcel();
             saveProgramssinExcel();
             HomeScreenWithTable Popup = new HomeScreenWithTable();
-            DialogResult dialogResult = Popup.ShowDialog();*/
+            DialogResult dialogResult = Popup.ShowDialog();
         }
 
         void saveClassroomsinExcel()
@@ -110,7 +110,7 @@ namespace university_scheduler
                 Excel.Workbook book = books.Open(@"D:\classrooms.xls");*/
             }
             catch (Exception e) {
-                
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -139,7 +139,7 @@ namespace university_scheduler
             }
             catch (Exception e)
             {
-               
+                Console.WriteLine(e.Message);
             }   
         }
 

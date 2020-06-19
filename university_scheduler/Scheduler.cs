@@ -111,13 +111,13 @@ namespace university_scheduler {
                         }
                         sortedWeights = sortWeights();
                         i -= 1;
-                    } else if (reason == REASON_PROG_TIME) {
+                    }/* else if (reason == REASON_PROG_TIME) {
                         if (slotWithConflict.programs.Count > 1) {
                             separatePrograms(slotWithConflict);
                         }
                         sortedWeights = sortWeights();
                         i -= 1;
-                    } else {
+                    }*/ else {
                         if (i == 0) {
                             double newWeight = sortedWeights[0] + 1;
                             sortedWeights.Insert(0, newWeight);

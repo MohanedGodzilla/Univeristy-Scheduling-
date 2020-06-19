@@ -10,8 +10,8 @@ namespace university_scheduler.Data
     class Generator
     {
         public string conString = env.db_con_str;
-        public int courseNums = 1200;
-        public double programsRatio = 1; // 1 or 1.0/3.0 or Ay ratio
+        public int courseNums = 500;
+        public double programsRatio = 2.0/3.0; // 1 or 1.0/3.0 or Ay ratio
         public int classroomSize = 1; // 1:big data  and  0:small data 
         public static int max_days=6;
         public static int max_time=10;
@@ -123,7 +123,7 @@ namespace university_scheduler.Data
                 ProgramCourses pc = new ProgramCourses();
                 List<Model.Program> programs = Model.Program.getAll();
                 int count = programs.Count / 2;
-                int programsCount = rnd.Next(1, count);
+                int programsCount = rnd.Next(1, 4);
                 for (int j = rnd.Next(1,programsCount); j <= programsCount; j++)//j select random number from programsCount to insert differnt random programs
                 {
                     int programId = programs[j].id;
