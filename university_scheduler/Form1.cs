@@ -108,7 +108,6 @@ namespace university_scheduler
             scheduler.addOnNewReservation(onNewReservation); 
             Task t = new Task(() => { scheduler.start(); });
             t.Start();
-            scheduler.cancel();
             t.Wait();
             scheduler.saveReservations();
             saveClassroomsinExcel();
