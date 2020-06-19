@@ -94,12 +94,16 @@ namespace university_scheduler.Model {
            return termsData.First((TermData tD)=>{ return tD.term == term; });
         }
 
-        public static DataTable search()
+        public static DataTable search(int flag)
         {
             //return getClassrooms();
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            string query = "SELECT name FROM program";
+            string query = "";
+            if(flag == 1)
+                query = "SELECT * FROM program";
+            else if (flag == 2)
+                query = "SELECT name FROM program";
             using (SqlCommand cmd = new SqlCommand(query, cn))
             {
                 DataTable dt = new DataTable();

@@ -15,7 +15,7 @@ namespace university_scheduler
 {
     public partial class HomeScreenWithTable : Form
     {
-        
+        public string conString = env.db_con_str;
         public HomeScreenWithTable()
         {
             InitializeComponent();
@@ -75,7 +75,8 @@ namespace university_scheduler
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            DataTable dtClass = Classroom.search();
+            int returnJustName = 2;
+            DataTable dtClass = Classroom.search(returnJustName);
             DataView DV = new DataView(dtClass);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", searchClass.Text);
             classroomsExcel.DataSource = DV;
@@ -83,7 +84,8 @@ namespace university_scheduler
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            DataTable dtProgram = Model.Program.search();
+            int returnJustName = 2;
+            DataTable dtProgram = Model.Program.search(returnJustName);
             DataView DV = new DataView(dtProgram);
             DV.RowFilter = string.Format("name LIKE '%{0}%'", searchProgram.Text);
             programsExcel.DataSource = DV;
@@ -91,12 +93,50 @@ namespace university_scheduler
 
         private void generateNewBTN_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            NoScheduleHome Popup = new NoScheduleHome();
-            Popup.ShowDialog();
-            this.Close();
+            string message = "By clicking OK, All reservations will be permenantly DELETED\nmake sure from your choice";
+            string title = " All reservations will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            else
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                string query = "delete from reservation";
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "DBCC CHECKIDENT (reservation, RESEED, 0)";
+                cmd.ExecuteNonQuery();
+                cn.Close();
+                //---//
+                MessageBox.Show("All reservations are deleted successfully..!");
+                NoScheduleHome Popup = new NoScheduleHome();
+                Popup.MdiParent = this.ParentForm;
+                this.Hide();
+                Popup.ShowDialog();
+                this.Close();
+            }
         }
 
+        private void viewBTN_Click(object sender, EventArgs e)
+        {
+            int comeFromThisForm = 1;
+            NoScheduleHome Popup = new NoScheduleHome(comeFromThisForm);
+            var control = Popup.tableLayoutPanel1.GetControlFromPosition(1, 0);
+            Popup.tableLayoutPanel1.Controls.Remove(control);
+            TableLayoutColumnStyleCollection styles = Popup.tableLayoutPanel1.ColumnStyles;
+            styles[1].Width = 0;
+            Popup.Size = new System.Drawing.Size(800, 642);
+            Popup.Show();
+        }
 
+        private void aboutBTN_Click(object sender, EventArgs e)
+        {
+            aboutUs Popup = new aboutUs();
+            Popup.Show();
+        }
     }
 }

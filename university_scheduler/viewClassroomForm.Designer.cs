@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.classData = new System.Windows.Forms.DataGridView();
             this.newClassRoomBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.deleteClassRoomBTN = new System.Windows.Forms.Button();
             this.editClassRoomBTN = new System.Windows.Forms.Button();
+            this.deleteAllBTN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.classData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -45,7 +48,9 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.classData);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -53,34 +58,53 @@
             this.panel1.Size = new System.Drawing.Size(611, 444);
             this.panel1.TabIndex = 1;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(83, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(335, 24);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 18);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Search";
+            // 
             // classData
             // 
             this.classData.AllowUserToAddRows = false;
             this.classData.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.classData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.classData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.classData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.classData.DefaultCellStyle = dataGridViewCellStyle4;
-            this.classData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.classData.Location = new System.Drawing.Point(0, 0);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.classData.DefaultCellStyle = dataGridViewCellStyle2;
+            this.classData.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.classData.Location = new System.Drawing.Point(0, 62);
             this.classData.Name = "classData";
             this.classData.ReadOnly = true;
             this.classData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.classData.Size = new System.Drawing.Size(611, 444);
-            this.classData.TabIndex = 1;
+            this.classData.Size = new System.Drawing.Size(611, 382);
+            this.classData.TabIndex = 5;
             this.classData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classData_CellDoubleClick);
             // 
             // newClassRoomBTN
@@ -88,7 +112,7 @@
             this.newClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.newClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_add_20;
             this.newClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.newClassRoomBTN.Location = new System.Drawing.Point(3, 11);
+            this.newClassRoomBTN.Location = new System.Drawing.Point(3, 26);
             this.newClassRoomBTN.Name = "newClassRoomBTN";
             this.newClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.newClassRoomBTN.TabIndex = 0;
@@ -118,15 +142,16 @@
             this.tableLayoutPanel2.Controls.Add(this.deleteClassRoomBTN, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.editClassRoomBTN, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.newClassRoomBTN, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.deleteAllBTN, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(620, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 289F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.38F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.86F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(177, 444);
             this.tableLayoutPanel2.TabIndex = 0;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
@@ -136,7 +161,7 @@
             this.deleteClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.deleteClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_delete_bin_20;
             this.deleteClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteClassRoomBTN.Location = new System.Drawing.Point(3, 113);
+            this.deleteClassRoomBTN.Location = new System.Drawing.Point(3, 158);
             this.deleteClassRoomBTN.Name = "deleteClassRoomBTN";
             this.deleteClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.deleteClassRoomBTN.TabIndex = 2;
@@ -149,13 +174,30 @@
             this.editClassRoomBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.editClassRoomBTN.Image = global::university_scheduler.Properties.Resources.icons8_edit_20__1_;
             this.editClassRoomBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.editClassRoomBTN.Location = new System.Drawing.Point(3, 62);
+            this.editClassRoomBTN.Location = new System.Drawing.Point(3, 92);
             this.editClassRoomBTN.Name = "editClassRoomBTN";
             this.editClassRoomBTN.Size = new System.Drawing.Size(171, 37);
             this.editClassRoomBTN.TabIndex = 1;
             this.editClassRoomBTN.Text = "Edit";
             this.editClassRoomBTN.UseVisualStyleBackColor = true;
             this.editClassRoomBTN.Click += new System.EventHandler(this.editClassRoomBTN_Click);
+            // 
+            // deleteAllBTN
+            // 
+            this.deleteAllBTN.BackColor = System.Drawing.Color.Red;
+            this.deleteAllBTN.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.deleteAllBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteAllBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAllBTN.ForeColor = System.Drawing.SystemColors.Window;
+            this.deleteAllBTN.Image = global::university_scheduler.Properties.Resources.icons8_deleteAll_20;
+            this.deleteAllBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteAllBTN.Location = new System.Drawing.Point(3, 293);
+            this.deleteAllBTN.Name = "deleteAllBTN";
+            this.deleteAllBTN.Size = new System.Drawing.Size(171, 45);
+            this.deleteAllBTN.TabIndex = 3;
+            this.deleteAllBTN.Text = "Delete All";
+            this.deleteAllBTN.UseVisualStyleBackColor = false;
+            this.deleteAllBTN.Click += new System.EventHandler(this.deleteAllBTN_Click);
             // 
             // viewClassroomForm
             // 
@@ -169,6 +211,7 @@
             this.Text = "viewClassroomForm";
             this.Load += new System.EventHandler(this.viewClassroomForm_Load_1);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.classData)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -180,10 +223,13 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button newClassRoomBTN;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button deleteClassRoomBTN;
         private System.Windows.Forms.Button editClassRoomBTN;
         public System.Windows.Forms.DataGridView classData;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button deleteAllBTN;
     }
 }

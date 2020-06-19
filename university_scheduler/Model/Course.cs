@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -132,6 +133,22 @@ namespace university_scheduler.Model
                 courseResources.Add(Resource.getResourceById(resourceId));
             }
             return courseResources;
+        }
+
+        public static DataTable search()
+        {
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = "SELECT id,name,course_named_id as 'code',lecture_hours as 'lec hours',practice_hours as 'sec hours',lab_hours as 'lab hours' FROM course";
+            using (SqlCommand cmd = new SqlCommand(query, cn))
+            {
+                DataTable dt = new DataTable();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+                return dt;
+            }
         }
     }
 }

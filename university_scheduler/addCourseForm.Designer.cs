@@ -74,7 +74,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(453, 488);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // saveBTN
             // 
@@ -84,7 +83,7 @@
             this.saveBTN.Location = new System.Drawing.Point(85, 448);
             this.saveBTN.Name = "saveBTN";
             this.saveBTN.Size = new System.Drawing.Size(90, 32);
-            this.saveBTN.TabIndex = 5;
+            this.saveBTN.TabIndex = 14;
             this.saveBTN.Text = "Save";
             this.saveBTN.UseVisualStyleBackColor = false;
             this.saveBTN.Click += new System.EventHandler(this.saveBTN_Click);
@@ -132,7 +131,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(447, 424);
             this.tableLayoutPanel1.TabIndex = 4;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // isActive
             // 
@@ -144,7 +142,7 @@
             this.isActive.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.isActive.Name = "isActive";
             this.isActive.Size = new System.Drawing.Size(64, 20);
-            this.isActive.TabIndex = 18;
+            this.isActive.TabIndex = 9;
             this.isActive.Text = "Active";
             this.isActive.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +154,7 @@
             this.labHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.labHours.Name = "labHours";
             this.labHours.Size = new System.Drawing.Size(51, 22);
-            this.labHours.TabIndex = 16;
+            this.labHours.TabIndex = 6;
             // 
             // practiceHours
             // 
@@ -166,7 +164,7 @@
             this.practiceHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.practiceHours.Name = "practiceHours";
             this.practiceHours.Size = new System.Drawing.Size(51, 22);
-            this.practiceHours.TabIndex = 15;
+            this.practiceHours.TabIndex = 5;
             // 
             // lecHours
             // 
@@ -176,7 +174,7 @@
             this.lecHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.lecHours.Name = "lecHours";
             this.lecHours.Size = new System.Drawing.Size(51, 22);
-            this.lecHours.TabIndex = 14;
+            this.lecHours.TabIndex = 4;
             // 
             // label1
             // 
@@ -315,18 +313,20 @@
             this.courseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.courseName.Location = new System.Drawing.Point(170, 10);
             this.courseName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.courseName.MaxLength = 30;
             this.courseName.Name = "courseName";
             this.courseName.Size = new System.Drawing.Size(219, 22);
-            this.courseName.TabIndex = 11;
+            this.courseName.TabIndex = 1;
             // 
             // courseCode
             // 
             this.courseCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.courseCode.Location = new System.Drawing.Point(170, 48);
             this.courseCode.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.courseCode.MaxLength = 30;
             this.courseCode.Name = "courseCode";
             this.courseCode.Size = new System.Drawing.Size(219, 22);
-            this.courseCode.TabIndex = 12;
+            this.courseCode.TabIndex = 2;
             // 
             // creditHours
             // 
@@ -336,7 +336,7 @@
             this.creditHours.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.creditHours.Name = "creditHours";
             this.creditHours.Size = new System.Drawing.Size(51, 22);
-            this.creditHours.TabIndex = 13;
+            this.creditHours.TabIndex = 3;
             // 
             // termCombo
             // 
@@ -357,7 +357,7 @@
             this.termCombo.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.termCombo.Name = "termCombo";
             this.termCombo.Size = new System.Drawing.Size(219, 24);
-            this.termCombo.TabIndex = 5;
+            this.termCombo.TabIndex = 7;
             this.termCombo.Tag = "";
             // 
             // isRequired
@@ -368,7 +368,7 @@
             this.isRequired.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.isRequired.Name = "isRequired";
             this.isRequired.Size = new System.Drawing.Size(86, 20);
-            this.isRequired.TabIndex = 17;
+            this.isRequired.TabIndex = 8;
             this.isRequired.Text = "Required ";
             this.isRequired.UseVisualStyleBackColor = true;
             // 
@@ -379,7 +379,7 @@
             this.selectResource.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectResource.Name = "selectResource";
             this.selectResource.Size = new System.Drawing.Size(86, 23);
-            this.selectResource.TabIndex = 19;
+            this.selectResource.TabIndex = 12;
             this.selectResource.Text = "-- select -- ";
             this.selectResource.UseVisualStyleBackColor = true;
             this.selectResource.Click += new System.EventHandler(this.selectResource_Click);
@@ -391,7 +391,7 @@
             this.selectProgramBTN.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.selectProgramBTN.Name = "selectProgramBTN";
             this.selectProgramBTN.Size = new System.Drawing.Size(86, 23);
-            this.selectProgramBTN.TabIndex = 19;
+            this.selectProgramBTN.TabIndex = 10;
             this.selectProgramBTN.Text = "-- select --";
             this.selectProgramBTN.UseVisualStyleBackColor = true;
             this.selectProgramBTN.Click += new System.EventHandler(this.selectProgramBTN_Click);
@@ -404,7 +404,7 @@
             this.addCourseBTN.Location = new System.Drawing.Point(203, 448);
             this.addCourseBTN.Name = "addCourseBTN";
             this.addCourseBTN.Size = new System.Drawing.Size(90, 32);
-            this.addCourseBTN.TabIndex = 3;
+            this.addCourseBTN.TabIndex = 13;
             this.addCourseBTN.Text = "Add";
             this.addCourseBTN.UseVisualStyleBackColor = false;
             this.addCourseBTN.Click += new System.EventHandler(this.addCourseBTN_Click);
@@ -417,7 +417,7 @@
             this.cancelBTN.Location = new System.Drawing.Point(318, 448);
             this.cancelBTN.Name = "cancelBTN";
             this.cancelBTN.Size = new System.Drawing.Size(91, 32);
-            this.cancelBTN.TabIndex = 2;
+            this.cancelBTN.TabIndex = 15;
             this.cancelBTN.Text = "Cancel";
             this.cancelBTN.UseVisualStyleBackColor = false;
             this.cancelBTN.Click += new System.EventHandler(this.cancelBTN_Click);

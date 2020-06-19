@@ -37,6 +37,8 @@
             this.classroomsView = new System.Windows.Forms.TabPage();
             this.resourcesView = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +59,6 @@
             resources.ApplyResources(this.coursesView, "coursesView");
             this.coursesView.Name = "coursesView";
             this.coursesView.UseVisualStyleBackColor = true;
-            this.coursesView.Click += new System.EventHandler(this.coursesView_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -102,6 +103,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBox3);
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label1);
@@ -113,6 +116,21 @@
             this.panel2.Controls.Add(this.generateBTN);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            resources.GetString("comboBox3.Items"),
+            resources.GetString("comboBox3.Items1")});
+            resources.ApplyResources(this.comboBox3, "comboBox3");
+            this.comboBox3.Name = "comboBox3";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // comboBox2
             // 
@@ -168,7 +186,6 @@
             this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stInput.Name = "stInput";
             this.stInput.Value = new System.DateTime(2020, 5, 20, 8, 0, 0, 0);
-            this.stInput.ValueChanged += new System.EventHandler(this.stInput_ValueChanged);
             // 
             // etLabel
             // 
@@ -194,6 +211,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "NoScheduleHome";
             this.Load += new System.EventHandler(this.NoScheduleHome_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -208,22 +226,24 @@
         #endregion
 
         private System.Windows.Forms.TabPage coursesView;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage programsView;
         private System.Windows.Forms.TabPage classroomsView;
         private System.Windows.Forms.TabPage resourcesView;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DateTimePicker etInput;
         private System.Windows.Forms.DateTimePicker stInput;
         private System.Windows.Forms.Label etLabel;
         private System.Windows.Forms.Label stLabel;
-        private System.Windows.Forms.Button generateBTN;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button generateBTN;
+        public System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using university_scheduler.Model;
 
 namespace university_scheduler
 {
@@ -16,7 +17,11 @@ namespace university_scheduler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NoScheduleHome());
+            List<Reservation> reservationsList = Reservation.getAll();
+            if (reservationsList.Count > 0)
+               Application.Run(new HomeScreenWithTable());
+            else
+                Application.Run(new NoScheduleHome());
         }
     }
 }

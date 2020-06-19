@@ -38,6 +38,8 @@
             this.searchProgram = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.programsExcel = new System.Windows.Forms.DataGridView();
+            this.aboutBTN = new System.Windows.Forms.Button();
+            this.viewBTN = new System.Windows.Forms.Button();
             this.generateNewBTN = new System.Windows.Forms.Button();
             this.excelViews.SuspendLayout();
             this.classroomsTables.SuspendLayout();
@@ -52,10 +54,10 @@
             this.excelViews.Controls.Add(this.programsTables);
             this.excelViews.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.excelViews.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.excelViews.Location = new System.Drawing.Point(0, 71);
+            this.excelViews.Location = new System.Drawing.Point(0, 79);
             this.excelViews.Name = "excelViews";
             this.excelViews.SelectedIndex = 0;
-            this.excelViews.Size = new System.Drawing.Size(543, 438);
+            this.excelViews.Size = new System.Drawing.Size(1209, 524);
             this.excelViews.TabIndex = 1;
             // 
             // classroomsTables
@@ -67,7 +69,7 @@
             this.classroomsTables.Location = new System.Drawing.Point(4, 25);
             this.classroomsTables.Name = "classroomsTables";
             this.classroomsTables.Padding = new System.Windows.Forms.Padding(3);
-            this.classroomsTables.Size = new System.Drawing.Size(535, 409);
+            this.classroomsTables.Size = new System.Drawing.Size(1201, 495);
             this.classroomsTables.TabIndex = 0;
             this.classroomsTables.Text = "Classrooms";
             this.classroomsTables.UseVisualStyleBackColor = true;
@@ -76,7 +78,7 @@
             // 
             this.searchClass.Location = new System.Drawing.Point(72, 15);
             this.searchClass.Name = "searchClass";
-            this.searchClass.Size = new System.Drawing.Size(308, 26);
+            this.searchClass.Size = new System.Drawing.Size(438, 26);
             this.searchClass.TabIndex = 2;
             this.searchClass.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -105,7 +107,7 @@
             this.classroomsExcel.ReadOnly = true;
             this.classroomsExcel.RowHeadersVisible = false;
             this.classroomsExcel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.classroomsExcel.Size = new System.Drawing.Size(529, 356);
+            this.classroomsExcel.Size = new System.Drawing.Size(1195, 442);
             this.classroomsExcel.TabIndex = 0;
             this.classroomsExcel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classroomsExcel_CellDoubleClick);
             // 
@@ -118,7 +120,7 @@
             this.programsTables.Location = new System.Drawing.Point(4, 25);
             this.programsTables.Name = "programsTables";
             this.programsTables.Padding = new System.Windows.Forms.Padding(3);
-            this.programsTables.Size = new System.Drawing.Size(535, 409);
+            this.programsTables.Size = new System.Drawing.Size(1201, 495);
             this.programsTables.TabIndex = 1;
             this.programsTables.Text = "Programs";
             this.programsTables.UseVisualStyleBackColor = true;
@@ -127,7 +129,7 @@
             // 
             this.searchProgram.Location = new System.Drawing.Point(72, 15);
             this.searchProgram.Name = "searchProgram";
-            this.searchProgram.Size = new System.Drawing.Size(308, 26);
+            this.searchProgram.Size = new System.Drawing.Size(438, 26);
             this.searchProgram.TabIndex = 4;
             this.searchProgram.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -157,20 +159,61 @@
             this.programsExcel.ReadOnly = true;
             this.programsExcel.RowHeadersVisible = false;
             this.programsExcel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.programsExcel.Size = new System.Drawing.Size(529, 356);
+            this.programsExcel.Size = new System.Drawing.Size(1195, 442);
             this.programsExcel.TabIndex = 1;
             this.programsExcel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.programsExcel_CellDoubleClick);
+            // 
+            // aboutBTN
+            // 
+            this.aboutBTN.BackColor = System.Drawing.SystemColors.Control;
+            this.aboutBTN.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.aboutBTN.FlatAppearance.BorderSize = 0;
+            this.aboutBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.aboutBTN.Image = global::university_scheduler.Properties.Resources.icons8_contact_us_30;
+            this.aboutBTN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.aboutBTN.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.aboutBTN.Location = new System.Drawing.Point(1120, 3);
+            this.aboutBTN.Name = "aboutBTN";
+            this.aboutBTN.Size = new System.Drawing.Size(82, 62);
+            this.aboutBTN.TabIndex = 5;
+            this.aboutBTN.Text = "About us";
+            this.aboutBTN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.aboutBTN.UseVisualStyleBackColor = false;
+            this.aboutBTN.Click += new System.EventHandler(this.aboutBTN_Click);
+            // 
+            // viewBTN
+            // 
+            this.viewBTN.BackColor = System.Drawing.SystemColors.Control;
+            this.viewBTN.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.viewBTN.FlatAppearance.BorderSize = 0;
+            this.viewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.viewBTN.Image = global::university_scheduler.Properties.Resources.icons8_view_30;
+            this.viewBTN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.viewBTN.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.viewBTN.Location = new System.Drawing.Point(1032, 3);
+            this.viewBTN.Name = "viewBTN";
+            this.viewBTN.Size = new System.Drawing.Size(82, 62);
+            this.viewBTN.TabIndex = 4;
+            this.viewBTN.Text = "View Data";
+            this.viewBTN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.viewBTN.UseVisualStyleBackColor = false;
+            this.viewBTN.Click += new System.EventHandler(this.viewBTN_Click);
             // 
             // generateNewBTN
             // 
             this.generateNewBTN.BackColor = System.Drawing.SystemColors.Control;
+            this.generateNewBTN.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.generateNewBTN.FlatAppearance.BorderSize = 0;
+            this.generateNewBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.generateNewBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.generateNewBTN.Image = ((System.Drawing.Image)(resources.GetObject("generateNewBTN.Image")));
+            this.generateNewBTN.Image = global::university_scheduler.Properties.Resources.icons8_police_car_light_30;
             this.generateNewBTN.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.generateNewBTN.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.generateNewBTN.Location = new System.Drawing.Point(7, 3);
             this.generateNewBTN.Name = "generateNewBTN";
-            this.generateNewBTN.Size = new System.Drawing.Size(69, 61);
+            this.generateNewBTN.Size = new System.Drawing.Size(82, 70);
             this.generateNewBTN.TabIndex = 3;
             this.generateNewBTN.Text = "Generate new";
             this.generateNewBTN.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -181,14 +224,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 509);
+            this.ClientSize = new System.Drawing.Size(1209, 603);
+            this.Controls.Add(this.aboutBTN);
+            this.Controls.Add(this.viewBTN);
             this.Controls.Add(this.generateNewBTN);
             this.Controls.Add(this.excelViews);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HomeScreenWithTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HomeScreenWithTable";
+            this.Text = "University Scheduling";
             this.Load += new System.EventHandler(this.HomeScreenWithTable_Load);
             this.excelViews.ResumeLayout(false);
             this.classroomsTables.ResumeLayout(false);
@@ -213,5 +259,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView programsExcel;
         private System.Windows.Forms.Button generateNewBTN;
+        private System.Windows.Forms.Button viewBTN;
+        private System.Windows.Forms.Button aboutBTN;
     }
 }

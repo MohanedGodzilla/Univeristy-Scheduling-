@@ -51,8 +51,8 @@
             this.checkedListBox1.Location = new System.Drawing.Point(12, 12);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(284, 213);
+            this.checkedListBox1.Sorted = true;
             this.checkedListBox1.TabIndex = 6;
-            
             // 
             // selectResourceForm
             // 
