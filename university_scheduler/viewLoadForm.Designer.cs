@@ -37,9 +37,10 @@
             // cancelBTN
             // 
             this.cancelBTN.BackColor = System.Drawing.Color.Red;
-            this.cancelBTN.Location = new System.Drawing.Point(410, 197);
+            this.cancelBTN.ForeColor = System.Drawing.SystemColors.Window;
+            this.cancelBTN.Location = new System.Drawing.Point(285, 144);
             this.cancelBTN.Name = "cancelBTN";
-            this.cancelBTN.Size = new System.Drawing.Size(126, 23);
+            this.cancelBTN.Size = new System.Drawing.Size(149, 41);
             this.cancelBTN.TabIndex = 5;
             this.cancelBTN.Text = "CANCEL\r\n";
             this.cancelBTN.UseVisualStyleBackColor = false;
@@ -48,17 +49,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(193, 32);
+            this.label1.Location = new System.Drawing.Point(139, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 13);
+            this.label1.Size = new System.Drawing.Size(167, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "( ) reserved slots/ ( ) total slots";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 139);
+            this.progressBar1.Location = new System.Drawing.Point(14, 100);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(524, 23);
+            this.progressBar1.Size = new System.Drawing.Size(420, 27);
             this.progressBar1.TabIndex = 3;
             // 
             // backgroundWorker1
@@ -71,13 +73,17 @@
             // 
             // viewLoadForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 235);
+            this.ClientSize = new System.Drawing.Size(448, 193);
             this.Controls.Add(this.cancelBTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "viewLoadForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "viewLoadForm";
             this.Load += new System.EventHandler(this.viewLoadForm_Load);
             this.ResumeLayout(false);

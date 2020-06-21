@@ -60,7 +60,6 @@
             resources.ApplyResources(this.coursesView, "coursesView");
             this.coursesView.Name = "coursesView";
             this.coursesView.UseVisualStyleBackColor = true;
-            this.coursesView.Click += new System.EventHandler(this.coursesView_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -119,7 +118,6 @@
             this.panel2.Controls.Add(this.generateBTN);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // resLabel
             // 
@@ -195,7 +193,6 @@
             this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stInput.Name = "stInput";
             this.stInput.Value = new System.DateTime(2020, 5, 20, 8, 0, 0, 0);
-            this.stInput.ValueChanged += new System.EventHandler(this.stInput_ValueChanged);
             // 
             // etLabel
             // 
