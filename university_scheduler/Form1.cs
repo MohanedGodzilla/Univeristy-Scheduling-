@@ -120,15 +120,6 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-            string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
-            string title = "Old reservations will be deleted";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if (result != DialogResult.OK)
-            {
-                return;
-            }
-
             //EnableTab(false);
             EnableTab(this.coursesView, false);
             EnableTab(this.programsView, false);
@@ -262,20 +253,6 @@ namespace university_scheduler
             ws.Name = name;
         }
         */
-        private void stInput_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void coursesView_Click(object sender, EventArgs e)
-        {
-            ///
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
 

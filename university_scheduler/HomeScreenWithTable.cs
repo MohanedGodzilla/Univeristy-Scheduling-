@@ -108,7 +108,7 @@ namespace university_scheduler
                 string query = "delete from reservation_has_program";
                 SqlCommand cmd = new SqlCommand(query, cn);
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = "DBCC CHECKIDENT (reservation, RESEED, 0)";
+                cmd.CommandText = "DBCC CHECKIDENT (reservation_has_program, RESEED, 0)";
                 cmd.ExecuteNonQuery();
 
                 query = "delete from reservation";
