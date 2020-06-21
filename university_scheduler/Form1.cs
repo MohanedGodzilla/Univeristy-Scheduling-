@@ -18,6 +18,10 @@ namespace university_scheduler
             sDay.SelectedIndex = 0;
             eDay.SelectedIndex = 5;
             comboBox3.SelectedIndex = 0;
+            startTime = stInput.Value.Hour;
+            endTime = etInput.Value.Hour;
+            startDay = sDay.SelectedIndex;
+            endDay = eDay.SelectedIndex;
             int notComeFromHomeScreenWithTable = 0;
             courses_view(notComeFromHomeScreenWithTable);
             programs_view(notComeFromHomeScreenWithTable);
