@@ -269,7 +269,7 @@ namespace university_scheduler
 
         private void coursesView_Click(object sender, EventArgs e)
         {
-
+            ///
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
