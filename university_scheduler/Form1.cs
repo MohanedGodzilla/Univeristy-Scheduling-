@@ -11,11 +11,12 @@ namespace university_scheduler
     public partial class NoScheduleHome : Form
     {
         Scheduler scheduler;
+
         public NoScheduleHome()
         {
             InitializeComponent();
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 5;
+            sDay.SelectedIndex = 0;
+            eDay.SelectedIndex = 5;
             comboBox3.SelectedIndex = 0;
             int notComeFromHomeScreenWithTable = 0;
             courses_view(notComeFromHomeScreenWithTable);
@@ -24,24 +25,34 @@ namespace university_scheduler
             resourses_view(notComeFromHomeScreenWithTable);
         }
 
+        public static int startTime;
+        public static int endTime;
+        public static int startDay;
+        public static int endDay;
+
         //disableBTNS = add,delete,edit buttons 
         public NoScheduleHome(int existTable_disableBTNs)
         {
             InitializeComponent();
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 5;
+            sDay.SelectedIndex = 0;
+            eDay.SelectedIndex = 5;
             comboBox3.SelectedIndex = 0;
             courses_view(existTable_disableBTNs);
             programs_view(existTable_disableBTNs);
             classrooms_view(existTable_disableBTNs);
             resourses_view(existTable_disableBTNs);
+
+            startTime = stInput.Value.Hour;
+            endTime = etInput.Value.Hour;
+            startDay = sDay.SelectedIndex;
+            endDay = eDay.SelectedIndex;
         }
 
         private void NoScheduleHome_Load(object sender, EventArgs e)
         {
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
-            //Generator.generateALL();
+            //Generator.generateALL();//------------
             scheduler = new Scheduler();
         }
 
@@ -105,13 +116,24 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-            scheduler.addOnNewReservation(onNewReservation); 
-            Task t = new Task(() => { scheduler.start(); });
-            t.Start();
-            t.Wait();
-            scheduler.saveReservations();
-            saveClassroomsinExcel();
-            saveProgramssinExcel();
+            string message = "By generating a new table the old reservations will be permenantly DELETED\nmake sure to keep a backup of your old table if you need it";
+            string title = "Old reservations will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+
+            //EnableTab(false);
+            EnableTab(this.coursesView, false);
+            EnableTab(this.programsView, false);
+            EnableTab(this.classroomsView, false);
+            EnableTab(this.resourcesView, false);
+            this.generateBTN.Enabled = false;
+            Load_view();
+            resLabel.Text = viewLoadForm.res;
+
             HomeScreenWithTable Popup = new HomeScreenWithTable();
             Popup.MdiParent = this.ParentForm;
             this.Hide();
@@ -119,6 +141,42 @@ namespace university_scheduler
             this.Close();
         }
 
+        private void Load_view()
+        {
+            viewLoadForm frm = new viewLoadForm();
+            frm.startBrogress();
+            DialogResult dialogResult = frm.ShowDialog();
+
+            //frm.button1_Click(sender, e);
+
+            /*
+            viewLoadForm frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.coursesView.Controls.Add(frm);
+            frm.Show();
+
+            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.programsView.Controls.Add(frm);
+            frm.Show();
+
+            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.classroomsView.Controls.Add(frm);
+            frm.Show();
+
+            frm = new viewLoadForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.resourcesView.Controls.Add(frm);
+            frm.Show();
+            */
+        }
+        public void EnableTab(TabPage page, bool enable)
+        {
+            //foreach (Control ctl in page.Controls) ctl.Enabled = enable;
+            //page.Enabled = enable;
+            //page.Hide();
+            //tabControl1.
+            page.Controls.Clear();
+            //this.tabControl1.Hide();
+        }
+        /*
         void saveClassroomsinExcel()
         {
             object misValue = System.Reflection.Missing.Value;
@@ -138,7 +196,8 @@ namespace university_scheduler
             wb.SaveAs(@path + "/classrooms.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             wb.Close(true, misValue, misValue);
         }
-        
+        */
+        /*
         void saveProgramssinExcel()
         {
             object misValue = System.Reflection.Missing.Value;
@@ -158,7 +217,8 @@ namespace university_scheduler
             wb.SaveAs(@path + "/programs.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             wb.Close(true, misValue, misValue);
         }
-
+        */
+        /*
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, string name, string model) {
 
             Dictionary<int, string> dayAsString = new Dictionary<int, string>();
@@ -196,6 +256,21 @@ namespace university_scheduler
                 }
             }
             ws.Name = name;
+        }
+        */
+        private void stInput_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void coursesView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

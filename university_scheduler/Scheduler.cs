@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using university_scheduler.Data;
 using university_scheduler.Model;
@@ -58,7 +59,7 @@ namespace university_scheduler {
             Console.WriteLine("Stopping Schedular");
         }
 
-         public void start() {
+        public void start(viewLoadForm loadForm, DoWorkEventArgs e) {
             String validations = runPreReserveValidations();
 
             if (validations != "") {
@@ -159,12 +160,14 @@ namespace university_scheduler {
                         }
                     }
                 }
+                //--------
+                cleanResDictionary();
+                printNonReserved(loadForm, e);
+                Console.WriteLine(
+                    $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
+                Console.WriteLine(confCount);
             }
-            cleanResDictionary();
-            printNonReserved();
-            Console.WriteLine(
-                $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
-            Console.WriteLine(confCount);
+            
         }
 
 
@@ -182,9 +185,11 @@ namespace university_scheduler {
             });
         }
 
-        void printNonReserved() {
-            int total = 0;
-            int reserved = 0;
+        public static int total = 0;
+        public static int reserved = 0;
+        void printNonReserved(viewLoadForm loadForm, DoWorkEventArgs e) {
+            total = 0;
+            reserved = 0;
             int nonRes = 0;
             weightDictionary.Keys.ToList().ForEach((double key) => {
                 weightDictionary[key].ForEach((Slot slot) => {
@@ -197,6 +202,15 @@ namespace university_scheduler {
                     }
                 });
             });
+
+            loadForm.backgroundWorker1.ReportProgress(Convert.ToInt32(reserved * 100 / total));
+            //loadForm.label1.Text = $"total: {total} + reserved: {reserved} + not: {nonRes}";
+            if (loadForm.backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                loadForm.backgroundWorker1.ReportProgress(0);
+                return;
+            }
 
             Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
             onNewReservation(reserved, total);

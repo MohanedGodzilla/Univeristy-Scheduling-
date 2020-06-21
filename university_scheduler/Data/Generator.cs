@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using university_scheduler.Model;
 
 namespace university_scheduler.Data
@@ -13,11 +14,9 @@ namespace university_scheduler.Data
         public int courseNums = 100;
         public int programsRatio = 1; // 1 or 1/3 or Ay ratio
         public int classroomSize = 1; // 1:big data  and  0:small data 
-        public static int max_days=6;
-        public static int max_time=10;
-        
-        
         private int countt = 0;
+        public static int max_days = (int)NoScheduleHome.endDay - (int)NoScheduleHome.startDay;
+        public static int max_time = (int)NoScheduleHome.endTime - (int)NoScheduleHome.startTime;
         
         public static void generateALL(){
             Generator gen = new Generator();
