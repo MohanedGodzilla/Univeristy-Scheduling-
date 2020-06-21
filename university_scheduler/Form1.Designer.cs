@@ -37,10 +37,11 @@
             this.classroomsView = new System.Windows.Forms.TabPage();
             this.resourcesView = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.resLabel = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.eDay = new System.Windows.Forms.ComboBox();
+            this.sDay = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.etInput = new System.Windows.Forms.DateTimePicker();
@@ -59,6 +60,7 @@
             resources.ApplyResources(this.coursesView, "coursesView");
             this.coursesView.Name = "coursesView";
             this.coursesView.UseVisualStyleBackColor = true;
+            this.coursesView.Click += new System.EventHandler(this.coursesView_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -103,10 +105,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.resLabel);
             this.panel2.Controls.Add(this.comboBox3);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.eDay);
+            this.panel2.Controls.Add(this.sDay);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.etInput);
@@ -116,6 +119,12 @@
             this.panel2.Controls.Add(this.generateBTN);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // resLabel
+            // 
+            resources.ApplyResources(this.resLabel, "resLabel");
+            this.resLabel.Name = "resLabel";
             // 
             // comboBox3
             // 
@@ -132,35 +141,35 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // comboBox2
+            // eDay
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            resources.GetString("comboBox2.Items"),
-            resources.GetString("comboBox2.Items1"),
-            resources.GetString("comboBox2.Items2"),
-            resources.GetString("comboBox2.Items3"),
-            resources.GetString("comboBox2.Items4"),
-            resources.GetString("comboBox2.Items5"),
-            resources.GetString("comboBox2.Items6")});
-            resources.ApplyResources(this.comboBox2, "comboBox2");
-            this.comboBox2.Name = "comboBox2";
+            this.eDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.eDay.FormattingEnabled = true;
+            this.eDay.Items.AddRange(new object[] {
+            resources.GetString("eDay.Items"),
+            resources.GetString("eDay.Items1"),
+            resources.GetString("eDay.Items2"),
+            resources.GetString("eDay.Items3"),
+            resources.GetString("eDay.Items4"),
+            resources.GetString("eDay.Items5"),
+            resources.GetString("eDay.Items6")});
+            resources.ApplyResources(this.eDay, "eDay");
+            this.eDay.Name = "eDay";
             // 
-            // comboBox1
+            // sDay
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2"),
-            resources.GetString("comboBox1.Items3"),
-            resources.GetString("comboBox1.Items4"),
-            resources.GetString("comboBox1.Items5"),
-            resources.GetString("comboBox1.Items6")});
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.sDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sDay.FormattingEnabled = true;
+            this.sDay.Items.AddRange(new object[] {
+            resources.GetString("sDay.Items"),
+            resources.GetString("sDay.Items1"),
+            resources.GetString("sDay.Items2"),
+            resources.GetString("sDay.Items3"),
+            resources.GetString("sDay.Items4"),
+            resources.GetString("sDay.Items5"),
+            resources.GetString("sDay.Items6")});
+            resources.ApplyResources(this.sDay, "sDay");
+            this.sDay.Name = "sDay";
             // 
             // label1
             // 
@@ -186,6 +195,7 @@
             this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stInput.Name = "stInput";
             this.stInput.Value = new System.DateTime(2020, 5, 20, 8, 0, 0, 0);
+            this.stInput.ValueChanged += new System.EventHandler(this.stInput_ValueChanged);
             // 
             // etLabel
             // 
@@ -231,12 +241,10 @@
         private System.Windows.Forms.TabPage programsView;
         private System.Windows.Forms.TabPage classroomsView;
         private System.Windows.Forms.TabPage resourcesView;
-        private System.Windows.Forms.DateTimePicker etInput;
-        private System.Windows.Forms.DateTimePicker stInput;
         private System.Windows.Forms.Label etLabel;
         private System.Windows.Forms.Label stLabel;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox eDay;
+        private System.Windows.Forms.ComboBox sDay;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox3;
@@ -244,6 +252,9 @@
         public System.Windows.Forms.Button generateBTN;
         public System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label resLabel;
+        public System.Windows.Forms.DateTimePicker stInput;
+        public System.Windows.Forms.DateTimePicker etInput;
     }
 }
 

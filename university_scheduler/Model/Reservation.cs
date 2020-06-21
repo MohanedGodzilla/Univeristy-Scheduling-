@@ -77,7 +77,6 @@ namespace university_scheduler.Model
                     res.id = (int)reader.GetValue(0);
                     res.programs = ReservationHasProgram.getReservationPrograms(res.id);
                     reservationData.Add(res);
-                
                  }
                 cn.Close();
                 return reservationData;
@@ -99,7 +98,7 @@ namespace university_scheduler.Model
                     {
                         val = true;
                     }
-                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), val);
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (bool)val);
                     reservationData.Add(res);
                 }
                 cn.Close();
