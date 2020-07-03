@@ -15,6 +15,9 @@ namespace university_scheduler
 {
     public partial class viewLoadForm : Form
     {
+
+        int reserved = 0;
+        int total = 0;
         public viewLoadForm()
         {
             InitializeComponent();
@@ -54,11 +57,16 @@ namespace university_scheduler
 
         public void onNewReservation(int reserved, int total)
         {
-            Console.WriteLine($"RES:{reserved},TOTAL:{total},Progress:{((double)reserved / (double)total) * 100}");
+            this.reserved = reserved;
+            this.total = total;
+            backgroundWorker1.ReportProgress(Convert.ToInt32(reserved * 100 / total));
+            if (backgroundWorker1.CancellationPending) {
+                backgroundWorker1.ReportProgress(0);
+                return;
+            }
         }
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, string name, string model)
         {
-
             Dictionary<int, string> dayAsString = new Dictionary<int, string>();
             dayAsString.Add(0, "sat");
             dayAsString.Add(1, "sun");
@@ -165,34 +173,25 @@ namespace university_scheduler
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Scheduler scheduler = new Scheduler();
+            Scheduler scheduler = new Scheduler(getCourses(Data.SchedulerConfigs.selectedTerm), getClassrooms(), Data.SchedulerConfigs.maxTime, Data.SchedulerConfigs.maxDays);
             scheduler.addOnNewReservation(onNewReservation);
-            Task t = new Task(() => { scheduler.start(this, e); });
-            t.Start();
+             scheduler.start();
+            /*t.Start();
             e.Result = "end :)";
-            t.Wait();
+            t.Wait();*/
             scheduler.saveReservations();
             saveClassroomsinExcel(e);
             saveProgramssinExcel(e);
-
-            /*
-            int sum = 0;
-            for(int i=1; i<=100; i++)
-            {
-                Thread.Sleep(100);
-                sum = sum + i;
-                backgroundWorker1.ReportProgress(i);
-
-                if(backgroundWorker1.CancellationPending)
-                {
-                    e.Cancel = true;
-                    backgroundWorker1.ReportProgress(0);
-                    return;
-                }
-            }
-            e.Result = sum;
-            */
         }
+
+        List<Course> getCourses(int term) {
+            return Course.getCoursesByTerm(term);
+        }
+
+        List<Classroom> getClassrooms() {
+            return Classroom.getAll();
+        }
+
 
         int times = 0;
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -205,12 +204,12 @@ namespace university_scheduler
             
             if(e.ProgressPercentage != 100 && times == 0)
             {
-                label1.Text = $" ( {Scheduler.reserved.ToString()} ) reserved slots / ( {Scheduler.total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %";
+                label1.Text = $" ( {reserved.ToString()} ) reserved slots / ( {total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %";
             }
             else if (e.ProgressPercentage == 100 && times == 0)
             {
                 times++;
-                label1.Text = $" ( {Scheduler.reserved.ToString()} ) reserved slots / ( {Scheduler.total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %";
+                label1.Text = $" ( {reserved.ToString()} ) reserved slots / ( {total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %";
                 label1.Text += "\n saving Reservations ...";
                 
             }
@@ -275,6 +274,10 @@ namespace university_scheduler
                 backgroundWorker1.CancelAsync();
                 this.Close();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+
         }
     }
 }
