@@ -23,9 +23,9 @@ namespace university_scheduler.Model
             this.term = term;
             this.limit = limit;
             this.schedule = new Dictionary<int, Dictionary<dynamic, int>>();
-            for (int i = 0; i < Data.Generator.max_days; i++)
+            for (int i = 0; i < Data.SchedulerConfigs.maxDays; i++)
             {
-                for (double j = 0; j < Data.Generator.max_time; j++)
+                for (double j = 0; j < Data.SchedulerConfigs.maxTime; j++)
                 {
                     schedule[i] = new Dictionary<dynamic, int>();
                 }

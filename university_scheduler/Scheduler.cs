@@ -25,12 +25,14 @@ namespace university_scheduler {
         private int programWF = 5;
         private int hourWF = 2;
         private int actualHourWF = 10;
-        private int maxDaysO = Generator.max_days;
-        private double maxTimeO = Generator.max_time;
+        private int maxDaysO;
+        private double maxTimeO;
         private int resInc = 0;
         private int maxRes = -1;
         private bool wantsToCancel = false;
         double maxResProgress = 0;
+        public int total = 0;
+        public int reserved = 0;
 
         Dictionary<int, Reservation> resDictionary;
         Dictionary<int, Reservation> bestResDictionary;
@@ -46,8 +48,11 @@ namespace university_scheduler {
         Dictionary<int, Dictionary<SessionType,Dictionary<String, int>>> courseConfDictonary = new Dictionary<int, Dictionary<SessionType, Dictionary<String, int>>>();
         Dictionary<double, List<int>> weightResDictionary = new Dictionary<double, List<int>>(); //Dictionary<weight,list of reservation ids>
         Dictionary<int, Dictionary<SessionType, List<Slot>>> courseSplitProgramSlotDictionary = new Dictionary<int, Dictionary<SessionType, List<Slot>>>();//course id, split count
-        public Scheduler() {
-            seedData();
+        public Scheduler(List<Course> courses, List<Classroom> classrooms, double maxTime, int maxDays) {
+            this.courses = courses;
+            this.classRooms = classrooms;
+            this.maxDaysO = maxDays;
+            this.maxTimeO = maxTime;
         }
 
         public void addOnNewReservation(OnNewReservation onNewReservation) {
@@ -59,7 +64,7 @@ namespace university_scheduler {
             Console.WriteLine("Stopping Schedular");
         }
 
-        public void start(viewLoadForm loadForm, DoWorkEventArgs e) {
+        public void start() {
             String validations = runPreReserveValidations();
 
             if (validations != "") {
@@ -162,7 +167,7 @@ namespace university_scheduler {
                 }
                 //--------
                 cleanResDictionary();
-                printNonReserved(loadForm, e);
+                printNonReserved();
                 Console.WriteLine(
                     $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
                 Console.WriteLine(confCount);
@@ -185,9 +190,7 @@ namespace university_scheduler {
             });
         }
 
-        public static int total = 0;
-        public static int reserved = 0;
-        void printNonReserved(viewLoadForm loadForm, DoWorkEventArgs e) {
+        void printNonReserved() {
             total = 0;
             reserved = 0;
             int nonRes = 0;
@@ -202,15 +205,6 @@ namespace university_scheduler {
                     }
                 });
             });
-
-            loadForm.backgroundWorker1.ReportProgress(Convert.ToInt32(reserved * 100 / total));
-            //loadForm.label1.Text = $"total: {total} + reserved: {reserved} + not: {nonRes}";
-            if (loadForm.backgroundWorker1.CancellationPending)
-            {
-                e.Cancel = true;
-                loadForm.backgroundWorker1.ReportProgress(0);
-                return;
-            }
 
             Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
             onNewReservation(reserved, total);
@@ -317,7 +311,7 @@ namespace university_scheduler {
                                 continue;
                             }
 
-                            if (!classRoom.reservations[day].ContainsKey(time) ||
+                            if (!classRoom.reservations.ContainsKey(day) || !classRoom.reservations[day].ContainsKey(time) ||
                                 !resDictionary.ContainsKey(classRoom.reservations[day][time])) {
                                 //if classroom has an empty hour
                                 bool isClassEmpty = true;
@@ -588,7 +582,7 @@ namespace university_scheduler {
             for (int i = 0; i < maxDaysO; i++) {
                 for (int j = 0; j < maxTimeO; j++) {
                     foreach (Classroom classaya in classRooms) {
-                        if (classaya.reservations[i].ContainsKey(j) &&
+                        if (classaya.reservations.ContainsKey(i) && classaya.reservations[i].ContainsKey(j) &&
                             !resDictionary.ContainsKey(classaya.reservations[i][j])) {
                             classaya.reservations[i].Remove(j);
                         }

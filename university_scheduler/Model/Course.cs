@@ -81,6 +81,21 @@ namespace university_scheduler.Model
             }           
         }
 
+       public static List<Course> getCoursesByTerm(int term) {
+            List<Course> courseData = new List<Course>();
+            SqlConnection cn = new SqlConnection(env.db_con_str);
+            cn.Open();
+            string query = $"SELECT * FROM course WHERE term = {term}";
+            using (SqlCommand cmd = new SqlCommand(query, cn)) {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read()) {
+                    courseData.Add(setCourse(reader));
+                }
+                cn.Close();
+                return courseData;
+            }
+        }
+
         public static Course getCourseById(int courseId)
         {
             Course courseData = new Course();

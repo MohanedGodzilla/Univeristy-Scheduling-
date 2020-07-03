@@ -38,7 +38,7 @@
             this.resourcesView = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.resLabel = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.semesterCombo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.eDay = new System.Windows.Forms.ComboBox();
             this.sDay = new System.Windows.Forms.ComboBox();
@@ -105,7 +105,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.resLabel);
-            this.panel2.Controls.Add(this.comboBox3);
+            this.panel2.Controls.Add(this.semesterCombo);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.eDay);
             this.panel2.Controls.Add(this.sDay);
@@ -124,15 +124,15 @@
             resources.ApplyResources(this.resLabel, "resLabel");
             this.resLabel.Name = "resLabel";
             // 
-            // comboBox3
+            // semesterCombo
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            resources.GetString("comboBox3.Items"),
-            resources.GetString("comboBox3.Items1")});
-            resources.ApplyResources(this.comboBox3, "comboBox3");
-            this.comboBox3.Name = "comboBox3";
+            this.semesterCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.semesterCombo.FormattingEnabled = true;
+            this.semesterCombo.Items.AddRange(new object[] {
+            resources.GetString("semesterCombo.Items"),
+            resources.GetString("semesterCombo.Items1")});
+            resources.ApplyResources(this.semesterCombo, "semesterCombo");
+            this.semesterCombo.Name = "semesterCombo";
             // 
             // label3
             // 
@@ -193,6 +193,7 @@
             this.stInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stInput.Name = "stInput";
             this.stInput.Value = new System.DateTime(2020, 5, 20, 8, 0, 0, 0);
+            this.stInput.ValueChanged += new System.EventHandler(this.stInput_ValueChanged);
             // 
             // etLabel
             // 
@@ -244,7 +245,7 @@
         private System.Windows.Forms.ComboBox sDay;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox semesterCombo;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Button generateBTN;
         public System.Windows.Forms.Panel panel2;

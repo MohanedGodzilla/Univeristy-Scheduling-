@@ -23,8 +23,8 @@ namespace university_scheduler.Model {
             this.lectureCap = lecCap;
             this.examCap = examCap;
             this.isLab = isLab;
-            for (int i = 0; i < Data.Generator.max_days; i++) {
-                for (double j = 0; j < Data.Generator.max_time; j++) {
+            for (int i = 0; i < Data.SchedulerConfigs.maxDays; i++) {
+                for (double j = 0; j < Data.SchedulerConfigs.maxTime; j++) {
                     reservations[i] = new Dictionary<dynamic, int>();
                 }
             }
