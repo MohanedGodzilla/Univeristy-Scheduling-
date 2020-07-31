@@ -67,21 +67,27 @@ namespace university_scheduler
 
         private void addResourceBTN_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            if (String.IsNullOrEmpty(resourceName.Text))
             {
-                string query = "insert into resource(name) values(N'" + resourceName.Text.ToString() + "')";
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                this.Close();
-                //--the following three lines is used to update the dataGridView and refresh it --//
-                resForm.loaddata();
-                resForm.resourceData.Update();
-                resForm.resourceData.Refresh();
-                //---//
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
-            cn.Close();
+            else { 
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "insert into resource(name) values(N'" + resourceName.Text.ToString() + "')";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    this.Close();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    resForm.loaddata();
+                    resForm.resourceData.Update();
+                    resForm.resourceData.Refresh();
+                    //---//
+                }
+                cn.Close();
+            }
         }
 
         private void cancelResourceBTN_Click(object sender, EventArgs e)
@@ -90,22 +96,28 @@ namespace university_scheduler
         }
 
         private void saveResourceBTN_Click(object sender, EventArgs e){
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            if (String.IsNullOrEmpty(resourceName.Text))
             {
-                string query = "UPDATE resource SET name = N'" + resourceName.Text.ToString() + "' WHERE id = " + resource_id;
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("updateing resource successfully..!");
-                this.Close();
-                //--the following three lines is used to update the dataGridView and refresh it --//
-                resForm.loaddata();
-                resForm.resourceData.Update();
-                resForm.resourceData.Refresh();
-                //---//
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
-            cn.Close();
+            else { 
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "UPDATE resource SET name = N'" + resourceName.Text.ToString() + "' WHERE id = " + resource_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("updateing resource successfully..!");
+                    this.Close();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    resForm.loaddata();
+                    resForm.resourceData.Update();
+                    resForm.resourceData.Refresh();
+                    //---//
+                }
+                cn.Close();
+            }
         }
 
         //the following function to listen on the enter click 

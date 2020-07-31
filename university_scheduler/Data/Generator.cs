@@ -270,7 +270,4 @@ namespace university_scheduler.Data
             return s;
         }
     }
-}
-
-
-*/
+}*/

@@ -91,16 +91,24 @@ namespace university_scheduler {
         }
 
         private void addProgramBTN_Click(object sender, EventArgs e) {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open) {
-                prog_id = insertProgram(cn);
-                insertProgramTerms(cn);
-                addCourseForProgram(prog_id);
-                viewProgramForm.loadData();
+            if (String.IsNullOrEmpty(programName.Text))
+            {
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
-            cn.Close();
-            this.Close();
+            else
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    prog_id = insertProgram(cn);
+                    insertProgramTerms(cn);
+                    addCourseForProgram(prog_id);
+                    viewProgramForm.loadData();
+                }
+                cn.Close();
+                this.Close();
+            }
         }
 
         int insertProgram(SqlConnection cn) {
@@ -119,18 +127,25 @@ namespace university_scheduler {
         }
 
         void updateData() {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open) {
-                updateProgram(cn);
-                updateTerms(cn);
-                editProgramForCourse(prog_id);
-                MessageBox.Show("Updated Program successfully!: " + prog_id);
-                viewProgramForm.loadData();
+            if (String.IsNullOrEmpty(programName.Text))
+            {
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
-            cn.Close();
-            this.Close();
-
+            else
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    updateProgram(cn);
+                    updateTerms(cn);
+                    editProgramForCourse(prog_id);
+                    MessageBox.Show("Updated Program successfully!: " + prog_id);
+                    viewProgramForm.loadData();
+                }
+                cn.Close();
+                this.Close();
+            }
         }
 
         void updateProgram(SqlConnection cn) {

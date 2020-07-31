@@ -73,11 +73,13 @@ namespace university_scheduler
             if (this.viewCourse_disableSaveBTN == 0)
             {
                 addCourseForm courseDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value,0);
+                courseDataPassed.Text = "Edit Course";
                 courseDataPassed.ShowDialog(this);
             }
             else if (this.viewCourse_disableSaveBTN == 1)
             {
                 addCourseForm courseDataPassed = new addCourseForm((int)courseData.SelectedRows[0].Cells[0].Value,1);
+                courseDataPassed.Text = "Edit Course";
                 courseDataPassed.ShowDialog(this);
             }
         }

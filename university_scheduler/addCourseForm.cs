@@ -13,17 +13,17 @@ namespace university_scheduler
 {
     public partial class addCourseForm : Form
     {
-        
-        public string conString =env.db_con_str ;
+
+        public string conString = env.db_con_str;
         public int courseId;
         viewCoursesForm courseForm = (viewCoursesForm)Application.OpenForms["viewCoursesForm"];// it's an object that is used in function addCourseBTN_Click() to reopen the form when adding a new tuple in the database
-        public List<int> selectedResourceList ;
-        public List<int> oldSelectedResourceList ;
+        public List<int> selectedResourceList;
+        public List<int> oldSelectedResourceList;
         public List<int> editedResourceList;
         public List<int> deletedResourceList;
         public List<int> addedResourceList;
         public List<int> selectedProgramList;
-        public List<int> oldSelectedProgramList ;
+        public List<int> oldSelectedProgramList;
         public List<int> deletedProgramList;
         public List<int> addedProgramList;
         bool isEdit = false;
@@ -49,7 +49,7 @@ namespace university_scheduler
             if (viewCourse_disableSaveBTN == 0)
             {
                 saveBTN.Show();
-                
+
             }
             else if (viewCourse_disableSaveBTN == 1)
             {
@@ -98,7 +98,7 @@ namespace university_scheduler
         }
         private void addProgramForCourse(int id)
         {
-            if(selectedProgramList != null)
+            if (selectedProgramList != null)
             {
                 for (int i = 0; i < this.selectedProgramList.Count; i++)
                 {
@@ -114,7 +114,7 @@ namespace university_scheduler
                     cn.Close();
                 }
             }
-           
+
         }
 
         private void bringIdsOfCourseHasResource(int courseId)
@@ -168,7 +168,7 @@ namespace university_scheduler
                 }
 
             }
-            if(newSelected != null)
+            if (newSelected != null)
             {
                 for (int i = 0; i < newSelected.Count; i++)
                 {
@@ -178,7 +178,7 @@ namespace university_scheduler
                     }
                 }
             }
-            
+
         }
         private void compareListsProg(List<int> oldSelected, List<int> newSelected)
         {
@@ -189,15 +189,15 @@ namespace university_scheduler
                     this.deletedProgramList.Add(oldSelected[i]);
                 }
             }
-            if(newSelected != null)
+            if (newSelected != null)
 
-            for (int i = 0; i < newSelected.Count; i++)
-            {
-                if (!oldSelected.Contains(newSelected[i]))
+                for (int i = 0; i < newSelected.Count; i++)
                 {
-                    this.addedProgramList.Add(newSelected[i]);
+                    if (!oldSelected.Contains(newSelected[i]))
+                    {
+                        this.addedProgramList.Add(newSelected[i]);
+                    }
                 }
-            }
         }
 
         private void editResourceForCourse(int id)
@@ -273,10 +273,27 @@ namespace university_scheduler
 
         private void addCourseBTN_Click(object sender, EventArgs e)
         {
-            if (((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value)
+            try
+            {
+                if (this.selectedResourceList.Count == 0 && labHours.Value != 0)
+                {
+                    MessageBox.Show("you have to select the resource type for this course.\n PLEASE, check it again ");
+                    return;
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("you have to select the resource type for this course.\n PLEASE, check it again ");
+                return;
+            }
+            if ((((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value))
             {
                 MessageBox.Show("The sum of lecture, practice and lab hours is not equal to credit hours \n PLEASE, check it again ");
             }
+            if ((String.IsNullOrEmpty(courseCode.Text) && String.IsNullOrEmpty(courseName.Text)))
+            {
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
+            }
+            
             else
             {
                 SqlConnection cn = new SqlConnection(conString);
@@ -309,9 +326,26 @@ namespace university_scheduler
 
         private void saveBTN_Click(object sender, EventArgs e)
         {
-            if (((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value)
+            try
+            {
+                if (this.selectedResourceList.Count == 0 && labHours.Value != 0)
+                {
+                    MessageBox.Show("you have to select the resource type for this course.\n PLEASE, check it again ");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("you have to select the resource type for this course.\n PLEASE, check it again ");
+                return;
+            }
+            if ((((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value))
             {
                 MessageBox.Show("The sum of lecture, practice and lab hours is not equal to credit hours \n PLEASE, check it again ");
+            }
+            if ((String.IsNullOrEmpty(courseCode.Text) && String.IsNullOrEmpty(courseName.Text)))
+            {
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
             else
             {

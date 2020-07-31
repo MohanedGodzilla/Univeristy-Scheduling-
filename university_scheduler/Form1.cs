@@ -26,6 +26,7 @@ namespace university_scheduler
             programs_view(notComeFromHomeScreenWithTable);
             classrooms_view(notComeFromHomeScreenWithTable);
             resourses_view(notComeFromHomeScreenWithTable);
+            //Generator.generateALL();
         }
 
         public static int startTime;
