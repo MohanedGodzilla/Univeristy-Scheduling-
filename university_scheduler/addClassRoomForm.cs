@@ -150,52 +150,92 @@ namespace university_scheduler
 
         private void addClassBTN_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            try
             {
-                int valCheck;
-                if (isLab.Checked)
+                if (this.selectedResourceList.Count == 0 && isLab.Checked)
                 {
-                    valCheck = 1;
+                    MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
+                    return;
                 }
-                else
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
+                return;
+            }
+            if (String.IsNullOrEmpty(className.Text))
+            {
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
+            }
+            
+            else
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
                 {
-                    valCheck = 0;
-                }
+                    int valCheck;
+                    if (isLab.Checked)
+                    {
+                        valCheck = 1;
+                    }
+                    else
+                    {
+                        valCheck = 0;
+                    }
 
-                string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values(N'" + className.Text.ToString() + "' ,'" + lecCounter.Value + "' ,'" + examCounter.Value + "','" + valCheck + "' )";
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                this.current_id = getTheMaxId();
-                if (selectResource.Enabled == true)
-                {
-                    addResourceForClass(this.current_id);
+                    string query = "insert into class(name, lecture_capacity, exam_capacity, isLab) values(N'" + className.Text.ToString() + "' ,'" + lecCounter.Value + "' ,'" + examCounter.Value + "','" + valCheck + "' )";
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    this.current_id = getTheMaxId();
+                    if (selectResource.Enabled == true)
+                    {
+                        addResourceForClass(this.current_id);
+                    }
+                    cn.Close();
+                    this.Close();
                 }
-                cn.Close();
-                this.Close();
             }
         }
 
         private void saveClassBTN_Click(object sender, EventArgs e)
         {
-            int selected_id = classId;
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            try
             {
-                string query = "UPDATE class SET name = N'" + className.Text.ToString() + "', lecture_capacity = '" + lecCounter.Value + "',exam_capacity = '" + examCounter.Value + "' WHERE id = " + selected_id;
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                if (selectResource.Enabled == true)
+                if (this.selectedResourceList.Count == 0 && isLab.Checked)
                 {
-                    editResourceForClass(selected_id);
+                    MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
+                    return;
                 }
-                MessageBox.Show("updateing classroom successfully..!");
-                cn.Close();
-                this.Close();
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
+                return;
+            }
+            if (String.IsNullOrEmpty(className.Text))
+            {
+                MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
+            }
+            else
+            {
+                int selected_id = classId;
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "UPDATE class SET name = N'" + className.Text.ToString() + "', lecture_capacity = '" + lecCounter.Value + "',exam_capacity = '" + examCounter.Value + "' WHERE id = " + selected_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    if (selectResource.Enabled == true)
+                    {
+                        editResourceForClass(selected_id);
+                    }
+                    MessageBox.Show("updateing classroom successfully..!");
+                    cn.Close();
+                    this.Close();
+                }
+            }
         }
 
         private void show_EditForm(int classId)
