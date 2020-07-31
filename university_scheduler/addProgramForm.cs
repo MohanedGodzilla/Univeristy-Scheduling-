@@ -97,7 +97,6 @@ namespace university_scheduler {
                 prog_id = insertProgram(cn);
                 insertProgramTerms(cn);
                 addCourseForProgram(prog_id);
-                MessageBox.Show("Added Program successfully!: " + prog_id);
                 viewProgramForm.loadData();
             }
             cn.Close();
