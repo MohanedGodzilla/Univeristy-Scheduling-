@@ -155,6 +155,7 @@
             this.labHours.Name = "labHours";
             this.labHours.Size = new System.Drawing.Size(51, 22);
             this.labHours.TabIndex = 6;
+            this.labHours.ValueChanged += new System.EventHandler(this.labHours_ValueChanged);
             // 
             // practiceHours
             // 
@@ -165,6 +166,7 @@
             this.practiceHours.Name = "practiceHours";
             this.practiceHours.Size = new System.Drawing.Size(51, 22);
             this.practiceHours.TabIndex = 5;
+            this.practiceHours.ValueChanged += new System.EventHandler(this.practiceHours_ValueChanged);
             // 
             // lecHours
             // 
@@ -175,6 +177,7 @@
             this.lecHours.Name = "lecHours";
             this.lecHours.Size = new System.Drawing.Size(51, 22);
             this.lecHours.TabIndex = 4;
+            this.lecHours.ValueChanged += new System.EventHandler(this.lecHours_ValueChanged);
             // 
             // label1
             // 
@@ -337,6 +340,7 @@
             this.creditHours.Name = "creditHours";
             this.creditHours.Size = new System.Drawing.Size(51, 22);
             this.creditHours.TabIndex = 3;
+            this.creditHours.ValueChanged += new System.EventHandler(this.creditHours_ValueChanged);
             // 
             // termCombo
             // 

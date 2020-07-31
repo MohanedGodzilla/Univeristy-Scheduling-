@@ -173,7 +173,6 @@ namespace university_scheduler
                     addResourceForClass(this.current_id);
                 }
                 cn.Close();
-                MessageBox.Show("Adding class successfully..!");
                 this.Close();
             }
         }
@@ -192,7 +191,7 @@ namespace university_scheduler
                 {
                     editResourceForClass(selected_id);
                 }
-                MessageBox.Show("updateing class successfully..!");
+                MessageBox.Show("updateing classroom successfully..!");
                 cn.Close();
                 this.Close();
             }

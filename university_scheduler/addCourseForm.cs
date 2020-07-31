@@ -35,6 +35,9 @@ namespace university_scheduler
             termCombo.SelectedIndex = 0;
             addCourseBTN.Show();
             saveBTN.Hide();
+            lecHours.Enabled = false;
+            practiceHours.Enabled = false;
+            labHours.Enabled = false;
         }
 
         public addCourseForm(int courseId, int viewCourse_disableSaveBTN)
@@ -270,39 +273,12 @@ namespace university_scheduler
 
         private void addCourseBTN_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            if (((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value)
             {
-                int val = 0;
-                if (isActive.Checked == true)
-                {
-                    val = 1;
-                }
-
-                string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "N'" + courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , N'" + courseCode.Text + "' , '" + val + "' )";
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                this.current_id = getTheMaxId();
-                if (selectResource.Enabled == true)
-                {
-                    addResourceForCourse(this.current_id);
-                }
-                addProgramForCourse(this.current_id);
-                MessageBox.Show("Adding course successfully..!");
-                this.Close();
-                courseForm.loaddata();
-                courseForm.courseData.Update();
-                courseForm.courseData.Refresh();
+                MessageBox.Show("The sum of lecture, practice and lab hours is not equal to credit hours \n PLEASE, check it again ");
             }
-            cn.Close();
-        }
-
-        private void saveBTN_Click(object sender, EventArgs e)
-        {
-            try
+            else
             {
-                int selected_id = courseId;
                 SqlConnection cn = new SqlConnection(conString);
                 cn.Open();
                 if (cn.State == System.Data.ConnectionState.Open)
@@ -312,25 +288,66 @@ namespace university_scheduler
                     {
                         val = 1;
                     }
-                    string query = "UPDATE course SET name = N'" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  N'" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
+
+                    string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "N'" + courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , N'" + courseCode.Text + "' , '" + val + "' )";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.ExecuteNonQuery();
+                    this.current_id = getTheMaxId();
                     if (selectResource.Enabled == true)
                     {
-                        editResourceForCourse(selected_id);
+                        addResourceForCourse(this.current_id);
                     }
-                    editProgramForCourse(selected_id);
-                    //---//
-                    MessageBox.Show("updateing course successfully...!");
-                    cn.Close();
+                    addProgramForCourse(this.current_id);
                     this.Close();
                     courseForm.loaddata();
                     courseForm.courseData.Update();
                     courseForm.courseData.Refresh();
                 }
-            }catch(SqlException se)
-            {        
-                MessageBox.Show("course code must be unique!");
+                cn.Close();
+            }
+        }
+
+        private void saveBTN_Click(object sender, EventArgs e)
+        {
+            if (((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value)
+            {
+                MessageBox.Show("The sum of lecture, practice and lab hours is not equal to credit hours \n PLEASE, check it again ");
+            }
+            else
+            {
+                try
+                {
+                    int selected_id = courseId;
+                    SqlConnection cn = new SqlConnection(conString);
+                    cn.Open();
+                    if (cn.State == System.Data.ConnectionState.Open)
+                    {
+                        int val = 0;
+                        if (isActive.Checked == true)
+                        {
+                            val = 1;
+                        }
+                        string query = "UPDATE course SET name = N'" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  N'" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
+                        SqlCommand cmd = new SqlCommand(query, cn);
+                        cmd.ExecuteNonQuery();
+                        if (selectResource.Enabled == true)
+                        {
+                            editResourceForCourse(selected_id);
+                        }
+                        editProgramForCourse(selected_id);
+                        //---//
+                        MessageBox.Show("updateing course successfully...!");
+                        cn.Close();
+                        this.Close();
+                        courseForm.loaddata();
+                        courseForm.courseData.Update();
+                        courseForm.courseData.Refresh();
+                    }
+                }
+                catch (SqlException se)
+                {
+                    MessageBox.Show("course code must be unique!");
+                }
             }
         }
 
@@ -403,6 +420,104 @@ namespace university_scheduler
             }
             DialogResult dialogresult = progForm.ShowDialog();
             this.selectedProgramList = progForm.checkedPrograms;
+        }
+
+        private void creditHours_ValueChanged(object sender, EventArgs e)
+        {
+            lecHours.Enabled = true;
+            practiceHours.Enabled = true;
+            labHours.Enabled = true;
+            if (creditHours.Value > 0) {
+                lecHours.Maximum = creditHours.Value;
+                practiceHours.Maximum = creditHours.Value +1;
+                labHours.Maximum = creditHours.Value + 1;
+            }
+        }
+
+        private void lecHours_ValueChanged(object sender, EventArgs e)
+        {
+            labHours.Enabled = true;
+            practiceHours.Enabled = true;
+            if (lecHours.Value == creditHours.Value)
+            {
+                labHours.Maximum = 1;
+                practiceHours.Maximum = 1;
+            }
+            else if (lecHours.Value + 1 == creditHours.Value)
+            {
+                labHours.Maximum = 2;
+                practiceHours.Maximum = 2;
+            }
+            else if ((lecHours.Value < creditHours.Value) && (lecHours.Value + 1 != creditHours.Value)) {
+                labHours.Maximum = (creditHours.Value - labHours.Value) +1;
+                practiceHours.Maximum = (creditHours.Value - labHours.Value) + 1;
+            }
+        }
+
+        private void practiceHours_ValueChanged(object sender, EventArgs e)
+        {
+            lecHours.Enabled = true;
+            if ((labHours.Value + practiceHours.Value) - 1 == creditHours.Value)
+            {
+                lecHours.Value = 0;
+                lecHours.Enabled = false;
+            }
+            if ((practiceHours.Value - 1) == creditHours.Value && lecHours.Value == 0)
+            {
+                labHours.Value = 0;
+                lecHours.Value = 0;
+                labHours.Enabled = false;
+                lecHours.Enabled = false;
+            }
+            else if (((practiceHours.Value - 1) + lecHours.Value) == creditHours.Value)
+            {
+                labHours.Value = 0;
+                labHours.Enabled = false;
+                practiceHours.Maximum = (creditHours.Value - lecHours.Value) + 1;
+            }
+            
+            else if (((practiceHours.Value - 1) + lecHours.Value) < creditHours.Value) {
+                labHours.Maximum = (creditHours.Value - (lecHours.Value + (practiceHours.Value - 1))) + 1;
+            }
+
+            if (practiceHours.Value <= creditHours.Value && ((practiceHours.Value - 1) + lecHours.Value) < creditHours.Value) {
+                labHours.Enabled = true;
+                practiceHours.Maximum = (creditHours.Value - lecHours.Value - labHours.Value) + 1;
+            }
+        }
+
+        private void labHours_ValueChanged(object sender, EventArgs e)
+        {
+            lecHours.Enabled = true;
+            if ((labHours.Value + practiceHours.Value) - 1 == creditHours.Value)
+            {
+                lecHours.Value = 0;
+                lecHours.Enabled = false;
+            }
+            if ((labHours.Value - 1) == creditHours.Value && lecHours.Value == 0)
+            {
+                practiceHours.Value = 0;
+                lecHours.Value = 0;
+                lecHours.Enabled = false;
+                practiceHours.Enabled = false;
+            }
+            else if (((labHours.Value - 1) + lecHours.Value) == creditHours.Value)
+            {
+                practiceHours.Value = 0;
+                practiceHours.Enabled = false;
+                labHours.Maximum = (creditHours.Value - lecHours.Value) + 1;
+            }
+            
+            else if (((labHours.Value - 1) + lecHours.Value) < creditHours.Value)
+            {
+                practiceHours.Maximum = (creditHours.Value - (lecHours.Value + (labHours.Value - 1))) + 1;
+            }
+
+            if (labHours.Value <= creditHours.Value && ((labHours.Value - 1) + lecHours.Value) < creditHours.Value)
+            {
+                practiceHours.Enabled = true;
+                labHours.Maximum = (creditHours.Value - lecHours.Value - practiceHours.Value) + 1;
+            }
         }
     }
 }

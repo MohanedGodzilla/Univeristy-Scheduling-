@@ -116,7 +116,6 @@ namespace university_scheduler {
 
         private void deleteAllBTN_Click(object sender, EventArgs e)
         {
-            if (!canUpdate()) return;
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)
