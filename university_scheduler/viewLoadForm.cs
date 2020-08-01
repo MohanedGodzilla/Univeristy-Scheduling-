@@ -33,10 +33,8 @@ namespace university_scheduler
         List<Course> getCourses(int term)
         {
             return Course.getCoursesByTerm(term);
-        private void viewLoadForm_Load(object sender, EventArgs e)
-        {
-            
         }
+        
         List<Classroom> getClassrooms()
         {
             return Classroom.getAll();
