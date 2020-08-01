@@ -59,6 +59,7 @@ namespace university_scheduler {
         private void editProgramBTN_Click(object sender, EventArgs e) {
             if (!canUpdate()) return;
             addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value,0);
+            addProgramForm.Text = "Edit Program";
             addProgramForm.ShowDialog();
         }
 
@@ -96,12 +97,14 @@ namespace university_scheduler {
             {
                 if (!canUpdate()) return;
                 addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value,0);
+                addProgramForm.Text = "Edit Program";
                 addProgramForm.Show();
             }
             else if(this.viewProgram_disableSaveBTN == 1)
             {
                 if (!canUpdate()) return;
                 addProgramForm addProgramForm = new addProgramForm((int)programData.SelectedRows[0].Cells[0].Value,1);
+                addProgramForm.Text = "Edit Program";
                 addProgramForm.Show();
             }
         }
@@ -116,7 +119,6 @@ namespace university_scheduler {
 
         private void deleteAllBTN_Click(object sender, EventArgs e)
         {
-            if (!canUpdate()) return;
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             if (cn.State == System.Data.ConnectionState.Open)

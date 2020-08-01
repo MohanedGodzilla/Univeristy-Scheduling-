@@ -100,6 +100,7 @@ namespace university_scheduler
             if (this.viewClassroom_disableSaveBTN == 0)
             {
                 addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,0);
+                classRoomDataPassed.Text = "Edit Classroom";
                 classRoomDataPassed.ShowDialog(this);
                 classData.Update();
                 classData.Refresh();
@@ -107,13 +108,9 @@ namespace university_scheduler
             else if (this.viewClassroom_disableSaveBTN == 1)
             {
                 addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,1);
+                classRoomDataPassed.Text = "Edit Classroom";
                 classRoomDataPassed.ShowDialog(this);
             }
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

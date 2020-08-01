@@ -49,6 +49,7 @@ namespace university_scheduler {
         Dictionary<double, List<int>> weightResDictionary = new Dictionary<double, List<int>>(); //Dictionary<weight,list of reservation ids>
         Dictionary<int, Dictionary<SessionType, List<Slot>>> courseSplitProgramSlotDictionary = new Dictionary<int, Dictionary<SessionType, List<Slot>>>();//course id, split count
         public Scheduler(List<Course> courses, List<Classroom> classrooms, double maxTime, int maxDays) {
+            Console.WriteLine("TIIIME:"+maxTime);
             this.courses = courses;
             this.classRooms = classrooms;
             this.maxDaysO = maxDays;

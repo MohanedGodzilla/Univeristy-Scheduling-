@@ -134,6 +134,7 @@
             resources.GetString("semesterCombo.Items1")});
             resources.ApplyResources(this.semesterCombo, "semesterCombo");
             this.semesterCombo.Name = "semesterCombo";
+            this.semesterCombo.SelectedIndexChanged += new System.EventHandler(this.semesterCombo_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -154,6 +155,7 @@
             resources.GetString("eDay.Items6")});
             resources.ApplyResources(this.eDay, "eDay");
             this.eDay.Name = "eDay";
+            this.eDay.SelectedIndexChanged += new System.EventHandler(this.eDay_SelectedIndexChanged);
             // 
             // sDay
             // 
@@ -169,6 +171,7 @@
             resources.GetString("sDay.Items6")});
             resources.ApplyResources(this.sDay, "sDay");
             this.sDay.Name = "sDay";
+            this.sDay.SelectedIndexChanged += new System.EventHandler(this.sDay_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -187,6 +190,7 @@
             this.etInput.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.etInput.Name = "etInput";
             this.etInput.Value = new System.DateTime(2020, 5, 20, 17, 0, 0, 0);
+            this.etInput.ValueChanged += new System.EventHandler(this.etInput_ValueChanged);
             // 
             // stInput
             // 
