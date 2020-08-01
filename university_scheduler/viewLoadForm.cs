@@ -18,18 +18,18 @@ namespace university_scheduler
 
         int reserved = 0;
         int total = 0;
-        public viewLoadForm()
+        int startTime;
+        public viewLoadForm(int startTime)
         {
             InitializeComponent();
+            this.startTime = startTime;
         }
 
         public static string res = "";
 
-        NoScheduleHome x = new NoScheduleHome();
         private void viewLoadForm_Load(object sender, EventArgs e)
         {
-            x.stInput.ShowUpDown = true;
-            x.etInput.ShowUpDown = true;
+            
         }
 
         /*
@@ -94,8 +94,8 @@ namespace university_scheduler
                 ws.Cells[i + 2, 1] = dayAsString[allResOfClass[i].day]; // convert day from integers to map 
                 ws.Cells[i + 2, 2] = course.name;
                 ws.Cells[i + 2, 3] = course.courseNamedId;
-                ws.Cells[i + 2, 4] = allResOfClass[i].from + x.stInput.Value.Hour;
-                ws.Cells[i + 2, 5] = allResOfClass[i].to + x.stInput.Value.Hour;
+                ws.Cells[i + 2, 4] = allResOfClass[i].from + startTime;
+                ws.Cells[i + 2, 5] = allResOfClass[i].to + startTime;
                 if (model == "program")
                 {
                     //get the name of the classroom of this reservation

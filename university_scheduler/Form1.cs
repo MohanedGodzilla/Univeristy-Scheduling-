@@ -59,6 +59,7 @@ namespace university_scheduler
         }
 
 
+
         private void courses_view(int flag) {
             if (flag != 1)
             {
@@ -115,15 +116,13 @@ namespace university_scheduler
         }
 
         private void generateBTN_Click(object sender, EventArgs e) {
-            //EnableTab(false);
+            this.generateBTN.Enabled = false;
+            Load_view();
+            resLabel.Text = viewLoadForm.res;
             EnableTab(this.coursesView, false);
             EnableTab(this.programsView, false);
             EnableTab(this.classroomsView, false);
             EnableTab(this.resourcesView, false);
-            this.generateBTN.Enabled = false;
-            Load_view();
-            resLabel.Text = viewLoadForm.res;
-
             HomeScreenWithTable Popup = new HomeScreenWithTable();
             Popup.MdiParent = this.ParentForm;
             this.Hide();
@@ -131,13 +130,18 @@ namespace university_scheduler
             this.Close();
         }
 
-        private void Load_view()
-        {
-            SchedulerConfigs.maxTime = Math.Abs(endTime - startTime) + 1;
+        private void updateSchedulerConfigs() {
+            SchedulerConfigs.maxTime = Math.Abs(endTime - startTime);
             SchedulerConfigs.maxDays = Math.Abs(endDay - startDay) + 1;
             SchedulerConfigs.selectedTerm = semesterCombo.SelectedIndex + 1;
+            Console.WriteLine("Hopa el lalala");
+        }
 
-            viewLoadForm frm = new viewLoadForm();
+        private void Load_view()
+        {
+            stInput.ShowUpDown = true;
+            etInput.ShowUpDown = true;
+            viewLoadForm frm = new viewLoadForm(startTime);
             frm.startBrogress();
             frm.ShowDialog();
         }
@@ -148,8 +152,27 @@ namespace university_scheduler
         }
 
         private void stInput_ValueChanged(object sender, EventArgs e) {
-
+            startTime = stInput.Value.Hour;
+            updateSchedulerConfigs();
         }
- 
+
+        private void etInput_ValueChanged(object sender, EventArgs e) {
+            endTime = etInput.Value.Hour;
+            updateSchedulerConfigs();
+        }
+
+        private void sDay_SelectedIndexChanged(object sender, EventArgs e) {
+            startDay = sDay.SelectedIndex;
+            updateSchedulerConfigs();
+        }
+
+        private void eDay_SelectedIndexChanged(object sender, EventArgs e) {
+            endDay = eDay.SelectedIndex;
+            updateSchedulerConfigs();
+        }
+
+        private void semesterCombo_SelectedIndexChanged(object sender, EventArgs e) {
+            updateSchedulerConfigs();
+        }
     }
 }
