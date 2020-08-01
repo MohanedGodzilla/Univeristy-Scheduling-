@@ -55,7 +55,7 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "( ) reserved slots/ ( ) total slots";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // progressBar1
             // 

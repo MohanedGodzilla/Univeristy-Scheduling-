@@ -21,3 +21,4 @@ E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\universi
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.csproj.CoreCompileInputs.cache
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.exe
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.pdb
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.csprojAssemblyReference.cache
