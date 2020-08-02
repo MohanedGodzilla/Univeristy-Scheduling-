@@ -102,8 +102,7 @@ namespace university_scheduler {
 
                 if (resDictionary.Keys.Count > maxRes) {
                     maxRes = resDictionary.Keys.Count;
-                    Console.WriteLine(
-                        $"NEW COUNT {maxRes} \nTotals Res:{resInc}\n=======");
+                    Console.WriteLine($"NEW COUNT {maxRes} \nTotals Res:{resInc}\n=======");
                     
                     Dictionary<String, int> resState = getReservedTotal();
                     double resProgress = resState["reserved"] / resState["total"];
@@ -111,7 +110,7 @@ namespace university_scheduler {
                         maxResProgress = resProgress;
                         bestResDictionary = new Dictionary<int, Reservation>(resDictionary);
                     }
-                    onNewReservation(resState["reserved"],resState["total"]);
+                    //onNewReservation(resState["reserved"],resState["total"]);
                 }
                 if (conflict != null) {
                     Slot slotWithConflict = conflict["slot"];
@@ -173,7 +172,7 @@ namespace university_scheduler {
                     $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
                 Console.WriteLine(confCount);
             }
-            
+            checkTotalRes();
         }
 
 
@@ -186,11 +185,35 @@ namespace university_scheduler {
                 if (resDictionary == null) return;
                 reservationsList = resDictionary.Values.ToList();
             }
-            reservationsList.ForEach((Reservation res) => {
-                res.insertThis();
-            });
+            reservationsList.ForEach((Reservation res) => { res.insertThis(); });
         }
 
+        void checkTotalRes()
+        {
+            total = 0;
+            reserved = 0;
+            int nonRes = 0;
+            weightDictionary.Keys.ToList().ForEach((double key) => {
+                weightDictionary[key].ForEach((Slot slot) => {
+                    total++;
+                    if (!reservedSlotsIds.Contains(slot.id))
+                    {
+                        nonRes++;
+                        Console.WriteLine($"!!!!!!!!!!! slot {slot.id} not reserved !!!!!!!!!!!");
+                    }
+                    else
+                    {
+                        reserved++;
+                    }
+                });
+            });
+
+            Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
+            if( total/reserved != 1)
+            {
+                onNewReservation(100, 100);
+            }
+        }
         void printNonReserved() {
             total = 0;
             reserved = 0;

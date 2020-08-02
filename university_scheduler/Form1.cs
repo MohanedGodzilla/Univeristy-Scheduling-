@@ -148,7 +148,6 @@ namespace university_scheduler
         public void EnableTab(TabPage page, bool enable)
         {
             page.Controls.Clear();
-           
         }
 
         private void stInput_ValueChanged(object sender, EventArgs e) {

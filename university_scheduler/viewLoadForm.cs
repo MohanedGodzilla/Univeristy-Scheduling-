@@ -27,34 +27,43 @@ namespace university_scheduler
 
         public static string res = "";
 
+        NoScheduleHome x = new NoScheduleHome();
+
+        int times = 0;
+        List<Course> getCourses(int term)
+        {
+            return Course.getCoursesByTerm(term);
+        }
+        
+        List<Classroom> getClassrooms()
+        {
+            return Classroom.getAll();
+        }
+        public void startBrogress()
+        {
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+        private void cancelBTN_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.CancelAsync();
+                this.Close();
+            }
+            else
+            {
+                backgroundWorker1.CancelAsync();
+                this.Close();
+            }
+        }
         private void viewLoadForm_Load(object sender, EventArgs e)
         {
-            
+            x.stInput.ShowUpDown = true;
+            x.etInput.ShowUpDown = true;
         }
-
-        /*
-        public static void SetProgress(int progress)
-        {
-            progressBar1.Value = progress;
-            //bar.Value = progress;
-        }
-
-        public static void SetMax(int max)
-        {
-            progressBar1.Maximum = max;
-        }
-
-        public static void SetMin(int min)
-        {
-            progressBar1.Minimum = min;
-        }
-
-        public static void SetLableText(string txt)
-        {
-            label1.Text = txt;
-        }
-        */
-
         public void onNewReservation(int reserved, int total)
         {
             this.reserved = reserved;
@@ -128,9 +137,8 @@ namespace university_scheduler
                     backgroundWorker1.ReportProgress(0);
                     return;
                 }
-                
+                Console.WriteLine("saving classroom...");
             }
-            //this.label1.Text += " ... done";
 
             Excel.Sheets sheet1 = wb.Worksheets;
             sheet1[sheet1.Count].delete();
@@ -138,7 +146,6 @@ namespace university_scheduler
             wb.SaveAs(@path + "/classrooms.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             wb.Close(true, misValue, misValue);
         }
-
         void saveProgramssinExcel(DoWorkEventArgs e)
         {
             object misValue = System.Reflection.Missing.Value;
@@ -162,9 +169,9 @@ namespace university_scheduler
                     backgroundWorker1.ReportProgress(0);
                     return;
                 }
-                
+                Console.WriteLine("saving program...");
             }
-            //this.label1.Text += "... done";
+
             Excel.Sheets sheet1 = wb.Worksheets;
             sheet1[sheet1.Count].delete();
             string path = System.IO.Directory.GetCurrentDirectory();
@@ -175,66 +182,50 @@ namespace university_scheduler
         {
             Scheduler scheduler = new Scheduler(getCourses(Data.SchedulerConfigs.selectedTerm), getClassrooms(), Data.SchedulerConfigs.maxTime, Data.SchedulerConfigs.maxDays);
             scheduler.addOnNewReservation(onNewReservation);
-             scheduler.start();
-            /*t.Start();
-            e.Result = "end :)";
-            t.Wait();*/
+            scheduler.start();
             scheduler.saveReservations();
             saveClassroomsinExcel(e);
             saveProgramssinExcel(e);
         }
-
-        List<Course> getCourses(int term) {
-            return Course.getCoursesByTerm(term);
-        }
-
-        List<Classroom> getClassrooms() {
-            return Classroom.getAll();
-        }
-
-
-        int times = 0;
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //Scheduler scheduler = new Scheduler();
-            //int tot = scheduler.getTotal();
             progressBar1.Value = e.ProgressPercentage;
-            //label1.Text = e.ProgressPercentage.ToString() + " %";
-            
-            
-            if(e.ProgressPercentage != 100 && times == 0)
+            if (e.ProgressPercentage != 100 && times == 0)
             {
                 label1.Text = $" ( {reserved.ToString()} ) reserved slots / ( {total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %";
+                Console.WriteLine($" ( {reserved.ToString()} ) reserved slots / ( {total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %");
             }
             else if (e.ProgressPercentage == 100 && times == 0)
             {
                 times++;
                 label1.Text = $" ( {reserved.ToString()} ) reserved slots / ( {total.ToString()} ) total slots \n\n {e.ProgressPercentage.ToString()}  %";
                 label1.Text += "\n saving Reservations ...";
-                
             }
             else if (e.ProgressPercentage != 100 && times == 1)
             {
                 label1.Text = "saving classroom in excel ... \n";
                 label1.Text += $"{e.ProgressPercentage} %";
+                //Console.WriteLine("saving classroom...");
             }
             else if (e.ProgressPercentage == 100 && times == 1)
             {
                 label1.Text = "saving classroom in excel ... done";
+                Console.WriteLine("saving classroom...done");
                 times++;
             }
             else if (e.ProgressPercentage != 100 && times == 2)
             {
-
                 label1.Text = "saving program in excel ...\n";
+                //Console.WriteLine("saveing program...");
                 label1.Text += $"{e.ProgressPercentage} %";
             }
             else if (e.ProgressPercentage == 100 && times == 2)
             {
-                label1.Text += $"\n ...done";
+                label1.Text = "saving program in excel ...done";
+                Console.WriteLine("saveing program... done");
+                times++;
             }
         }
-
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
@@ -251,33 +242,12 @@ namespace university_scheduler
             }
             else
             {
-                label1.Text = e.Result.ToString();
-                res = e.Result.ToString();
+                //label1.Text = e.Result.ToString();
+                //res = e.Result.ToString();
                 res += "\n saving Reservations ... done";
                 res += "\n Generating Excel Sheets...";
                 this.Close();
             }
-        }
-
-        public void startBrogress()
-        {
-            if (!backgroundWorker1.IsBusy)
-            {
-                backgroundWorker1.RunWorkerAsync();
-            }
-        }
-
-        private void cancelBTN_Click(object sender, EventArgs e)
-        {
-            if (backgroundWorker1.IsBusy)
-            {
-                backgroundWorker1.CancelAsync();
-                this.Close();
-            }
-        }
-
-        private void label1_Click(object sender, EventArgs e) {
-
         }
     }
 }
