@@ -19,6 +19,7 @@ namespace university_scheduler
         int reserved = 0;
         int total = 0;
         int startTime;
+        public bool closeWithError = false;
         public viewLoadForm(int startTime)
         {
             InitializeComponent();
@@ -26,8 +27,6 @@ namespace university_scheduler
         }
 
         public static string res = "";
-
-        NoScheduleHome x = new NoScheduleHome();
 
         int times = 0;
         List<Course> getCourses(int term)
@@ -48,21 +47,16 @@ namespace university_scheduler
         }
         private void cancelBTN_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.IsBusy)
-            {
-                backgroundWorker1.CancelAsync();
-                this.Close();
-            }
-            else
-            {
-                backgroundWorker1.CancelAsync();
-                this.Close();
-            }
+            closeWithError = true;
+            cancelScheduling();
         }
+
+        private void cancelScheduling() {            
+            backgroundWorker1.CancelAsync();
+        }
+
         private void viewLoadForm_Load(object sender, EventArgs e)
         {
-            x.stInput.ShowUpDown = true;
-            x.etInput.ShowUpDown = true;
         }
         public void onNewReservation(int reserved, int total)
         {
@@ -74,6 +68,13 @@ namespace university_scheduler
                 return;
             }
         }
+
+        public void onError(String error) {
+            MessageBox.Show(error, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            closeWithError = true;
+            cancelScheduling();
+        }
+
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, string name, string model)
         {
             Dictionary<int, string> dayAsString = new Dictionary<int, string>();
@@ -182,6 +183,7 @@ namespace university_scheduler
         {
             Scheduler scheduler = new Scheduler(getCourses(Data.SchedulerConfigs.selectedTerm), getClassrooms(), Data.SchedulerConfigs.maxTime, Data.SchedulerConfigs.maxDays);
             scheduler.addOnNewReservation(onNewReservation);
+            scheduler.addOnError(onError);
             scheduler.start();
             scheduler.saveReservations();
             saveClassroomsinExcel(e);

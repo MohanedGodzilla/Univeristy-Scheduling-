@@ -85,7 +85,8 @@ namespace university_scheduler.Model
             List<Course> courseData = new List<Course>();
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            string query = $"SELECT * FROM course WHERE term = {term}";
+            String values = term % 2 == 0 ? "(2,4,6,8)" : "(1,3,5,7)";
+            string query = $"SELECT * FROM course WHERE term IN {values}";
             using (SqlCommand cmd = new SqlCommand(query, cn)) {
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read()) {

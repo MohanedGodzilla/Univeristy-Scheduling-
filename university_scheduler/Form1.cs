@@ -14,13 +14,14 @@ namespace university_scheduler
         public NoScheduleHome()
         {
             InitializeComponent();
-            sDay.SelectedIndex = 0;
-            eDay.SelectedIndex = 5;
-            semesterCombo.SelectedIndex = 0;
             startTime = stInput.Value.Hour;
             endTime = etInput.Value.Hour;
             startDay = sDay.SelectedIndex;
             endDay = eDay.SelectedIndex;
+            updateSchedulerConfigs();
+            sDay.SelectedIndex = 0;
+            eDay.SelectedIndex = 5;
+            semesterCombo.SelectedIndex = 0;
             int notComeFromHomeScreenWithTable = 0;
             courses_view(notComeFromHomeScreenWithTable);
             programs_view(notComeFromHomeScreenWithTable);
@@ -117,7 +118,11 @@ namespace university_scheduler
 
         private void generateBTN_Click(object sender, EventArgs e) {
             this.generateBTN.Enabled = false;
-            Load_view();
+            viewLoadForm loadView = Load_view();
+            if (loadView.closeWithError) {
+                this.generateBTN.Enabled = true;
+                return;
+            }
             resLabel.Text = viewLoadForm.res;
             EnableTab(this.coursesView, false);
             EnableTab(this.programsView, false);
@@ -134,16 +139,16 @@ namespace university_scheduler
             SchedulerConfigs.maxTime = Math.Abs(endTime - startTime);
             SchedulerConfigs.maxDays = Math.Abs(endDay - startDay) + 1;
             SchedulerConfigs.selectedTerm = semesterCombo.SelectedIndex + 1;
-            Console.WriteLine("Hopa el lalala");
         }
 
-        private void Load_view()
+        private viewLoadForm Load_view()
         {
             stInput.ShowUpDown = true;
             etInput.ShowUpDown = true;
             viewLoadForm frm = new viewLoadForm(startTime);
             frm.startBrogress();
             frm.ShowDialog();
+            return frm;
         }
         public void EnableTab(TabPage page, bool enable)
         {

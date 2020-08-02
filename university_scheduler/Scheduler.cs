@@ -9,7 +9,9 @@ namespace university_scheduler {
 
     class Scheduler {
         public delegate void OnNewReservation(int reserved, int total);
+        public delegate void OnError(String error);
         private OnNewReservation onNewReservation;
+        private OnError onError;
         private const String REASON_CAP = "cap";
         private const String REASON_RES = "res";
         private const String REASON_PROG_TIME = "prog_time";
@@ -60,6 +62,10 @@ namespace university_scheduler {
             this.onNewReservation = onNewReservation;
         }
 
+        public void addOnError(OnError onError) {
+            this.onError= onError;
+        }
+
         public void cancel() {
             this.wantsToCancel = true;
             Console.WriteLine("Stopping Schedular");
@@ -70,6 +76,9 @@ namespace university_scheduler {
 
             if (validations != "") {
                 Console.WriteLine(validations);
+                if (onError != null) { 
+                    onError(validations);
+                }
                 return;
             }
 
@@ -254,7 +263,7 @@ namespace university_scheduler {
 
         String runPreReserveValidations() {
             String validations = "";
-            //softCheckResources();
+            validations += softCheckResources();
             Dictionary<string, double> hoursMap =  softCheckTotalHours();
             double avH = hoursMap["totalAV"];
             double hours = hoursMap["total"];
@@ -264,10 +273,22 @@ namespace university_scheduler {
             return validations;
         }
 
-        List<Resource> softCheckResources() {
-            List<Resource> notFoundRes = new List<Resource>();
-
-            return notFoundRes;
+        String softCheckResources() {
+            String errors = "";
+            for (int i = 0; i < courses.Count(); i++) {
+                bool foundClassroom = false;
+                for (int j = 0; j < classRooms.Count(); j++) {
+                    List<Resource> courseRes = courses[i].getCourseResources();
+                    if (matchResources(classRooms[j].resources, courseRes)) {
+                        foundClassroom = true;
+                        break;
+                    }
+                }
+                if (!foundClassroom) {
+                    errors += $"No classroom has Course {courses[i].courseNamedId} Required Resources\n";
+                }
+            }
+            return errors;
         }
 
         Dictionary<string, double> softCheckTotalHours() {
