@@ -53,6 +53,7 @@ namespace university_scheduler
 
         private void cancelScheduling() {            
             backgroundWorker1.CancelAsync();
+            this.Close();
         }
 
         private void viewLoadForm_Load(object sender, EventArgs e)
