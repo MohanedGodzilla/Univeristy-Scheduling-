@@ -152,7 +152,7 @@ namespace university_scheduler
         {
             try
             {
-                if (this.selectedResourceList.Count == 0 && isLab.Checked)
+                if ( isLab.Checked && this.selectedResourceList.Count == 0 )
                 {
                     MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
                     return;
@@ -200,19 +200,6 @@ namespace university_scheduler
 
         private void saveClassBTN_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (this.selectedResourceList.Count == 0 && isLab.Checked)
-                {
-                    MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
-                return;
-            }
             if (String.IsNullOrEmpty(className.Text))
             {
                 MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
