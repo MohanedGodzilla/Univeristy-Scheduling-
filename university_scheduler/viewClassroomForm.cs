@@ -78,20 +78,31 @@ namespace university_scheduler
         private void deleteClassRoomBTN_Click(object sender, EventArgs e)
         {
             int selected_id = (int)classData.SelectedRows[0].Cells[0].Value;
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            string message = "By clicking OK, this classroom will be permenantly DELETED\nmake sure from your choice";
+            string title = "classroom will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK)
             {
-                string query = "delete from class where id = " + selected_id;
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                //--the following three lines is used to update the dataGridView and refresh it --//
-                this.loaddata();
-                this.classData.Update();
-                this.classData.Refresh();
-                //---//
-                MessageBox.Show("class is deleted successfully..!");
+                return;
+            }
+            else
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "delete from class where id = " + selected_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loaddata();
+                    this.classData.Update();
+                    this.classData.Refresh();
+                    //---//
+                    MessageBox.Show("class is deleted successfully..!");
 
+                }
             }
         }
 

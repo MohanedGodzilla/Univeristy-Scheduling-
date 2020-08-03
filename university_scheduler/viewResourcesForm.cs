@@ -75,21 +75,32 @@ namespace university_scheduler
         {
             if (!canUpdate()) return;
             string selected_id = resourceData.SelectedRows[0].Cells[0].Value.ToString();
-            SqlConnection cn = new SqlConnection(conString);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open)
+            string message = "By clicking OK, this resource will be permenantly DELETED\nmake sure from your choice";
+            string title = "resource will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK)
             {
-                string query = "delete from resource where id = " + selected_id ;
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                //--the following three lines is used to update the dataGridView and refresh it --//
-                this.loaddata();
-                this.resourceData.Update();
-                this.resourceData.Refresh();
-                cn.Close();
-                //---//
-                MessageBox.Show("Resource is deleted successfully..!");
+                return;
+            }
+            else
+            {
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "delete from resource where id = " + selected_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loaddata();
+                    this.resourceData.Update();
+                    this.resourceData.Refresh();
+                    cn.Close();
+                    //---//
+                    MessageBox.Show("Resource is deleted successfully..!");
 
+                }
             }
         }
 

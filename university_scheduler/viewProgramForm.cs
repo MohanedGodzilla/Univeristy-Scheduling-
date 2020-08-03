@@ -66,22 +66,34 @@ namespace university_scheduler {
         private void deleteProgramBTN_Click(object sender, EventArgs e) {
             if (!canUpdate()) return;
             string selected_id = programData.SelectedRows[0].Cells[0].Value.ToString();
-            SqlConnection cn = new SqlConnection(env.db_con_str);
-            cn.Open();
-            if (cn.State == System.Data.ConnectionState.Open) {
-                string query = "delete from term_program_limit where program_id = " + selected_id;
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                query = "delete from program where id = " + selected_id;
-                cmd = new SqlCommand(query, cn);
-                cmd.ExecuteNonQuery();
-                //--the following three lines is used to update the dataGridView and refresh it --//
-                this.loadData();
-                this.programData.Update();
-                this.programData.Refresh();
-                //---//
-                MessageBox.Show("Program is deleted successfully..!");
+            string message = "By clicking OK, this program will be permenantly DELETED\nmake sure from your choice";
+            string title = "program will be deleted";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            else
+            {
+                SqlConnection cn = new SqlConnection(env.db_con_str);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
+                {
+                    string query = "delete from term_program_limit where program_id = " + selected_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    query = "delete from program where id = " + selected_id;
+                    cmd = new SqlCommand(query, cn);
+                    cmd.ExecuteNonQuery();
+                    //--the following three lines is used to update the dataGridView and refresh it --//
+                    this.loadData();
+                    this.programData.Update();
+                    this.programData.Refresh();
+                    //---//
+                    MessageBox.Show("Program is deleted successfully..!");
 
+                }
             }
         }
 
