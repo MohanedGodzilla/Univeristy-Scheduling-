@@ -60,6 +60,7 @@
             resources.ApplyResources(this.coursesView, "coursesView");
             this.coursesView.Name = "coursesView";
             this.coursesView.UseVisualStyleBackColor = true;
+            this.coursesView.Click += new System.EventHandler(this.coursesView_Click);
             // 
             // tableLayoutPanel1
             // 

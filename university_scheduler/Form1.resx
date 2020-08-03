@@ -163,7 +163,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="programsView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>895, 545</value>
+    <value>916, 580</value>
   </data>
   <data name="programsView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -193,7 +193,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="classroomsView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>895, 545</value>
+    <value>916, 580</value>
   </data>
   <data name="classroomsView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -223,7 +223,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="resourcesView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>895, 545</value>
+    <value>916, 580</value>
   </data>
   <data name="resourcesView.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

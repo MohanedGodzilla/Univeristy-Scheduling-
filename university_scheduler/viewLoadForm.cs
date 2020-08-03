@@ -221,12 +221,12 @@ namespace university_scheduler
             else if (e.ProgressPercentage != 100 && times == 2)
             {
                 label1.Text = $"saving program in excel ... {e.ProgressPercentage} %";
-                //Console.WriteLine("saveing program...");
+                //Console.WriteLine("saving program...");
             }
             else if (e.ProgressPercentage == 100 && times == 2)
             {
                 label1.Text = "saving program in excel ...done";
-                Console.WriteLine("saveing program... done");
+                Console.WriteLine("saving program... done");
                 times++;
             }
         }
