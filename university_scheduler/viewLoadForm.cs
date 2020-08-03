@@ -173,7 +173,7 @@ namespace university_scheduler
                         backgroundWorker1.ReportProgress(0);
                         return;
                     }
-                    Console.WriteLine("saving program...");
+                    Console.WriteLine($"{savedProg}saving program...");
                 }
 
                 Excel.Sheets sheet1 = wb.Worksheets;
