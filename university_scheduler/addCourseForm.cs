@@ -308,7 +308,18 @@ namespace university_scheduler
 
                     string query = "insert into course(name,credit_hours,lecture_hours,practice_hours,lab_hours,term,course_named_id,actived) values(" + "N'" + courseName.Text.ToString() + "' , '" + creditHours.Text + "' , '" + lecHours.Text + "' , '" + practiceHours.Text + "' , '" + labHours.Text + "' , '" + (termCombo.SelectedIndex + 1) + "' , N'" + courseCode.Text + "' , '" + val + "' )";
                     SqlCommand cmd = new SqlCommand(query, cn);
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (System.Data.SqlClient.SqlException ex) {
+                        int SQL_UNIQUE_KEY_VIOLATION = -2146232060;
+                        if (ex.ErrorCode == SQL_UNIQUE_KEY_VIOLATION)
+                        {
+                            MessageBox.Show("Course Code already exists!");
+                            return;
+                        }
+                    }
                     this.current_id = getTheMaxId();
                     if (selectResource.Enabled == true)
                     {
@@ -349,39 +360,42 @@ namespace university_scheduler
             }
             else
             {
-                try
+                int selected_id = courseId;
+                SqlConnection cn = new SqlConnection(conString);
+                cn.Open();
+                if (cn.State == System.Data.ConnectionState.Open)
                 {
-                    int selected_id = courseId;
-                    SqlConnection cn = new SqlConnection(conString);
-                    cn.Open();
-                    if (cn.State == System.Data.ConnectionState.Open)
+                    int val = 0;
+                    if (isActive.Checked == true)
                     {
-                        int val = 0;
-                        if (isActive.Checked == true)
-                        {
-                            val = 1;
-                        }
-                        string query = "UPDATE course SET name = N'" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  N'" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
-                        SqlCommand cmd = new SqlCommand(query, cn);
-                        cmd.ExecuteNonQuery();
-                        if (selectResource.Enabled == true)
-                        {
-                            editResourceForCourse(selected_id);
-                        }
-                        editProgramForCourse(selected_id);
-                        //---//
-                        MessageBox.Show("updateing course successfully...!");
-                        cn.Close();
-                        this.Close();
-                        courseForm.loaddata();
-                        courseForm.courseData.Update();
-                        courseForm.courseData.Refresh();
+                        val = 1;
                     }
-                }
-                catch (SqlException se)
-                {
-                    MessageBox.Show("course code must be unique!");
-                }
+                    string query = "UPDATE course SET name = N'" + courseName.Text + "' , credit_hours = '" + creditHours.Value + "' , lecture_hours = '" + lecHours.Value + "' , practice_hours = '" + practiceHours.Text + "' , lab_hours = '" + labHours.Text + "' , term = '" + (termCombo.SelectedIndex + 1) + "' , course_named_id =  N'" + courseCode.Text + "' , actived = '" + val + "' WHERE id = " + selected_id;
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (System.Data.SqlClient.SqlException ex)
+                    {
+                        int SQL_UNIQUE_KEY_VIOLATION = -2146232060;
+                        if (ex.ErrorCode == SQL_UNIQUE_KEY_VIOLATION)  {
+                            MessageBox.Show("Course Code already exists!");
+                            return;
+                        }
+                    }
+                    if (selectResource.Enabled == true){
+                            editResourceForCourse(selected_id);
+                    }
+                    editProgramForCourse(selected_id);
+                    //---//
+                    MessageBox.Show("updateing course successfully...!");
+                    cn.Close();
+                    this.Close();
+                    courseForm.loaddata();
+                    courseForm.courseData.Update();
+                    courseForm.courseData.Refresh();
+                  }
             }
         }
 
