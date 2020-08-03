@@ -33,7 +33,7 @@ namespace university_scheduler.Model
         }
 
 
-        public List<TermData> getAll()
+        public static List<TermData> getAll()
         {
             List<TermData> termDataList = new List<TermData>();
             SqlConnection cn = new SqlConnection(env.db_con_str);

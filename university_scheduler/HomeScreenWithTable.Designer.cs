@@ -41,6 +41,7 @@
             this.aboutBTN = new System.Windows.Forms.Button();
             this.viewBTN = new System.Windows.Forms.Button();
             this.generateNewBTN = new System.Windows.Forms.Button();
+            this.levelCombo = new System.Windows.Forms.ComboBox();
             this.excelViews.SuspendLayout();
             this.classroomsTables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.classroomsExcel)).BeginInit();
@@ -113,6 +114,7 @@
             // 
             // programsTables
             // 
+            this.programsTables.Controls.Add(this.levelCombo);
             this.programsTables.Controls.Add(this.searchProgram);
             this.programsTables.Controls.Add(this.label2);
             this.programsTables.Controls.Add(this.programsExcel);
@@ -127,7 +129,7 @@
             // 
             // searchProgram
             // 
-            this.searchProgram.Location = new System.Drawing.Point(72, 15);
+            this.searchProgram.Location = new System.Drawing.Point(390, 15);
             this.searchProgram.Name = "searchProgram";
             this.searchProgram.Size = new System.Drawing.Size(438, 26);
             this.searchProgram.TabIndex = 4;
@@ -136,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 18);
+            this.label2.Location = new System.Drawing.Point(324, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 3;
@@ -220,6 +222,21 @@
             this.generateNewBTN.UseVisualStyleBackColor = false;
             this.generateNewBTN.Click += new System.EventHandler(this.generateNewBTN_Click);
             // 
+            // levelCombo
+            // 
+            this.levelCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.levelCombo.FormattingEnabled = true;
+            this.levelCombo.Items.AddRange(new object[] {
+            "Level 1",
+            "Level 2",
+            "Level 3 ",
+            "Level 4 "});
+            this.levelCombo.Location = new System.Drawing.Point(19, 15);
+            this.levelCombo.Margin = new System.Windows.Forms.Padding(4);
+            this.levelCombo.Name = "levelCombo";
+            this.levelCombo.Size = new System.Drawing.Size(163, 28);
+            this.levelCombo.TabIndex = 37;
+            // 
             // HomeScreenWithTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,5 +278,6 @@
         private System.Windows.Forms.Button generateNewBTN;
         private System.Windows.Forms.Button viewBTN;
         private System.Windows.Forms.Button aboutBTN;
+        private System.Windows.Forms.ComboBox levelCombo;
     }
 }

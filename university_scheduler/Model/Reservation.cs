@@ -40,6 +40,7 @@ namespace university_scheduler.Model
         }
 
         public void insertThis() {
+            int term = Course.getCourseById(courseId).term;
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
             int val = 0;
@@ -53,7 +54,8 @@ namespace university_scheduler.Model
                 int id = (int)cmd.ExecuteScalar();
                 cn.Close();
                 programs.ForEach((Program program)=>{
-                    ReservationHasProgram.insert(id, program.id);
+                    
+                    ReservationHasProgram.insert(id, program.id,term);
                 });
             }
         }
