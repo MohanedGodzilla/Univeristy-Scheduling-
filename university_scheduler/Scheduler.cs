@@ -190,8 +190,7 @@ namespace university_scheduler {
                 //--------
                 cleanResDictionary();
                 printNonReserved();
-                Console.WriteLine(
-                    $"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
+                Console.WriteLine($"NEW COUNT {maxRes}\nTotals Res:{resInc}\n=======");
                 Console.WriteLine(confCount);
             }
             checkTotalRes();
@@ -231,10 +230,12 @@ namespace university_scheduler {
             });
 
             Console.WriteLine($"total:{total} reserved:{reserved} not:{nonRes}");
+            
             if( total/reserved != 1)
             {
                 onNewReservation(100, 100);
             }
+            
         }
         void printNonReserved() {
             total = 0;
