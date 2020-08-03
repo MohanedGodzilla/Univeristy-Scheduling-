@@ -285,11 +285,11 @@ namespace university_scheduler
                 MessageBox.Show("you have to select the resource type for this course.\n PLEASE, check it again ");
                 return;
             }
-            if ((((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value))
+            if ((((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value) && !(lecHours.Value == creditHours.Value && practiceHours.Value == 0 && labHours.Value == 0))
             {
                 MessageBox.Show("The sum of lecture, practice and lab hours is not equal to credit hours \n PLEASE, check it again ");
             }
-            if ((String.IsNullOrEmpty(courseCode.Text) && String.IsNullOrEmpty(courseName.Text)))
+            else if ((String.IsNullOrEmpty(courseCode.Text) && String.IsNullOrEmpty(courseName.Text)))
             {
                 MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
@@ -337,11 +337,11 @@ namespace university_scheduler
 
         private void saveBTN_Click(object sender, EventArgs e)
         {
-            if ((((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value))
+            if ((((lecHours.Value + practiceHours.Value + labHours.Value) - 1) != creditHours.Value) && !(lecHours.Value == creditHours.Value && practiceHours.Value == 0 && labHours.Value == 0))
             {
                 MessageBox.Show("The sum of lecture, practice and lab hours is not equal to credit hours \n PLEASE, check it again ");
             }
-            if ((String.IsNullOrEmpty(courseCode.Text) && String.IsNullOrEmpty(courseName.Text)))
+            else if ((String.IsNullOrEmpty(courseCode.Text) && String.IsNullOrEmpty(courseName.Text)))
             {
                 MessageBox.Show("May be there are some empty fields.\n PLEASE, check it again ");
             }
