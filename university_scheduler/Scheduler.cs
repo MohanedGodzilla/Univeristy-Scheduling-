@@ -22,6 +22,7 @@ namespace university_scheduler {
         private int slotID = 0;
         private List<Course> courses;
         private List<Classroom> classRooms;
+        private Dictionary<int, TermData> termDataMap = new Dictionary<int, TermData>();
         private HashSet<int> reservedSlotsIds = new HashSet<int>();
         private Dictionary<double, List<Slot>> weightDictionary = new Dictionary<double, List<Slot>>();
         private int programWF = 5;
@@ -53,9 +54,21 @@ namespace university_scheduler {
         public Scheduler(List<Course> courses, List<Classroom> classrooms, double maxTime, int maxDays) {
             Console.WriteLine("TIIIME:"+maxTime);
             this.courses = courses;
+            initTermData();
             this.classRooms = classrooms;
             this.maxDaysO = maxDays;
             this.maxTimeO = maxTime;
+        }
+
+        private void initTermData() {
+            courses.ForEach((c)=> {
+                c.programs.ForEach((p) => {
+                    for (int i = 1; i <= 8; i++) {
+                        TermData tD = p.getTermData(i);
+                        termDataMap[tD.id] = tD;
+                    }
+                });
+            });
         }
 
         public void addOnNewReservation(OnNewReservation onNewReservation) {
@@ -380,7 +393,7 @@ namespace university_scheduler {
                                 //if isClassEmpty
                                 bool isProgramsAvailable = true;
                                 foreach (Model.Program program in slot.programs) {
-                                    TermData termData = program.getTermData(slot.term);
+                                    TermData termData = termDataMap[program.getTermData(slot.term).id];
                                     reason = REASON_PROG_TIME;
                                     for (double k = time; k < time + slot.hours; k++) {
                                         if (termData.schedule[day].ContainsKey(k) &&
@@ -408,7 +421,7 @@ namespace university_scheduler {
                                     weightResDictionary[weight].Add(resInc);
                                     foreach (Model.Program program in slot.programs) {
                                         for (double k = time; k < time + slot.hours; k++) {
-                                            program.getTermData(slot.term).schedule[day][k] = resInc;
+                                            termDataMap[program.getTermData(slot.term).id].schedule[day][k] = resInc;
                                         }
                                     }
                                     for (double k = time; k < time + slot.hours; k++) {
