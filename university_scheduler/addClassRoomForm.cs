@@ -152,7 +152,7 @@ namespace university_scheduler
         {
             try
             {
-                if (this.selectedResourceList.Count == 0 && isLab.Checked)
+                if ( isLab.Checked && this.selectedResourceList.Count == 0 )
                 {
                     MessageBox.Show("you have to select the resource type for this classroom.\n PLEASE, check it again ");
                     return;

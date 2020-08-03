@@ -275,7 +275,7 @@ namespace university_scheduler
         {
             try
             {
-                if (this.selectedResourceList.Count == 0 && labHours.Value != 0)
+                if (labHours.Value != 0 && this.selectedResourceList.Count == 0 )
                 {
                     MessageBox.Show("you have to select the resource type for this course.\n PLEASE, check it again ");
                     return;
