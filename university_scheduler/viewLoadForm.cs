@@ -175,7 +175,6 @@ namespace university_scheduler
                     }
                     Console.WriteLine($"{savedProg}saving program...");
                 }
-
                 Excel.Sheets sheet1 = wb.Worksheets;
                 sheet1[sheet1.Count].delete();
                 string path = System.IO.Directory.GetCurrentDirectory();
@@ -220,12 +219,48 @@ namespace university_scheduler
             }
             else if (e.ProgressPercentage != 100 && times == 2)
             {
-                label1.Text = $"saving program in excel ... {e.ProgressPercentage} %";
+                label1.Text = $"saving program in excel level 1 ... {e.ProgressPercentage} %";
                 //Console.WriteLine("saving program...");
             }
             else if (e.ProgressPercentage == 100 && times == 2)
             {
-                label1.Text = "saving program in excel ...done";
+                label1.Text = "saving program in excel level 1 ...done";
+                Console.WriteLine("saving program... done");
+                times++;
+            }
+
+            else if (e.ProgressPercentage != 100 && times == 3)
+            {
+                label1.Text = $"saving program in excel level 2... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
+            }
+            else if (e.ProgressPercentage == 100 && times == 3)
+            {
+                label1.Text = "saving program in excel level 2...done";
+                Console.WriteLine("saving program... done");
+                times++;
+            }
+
+            else if (e.ProgressPercentage != 100 && times == 4)
+            {
+                label1.Text = $"saving program in excel level 3... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
+            }
+            else if (e.ProgressPercentage == 100 && times == 4)
+            {
+                label1.Text = "saving program in excel level 3...done";
+                Console.WriteLine("saving program... done");
+                times++;
+            }
+
+            else if (e.ProgressPercentage != 100 && times == 5)
+            {
+                label1.Text = $"saving program in excel level 4... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
+            }
+            else if (e.ProgressPercentage == 100 && times == 5)
+            {
+                label1.Text = "saving program in excel level 4...done";
                 Console.WriteLine("saving program... done");
                 times++;
             }
