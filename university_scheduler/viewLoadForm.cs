@@ -69,13 +69,11 @@ namespace university_scheduler
                 return;
             }
         }
-
         public void onError(String error) {
             MessageBox.Show(error, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             closeWithError = true;
             cancelScheduling();
         }
-
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, string name, string model)
         {
             Dictionary<int, string> dayAsString = new Dictionary<int, string>();
@@ -211,8 +209,7 @@ namespace university_scheduler
             }
             else if (e.ProgressPercentage != 100 && times == 1)
             {
-                label1.Text = "saving classroom in excel ... \n";
-                label1.Text += $"{e.ProgressPercentage} %";
+                label1.Text = $"saving classroom in excel ... {e.ProgressPercentage} %";
                 //Console.WriteLine("saving classroom...");
             }
             else if (e.ProgressPercentage == 100 && times == 1)
@@ -223,9 +220,8 @@ namespace university_scheduler
             }
             else if (e.ProgressPercentage != 100 && times == 2)
             {
-                label1.Text = "saving program in excel ...\n";
+                label1.Text = $"saving program in excel ... {e.ProgressPercentage} %";
                 //Console.WriteLine("saveing program...");
-                label1.Text += $"{e.ProgressPercentage} %";
             }
             else if (e.ProgressPercentage == 100 && times == 2)
             {
