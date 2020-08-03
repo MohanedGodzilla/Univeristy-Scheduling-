@@ -19,6 +19,7 @@ namespace university_scheduler
         public HomeScreenWithTable()
         {
             InitializeComponent();
+            levelCombo.SelectedIndex = 0;
         }
 
         private void HomeScreenWithTable_Load(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace university_scheduler
             programsApp.Visible = true;
             Excel.Workbooks books = programsApp.Workbooks;
             string path = System.IO.Directory.GetCurrentDirectory();
-            Excel.Workbook book = books.Open(@path + "/programs.xls");
+            Excel.Workbook book = books.Open(@path + $"/level{levelCombo.SelectedIndex +1}.xls");
             Excel.Worksheet worksheet = (Excel.Worksheet)book.Sheets[name];
             worksheet.Activate();
         }

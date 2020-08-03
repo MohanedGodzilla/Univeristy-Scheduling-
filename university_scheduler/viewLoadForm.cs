@@ -151,33 +151,38 @@ namespace university_scheduler
         {
             object misValue = System.Reflection.Missing.Value;
             // To create workbook
-            Excel.Application classroomsApp = new Excel.Application();
-            Excel.Workbook wb = classroomsApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
-            classroomsApp.DisplayAlerts = false;
             List<Model.Program> programs = Model.Program.getAll();
-            int savedProg = 0;
-            //this.label1.Text += "\n saving program in excel ...";
-            foreach (Model.Program program in programs)
+            for (int level = 1; level <= 4; level++)
             {
-                savedProg++;
-                List<Reservation> allResOfProg = ReservationHasProgram.getProgramReservations(program.id);
-                genWorksheets(allResOfProg, classroomsApp, wb, program.name, "program");
-                
-                backgroundWorker1.ReportProgress(Convert.ToInt32(savedProg * 100 / programs.Count));
-                if (backgroundWorker1.CancellationPending)
-                {
-                    e.Cancel = true;
-                    backgroundWorker1.ReportProgress(0);
-                    return;
-                }
-                Console.WriteLine("saving program...");
-            }
 
-            Excel.Sheets sheet1 = wb.Worksheets;
-            sheet1[sheet1.Count].delete();
-            string path = System.IO.Directory.GetCurrentDirectory();
-            wb.SaveAs(@path + "/programs.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            wb.Close(true, misValue, misValue);
+                Excel.Application LevelsApp = new Excel.Application();
+                Excel.Workbook wb = LevelsApp.Workbooks.Add(Excel.XlWBATemplate.xlWBATWorksheet);
+                LevelsApp.DisplayAlerts = false;
+                int savedProg = 0;
+                //this.label1.Text += "\n saving program in excel ...";
+                foreach (Model.Program program in programs)
+                {
+                    savedProg++;
+                    List<Reservation> allResOfProg = new List<Reservation>();
+                    allResOfProg = ReservationHasProgram.getProgramReservations(program.id,level);
+                    genWorksheets(allResOfProg, LevelsApp, wb, program.name, "program");
+
+                    backgroundWorker1.ReportProgress(Convert.ToInt32(savedProg * 100 / programs.Count));
+                    if (backgroundWorker1.CancellationPending)
+                    {
+                        e.Cancel = true;
+                        backgroundWorker1.ReportProgress(0);
+                        return;
+                    }
+                    Console.WriteLine("saving program...");
+                }
+
+                Excel.Sheets sheet1 = wb.Worksheets;
+                sheet1[sheet1.Count].delete();
+                string path = System.IO.Directory.GetCurrentDirectory();
+                wb.SaveAs(@path + $"/Level{level}.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                wb.Close(true, misValue, misValue);
+            }
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {

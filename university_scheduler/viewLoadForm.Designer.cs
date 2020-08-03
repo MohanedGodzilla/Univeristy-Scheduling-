@@ -51,11 +51,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(139, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 18);
+            this.label1.Size = new System.Drawing.Size(167, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "( ) reserved slots/ ( ) total slots";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            
             // 
             // progressBar1
             // 
@@ -74,7 +73,7 @@
             // 
             // viewLoadForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 193);
             this.Controls.Add(this.cancelBTN);
@@ -85,7 +84,7 @@
             this.MaximizeBox = false;
             this.Name = "viewLoadForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "viewLoadForm";
+            this.Text = "Loading...";
             this.Load += new System.EventHandler(this.viewLoadForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
