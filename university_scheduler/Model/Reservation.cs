@@ -66,7 +66,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (string)reader.GetValue(5));
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (string)reader.GetValue(6));
                     res.id = (int)reader.GetValue(0);
                     res.programs = ReservationHasProgram.getReservationPrograms(res.id);
                     reservationData.Add(res);

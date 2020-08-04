@@ -37,6 +37,8 @@
             this.classroomsView = new System.Windows.Forms.TabPage();
             this.resourcesView = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.aboutBTN = new System.Windows.Forms.Button();
+            this.resLabel = new System.Windows.Forms.Label();
             this.semesterCombo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.eDay = new System.Windows.Forms.ComboBox();
@@ -48,8 +50,6 @@
             this.etLabel = new System.Windows.Forms.Label();
             this.stLabel = new System.Windows.Forms.Label();
             this.generateBTN = new System.Windows.Forms.Button();
-            this.resLabel = new System.Windows.Forms.Label();
-            this.aboutBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -122,6 +122,22 @@
             this.panel2.Controls.Add(this.generateBTN);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // aboutBTN
+            // 
+            this.aboutBTN.BackColor = System.Drawing.SystemColors.Control;
+            this.aboutBTN.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.aboutBTN.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.aboutBTN, "aboutBTN");
+            this.aboutBTN.Image = global::university_scheduler.Properties.Resources.icons8_contact_us_30;
+            this.aboutBTN.Name = "aboutBTN";
+            this.aboutBTN.UseVisualStyleBackColor = false;
+            this.aboutBTN.Click += new System.EventHandler(this.aboutBTN_Click);
+            // 
+            // resLabel
+            // 
+            resources.ApplyResources(this.resLabel, "resLabel");
+            this.resLabel.Name = "resLabel";
             // 
             // semesterCombo
             // 
@@ -215,22 +231,6 @@
             this.generateBTN.Name = "generateBTN";
             this.generateBTN.UseVisualStyleBackColor = false;
             this.generateBTN.Click += new System.EventHandler(this.generateBTN_Click);
-            // 
-            // resLabel
-            // 
-            resources.ApplyResources(this.resLabel, "resLabel");
-            this.resLabel.Name = "resLabel";
-            // 
-            // aboutBTN
-            // 
-            this.aboutBTN.BackColor = System.Drawing.SystemColors.Control;
-            this.aboutBTN.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.aboutBTN.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.aboutBTN, "aboutBTN");
-            this.aboutBTN.Image = global::university_scheduler.Properties.Resources.icons8_contact_us_30;
-            this.aboutBTN.Name = "aboutBTN";
-            this.aboutBTN.UseVisualStyleBackColor = false;
-            this.aboutBTN.Click += new System.EventHandler(this.aboutBTN_Click);
             // 
             // NoScheduleHome
             // 
