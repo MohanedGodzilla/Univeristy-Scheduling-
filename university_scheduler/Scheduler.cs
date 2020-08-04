@@ -48,9 +48,9 @@ namespace university_scheduler {
             [REASON_DAYLIMIT] = 0,
             [REASON_CLASS_BLOCKED_HOURS] = 0
         };
-        Dictionary<int, Dictionary<SessionType,Dictionary<String, int>>> courseConfDictonary = new Dictionary<int, Dictionary<SessionType, Dictionary<String, int>>>();
+        Dictionary<int, Dictionary<string,Dictionary<String, int>>> courseConfDictonary = new Dictionary<int, Dictionary<string, Dictionary<String, int>>>();
         Dictionary<double, List<int>> weightResDictionary = new Dictionary<double, List<int>>(); //Dictionary<weight,list of reservation ids>
-        Dictionary<int, Dictionary<SessionType, List<Slot>>> courseSplitProgramSlotDictionary = new Dictionary<int, Dictionary<SessionType, List<Slot>>>();//course id, split count
+        Dictionary<int, Dictionary<string, List<Slot>>> courseSplitProgramSlotDictionary = new Dictionary<int, Dictionary<string, List<Slot>>>();//course id, split count
         public Scheduler(List<Course> courses, List<Classroom> classrooms, double maxTime, int maxDays) {
             Console.WriteLine("TIIIME:"+maxTime);
             this.courses = courses;
@@ -138,7 +138,7 @@ namespace university_scheduler {
                     Slot slotWithConflict = conflict["slot"];
                     String reason = conflict["reason"];
                     if (!courseConfDictonary.ContainsKey(slotWithConflict.courseId)) {
-                        courseConfDictonary[slotWithConflict.courseId] = new Dictionary<SessionType, Dictionary<string, int>>();
+                        courseConfDictonary[slotWithConflict.courseId] = new Dictionary<string, Dictionary<string, int>>();
                     }
                     if (!courseConfDictonary[slotWithConflict.courseId].ContainsKey(slotWithConflict.sessionType)) {
                         courseConfDictonary[slotWithConflict.courseId][slotWithConflict.sessionType] = new Dictionary<string, int>();
@@ -411,7 +411,7 @@ namespace university_scheduler {
 
                                 if (isProgramsAvailable && isClassEmpty) {
                                     Reservation reservation = new Reservation(slot.courseId,
-                                        classRoom.id, day, time, time + slot.hours, slot.sessionType == SessionType.LAB);
+                                        classRoom.id, day, time, time + slot.hours, slot.sessionType);
                                     reservation.programs = slot.programs;
                                     resDictionary[resInc] = reservation;
                                     reservedSlotsIds.Add(slot.id);
@@ -537,12 +537,12 @@ namespace university_scheduler {
 
         void separatePrograms(Slot slotData) {
             int courseID = slotData.courseId;
-            SessionType sessionType = slotData.sessionType;
+            string sessionType = slotData.sessionType;
             if (!courseSplitProgramSlotDictionary.ContainsKey(courseID)) {
-                courseSplitProgramSlotDictionary[courseID] = new Dictionary<SessionType, List<Slot>>();
+                courseSplitProgramSlotDictionary[courseID] = new Dictionary<string, List<Slot>>();
             }
 
-            Dictionary<SessionType, List<Slot>> sMap = courseSplitProgramSlotDictionary[courseID];
+            Dictionary<string, List<Slot>> sMap = courseSplitProgramSlotDictionary[courseID];
 
             if (!sMap.ContainsKey(sessionType)) {
                 sMap[sessionType] = new List<Slot>() {slotData};

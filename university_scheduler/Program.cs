@@ -15,13 +15,17 @@ namespace university_scheduler
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            List<Reservation> reservationsList = Reservation.getAll();
-            if (reservationsList.Count > 0)
-               Application.Run(new HomeScreenWithTable());
-            else
-                Application.Run(new NoScheduleHome());
+            try {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                List<Reservation> reservationsList = Reservation.getAll();
+                if (reservationsList.Count > 0)
+                    Application.Run(new HomeScreenWithTable());
+                else
+                    Application.Run(new NoScheduleHome());
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
