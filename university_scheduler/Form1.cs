@@ -183,5 +183,10 @@ namespace university_scheduler
         {
 
         }
+
+        private void classroomsView_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
