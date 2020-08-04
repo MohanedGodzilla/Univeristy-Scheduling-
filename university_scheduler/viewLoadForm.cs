@@ -69,13 +69,11 @@ namespace university_scheduler
                 return;
             }
         }
-
         public void onError(String error) {
             MessageBox.Show(error, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             closeWithError = true;
             cancelScheduling();
         }
-
         void genWorksheets(List<Reservation> allResOfClass, Excel.Application classroomsApp, Excel.Workbook wb, string name, string model)
         {
             Dictionary<int, string> dayAsString = new Dictionary<int, string>();
@@ -175,9 +173,8 @@ namespace university_scheduler
                         backgroundWorker1.ReportProgress(0);
                         return;
                     }
-                    Console.WriteLine("saving program...");
+                    Console.WriteLine($"{savedProg}saving program...");
                 }
-
                 Excel.Sheets sheet1 = wb.Worksheets;
                 sheet1[sheet1.Count].delete();
                 string path = System.IO.Directory.GetCurrentDirectory();
@@ -211,8 +208,7 @@ namespace university_scheduler
             }
             else if (e.ProgressPercentage != 100 && times == 1)
             {
-                label1.Text = "saving classroom in excel ... \n";
-                label1.Text += $"{e.ProgressPercentage} %";
+                label1.Text = $"saving classroom in excel ... {e.ProgressPercentage} %";
                 //Console.WriteLine("saving classroom...");
             }
             else if (e.ProgressPercentage == 100 && times == 1)
@@ -223,14 +219,49 @@ namespace university_scheduler
             }
             else if (e.ProgressPercentage != 100 && times == 2)
             {
-                label1.Text = "saving program in excel ...\n";
-                //Console.WriteLine("saveing program...");
-                label1.Text += $"{e.ProgressPercentage} %";
+                label1.Text = $"saving program in excel level 1 ... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
             }
             else if (e.ProgressPercentage == 100 && times == 2)
             {
-                label1.Text = "saving program in excel ...done";
-                Console.WriteLine("saveing program... done");
+                label1.Text = "saving program in excel level 1 ...done";
+                Console.WriteLine("saving program... done");
+                times++;
+            }
+
+            else if (e.ProgressPercentage != 100 && times == 3)
+            {
+                label1.Text = $"saving program in excel level 2... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
+            }
+            else if (e.ProgressPercentage == 100 && times == 3)
+            {
+                label1.Text = "saving program in excel level 2...done";
+                Console.WriteLine("saving program... done");
+                times++;
+            }
+
+            else if (e.ProgressPercentage != 100 && times == 4)
+            {
+                label1.Text = $"saving program in excel level 3... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
+            }
+            else if (e.ProgressPercentage == 100 && times == 4)
+            {
+                label1.Text = "saving program in excel level 3...done";
+                Console.WriteLine("saving program... done");
+                times++;
+            }
+
+            else if (e.ProgressPercentage != 100 && times == 5)
+            {
+                label1.Text = $"saving program in excel level 4... {e.ProgressPercentage} %";
+                //Console.WriteLine("saving program...");
+            }
+            else if (e.ProgressPercentage == 100 && times == 5)
+            {
+                label1.Text = "saving program in excel level 4...done";
+                Console.WriteLine("saving program... done");
                 times++;
             }
         }
