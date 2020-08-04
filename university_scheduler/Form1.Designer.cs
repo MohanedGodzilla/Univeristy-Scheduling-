@@ -96,6 +96,7 @@
             resources.ApplyResources(this.classroomsView, "classroomsView");
             this.classroomsView.Name = "classroomsView";
             this.classroomsView.UseVisualStyleBackColor = true;
+            this.classroomsView.Click += new System.EventHandler(this.classroomsView_Click);
             // 
             // resourcesView
             // 

@@ -113,7 +113,14 @@ namespace university_scheduler
                 this.deletedResourceList = new List<int>();
                 this.addedResourceList = new List<int>();
                 bringIdsOfClassHasResource(id);
-                compareListsRes(this.oldSelectedResourceList, this.selectedResourceList);
+                if (!isLab.Checked)
+                {
+                    compareListsRes(this.oldSelectedResourceList, new List<int>());
+                }
+                else
+                {
+                    compareListsRes(this.oldSelectedResourceList, this.selectedResourceList);
+                }
                 SqlConnection cn = new SqlConnection(conString);
                 cn.Open();
                 if (cn.State == System.Data.ConnectionState.Open)
@@ -206,18 +213,32 @@ namespace university_scheduler
             }
             else
             {
+                int valCheck;
+                if (isLab.Checked)
+                {
+                    valCheck = 1;
+                }
+                else
+                {
+                    valCheck = 0;
+                }
                 int selected_id = classId;
                 SqlConnection cn = new SqlConnection(conString);
                 cn.Open();
                 if (cn.State == System.Data.ConnectionState.Open)
                 {
-                    string query = "UPDATE class SET name = N'" + className.Text.ToString() + "', lecture_capacity = '" + lecCounter.Value + "',exam_capacity = '" + examCounter.Value + "' WHERE id = " + selected_id;
+                    string query = "UPDATE class SET name = N'" + className.Text.ToString() + "', lecture_capacity = '" + lecCounter.Value + "',exam_capacity = '" + examCounter.Value + "',isLab = '" + valCheck + "' WHERE id = " + selected_id;
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.ExecuteNonQuery();
                     if (selectResource.Enabled == true)
                     {
                         editResourceForClass(selected_id);
                     }
+                    else
+                    {
+                        editResourceForClass(selected_id);
+                    }
+                    
                     MessageBox.Show("updateing classroom successfully..!");
                     cn.Close();
                     this.Close();
