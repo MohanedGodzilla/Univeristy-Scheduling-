@@ -178,5 +178,10 @@ namespace university_scheduler
         private void semesterCombo_SelectedIndexChanged(object sender, EventArgs e) {
             updateSchedulerConfigs();
         }
+
+        private void aboutBTN_Click(object sender, EventArgs e) {
+            aboutUs Popup = new aboutUs();
+            Popup.Show();
+        }
     }
 }

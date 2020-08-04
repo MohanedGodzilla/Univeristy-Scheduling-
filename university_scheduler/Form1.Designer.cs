@@ -37,7 +37,6 @@
             this.classroomsView = new System.Windows.Forms.TabPage();
             this.resourcesView = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.resLabel = new System.Windows.Forms.Label();
             this.semesterCombo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.eDay = new System.Windows.Forms.ComboBox();
@@ -49,6 +48,8 @@
             this.etLabel = new System.Windows.Forms.Label();
             this.stLabel = new System.Windows.Forms.Label();
             this.generateBTN = new System.Windows.Forms.Button();
+            this.resLabel = new System.Windows.Forms.Label();
+            this.aboutBTN = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -104,6 +105,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.aboutBTN);
             this.panel2.Controls.Add(this.resLabel);
             this.panel2.Controls.Add(this.semesterCombo);
             this.panel2.Controls.Add(this.label3);
@@ -118,11 +120,6 @@
             this.panel2.Controls.Add(this.generateBTN);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            // 
-            // resLabel
-            // 
-            resources.ApplyResources(this.resLabel, "resLabel");
-            this.resLabel.Name = "resLabel";
             // 
             // semesterCombo
             // 
@@ -217,6 +214,22 @@
             this.generateBTN.UseVisualStyleBackColor = false;
             this.generateBTN.Click += new System.EventHandler(this.generateBTN_Click);
             // 
+            // resLabel
+            // 
+            resources.ApplyResources(this.resLabel, "resLabel");
+            this.resLabel.Name = "resLabel";
+            // 
+            // aboutBTN
+            // 
+            this.aboutBTN.BackColor = System.Drawing.SystemColors.Control;
+            this.aboutBTN.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.aboutBTN.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.aboutBTN, "aboutBTN");
+            this.aboutBTN.Image = global::university_scheduler.Properties.Resources.icons8_contact_us_30;
+            this.aboutBTN.Name = "aboutBTN";
+            this.aboutBTN.UseVisualStyleBackColor = false;
+            this.aboutBTN.Click += new System.EventHandler(this.aboutBTN_Click);
+            // 
             // NoScheduleHome
             // 
             resources.ApplyResources(this, "$this");
@@ -254,9 +267,10 @@
         public System.Windows.Forms.Button generateBTN;
         public System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label resLabel;
         public System.Windows.Forms.DateTimePicker stInput;
         public System.Windows.Forms.DateTimePicker etInput;
+        private System.Windows.Forms.Label resLabel;
+        private System.Windows.Forms.Button aboutBTN;
     }
 }
 
