@@ -24,7 +24,7 @@ namespace university_scheduler
                 else
                     Application.Run(new NoScheduleHome());
             } catch (Exception ex) {
-                
+                MessageBox.Show(ex.Message);
             }
         }
     }
