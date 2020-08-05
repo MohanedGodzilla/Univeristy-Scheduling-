@@ -95,7 +95,12 @@ namespace university_scheduler
             if (model == "program")
             {
                 ws.Cells[6] = "Classroom";
+                ws.Cells[7] = "type";
             }
+            else{
+                ws.Cells[6] = "type";
+            }
+           
             //cells of excel
             for (int i = 0; i < allResOfClass.Count; i++)
             {
@@ -109,6 +114,10 @@ namespace university_scheduler
                 {
                     //get the name of the classroom of this reservation
                     ws.Cells[i + 2, 6] = Classroom.getClassroomById(allResOfClass[i].classId)[0].name;
+                    ws.Cells[i + 2, 7] = allResOfClass[i].sessionType;
+                }
+                else{
+                    ws.Cells[i + 2, 6] = allResOfClass[i].sessionType;
                 }
             }
             ws.Name = name;
