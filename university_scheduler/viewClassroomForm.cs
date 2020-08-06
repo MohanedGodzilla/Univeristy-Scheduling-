@@ -67,12 +67,39 @@ namespace university_scheduler
 
         private void editClassRoomBTN_Click(object sender, EventArgs e)
         {
+            passData_AddClassForm();
+            /*
             addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,0);
             classRoomDataPassed.Text = "Edit Classroom";
             classRoomDataPassed.ShowDialog(this);
             this.loaddata();
             classData.Update();
             classData.Refresh();
+            */
+        }
+
+        public void passData_AddClassForm()
+        {
+            if (this.viewClassroom_disableSaveBTN == 0)
+            {
+                if (!canUpdate()) return;
+                addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value, 0);
+                classRoomDataPassed.Text = "Edit Classroom";
+                classRoomDataPassed.ShowDialog(this);
+                this.loaddata();
+                classData.Update();
+                classData.Refresh();
+            }
+            else if (this.viewClassroom_disableSaveBTN == 1)
+            {
+                if (!canUpdate()) return;
+                addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value, 1);
+                classRoomDataPassed.Text = "Edit Classroom";
+                classRoomDataPassed.Show();
+                this.loaddata();
+                classData.Update();
+                classData.Refresh();
+            }
         }
 
         private void deleteClassRoomBTN_Click(object sender, EventArgs e)
@@ -106,22 +133,16 @@ namespace university_scheduler
             }
         }
 
+        bool canUpdate()
+        {
+            return (classData.SelectedRows != null &&
+                    classData.SelectedRows.Count > 0 &&
+                    classData.SelectedRows[0].Cells[0].Value != null);
+        }
+
         private void classData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (this.viewClassroom_disableSaveBTN == 0)
-            {
-                addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,0);
-                classRoomDataPassed.Text = "Edit Classroom";
-                classRoomDataPassed.ShowDialog(this);
-                classData.Update();
-                classData.Refresh();
-            }
-            else if (this.viewClassroom_disableSaveBTN == 1)
-            {
-                addClassRoomForm classRoomDataPassed = new addClassRoomForm((int)classData.SelectedRows[0].Cells[0].Value,1);
-                classRoomDataPassed.Text = "Edit Classroom";
-                classRoomDataPassed.ShowDialog(this);
-            }
+            passData_AddClassForm();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -162,6 +183,11 @@ namespace university_scheduler
                     MessageBox.Show("All Classrooms are deleted successfully..!");
                 }
             }
+        }
+
+        private void classData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

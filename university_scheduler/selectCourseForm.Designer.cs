@@ -35,7 +35,7 @@
             this.saveProgramBTN.Name = "saveProgramBTN";
             this.saveProgramBTN.Size = new System.Drawing.Size(135, 36);
             this.saveProgramBTN.TabIndex = 11;
-            this.saveProgramBTN.Text = "Save";
+            this.saveProgramBTN.Text = "Close";
             this.saveProgramBTN.UseVisualStyleBackColor = true;
             this.saveProgramBTN.Click += new System.EventHandler(this.saveProgramBTN_Click);
             // 
