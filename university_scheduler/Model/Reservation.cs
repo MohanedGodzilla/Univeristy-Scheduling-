@@ -16,7 +16,7 @@ namespace university_scheduler.Model
         public int day;
         public double from;
         public double to;
-        public bool isPractice;
+        public String sessionType;
 
         public List<Program> programs = new List<Program>();
 
@@ -26,35 +26,31 @@ namespace university_scheduler.Model
             this.day = 0;
             this.from = 0;
             this.to = 0;
-            this.isPractice = false;
+            this.sessionType = "lecture";
         }
 
-        public Reservation(int dummyCourseId, int dummyClassId, int dummyDay, double dummyFrom, double dummyTo,bool dummyIsPractice)
+        public Reservation(int dummyCourseId, int dummyClassId, int dummyDay, double dummyFrom, double dummyTo,string sessionType)
         {
             this.courseId = dummyCourseId;
             this.classId = dummyClassId;
             this.day = dummyDay;
             this.from = dummyFrom;
             this.to = dummyTo;
-            this.isPractice = dummyIsPractice;
+            this.sessionType = sessionType;
         }
 
         public void insertThis() {
             int term = Course.getCourseById(courseId).term;
             SqlConnection cn = new SqlConnection(env.db_con_str);
             cn.Open();
-            int val = 0;
-            if (isPractice == true){
-                val = 1;
-            }
             if (cn.State == System.Data.ConnectionState.Open) {
-                string query = $"insert into reservation(course_id,class_id,\"from\",\"to\",\"day\",is_practice) OUTPUT INSERTED.ID values({courseId}, {classId}, {from}, {to}, {day}, {val})";
+                string query = $"insert into reservation(course_id,class_id,\"from\",\"to\",\"day\",session_type) OUTPUT INSERTED.ID values({courseId}, {classId}, {from}, {to}, {day}, '{sessionType}')";
                 Console.WriteLine(query);
                 SqlCommand cmd = new SqlCommand(query, cn);
                 int id = (int)cmd.ExecuteScalar();
                 cn.Close();
                 programs.ForEach((Program program)=>{
-                    
+
                     ReservationHasProgram.insert(id, program.id,term);
                 });
             }
@@ -70,12 +66,7 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    bool val = false;
-                    if ((short)reader.GetValue(6) == 1)
-                    {
-                        val = true;
-                    }
-                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), val);
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (string)reader.GetValue(6));
                     res.id = (int)reader.GetValue(0);
                     res.programs = ReservationHasProgram.getReservationPrograms(res.id);
                     reservationData.Add(res);
@@ -95,12 +86,8 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    bool val = false;
-                    if ((short)reader.GetValue(6) == 1)
-                    {
-                        val = true;
-                    }
-                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (bool)val);
+
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (string)reader.GetValue(6));
                     reservationData.Add(res);
                 }
                 cn.Close();
@@ -119,51 +106,11 @@ namespace university_scheduler.Model
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    bool val = false;
-                    if ((short)reader.GetValue(6) == 1)
-                    {
-                        val = true;
-                    }
-                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), val);
+                    Reservation res = new Reservation((int)reader.GetValue(1), (int)reader.GetValue(2), (int)reader.GetValue(5), (double)reader.GetValue(3), (double)reader.GetValue(4), (string)reader.GetValue(6));
                     reservationData= res;
                 }
                 cn.Close();
                 return reservationData;
-            }
-        }
-
-        public List<Classroom> getClassroom(int dummyClassID)
-        {
-            List<Classroom> classroomData = new List<Classroom>();
-            SqlConnection cn = new SqlConnection(env.db_con_str);
-            cn.Open();
-            string query = "SELECT * FROM class c WHERE c.id = " + dummyClassID;
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    classroomData.Add (new Classroom((int)reader.GetValue(0), (string)reader.GetValue(2), (int)reader.GetValue(1), (int)reader.GetValue(3), ((int)reader.GetValue(4) == 0 ? false : true)));
-                }
-                cn.Close();
-                return classroomData;
-            }
-        }
-
-        public List<Course> getCourse(int dummyCourseID)
-        {
-            List<Course> courseData = new List<Course>();
-            SqlConnection cn = new SqlConnection(env.db_con_str);
-            cn.Open();
-            string query = "SELECT * FROM course c WHERE c.id = " + dummyCourseID;
-            using (SqlCommand cmd = new SqlCommand(query, cn))
-            {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read()){
-                   courseData.Add(new Course { id = (int)reader.GetValue(0), name = (string)reader.GetValue(1), creditHours = (int)reader.GetValue(2), lectureHours = (float)reader.GetValue(3), practiceHours = (double)reader.GetValue(4), labHours = (float)reader.GetValue(5), term = (int)reader.GetValue(6), courseNamedId = (string)reader.GetValue(7), isActive = (bool)reader.GetValue(8)});
-                }
-                cn.Close();
-                return courseData;
             }
         }
 

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace university_scheduler.Model
 {
-    public enum SessionType {
-        LECTURE,
-        LAB,
-        PRACTICE
+    public class SessionType {
+        public static string LECTURE = "lecture";
+        public static string LAB = "lab";
+        public static string PRACTICE = "practice";
     }
     class Slot
     {
 
-        public Slot(int id, int courseId,int creditHours, double hours, int term, SessionType sessionType, bool isReq ,List<Resource> resources, List<Program> programs) {
+        public Slot(int id, int courseId,int creditHours, double hours, int term, string sessionType, bool isReq ,List<Resource> resources, List<Program> programs) {
             this.id = id;
             this.courseId = courseId;
             this.creditHours = creditHours ;
@@ -37,7 +37,7 @@ namespace university_scheduler.Model
         public int creditHours { get; set; }
         public double hours { get; set; }
         public int term { get; set; }
-        public SessionType sessionType { get; set; }
+        public string sessionType { get; set; }
         public bool isReq { get; set; }
         public int studentCount { get; set; }
 

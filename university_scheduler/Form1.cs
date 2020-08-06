@@ -179,7 +179,16 @@ namespace university_scheduler
             updateSchedulerConfigs();
         }
 
+        private void aboutBTN_Click(object sender, EventArgs e) {
+            aboutUs Popup = new aboutUs();
+            Popup.Show();
+        }
         private void coursesView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void classroomsView_Click(object sender, EventArgs e)
         {
 
         }

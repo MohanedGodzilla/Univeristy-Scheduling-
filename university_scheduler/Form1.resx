@@ -129,7 +129,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="coursesView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>916, 580</value>
+    <value>896, 559</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="coursesView.TabIndex" type="System.Int32, mscorlib">
@@ -163,7 +163,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="programsView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>916, 580</value>
+    <value>917, 580</value>
   </data>
   <data name="programsView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -193,7 +193,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="classroomsView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>916, 580</value>
+    <value>917, 580</value>
   </data>
   <data name="classroomsView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -223,7 +223,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="resourcesView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>916, 580</value>
+    <value>917, 580</value>
   </data>
   <data name="resourcesView.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -253,7 +253,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>924, 609</value>
+    <value>904, 588</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -280,7 +280,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>924, 609</value>
+    <value>904, 588</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -295,6 +295,48 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="aboutBTN.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="aboutBTN.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="aboutBTN.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="aboutBTN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="aboutBTN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 3</value>
+  </data>
+  <data name="aboutBTN.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="aboutBTN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 52</value>
+  </data>
+  <data name="aboutBTN.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="aboutBTN.Text" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="aboutBTN.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
+  <data name="&gt;&gt;aboutBTN.Name" xml:space="preserve">
+    <value>aboutBTN</value>
+  </data>
+  <data name="&gt;&gt;aboutBTN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutBTN.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;aboutBTN.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="resLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -319,7 +361,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;resLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="semesterCombo.Items" xml:space="preserve">
     <value>Semester one</value>
@@ -328,7 +370,7 @@
     <value>Semester two</value>
   </data>
   <data name="semesterCombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 310</value>
+    <value>132, 330</value>
   </data>
   <data name="semesterCombo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -349,7 +391,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;semesterCombo.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,7 +403,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 313</value>
+    <value>21, 333</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -385,7 +427,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="eDay.Items" xml:space="preserve">
     <value>SAT</value>
@@ -409,7 +451,7 @@
     <value>FRI</value>
   </data>
   <data name="eDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 222</value>
+    <value>132, 242</value>
   </data>
   <data name="eDay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -430,7 +472,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;eDay.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="sDay.Items" xml:space="preserve">
     <value>SAT</value>
@@ -454,7 +496,7 @@
     <value>FRI</value>
   </data>
   <data name="sDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 165</value>
+    <value>132, 185</value>
   </data>
   <data name="sDay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -475,7 +517,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;sDay.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -487,7 +529,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 222</value>
+    <value>21, 242</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -511,7 +553,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -523,7 +565,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 165</value>
+    <value>21, 185</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -547,13 +589,13 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="etInput.CustomFormat" xml:space="preserve">
     <value>hh tt</value>
   </data>
   <data name="etInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 106</value>
+    <value>132, 126</value>
   </data>
   <data name="etInput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -574,13 +616,13 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;etInput.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="stInput.CustomFormat" xml:space="preserve">
     <value>hh tt</value>
   </data>
   <data name="stInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 50</value>
+    <value>132, 70</value>
   </data>
   <data name="stInput.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -601,7 +643,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;stInput.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="etLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -613,7 +655,7 @@
     <value>NoControl</value>
   </data>
   <data name="etLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 106</value>
+    <value>21, 126</value>
   </data>
   <data name="etLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -637,7 +679,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;etLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="stLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -649,7 +691,7 @@
     <value>NoControl</value>
   </data>
   <data name="stLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 50</value>
+    <value>21, 70</value>
   </data>
   <data name="stLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -673,7 +715,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;stLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="generateBTN.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -685,13 +727,13 @@
     <value>NoControl</value>
   </data>
   <data name="generateBTN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 495</value>
+    <value>0, 474</value>
   </data>
   <data name="generateBTN.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="generateBTN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 114</value>
+    <value>294, 114</value>
   </data>
   <data name="generateBTN.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -709,19 +751,19 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;generateBTN.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>936, 4</value>
+    <value>916, 4</value>
   </data>
   <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 609</value>
+    <value>294, 588</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -751,7 +793,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1240, 617</value>
+    <value>1214, 596</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -778,7 +820,7 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1240, 617</value>
+    <value>1214, 596</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>

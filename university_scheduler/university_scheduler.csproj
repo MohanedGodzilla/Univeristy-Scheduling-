@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>university_scheduler</RootNamespace>
-    <AssemblyName>university_scheduler</AssemblyName>
+    <AssemblyName>University Scheduler</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>WhatsApp Image 2020-08-04 at 2.42.27 PM.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -110,6 +116,14 @@
     </Compile>
     <Compile Include="HomeScreenWithTable.Designer.cs">
       <DependentUpon>HomeScreenWithTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDataSet.cs">
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\classHasResource.cs" />
     <Compile Include="Model\Classroom.cs" />
@@ -228,6 +242,17 @@
     <EmbeddedResource Include="viewResourcesForm.resx">
       <DependentUpon>viewResourcesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ModelDataSet.xsc">
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ModelDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ModelDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ModelDataSet.xss">
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -300,6 +325,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-deleteAll-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database1.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database1_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
+    <Content Include="WhatsApp Image 2020-08-04 at 2.42.27 PM.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
