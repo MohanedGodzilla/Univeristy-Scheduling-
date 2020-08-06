@@ -1,6 +1,3 @@
-E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\university_scheduler.exe.config
-E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\university_scheduler.exe
-E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\university_scheduler.pdb
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.aboutUs.resources
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.addClassRoomForm.resources
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.addCourseForm.resources
@@ -19,6 +16,11 @@ E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\universi
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.viewResourcesForm.resources
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.csproj.GenerateResource.cache
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.csproj.CoreCompileInputs.cache
-E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.exe
-E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.pdb
 E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\university_scheduler.csprojAssemblyReference.cache
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\Database1.mdf
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\Database1_log.ldf
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\University Scheduler.exe.config
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\University Scheduler.exe
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\bin\Release\University Scheduler.pdb
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\University Scheduler.exe
+E:\SCIENCE\4th year 2st semester\Project COMP406\Univeristy-Scheduling-\university_scheduler\obj\Release\University Scheduler.pdb
