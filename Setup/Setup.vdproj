@@ -15,38 +15,38 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_05FD49112C0B4F859B23D0729BBEA039"
+        "MsmKey" = "8:_04D3FEDEFA2F428ABEAA2B1A5546539F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0BA72FAB233B46A7AB53C8A3CC69FB15"
+        "MsmKey" = "8:_555F5E3981D24A5D958E73ADEF6BAB77"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_21F1A9EF066B482788D012EFB38B7458"
+        "MsmKey" = "8:_89818291335944FDAC5A436661F59524"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3EA656BAE17C475EA7BAD2388DDDC217"
+        "MsmKey" = "8:_CB13404B07F2441B9501061C6BFEB3C8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DCE278F958FE4D64AA8EEFEE31CEF61C"
+        "MsmKey" = "8:_CE18EF4646C14E7A97D9212BB593E052"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_21F1A9EF066B482788D012EFB38B7458"
+        "OwnerKey" = "8:_89818291335944FDAC5A436661F59524"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -74,6 +74,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -98,6 +106,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -128,27 +144,7 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05FD49112C0B4F859B23D0729BBEA039"
-            {
-            "SourcePath" = "8:..\\university_scheduler\\bin\\Debug\\Database1.mdf"
-            "TargetName" = "8:Database1.mdf"
-            "Tag" = "8:"
-            "Folder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0BA72FAB233B46A7AB53C8A3CC69FB15"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04D3FEDEFA2F428ABEAA2B1A5546539F"
             {
             "SourcePath" = "8:..\\university_scheduler\\bin\\Debug\\University Scheduler.exe.config"
             "TargetName" = "8:University Scheduler.exe.config"
@@ -168,14 +164,34 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_21F1A9EF066B482788D012EFB38B7458"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_555F5E3981D24A5D958E73ADEF6BAB77"
+            {
+            "SourcePath" = "8:..\\university_scheduler\\icon.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_89818291335944FDAC5A436661F59524"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:University Scheduler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_21F1A9EF066B482788D012EFB38B7458"
+                    "_89818291335944FDAC5A436661F59524"
                     {
                     "Name" = "8:University Scheduler.exe"
                     "Attributes" = "3:512"
@@ -199,10 +215,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3EA656BAE17C475EA7BAD2388DDDC217"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB13404B07F2441B9501061C6BFEB3C8"
             {
-            "SourcePath" = "8:C:\\Users\\Omar\\Desktop\\WhatsApp Image 2020-08-04 at 2.42.27 PM.ico"
-            "TargetName" = "8:TimeTable.ico"
+            "SourcePath" = "8:..\\university_scheduler\\bin\\Debug\\Database1_log.ldf"
+            "TargetName" = "8:Database1_log.ldf"
             "Tag" = "8:"
             "Folder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
             "Condition" = "8:"
@@ -219,10 +235,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DCE278F958FE4D64AA8EEFEE31CEF61C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE18EF4646C14E7A97D9212BB593E052"
             {
-            "SourcePath" = "8:..\\university_scheduler\\bin\\Debug\\Database1_log.ldf"
-            "TargetName" = "8:Database1_log.ldf"
+            "SourcePath" = "8:..\\university_scheduler\\bin\\Debug\\Database1.mdf"
+            "TargetName" = "8:Database1.mdf"
             "Tag" = "8:"
             "Folder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
             "Condition" = "8:"
@@ -313,7 +329,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_3EA656BAE17C475EA7BAD2388DDDC217"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -416,7 +432,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_20489FD5AC85464B8F1B4AF4FF5F3CCA"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8852892B280D45728E4FD765572A51CA"
             {
             "Name" = "8:University Scheduler.exe"
             "Arguments" = "8:"
@@ -424,24 +440,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_21F1A9EF066B482788D012EFB38B7458"
-            "Folder" = "8:_EFA65CDA4EE44D1B885A6D97F42A0D76"
-            "WorkingFolder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
-            "Icon" = "8:_3EA656BAE17C475EA7BAD2388DDDC217"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9113EFB4E9794F3788370E4C51357F00"
-            {
-            "Name" = "8:University Scheduler.exe"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_21F1A9EF066B482788D012EFB38B7458"
+            "Target" = "8:_89818291335944FDAC5A436661F59524"
             "Folder" = "8:_E0120F82C58A4D15BB094B4B5E24A33A"
             "WorkingFolder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
-            "Icon" = "8:_3EA656BAE17C475EA7BAD2388DDDC217"
+            "Icon" = "8:_555F5E3981D24A5D958E73ADEF6BAB77"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E82609B92F834A61B247D13A14423C0F"
+            {
+            "Name" = "8:University Scheduler.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_89818291335944FDAC5A436661F59524"
+            "Folder" = "8:_EFA65CDA4EE44D1B885A6D97F42A0D76"
+            "WorkingFolder" = "8:_D60F75A98D80452B93B0BC227BAAF0B8"
+            "Icon" = "8:_555F5E3981D24A5D958E73ADEF6BAB77"
             "Feature" = "8:"
             }
         }
