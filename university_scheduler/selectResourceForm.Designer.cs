@@ -40,7 +40,7 @@
             this.saveResourceBTN.Name = "saveResourceBTN";
             this.saveResourceBTN.Size = new System.Drawing.Size(135, 36);
             this.saveResourceBTN.TabIndex = 7;
-            this.saveResourceBTN.Text = "Save";
+            this.saveResourceBTN.Text = "Close";
             this.saveResourceBTN.UseVisualStyleBackColor = true;
             this.saveResourceBTN.Click += new System.EventHandler(this.saveResourceBTN_Click);
             // 
